@@ -1,4 +1,4 @@
-# Garimpo de produto: o jeito certo (v2, 23/11/2026)
+# Garimpo de produto: o jeito certo (v3, 23/11/2026)
 
 Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demonstração, carta, etc.). Atualize a versão sempre que um garimpo ensinar algo novo e registre o motivo em `aprendizados.md`.
 
@@ -10,6 +10,13 @@ Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demon
 - **Contas:** preço US$39 a 59, custo + frete ≤ 30%, leve, não quebra, sem tamanho.
 - **Fora:** promessa de saúde, brinquedo infantil (certificado CPSIA), promessa impossível, marca copiada, arma.
 - **Entrega ao Kenui:** sempre com link do anúncio na Biblioteca, link da loja e imagem/vídeo para ele ver.
+
+## 0.1 Momento e mercado (checar antes de escolher)
+- **Calendário dos EUA:** datas comerciais (Black Friday/Cyber Monday, Natal com corte de entrega ~15/12, Ano Novo e metas, Dia dos Namorados 14/02, Dia das Mães, volta às aulas, Dia dos Pais), clima (inverno, furacões, calor), eventos que roubam atenção (eleições, Super Bowl, crises).
+- **Custo de anúncio pela época:** CPM sobe muito de meados de novembro ao Natal e cai em janeiro. Verba pequena rende mais fora do pico, ou com produto de presente que aproveita o pico.
+- **Mercado crescendo ou caindo:** volume de busca mês a mês (Ubersuggest conectado, Google Trends). Busca baixa + muitos anúncios novos = produto de descoberta (bom para drop). Busca alta e antiga + Amazon barata = produto conhecido, difícil competir.
+- **Prova de que vende agora:** curva de anúncios novos por semana subindo (freespyads); mesmo criativo duplicado em várias lojas; comentários de compra nos anúncios ("pedi", "chegou"); pedidos e avaliações com foto deste mês no AliExpress/CJ; vídeos orgânicos dos últimos 30 dias com comentários "onde compra".
+- **Amazon/Walmart:** se existe barato com muitas avaliações antigas, descartar ou só com oferta muito diferente.
 
 ## 1. Onde nasce a lista (cruzar fontes, nunca uma só)
 1. **Tendência de fora para dentro:** produtos em alta no AliExpress (mais vendidos, "hot"), Amazon (Movers & Shakers, mais vendidos da categoria), posts orgânicos no TikTok e Instagram que estão vendendo (comentários "onde compra?", "link?"). Cada produto achado vira um termo para conferir na Biblioteca.

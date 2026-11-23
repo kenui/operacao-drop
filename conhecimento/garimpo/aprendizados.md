@@ -6,3 +6,4 @@
 - 23/11/2026, garimpo 1 recusado pelo Kenui: candidatos rodando desde 2025 parecem marca; ele quer mais tendência, nada de Walmart, dor forte ou "uau", e sempre links/imagens. Virou a seção 0 do JEITO-CERTO v2.
 - 23/11/2026: freespyads.io (grátis) poupa horas: já agrupa a Biblioteca por produto. Conferir os achados na Biblioteca depois.
 - 23/11/2026: pente fino de preço: o pente aquecido de franja estava subindo rápido, mas a Amazon vende por US$13 a 20; descartado pelo teto de preço.
+- 23/11/2026: fogareiro a álcool tinha 67 lojas e anúncios subindo, mas a busca nos EUA caiu de 3.600 (set) para 2.400 (out) e a Amazon vende a US$14: produto conhecido vestido de novidade. Checar busca e Amazon antes de recomendar. Kenui pediu checagem de momento (calendário, cultura, CPM) virou seção 0.1.
