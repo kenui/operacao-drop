@@ -19,3 +19,9 @@
 - Causa: a checagem de fornecedor e Amazon vinha **depois** da escolha, e estimativa foi tratada como dado.
 - Solução: trava obrigatória 0.2 no JEITO-CERTO v4 (custo real com frete, estoque e prazo, tamanho e função reais, Amazon/Walmart no dia, margem com CPA da época, janela ≥ 21 dias). Sem os seis itens [certo], o produto não é apresentado.
 - Sinal de alerta extra: anúncios e fotos de loja feitos com IA escondem tamanho e funcionamento reais. Quando o criativo é IA, conferir medidas na listagem do fornecedor antes de qualquer outra coisa.
+
+## 23/11 noite: primeira rodada com o portão (0 de ~46 passaram)
+- O item 3 (Amazon/Walmart ≥ 85% do nosso preço) derruba quase tudo do freespyads; a Amazon copia em semanas. Buscar Amazon primeiro e procurar: produto que a Amazon não tem, kit que ela não vende, versão maior.
+- AliExpress no Chrome do Kenui redireciona para o site BR (gatewayAdapt=usa2bra): sem preço para os EUA. CJ abre e a busca é legível via JS (innerText após "Sort by").
+- O preço de grupo do freespyads pode ser de outra variante: abrir a loja antes.
+- Detalhe em operacoes/drop-eua/garimpo/2026-11-23/portao-rodada-4.md.
