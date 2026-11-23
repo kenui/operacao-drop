@@ -51,6 +51,21 @@ Custo (23/11, conector): Nano Banana 2 9:16 2k = 1,5 crédito; Kling 3.0 pro 5 s
 - Portão de aprovação: conferir reflexo nos olhos coerente com a luz declarada (janela de um lado = reflexo do mesmo lado), mãos com 5 dedos, produto sem duplicar.
 - Efeito real: gravar 3 a 10 s do produto funcionando no celular e usar como referência de vídeo no Kling 3.0 Omni (ou Motion Control). Sem amostra, usar filmagem própria/licenciada do fornecedor.
 
+## Etapa obrigatória antes do prompt: ficha de uso do produto (desde 23/11, pedido do Kenui)
+Nenhum prompt de vídeo é escrito sem a ficha `operacoes/<op>/produtos/<produto>/uso-no-video.md`, feita a partir do modelo `conhecimento/video-ia/modelo-ficha-uso-produto.md`.
+Regras de conversão da ficha para o prompt:
+1. Número vira comparação visual: tamanho em relação à mão ou a objetos comuns ("about the size of a smartphone"), com o número junto.
+2. Peso vira comportamento: o pulso cede, usa as duas mãos, apoia com um baque leve; ou ergue com dois dedos.
+3. Material vira luz: fosco sem brilho, metal com reflexo pequeno e suave, translúcido com a luz passando.
+4. Estados só avançam (fechado -> aberto, vazio -> cheio). Nunca voltam no mesmo clipe.
+5. Uma ação física por cena, com as duas mãos nomeadas, tirada da sequência real de uso.
+6. O efeito uau é uma cena própria: uma mudança visível antes -> depois, numa tomada contínua, em velocidade real, igual à filmagem de referência. Sem câmera lenta.
+7. Gancho: abrir na dor visível ou no meio do efeito uau, nunca no produto parado.
+8. Som real só na ação que o produz (clique, zumbido), descrito no prompt de áudio.
+9. Física específica escrita como regra (líquido escorre para baixo, objeto pesado não flutua, cabo não some).
+10. Rótulo em branco, sem texto legível. O produto real entra em plano próprio na montagem, se for preciso mostrar a marca.
+No portão de aprovação: escala igual entre cortes, peso crível, efeito igual à filmagem real, nada duplicado.
+
 ## Próximos testes (uma mudança por vez)
 1. 9:16 em vez de 16:9
 2. Áudio nativo com fala (Seedance 2.5 ou Kling com som)
@@ -62,6 +77,7 @@ Custo (23/11, conector): Nano Banana 2 9:16 2k = 1,5 crédito; Kling 3.0 pro 5 s
 8. Tomada contínua de 15 s com prompt mestre LOCK (Seedance 2.5) vs 8 cortes secos
 9. Bloco de pele e movimento do Riley vs nosso bloco v0
 10. Referência de vídeo real do produto no Kling 3.0 Omni vs só imagem
+11. Prompt com bloco PRODUCT LOCK da ficha vs prompt sem ficha
 
 ## Esqueleto para os próximos testes
 - Pessoa: Soul 2 ou Nano Banana 2, sem objeto nas mãos (modelo A do guia)
