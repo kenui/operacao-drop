@@ -15,4 +15,4 @@ Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo muda
 - Tudo que é feito deve ser melhorado e guardado como o "jeito certo".
 - Assinaturas, skills do GitHub e qualquer gasto: perguntar antes.
 - Meta: tem conta de anúncios (confirmado em 23/11).
-- Pendente: nichos fora de cogitação.
+- Nichos: nenhum fora de cogitação (Kenui, 23/11). Os limites são só os da Conformidade (FTC e Meta).
