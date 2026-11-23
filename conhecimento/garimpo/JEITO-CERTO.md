@@ -1,6 +1,15 @@
-# Garimpo de produto: o jeito certo (v1, 23/11/2026)
+# Garimpo de produto: o jeito certo (v2, 23/11/2026)
 
 Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demonstração, carta, etc.). Atualize a versão sempre que um garimpo ensinar algo novo e registre o motivo em `aprendizados.md`.
+
+## 0. Que produto procuramos (conceito do Kenui, v2)
+- **Dinheiro mais garantido:** modelar o que a Biblioteca de Anúncios já prova que vende e melhorar a oferta, sem apostar no escuro. A Biblioteca é o centro; o resto é apoio.
+- **Beira da tendência:** primeiro anúncio de 1 a 3 meses atrás, anúncio mais velho com 30+ dias, de 8 a 60 lojas vendendo, e anúncios novos ainda subindo na última semana. Vendendo desde 2025 ou antes = provavelmente marca, não drop.
+- **Não se acha fácil no Walmart/Target/Amazon barato.** Se a Amazon vende por US$15, nosso preço de US$39+ não para em pé.
+- **Dor ou necessidade forte, ou "uau" que se entende num vídeo de 15 s.** Ideal: os dois.
+- **Contas:** preço US$39 a 59, custo + frete ≤ 30%, leve, não quebra, sem tamanho.
+- **Fora:** promessa de saúde, brinquedo infantil (certificado CPSIA), promessa impossível, marca copiada, arma.
+- **Entrega ao Kenui:** sempre com link do anúncio na Biblioteca, link da loja e imagem/vídeo para ele ver.
 
 ## 1. Onde nasce a lista (cruzar fontes, nunca uma só)
 1. **Tendência de fora para dentro:** produtos em alta no AliExpress (mais vendidos, "hot"), Amazon (Movers & Shakers, mais vendidos da categoria), posts orgânicos no TikTok e Instagram que estão vendendo (comentários "onde compra?", "link?"). Cada produto achado vira um termo para conferir na Biblioteca.
@@ -8,6 +17,10 @@ Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demon
    - Termos de oferta ("free shipping", "50% off") e ganchos genéricos ("why did nobody tell me", "tiktok made me buy it") trazem ruído: apps, remédios, marcas grandes. Use só para ter ideias, nunca como prova.
    - Ao achar um anunciante bom, busque o **nome genérico do produto** para ver quantos outros vendem o mesmo.
 3. **Busca no Google / Google Trends:** volume e direção da busca do nome genérico. Entender **de onde vem** o comportamento (estação, presente, problema que piorou, notícia, recall) e o que isso diz sobre ângulo e prazo.
+
+### Atalho grátis que lê a Biblioteca por nós
+freespyads.io agrupa anúncios ativos dos EUA por produto (lojas, data do primeiro anúncio, anúncios novos em 7 dias, preço). Usar para achar candidatos rápido e depois **conferir na própria Biblioteca** (fonte da verdade). Páginas: /winning-products, /winning-products/<nicho>, /products/<produto>, /reports/<data>.
+Rodar frentes em paralelo (um agente por grupo de nichos) para não ficar lento.
 
 ## 2. Verdade x possível mentira
 - **Verdade (vale ponto):** anúncio ativo há 30+ dias; muitas variações ativas do mesmo produto no mesmo anunciante; **2+ anunciantes diferentes** vendendo o mesmo produto genérico; anunciante cópia que entrou meses depois (prova que alguém viu dinheiro).
