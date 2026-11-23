@@ -6,7 +6,7 @@ Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo muda
 - Estratégia: modelar produtos já escalados, na beira da tendência (comprovado e ainda subindo).
 - Garimpo: só fontes gratuitas; Biblioteca de Anúncios do Meta é a fonte da verdade. Ferramentas de espionagem pagas não.
 - Loja: página em HTML puro, responsiva, na Hostinger (já tem). Sem Shopify.
-- Pagamento: Stripe (já tem). Confirmar se cobra em USD.
+- Pagamento: Stripe (já tem), cobra em dólar (confirmado em 23/11).
 - Verba: R$500 iniciais; crescer reinvestindo o lucro. Gastar só o suficiente para ter lucro.
 - Amostra: não recebe amostra (demora demais). Criativos sem filmagem própria.
 - Criativos: Higgsfield (plano Ultra, ~800 créditos em 23/11/2026) e material reaproveitado só quando autorizado (ex.: vídeos do fornecedor liberados). Material de terceiros sem autorização = só estudo. Sem banco de imagens (acha produzido demais) e sem UGC contratado por enquanto.
@@ -14,4 +14,4 @@ Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo muda
 - Copy: humana acima de tudo; agente de Dossiê e copy com manual dos 20 livros.
 - Tudo que é feito deve ser melhorado e guardado como o "jeito certo".
 - Assinaturas, skills do GitHub e qualquer gasto: perguntar antes.
-- Pendentes: conta de anúncios Meta/BM; nichos fora de cogitação; repositório privado `operacao-drop` (Kenui cria).
+- Pendentes: conta de anúncios Meta/BM; nichos fora de cogitação.
