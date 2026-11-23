@@ -1,7 +1,7 @@
 # Vila de Natal com teleférico
 
-Escolhida pelo Kenui em 23/11/2026. Sazonal: vender até ~3/12 se sair da China.
-**Status:** dossiê, ângulos, ficha e roteiros v1 prontos. **Bloqueado** na conta: AliExpress a ~US$28 não deixa margem; precisa de fornecedor a ~US$17 com vídeo real da gôndola. Decisão pedida ao Kenui em 23/11.
+**Status: DESCARTADO em 23/11/2026 (decisão do Kenui).** Motivo: margem. Custo real ~US$24 a 30 só da China contra venda de US$40; sobram ~US$6,50 antes do anúncio. Amazon com o mesmo molde a US$33; peça real de 17 cm; janela de venda até ~3/12. Detalhes e o que mudou: [LICAO.md](LICAO.md).
+Os arquivos ficam como modelo para o próximo produto.
 
 | Arquivo | O que tem |
 |---|---|
@@ -12,4 +12,4 @@ Escolhida pelo Kenui em 23/11/2026. Sazonal: vender até ~3/12 se sair da China.
 | [uso-no-video.md](uso-no-video.md) | ficha de uso e PRODUCT LOCK |
 | [06-roteiros-video.md](06-roteiros-video.md) | 3 roteiros (trabalho, presente, encanto), 3 ganchos cada |
 
-Próximo: página (`05-pagina/`) e geração de vídeo, só com aval do Kenui e fornecedor confirmado.
+| [LICAO.md](LICAO.md) | por que foi descartado e o que mudou na esteira |
