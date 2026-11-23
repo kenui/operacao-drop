@@ -51,6 +51,9 @@ Custo (23/11, conector): Nano Banana 2 9:16 2k = 1,5 crédito; Kling 3.0 pro 5 s
 - Portão de aprovação: conferir reflexo nos olhos coerente com a luz declarada (janela de um lado = reflexo do mesmo lado), mãos com 5 dedos, produto sem duplicar.
 - Efeito real: gravar 3 a 10 s do produto funcionando no celular e usar como referência de vídeo no Kling 3.0 Omni (ou Motion Control). Sem amostra, usar filmagem própria/licenciada do fornecedor.
 
+## Alvo de qualidade (referência aprovada pelo Kenui)
+- 23/11: capinha de glitter líquido com bichinhos, `referencias/2026-11-23_capinha-glitter.md`. É o nível de naturalidade que buscamos. Lições: celular no tripé (mãos livres), produto colado na lente com o efeito acontecendo, segundo ângulo no espelho, física certa do líquido, som do produto na ação, sem música, final em reação silenciosa.
+
 ## Etapa obrigatória antes do prompt: ficha de uso do produto (desde 23/11, pedido do Kenui)
 Nenhum prompt de vídeo é escrito sem a ficha `operacoes/<op>/produtos/<produto>/uso-no-video.md`, feita a partir do modelo `conhecimento/video-ia/modelo-ficha-uso-produto.md`.
 Regras de conversão da ficha para o prompt:
@@ -78,6 +81,7 @@ No portão de aprovação: escala igual entre cortes, peso crível, efeito igual
 9. Bloco de pele e movimento do Riley vs nosso bloco v0
 10. Referência de vídeo real do produto no Kling 3.0 Omni vs só imagem
 11. Prompt com bloco PRODUCT LOCK da ficha vs prompt sem ficha
+12. Estrutura da referência da capinha (tripé, produto na lente, espelho, final mudo) vs 8 cortes
 
 ## Esqueleto para os próximos testes
 - Pessoa: Soul 2 ou Nano Banana 2, sem objeto nas mãos (modelo A do guia)
