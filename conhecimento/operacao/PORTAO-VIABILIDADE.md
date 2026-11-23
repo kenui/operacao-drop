@@ -1,4 +1,4 @@
-# Portão de viabilidade (v1, 23/11/2026)
+# Portão de viabilidade (v1.1, 23/11/2026)
 
 Nenhum produto passa para dossiê, página ou vídeo sem passar por este portão. Quem roda: o Garimpeiro antes de apresentar candidatos ao Kenui, e o agente de Dossiê confere de novo antes de começar (Fase 0).
 Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado (US$14 a 20) e, na checagem, o fornecedor real custava US$24 a 30, saía só da China, a peça tinha 17 cm contra fotos de IA que a faziam parecer grande, e a Amazon já vendia igual a US$33. Ver [a lição](../../operacoes/drop-eua/produtos/vila-teleferico/LICAO.md).
@@ -13,7 +13,7 @@ Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado
 | 5 | **CPA de empate** cabe no mercado | margem antes do anúncio = CPA máximo | CPA máximo ≥ US$20 (Q4) ou ≥ US$15 (janeiro a setembro) |
 | 6 | **Tamanho e aparência reais** | medida do fornecedor + foto ou vídeo real (não render) | o real bate com o que os anúncios mostram, ou dá para vender honestamente com a escala real |
 | 7 | **Função real** | vídeo do fornecedor sem edição | faz o que os anúncios prometem |
-| 8 | **Verba de teste cabe** | CPA máximo × 3 compras | ≤ verba disponível (hoje R$500 ≈ US$90) |
+| 8 | **Verba de teste cabe** | **CPA esperado da época** × 3 compras (Q4: US$25; janeiro a setembro: US$18). Não usar o CPA de empate aqui: margem alta não pode reprovar. | ≤ verba disponível (hoje R$500 ≈ US$90) |
 
 Um item reprovado = produto parado. Dois itens "a confirmar" = não apresentar como recomendado, só como "em checagem".
 
@@ -37,3 +37,4 @@ Exemplo de aprovado: P 39,98; C 11; reserva 5% 2,00 → M = 25,52 (64% do preço
 
 ## Histórico
 - v1 (2026-11-23): criado depois do descarte da vila de Natal.
+- v1.1 (2026-11-23): item 8 passa a usar o CPA esperado da época, não o de empate. Na v1, qualquer margem acima de US$30 reprovava (30 × 3 > US$90), barrando os melhores produtos. Achado pela thread do garimpo na rodada 4.
