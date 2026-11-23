@@ -18,25 +18,19 @@ Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demon
 - **Prova de que vende agora:** curva de anúncios novos por semana subindo (freespyads); mesmo criativo duplicado em várias lojas; comentários de compra nos anúncios ("pedi", "chegou"); pedidos e avaliações com foto deste mês no AliExpress/CJ; vídeos orgânicos dos últimos 30 dias com comentários "onde compra".
 - **Amazon/Walmart:** se existe barato com muitas avaliações antigas, descartar ou só com oferta muito diferente.
 
-## 0.2 TRAVA DE MARGEM E REALIDADE (obrigatória antes de apresentar qualquer candidato)
-Nasceu da vila de Natal (23/11): foi apresentada com custo **estimado** e, depois da escolha, o fornecedor real custava US$27 a 30, saía da China (10 a 18 dias), a peça tinha 17 cm (os anúncios de IA a faziam parecer grande) e a Amazon vendia a US$30 a 41. Produto que não passa na trava **não entra na lista**, nem como "condicional". No máximo, uma linha em "pendente de verificação" dizendo o que falta.
+## 0.2 TRAVA: portão de viabilidade (obrigatório antes de apresentar qualquer candidato)
+A regra única, com números e conta, está em [conhecimento/operacao/PORTAO-VIABILIDADE.md](../operacao/PORTAO-VIABILIDADE.md). Vale para o garimpo e para o dossiê; se mudar, muda lá.
+Nasceu da vila de Natal (23/11): apresentada com custo **estimado**, depois da escolha o fornecedor real custava US$27 a 30, saía da China (10 a 18 dias), a peça tinha 17 cm (anúncios de IA a faziam parecer grande) e a Amazon vendia a US$30 a 41.
 
-Cada item precisa estar **[certo]** (visto hoje na fonte, com link e print). [provável] ou [suposição] em qualquer item = reprovado.
+Resumo dos 8 itens (todos com link ou print do dia; "estimado" não conta): custo real entregue nos EUA ≤ 30% do preço; entrega ≤ 12 dias e janela de venda ≥ 21 dias se for sazonal; Amazon/Walmart ≥ 85% do nosso preço (ou vantagem clara); margem antes do anúncio ≥ US$20 e ≥ 45%; CPA de empate ≥ US$20 no Q4 (≥ US$15 no resto); tamanho e aparência reais; função real em vídeo do fornecedor; verba cobre 3 compras.
 
-| # | Trava | Como conferir | Passa se |
-|---|---|---|---|
-| 1 | **Custo real entregue nos EUA** | Listagem do fornecedor do **mesmo molde** (CJ, AliExpress com envio para os EUA, fornecedor com armazém nos EUA). Preço do produto + frete para endereço dos EUA, em dólar. Nunca deduzir do preço das lojas concorrentes nem converter de real. | Link + print com preço e frete |
-| 2 | **Estoque e prazo** | Local de envio e prazo para o cliente nos EUA, na própria listagem. | Prazo cabe na janela (trava 6) |
-| 3 | **Tamanho, peso e funcionamento reais** | Medidas e peso da listagem do fornecedor. Comparar com o que o anúncio mostra. O que se mexe/acende/faz confirmado em vídeo ou foto real (avaliação com foto, vídeo do fornecedor), não em anúncio de IA. | O produto real entrega o que o anúncio promete, ou dá para mostrar a escala sem perder o encanto |
-| 4 | **Amazon e Walmart no dia** | Buscar o mesmo molde (título genérico e imagem) nos dois, com preço e prazo de hoje. | Nosso preço ≥ 1,3× o mais barato com prazo parecido, ou temos vantagem clara (prazo, kit, versão melhor) |
-| 5 | **Margem com custo de anúncio da época** | Preço − Stripe (2,9% + 0,30) − custo entregue − reserva de reembolso/quebra (8%) − custo por compra estimado. Custo por compra: **US$20 a 30 de 15/11 a 24/12**; US$12 a 20 em jan–fev; US$15 a 25 no resto do ano (atualizar com dado real da nossa conta quando houver). | Sobra ≥ US$5 já no custo por compra mais alto da faixa. Atalho: custo entregue ≤ 25% do preço no Q4, ≤ 30% no resto do ano, e margem antes do anúncio ≥ US$25 |
-| 6 | **Janela de venda** | Data limite do evento (ex.: Natal ~15/12) − prazo de entrega − 4 dias para página e criativo. | ≥ 21 dias vendendo, ou produto que vende o ano todo |
-
-**Ordem nova do garimpo:** a trava vem logo depois da triagem rápida (freespyads + Biblioteca). Primeiro achar o fornecedor e fazer a conta; só depois aprofundar estudo, orgânico, ângulos. Produto sem listagem de fornecedor encontrável = descartado (ou "pendente", se valer pedir sourcing à CJ).
-
-**Ferramentas para a trava:** CJ e AliExpress no Chrome do Kenui (logado; mudar o "enviar para" para Estados Unidos e a moeda para US$), Amazon e Walmart no Chrome ou Exa, busca por imagem para achar o molde exato. Print de cada preço vai para a pasta do produto.
-
-**Na apresentação ao Kenui, cada candidato traz a tabela da trava preenchida com links.**
+**Regras do garimpo em cima do portão**
+- Produto que reprova não entra na lista, nem como "condicional". Item ainda sem prova vai numa linha à parte, "em checagem", dizendo o que falta. Nunca como recomendado.
+- **Ordem nova:** triagem rápida (freespyads + Biblioteca) → Amazon/Walmart → fornecedor (custo em dólar com frete para os EUA, "ship from", prazo, medida) → conta → só então estudo, orgânico e ângulos. Produto sem listagem de fornecedor que se ache = descartado (ou "em checagem", se valer pedir sourcing na CJ).
+- Nunca deduzir custo do preço de lojas concorrentes nem de fábrica "parecida". Nunca converter de real: mudar "enviar para" para Estados Unidos e moeda para US$.
+- Anúncio ou foto de loja feito com IA = conferir medida e funcionamento antes de qualquer outra coisa.
+- **Ferramentas:** CJ e AliExpress no Chrome do Kenui (logado), Amazon e Walmart no Chrome ou Exa, busca por imagem para o molde exato. Print de cada preço vai para a pasta do produto.
+- **Na apresentação ao Kenui, cada candidato traz a tabela do portão preenchida, com links.**
 
 ## 1. Onde nasce a lista (cruzar fontes, nunca uma só)
 1. **Tendência de fora para dentro:** produtos em alta no AliExpress (mais vendidos, "hot"), Amazon (Movers & Shakers, mais vendidos da categoria), posts orgânicos no TikTok e Instagram que estão vendendo (comentários "onde compra?", "link?"). Cada produto achado vira um termo para conferir na Biblioteca.
@@ -60,7 +54,7 @@ Rodar frentes em paralelo (um agente por grupo de nichos) para não ficar lento.
 - **Golpe (descartar):** promessa fisicamente impossível (ex.: "dispositivo eletromagnético anti-gelo"), cura, resultado de saúde.
 
 ## 4. Contas rápidas (drop EUA atual)
-Preço US$39 a 59. Custo + frete ≤ 30% do preço (≤ 25% no Q4). A conta completa e obrigatória está na trava 0.2. Fornecedor com estoque nos EUA. Taxa Stripe ~3% + 0,30.
+Preço US$39 a 59. Custo + frete ≤ 30% do preço. A conta completa e obrigatória está no portão (seção 0.2). Fornecedor com estoque nos EUA. Taxa Stripe ~3% + 0,30.
 
 ## 5. Como operar a Biblioteca no Chrome do Kenui
 - A extensão Denote no Chrome dele deixa a página lenta: depois de abrir a busca, esperar ~30 s antes de ler.
