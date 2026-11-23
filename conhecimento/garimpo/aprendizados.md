@@ -7,3 +7,9 @@
 - 23/11/2026: freespyads.io (grátis) poupa horas: já agrupa a Biblioteca por produto. Conferir os achados na Biblioteca depois.
 - 23/11/2026: pente fino de preço: o pente aquecido de franja estava subindo rápido, mas a Amazon vende por US$13 a 20; descartado pelo teto de preço.
 - 23/11/2026: fogareiro a álcool tinha 67 lojas e anúncios subindo, mas a busca nos EUA caiu de 3.600 (set) para 2.400 (out) e a Amazon vende a US$14: produto conhecido vestido de novidade. Checar busca e Amazon antes de recomendar. Kenui pediu checagem de momento (calendário, cultura, CPM) virou seção 0.1.
+
+## 23/11 — Garimpo 3
+- Semana de pré-Black Friday: o que escala no freespyads é decoração de Natal barata (US$17–30). Gadget adulto US$39–69 iniciado set–nov é raro; olhar carro/tático e casa.
+- Quando a busca por palavra do produto não acha nada na Biblioteca, buscar pelo nome da loja que mais anuncia (ex.: "planvisi") ou por frase exata curta ("tactical car seat").
+- Ubersuggest gratuito: 3 relatórios por dia. Usar só nos finalistas e cedo.
+- Projetor de caça: anúncios feitos por IA e relato de entrega diferente do anunciado. Sinal de alerta: lojas com "made to order" ou "imagens ilustrativas".
