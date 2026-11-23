@@ -14,4 +14,5 @@ Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo muda
 - Copy: humana acima de tudo; agente de Dossiê e copy com manual dos 20 livros.
 - Tudo que é feito deve ser melhorado e guardado como o "jeito certo".
 - Assinaturas, skills do GitHub e qualquer gasto: perguntar antes.
-- Pendentes: conta de anúncios Meta/BM; nichos fora de cogitação.
+- Meta: tem conta de anúncios (confirmado em 23/11).
+- Pendente: nichos fora de cogitação.
