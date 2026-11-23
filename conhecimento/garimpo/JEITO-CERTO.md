@@ -1,4 +1,4 @@
-# Garimpo de produto: o jeito certo (v3, 23/11/2026)
+# Garimpo de produto: o jeito certo (v4, 23/11/2026)
 
 Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demonstração, carta, etc.). Atualize a versão sempre que um garimpo ensinar algo novo e registre o motivo em `aprendizados.md`.
 
@@ -17,6 +17,20 @@ Vale para qualquer operação e formato (drop, infoproduto, afiliado; UGC, demon
 - **Mercado crescendo ou caindo:** volume de busca mês a mês (Ubersuggest conectado, Google Trends). Busca baixa + muitos anúncios novos = produto de descoberta (bom para drop). Busca alta e antiga + Amazon barata = produto conhecido, difícil competir.
 - **Prova de que vende agora:** curva de anúncios novos por semana subindo (freespyads); mesmo criativo duplicado em várias lojas; comentários de compra nos anúncios ("pedi", "chegou"); pedidos e avaliações com foto deste mês no AliExpress/CJ; vídeos orgânicos dos últimos 30 dias com comentários "onde compra".
 - **Amazon/Walmart:** se existe barato com muitas avaliações antigas, descartar ou só com oferta muito diferente.
+
+## 0.2 TRAVA: portão de viabilidade (obrigatório antes de apresentar qualquer candidato)
+A regra única, com números e conta, está em [conhecimento/operacao/PORTAO-VIABILIDADE.md](../operacao/PORTAO-VIABILIDADE.md). Vale para o garimpo e para o dossiê; se mudar, muda lá.
+Nasceu da vila de Natal (23/11): apresentada com custo **estimado**, depois da escolha o fornecedor real custava US$27 a 30, saía da China (10 a 18 dias), a peça tinha 17 cm (anúncios de IA a faziam parecer grande) e a Amazon vendia a US$30 a 41.
+
+Resumo dos 8 itens (todos com link ou print do dia; "estimado" não conta): custo real entregue nos EUA ≤ 30% do preço; entrega ≤ 12 dias e janela de venda ≥ 21 dias se for sazonal; Amazon/Walmart ≥ 85% do nosso preço (ou vantagem clara); margem antes do anúncio ≥ US$20 e ≥ 45%; CPA de empate ≥ US$20 no Q4 (≥ US$15 no resto); tamanho e aparência reais; função real em vídeo do fornecedor; verba cobre 3 compras.
+
+**Regras do garimpo em cima do portão**
+- Produto que reprova não entra na lista, nem como "condicional". Item ainda sem prova vai numa linha à parte, "em checagem", dizendo o que falta. Nunca como recomendado.
+- **Ordem nova:** triagem rápida (freespyads + Biblioteca) → Amazon/Walmart → fornecedor (custo em dólar com frete para os EUA, "ship from", prazo, medida) → conta → só então estudo, orgânico e ângulos. Produto sem listagem de fornecedor que se ache = descartado (ou "em checagem", se valer pedir sourcing na CJ).
+- Nunca deduzir custo do preço de lojas concorrentes nem de fábrica "parecida". Nunca converter de real: mudar "enviar para" para Estados Unidos e moeda para US$.
+- Anúncio ou foto de loja feito com IA = conferir medida e funcionamento antes de qualquer outra coisa.
+- **Ferramentas:** CJ e AliExpress no Chrome do Kenui (logado), Amazon e Walmart no Chrome ou Exa, busca por imagem para o molde exato. Print de cada preço vai para a pasta do produto.
+- **Na apresentação ao Kenui, cada candidato traz a tabela do portão preenchida, com links.**
 
 ## 1. Onde nasce a lista (cruzar fontes, nunca uma só)
 1. **Tendência de fora para dentro:** produtos em alta no AliExpress (mais vendidos, "hot"), Amazon (Movers & Shakers, mais vendidos da categoria), posts orgânicos no TikTok e Instagram que estão vendendo (comentários "onde compra?", "link?"). Cada produto achado vira um termo para conferir na Biblioteca.
@@ -40,7 +54,7 @@ Rodar frentes em paralelo (um agente por grupo de nichos) para não ficar lento.
 - **Golpe (descartar):** promessa fisicamente impossível (ex.: "dispositivo eletromagnético anti-gelo"), cura, resultado de saúde.
 
 ## 4. Contas rápidas (drop EUA atual)
-Preço US$39 a 59. Custo + frete ≤ 30% do preço. Fornecedor com estoque nos EUA. Taxa Stripe ~3% + 0,30.
+Preço US$39 a 59. Custo + frete ≤ 30% do preço. A conta completa e obrigatória está no portão (seção 0.2). Fornecedor com estoque nos EUA. Taxa Stripe ~3% + 0,30.
 
 ## 5. Como operar a Biblioteca no Chrome do Kenui
 - A extensão Denote no Chrome dele deixa a página lenta: depois de abrir a busca, esperar ~30 s antes de ler.

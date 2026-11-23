@@ -13,3 +13,9 @@
 - Quando a busca por palavra do produto não acha nada na Biblioteca, buscar pelo nome da loja que mais anuncia (ex.: "planvisi") ou por frase exata curta ("tactical car seat").
 - Ubersuggest gratuito: 3 relatórios por dia. Usar só nos finalistas e cedo.
 - Projetor de caça: anúncios feitos por IA e relato de entrega diferente do anunciado. Sinal de alerta: lojas com "made to order" ou "imagens ilustrativas".
+
+## 23/11 — Vila de Natal reprovada depois da escolha (margem)
+- O que aconteceu: apresentada com custo **inferido** (US$14–20, de fábrica parecida). Real: US$27–30 no AliExpress saindo da China, 10–18 dias, peça de 17 cm, Amazon a US$30–41. Margem antes do anúncio ~US$7 contra custo por compra de US$15–30 em dezembro.
+- Causa: a checagem de fornecedor e Amazon vinha **depois** da escolha, e estimativa foi tratada como dado.
+- Solução: trava obrigatória 0.2 no JEITO-CERTO v4 (custo real com frete, estoque e prazo, tamanho e função reais, Amazon/Walmart no dia, margem com CPA da época, janela ≥ 21 dias). Sem os seis itens [certo], o produto não é apresentado.
+- Sinal de alerta extra: anúncios e fotos de loja feitos com IA escondem tamanho e funcionamento reais. Quando o criativo é IA, conferir medidas na listagem do fornecedor antes de qualquer outra coisa.
