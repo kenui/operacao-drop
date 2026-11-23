@@ -16,3 +16,4 @@ Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo muda
 - Assinaturas, skills do GitHub e qualquer gasto: perguntar antes.
 - Meta: tem conta de anúncios (confirmado em 23/11).
 - Nichos: nenhum fora de cogitação (Kenui, 23/11). Os limites são só os da Conformidade (FTC e Meta).
+- Memória (preferências, aprendizados, JEITO-CERTO, estado, registro de ganhos) vai direto para o main; código e mudanças grandes vão por pull request (Kenui, 23/11).
