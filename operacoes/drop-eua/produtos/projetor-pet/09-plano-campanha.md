@@ -60,6 +60,17 @@ Antes do lançamento: buscar na Biblioteca (EUA, "pet projector", "dog projector
 
 V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
 
+### 3b. Textos dos anúncios (prontos para subir; 24/11)
+Vídeos com esquilo em `videos/` (thread de vídeos, 24/11). Sobem as versões sem e com música como anúncios separados, até o Kenui escolher. Todos levam o rótulo de IA do Meta (pessoa gerada por IA). Título comum: **"The Hunt Ends With a Real Catch"**. Botão: **Shop Now**.
+
+| Anúncio | Vídeo | Texto principal | Destino `?a=` |
+|---|---|---|---|
+| `chuva-donac-ugc-v1` | v1-chuva/V1-chuva-*.mp4 | No walk today and he's been staring at me since 4. This little projector puts critters on the floor for him to chase, and the kit comes with a squeaky plush so the hunt ends with something he can actually catch. Works best with the lights low. Free shipping, 30-day refund. | `sozinho` |
+| `fake-cetica-demo-v1` | v4-fake/V4-fake-*.mp4 | I thought these videos were fake too. So here it is in a normal living room: off, click, on. If your dog just stares at it, email us within 30 days of delivery for a full refund. | `sozinho` |
+| `aprovado-controle-v1` | prova-esquilo/Controle-esquilo-*.mp4 | If your dog gets bored inside, watch this. Projector + squeaky plush + gift box. Free shipping, 30-day refund. | `pega` |
+
+Conferido com a página em 24/11 (a página diz que "usually" não precisa devolver, então o anúncio não promete "no return needed"): "30-day money-back", "no reason needed", "free shipping" e "works best with the lights low" estão lá. Não prometemos prazo de Natal no anúncio (a página mostra o prazo real). Se a política de reembolso mudar, os textos mudam junto.
+
 ## 4. Régua com os números deste produto (E = US$26,64; A = US$18)
 | Situação | Regra | Ação |
 |---|---|---|
