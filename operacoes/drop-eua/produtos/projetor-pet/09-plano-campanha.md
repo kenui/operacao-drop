@@ -13,7 +13,7 @@ Feito a partir do [manual de tráfego](../../../../conhecimento/trafego/manual-m
 | Domínio verificado / Página / Instagram | ⏳ conferir quando o acesso chegar |
 | Criativos V1, V2, V4 + controle | ⏳ thread "Criar vídeos que vendem o projetor pet" |
 | Conformidade dos textos | ⏳ passar a skill antes de subir |
-| Valor aprovado | ⏳ decisão do Kenui (§5) |
+| Valor aprovado | ✅ **R$850 por 7 dias (US$20/dia, opção B)**, escolhido pelo Kenui em 24/11. Ativa só quando o resto do portão fechar; spend cap da campanha = esse valor |
 
 ## 1. Contas (preços e custos do config em 24/11)
 Hipóteses do funil: 80% kit 1 (US$49,99), 20% kit 2 (US$89,99); bump US$9,99 em 10%; upsell US$39,99 em 5%; downsell US$7,99 em 3% de quem vê; reembolso 5%. Custo entregue CJ: kit US$18,77, pelúcias extras US$4,50 (`api/_precos.php`). Stripe BR ~6% + US$0,10 por cobrança.
@@ -92,4 +92,5 @@ Câmbio de referência R$5,40 por dólar **[HIPÓTESE]**, imposto da Meta inclu�
 - Gato volta quando houver fornecedor: conjunto próprio só se a verba alimentar dois (manual §1.6); senão, anúncios de gato no mesmo conjunto.
 
 ## Histórico
+- v1.1 (24/11/2026): Kenui aprovou a opção B (R$850, 7 dias).
 - v1 (24/11/2026): primeiro plano, thread "Gerenciar e escalar campanhas no Meta".
