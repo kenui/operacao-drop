@@ -37,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     [$c, $acc] = st($sk, 'GET', 'account');
     if ($c !== 200) {
       $msg = 'A Stripe recusou a chave (' . htmlspecialchars($acc['error']['message'] ?? "HTTP $c") . '). Nada foi salvo.';
+    } elseif (str_starts_with((string)($acc['id'] ?? ''), 'acct_1') && ($pkjs = (string)@file_get_contents(__DIR__ . '/config.js')) && preg_match('/stripePk:\s*"(pk_test_[A-Za-z0-9]+)"/', $pkjs, $mm) && strpos($mm[1], substr((string)($acc['id'] ?? ''), 6)) === false) {
+      $msg = 'Essa chave secreta é de outra conta da Stripe, não da mesma conta da chave pública que está na página. Mande a pk_test desta conta ao Claude primeiro. Nada foi salvo.';
     } else {
       $p = ['url' => "https://$dom/api/webhook.php", 'description' => 'Little Catch Co. (site)', 'api_version' => '2024-06-20'];
       foreach ($eventos as $i => $e) $p["enabled_events[$i]"] = $e;
