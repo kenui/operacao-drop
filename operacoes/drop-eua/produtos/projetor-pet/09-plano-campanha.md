@@ -39,7 +39,20 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
 
-**Rascunho na conta (24/11, PAUSADO, sem anúncios):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+**Na conta (24/11, tudo PAUSADO):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+
+Anúncios criados em 24/11 (pausados, em revisão do Meta), Página Little Catch Co., UTM por ID em `url_tags`, domínio de conversão littlecatchco.com:
+
+| Anúncio | ID do anúncio | Criativo | Vídeo na biblioteca |
+|---|---|---|---|
+| chuva-donac-ugc-v1 | 120250938575320381 | 932435983167079 | 1144294901425680 |
+| chuva-donac-ugc-v1-musica | 120250938576070381 | 1491709979581016 | 1481621200558764 |
+| fake-cetica-demo-v1 | 120250938576430381 | 1122867140742983 | 4678334099102253 |
+| fake-cetica-demo-v1-musica | 120250938577520381 | 1828117665123830 | 1142239911872619 |
+| aprovado-controle-v1 | 120250938578390381 | 1777757563686595 | 1612303223984909 |
+| aprovado-controle-v1-musica | 120250938579440381 | 1116543557885881 | 1714682023401935 |
+
+Com e sem música dentro do mesmo conjunto: a régua julga cada versão; se uma das duas perder com folga depois do dia 3, pausar a pior e anotar em `aprendizados.md` (teste de música, H-T música).
 
 ## 3. Criativos
 Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
