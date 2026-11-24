@@ -5,8 +5,8 @@ Legenda: **[certo]** vi na fonte. **[provável]** fonte única ou indireta. **[s
 
 Imagem de referência (loja Pouncy): https://cdn.shopify.com/s/files/1/1125/6404/4115/files/pouncy-light-chase-projector.png?v=1794959425
 
-## 0. O que ficou faltando nesta rodada (e por quê)
-- **Biblioteca de Anúncios do Meta: não conferida.** O navegador do computador do Kenui não estava disponível para esta thread, e a nuvem não abre facebook.com. O sinal de anúncios abaixo vem do freespyads (grátis). **Antes de gerar qualquer vídeo**, abrir a Biblioteca (busca "cat projector", "pet projector", "mouse projector", país EUA) e anotar: os 3 primeiros segundos de cada anúncio que se repete, o texto, a duração e o CTA. Isso entra na v2 deste arquivo.
+## 0. Lacunas
+- **Biblioteca do Meta: conferida em 24/11/2026 às 04:35 (ver seção 1b).**
 - **Comentários do TikTok e Instagram do produto viral:** a busca aberta não trouxe vídeos com comentários legíveis. Usei fóruns, Quora, avaliações de produtos vizinhos e matérias de 18 a 23/11/2026.
 
 ## 1. Sinal de anúncios (freespyads, atualizado 23/11/2026) [certo]
@@ -15,6 +15,49 @@ https://freespyads.io/products/usb-pet-projector-toy
 - 871 anúncios novos na semana de 16/11 e só 21 na de 23/11 (o gráfico da página). **Leitura [suposição]:** ou a semana de 23/11 ainda não foi contada, ou a onda de lançamento já passou e agora as lojas estão cortando. Conferir na Biblioteca do Meta quantos anúncios continuam ativos.
 - Loja com mais anúncios: enjoyaitlife.com (386 anúncios, desde 19/11). Depois lifetimean.com (57), toveq.com (44), noveltyfy.com (34, US$29,99).
 - Preço praticado: US$29,99 a 47,90, mediana US$29,99.
+
+## 1b. Biblioteca de Anúncios do Meta (24/11/2026, EUA, anúncios ativos) [certo]
+Busca "pet projector": https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=pet%20projector&search_type=keyword_unordered&media_type=all
+Li o texto de ~140 anúncios do produto (o resto dos ~780 resultados é outro tipo de projetor) e os quadros de 4 vídeos: [frames/biblioteca-meta-quadros-4-anuncios.jpg](frames/biblioteca-meta-quadros-4-anuncios.jpg) (a 1ª linha é outro produto, um holograma de Natal; as linhas 2 a 4 são o projetor).
+
+**Números**
+- 46 anunciantes diferentes. Anúncios iniciados por dia: 16/11: 4, 17/11: 7, 18/11: 11, 19/11: 10, 20/11: 32, 21/11: 32, 22/11: 4, **23/11: 40**. **Ainda está subindo** (o freespyads mostrava queda só porque ainda não tinha contado a semana).
+- Todos têm de 1 a 8 dias. Nenhum anúncio passou de 30 dias: lucro ainda não provado pelo tempo.
+- Vídeos curtos: 11 a 14 s quase todos (um de 55 s).
+
+**O que o texto dos anúncios diz (contagem em 117 anúncios únicos)**
+| Tema | Anúncios | Leitura |
+|---|---|---|
+| Cachorro citado | 98 | O mercado vende para os dois, mas pensa em cachorro primeiro. |
+| "USB" | 110 | O produto deles é **USB na tomada**. "Recarregável": **0**. |
+| "Rainy days" / "bored" | 74 / 72 | A promessa padrão: pet entediado em dia de chuva. Todo mundo igual. |
+| "For hours" | 56 | Promessa exagerada e comum. Evitar. |
+| Presente / Natal | 10 | Pouco usado. |
+| Dono cansado ("busy", "tired") | 8 | Só "perfect for busy pet parents". Ninguém abre com isso. |
+| **Captura / "catch"** | **0 no sentido de pegar** | **O buraco do ângulo A está confirmado.** |
+| Laser (comparação) | 1 | Quase ninguém se compara com o laser. |
+| Só gato | 8 | Gato é minoria nos textos; nos vídeos vistos, só cachorro. |
+
+**Exemplos de anúncio (link direto)**
+- Enjoyaitlife-US, a loja que mais anuncia (6 anúncios com o mesmo criativo), desde 19/11. Abre com "Is your fur baby bored of their same old toys?" e "Rainy days mean no outdoor walks". https://www.facebook.com/ads/library/?id=1814586786477559
+- Amplitudely, desde 17/11: "Paw-Shaped Pet Projector… glowing squirrels and targets appear on the floor… guaranteed way to capture the funniest, most adorable video moments". https://www.facebook.com/ads/library/?id=1554843833147889
+- Ncrovoapex, desde 18/11: "Point it at the floor — and watch your cat and dog lose their minds." https://www.facebook.com/ads/library/?id=1675597273909304
+- Bvuyomishop, desde 20/11, o único com ângulo de presente bem escrito: um presente "para dois" (o amigo e o gato dele), mostrando o rato de luz. https://www.facebook.com/ads/library/?id=1360437822716941
+- Lifetimean, desde 19/11 e 20/11 (3 e 4 anúncios por criativo). https://www.facebook.com/ads/library/?id=1825758488570990
+
+**Os vídeos (quadros salvos)**
+- Todos parecem **vídeo orgânico de TikTok reaproveitado**, em casa americana real, com texto branco no topo.
+- Ganchos em texto: "Every dog parent NEEDS this", "This is a toy that plays with your pup without you", "Don't let a DOG LOVER see this", "Do NOT let a dog owner with money see this". Final: "Comment 'DOG' if you want one" / "Comment 'zoomies' for more info".
+- Estrutura comum: 0-3 s abrindo a caixa (caixa azul com pata, nome "ZoomieChase") ou pilha de caixas → 3-6 s o aparelho em forma de pata no chão → 6-12 s **anéis de luz laranja como "buracos de fogo" no piso de madeira, com bichinhos saindo**, e o cachorro (golden, labrador preto) cheirando e batendo a pata.
+- **Efeito real visto:** os "buracos" são anéis laranja brilhantes de ~20 a 30 cm no chão; os bichos (esquilos e bichinhos laranja) saem deles. Funciona em sala com luz acesa à noite, piso de madeira.
+- Nenhum mostra gato. Nenhum mostra o fim da brincadeira.
+
+**O que muda para nós**
+1. O ângulo A (captura) segue vazio: ninguém fala disso.
+2. Gato é quase um mercado livre nos criativos. O nosso kit com ratinho de catnip fala só com dono de gato: menos concorrência direta.
+3. O controle de verdade é **cachorro + "toy that plays with your pup without you"**. Ele já faz a dor do esforço, mas para cachorro. Nosso ângulo B (dono cansado) tem prova de que o mercado aceita essa ideia.
+4. O produto padrão é USB com fio. Se a CJ tiver versão recarregável, "no cord on the floor for him to chew" vira diferencial real.
+5. O nome "ZoomieChase" aparece na caixa: não usar nada parecido.
 
 ## 2. Lojas de referência (estrutura, sem copiar texto)
 ### Pouncy (a mais bem montada) [certo]

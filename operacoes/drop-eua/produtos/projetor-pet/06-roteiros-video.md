@@ -63,6 +63,7 @@ Página: `?a=caca`, título "Little glowing mice. One tap. Full hunting mode."
 - C1 (sussurrado, câmera baixa no chão): "Okay, watch his butt wiggle."
 - C2 (imagem pura, 1 s): close no traseiro do gato balançando, ratinhos de luz desfocados na frente.
 - C3 (texto): "I turned the lights off and put mice on the floor"
+- C4 (texto, modelado do controle da Biblioteca do Meta, versão gato): "this is a toy that plays with your cat without you". Abre com as mãos tirando o aparelho da caixa, como os anúncios de cachorro que rodam hoje.
 
 | Tempo | Imagem | Fala / som | Texto na tela |
 |---|---|---|---|

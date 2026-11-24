@@ -10,7 +10,7 @@ Imagem de referência (não é nossa, só para ver): https://cdn.shopify.com/s/f
 - **O que é:** um aparelho pequeno que projeta bichinhos de luz (ratos, às vezes insetos e peixes) andando pelo chão. O gato ou o cachorro persegue e dá o bote. **[certo]**
 - **Formato escolhido:** corpo em forma de pata ou cabeça de gato, bichos saindo de "buracos" de luz (formato (a) do estudo). **[certo]** que existe; **[a confirmar]** qual a CJ vai cotar.
 - **Tamanho e peso:** ~10 a 12 cm, cabe na mão; 240 a 300 g embalado; caixa 12×11×11 cm. **[provável]** (cópias da Amazon). Uma loja descreve ~5 pol (12,7 cm) de altura.
-- **Energia:** há versões USB na tomada e versões recarregáveis. **[a confirmar]**. O kit pede a recarregável (sem fio no chão para o gato morder).
+- **Energia:** o padrão dos anúncios é **USB na tomada** (110 de 117 anúncios dizem USB, nenhum diz recarregável). Versão recarregável **[a confirmar]** na CJ. O kit pede a recarregável (sem fio no chão para o gato morder).
 - **Mecanismo verificável (por que funciona):** o gato caça por movimento pequeno, rápido e imprevisível no chão, no nível dos olhos dele. Vários alvos ao mesmo tempo, saindo e sumindo, imitam presa de verdade melhor que um ponto só. **[provável]**: base no comportamento descrito por guias de veterinária e nas avaliações ("the mouse projection… he loved it", o gato que ignorava o ponto).
 - **O que ele NÃO faz:**
   - O pet não "pega" a luz. Sem um brinquedo no fim, alguns gatos se frustram (pesquisa de 2021 associa laser frequente a ficar caçando luz e reflexo).
@@ -28,7 +28,7 @@ Imagem de referência (não é nossa, só para ver): https://cdn.shopify.com/s/f
 ## 3. Mercado
 - **Desejo de massa (Schwartz):** "quero que meu gato gaste energia e fique feliz sem eu ter que ficar balançando varinha depois de um dia cansativo." Para presente: "quero dar algo que faça o dono rir na primeira vez que liga."
 - **Desejos básicos (Whitman):** cuidar de quem ama (o pet), conforto (o dono descansa), livre de dor (sem gato acordando às 4h, sem móvel destruído), aprovação social (o vídeo do gato que todo mundo quer gravar).
-- **Sofisticação:** estágio 3 em 8 dias. 92 lojas, mesmo criativo, mesma promessa ("instant zoomies"). Promessa direta já não diferencia; diferencia o **mecanismo do kit (a captura)** e a **identificação com o dono cansado**.
+- **Sofisticação:** estágio 3 em 8 dias. Biblioteca do Meta (24/11): ~140 anúncios de 46 lojas, todos com a mesma promessa "pet entediado em dia de chuva" e vídeo de cachorro; nenhum fala de captura, nenhum de gato em vídeo, nenhum de recarregável. 92 lojas, mesmo criativo, mesma promessa ("instant zoomies"). Promessa direta já não diferencia; diferencia o **mecanismo do kit (a captura)** e a **identificação com o dono cansado**.
 - **Consciência:** público frio no feed. Quem tem gato conhece laser (consciente da solução para "brincar com luz"), mas não conhece o projetor. Quem compra presente é consciente do problema ("o que dar para quem tem gato?").
 - **Concorrência indireta forte:** laser automático com milhares de avaliações por US$16 a 19 no Walmart e na Amazon; projetores de mão a US$10. O nosso precisa parecer **outra categoria** (bichos no chão, fim com captura), não "um laser mais caro".
 - **Desconfiança alta:** matérias e vídeos de "is it legit or scam?" na mesma semana do lançamento. Loja nova com contato real, prazo honesto e devolução clara já se destaca.
