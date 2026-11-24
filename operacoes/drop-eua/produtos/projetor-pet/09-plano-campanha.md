@@ -49,11 +49,11 @@ Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
 | `fake-cetica-demo-v1` (V4) | "achei que era fake" | quem já viu o produto em outro anúncio | demo em sala normal: desligado, clique, luz | já viu o produto | prova crua baixa o custo por início de checkout para quem desconfia |
 | `aprovado-controle-v1` | vídeo aprovado (sem dor) | — | demo | — | controle: mede quanto a dor acrescenta |
 
-**Modelagem (regra do Kenui, 24/11; manual §5.0):** antes de subir, cada conceito precisa da sua referência provada, ou ficar marcado como aposta. Situação hoje:
+**Modelagem (regra do Kenui, 24/11; manual §5.0):** sempre olhar o que já escala antes de fechar os conceitos, sem obrigar todos a serem modelados. O projetor já tem ~140 anúncios de 46 lojas e o público americano começa a conhecer o produto, então o peso da modelagem é **alto**. Mesmo assim fica um conceito saído da persona para provar o nosso diferencial. Situação hoje:
 - V1 (chuva) modela a dor mais usada no mercado (74 anúncios de "rainy days/bored" na Biblioteca em 24/11). Falta escolher o anúncio específico que está há 14+ dias com várias versões e decupá-lo.
 - O vídeo aprovado segue a referência da Enjoyaitlife que o Kenui escolheu ([estudo/referencia-estilo.md](estudo/referencia-estilo.md)).
 - V4 ("achei que era fake") modela o formato de demo crua que os anúncios mais antigos usam. Falta a referência específica.
-- V2 (ela chega acabada) é a **aposta**: ninguém usa esse ângulo hoje.
+- V2 (ela chega acabada) **vem da persona**: a dor do esforço, que nenhum anúncio usa hoje.
 Antes do lançamento: buscar na Biblioteca (EUA, "pet projector", "dog projector toy", "interactive projector") e no TikTok os anúncios com 14+ dias e várias versões e os vídeos orgânicos com mais views. Guardar as fichas em `estudo/referencias-anuncios.md`. Se aparecer uma referência mais forte que V1 ou V4, ela entra no lugar. Nome dos anúncios com `ref<id>`.
 
 V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
