@@ -32,6 +32,8 @@ function db(): PDO {
   catch (Throwable $e) { foreach (array_filter(array_map('trim', explode(';', file_get_contents(dirname(__DIR__, 2) . '/schema.sql')))) as $sql) { $pdo->exec($sql); } }
   try { $pdo->query('SELECT telefone FROM pedidos LIMIT 1'); }   // v3: telefone para a correspondência do Meta e avisos de entrega
   catch (Throwable $e) { $pdo->exec('ALTER TABLE pedidos ADD COLUMN telefone VARCHAR(30)'); }
+  try { $pdo->query('SELECT extra FROM pedidos LIMIT 1'); }      // oferta extra pós-upsell + teste do pós-compra
+  catch (Throwable $e) { foreach (['variante_pos VARCHAR(40)', 'extra VARCHAR(20)', 'pi_extra VARCHAR(64)', 'valor_extra INTEGER DEFAULT 0', 'custo_extra INTEGER DEFAULT 0'] as $col) $pdo->exec("ALTER TABLE pedidos ADD COLUMN $col"); }
   return $pdo;
 }
 
@@ -54,10 +56,24 @@ function variante(string $vid): string {
   if ($id === '' || $vid === '' || empty($t['list'][$id])) return $id === '' ? '' : $id . ':A';
   return $id . ':' . ((fnv($id . ':' . $vid) % 100) < ($t['list'][$id]['split'] ?? 50) ? 'B' : 'A');
 }
-// preços (e tipo do downsell) da versão do visitante
-function precos(?string $var = ''): array {
+// teste do pós-compra: sorteio pelo pedido (não pelo visitante), gravado uma vez em pedidos.variante_pos
+function variante_pos(string $tok): string {
+  $t = cfg()['testes_pos'] ?? []; $id = $t['active'] ?? '';
+  if ($id === '' || empty($t['list'][$id])) return '';
+  return $id . ':' . ((fnv($id . ':' . $tok) % 100) < ($t['list'][$id]['split'] ?? 50) ? 'B' : 'A');
+}
+function garantir_pos(array $p): array {
+  if ($p['variante_pos'] !== null && $p['variante_pos'] !== '') return $p;
+  $v = variante_pos($p['token']); if ($v === '') return $p;
+  db()->prepare("UPDATE pedidos SET variante_pos = ? WHERE token = ? AND (variante_pos IS NULL OR variante_pos = '')")->execute([$v, $p['token']]);
+  return pedido($p['token']);
+}
+function precos_p(array $p): array { return precos((string)$p['variante'], (string)($p['variante_pos'] ?? '')); }
+// preços (e tipo do downsell) da versão do visitante e do pedido
+function precos(?string $var = '', string $varPos = ''): array {
   $c = cfg(); $p = $c['precos'] + ['downsell_kind' => $c['downsell_kind'] ?? 'plush'];
   if ($var && str_ends_with($var, ':B')) { $id = substr($var, 0, -2); $p = array_merge($p, $c['testes']['list'][$id]['B'] ?? []); }
+  if ($varPos && str_ends_with($varPos, ':B')) { $id = substr($varPos, 0, -2); $p = array_merge($p, $c['testes_pos']['list'][$id]['B'] ?? []); }
   return $p;
 }
 
@@ -111,7 +127,7 @@ function finalizar(array $p): bool {
   $u = db()->prepare("UPDATE pedidos SET funil_fim = ? WHERE token = ? AND funil_fim IS NULL");
   $u->execute([gmdate('Y-m-d H:i:s'), $p['token']]);
   if ($u->rowCount() === 0) return false;                       // outro processo já fechou
-  $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'];
+  $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
   $ctx = json_decode((string)$p['ctx'], true) ?: [];
   $nm = preg_split('/\s+/', trim((string)$p['nome'])) ?: [];
   capi('Purchase', 'purchase.' . $p['token'], ['email' => $p['email'], 'phone' => $p['telefone'] ?? '', 'fn' => $nm[0] ?? '', 'ln' => count($nm) > 1 ? end($nm) : '', 'zip' => $p['cep'], 'city' => $p['cidade'], 'state' => $p['estado'], 'vid' => $ctx['visitante_id'] ?? '', 'ip' => $p['ip'], 'ua' => $p['ua'], 'fbc' => $ctx['fbc'] ?? null, 'fbp' => $ctx['fbp'] ?? null, 'ldu' => !empty($ctx['optout'])],
@@ -119,6 +135,12 @@ function finalizar(array $p): bool {
   enviar_confirmacao(pedido($p['token']));
   log_evento(['visitante_id' => $ctx['visitante_id'] ?? '', 'evento' => 'funnel_complete', 'event_id' => 'purchase.' . $p['token'], 'pet' => $p['pet'], 'angulo' => $p['angulo'], 'dados' => ['pedido' => $p['token'], 'total' => $total]]);
   return true;
+}
+
+// nome de cada oferta pós-compra no recibo, no e-mail e na Stripe
+function nome_extra(string $etapa, string $estado, string $pet): string {
+  if ($etapa === 'extra') return 'Spare plush pack for the second kit, same box';
+  return match ($estado) { 'aceito-guide' => 'The Indoor Hunt Playbook (PDF)', 'aceito-kit' => "Second kit ($pet), same box", default => 'Spare plush pack' };
 }
 
 // ---------- produtos digitais ----------
@@ -149,12 +171,13 @@ function links_download(array $p): array {
 function enviar_confirmacao(?array $p): void {
   $c = cfg();
   if (!$p || empty($c['email_from']) || empty($p['email']) || (int)$p['email_enviado'] === 1) return;
-  $pr = precos((string)$p['variante']); $m = fn($v) => '$' . number_format($v / 100, 2);
+  $pr = precos_p($p); $m = fn($v) => '$' . number_format($v / 100, 2);
   $l = ["Hunt kit (" . ($p['kit'] === 'two' ? "2 kits, {$p['mix']}" : "1 kit, {$p['pet']}") . ")  " . $m((int)$p['valor_front'] - ($p['bump'] ? $pr['bump'] : 0))];
   if ($p['bump']) $l[] = 'Spare plush pack  ' . $m($pr['bump']);
   if ($p['upsell'] === 'aceito') $l[] = "Second kit ({$p['upsell_pet']}), same box  " . $m((int)$p['valor_upsell']);
-  if (str_starts_with((string)$p['downsell'], 'aceito')) $l[] = ($p['downsell'] === 'aceito-guide' ? 'The Indoor Hunt Playbook (PDF)' : 'Spare plush pack') . '  ' . $m((int)$p['valor_downsell']);
-  $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'];
+  if (str_starts_with((string)$p['downsell'], 'aceito')) $l[] = nome_extra('downsell', (string)$p['downsell'], (string)$p['upsell_pet']) . '  ' . $m((int)$p['valor_downsell']);
+  if (($p['extra'] ?? '') === 'aceito') $l[] = nome_extra('extra', 'aceito', '') . '  ' . $m((int)$p['valor_extra']);
+  $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
   $dl = links_download($p);
   $prazo = $c['prazo'] ? "It should arrive in {$c['prazo']}." : "We'll email your tracking number as soon as it ships.";
   $nome = $c['email_nome'] ?? 'Order';

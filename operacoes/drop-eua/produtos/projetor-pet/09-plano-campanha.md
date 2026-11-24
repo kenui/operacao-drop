@@ -9,8 +9,8 @@ Feito a partir do [manual de tráfego](../../../../conhecimento/trafego/manual-m
 | Produto do anúncio = fornecedor | ❌ vídeo aprovado mostra coelho; a CJ cotou a versão com esquilo. Os vídeos V1–V4 precisam mostrar a projeção que a CJ entrega |
 | Prazo na página | ✅ 7–15 dias (config.js) |
 | Pixel + API de Conversões | ✅ ligados (pixel 545543757913721, event_id deduplicado); conferir eventos de teste com a conta ligada |
-| Acesso da IA à conta (Marketing API) | ⏳ Kenui criando usuário do sistema e tokens |
-| Domínio verificado / Página / Instagram | ⏳ conferir quando o acesso chegar |
+| Acesso da IA à conta | ✅ conector Higgsfield (24/11), conta ADS act_1528246354605953 (BRL, fuso Los Angeles) |
+| Domínio verificado / Página / Instagram | ✅ Página Little Catch Co. (1591074544081441); ⏳ Instagram e verificação de domínio |
 | Criativos V1, V2, V4 + controle | ⏳ thread "Criar vídeos que vendem o projetor pet" |
 | Conformidade dos textos | ⏳ passar a skill antes de subir |
 | Valor aprovado | ✅ **R$850 por 7 dias (US$20/dia, opção B)**, escolhido pelo Kenui em 24/11. Ativa só quando o resto do portão fechar; spend cap da campanha = esse valor |
@@ -38,6 +38,8 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 | Destino | `https://littlecatchco.com/?pet=dog&a=<angulo>&utm_source=meta&utm_medium=paid&utm_campaign={{campaign.id}}&utm_term={{adset.id}}&utm_content={{ad.id}}` | §8.2; painel casa por ID |
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
+
+**Rascunho na conta (24/11, PAUSADO, sem anúncios):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
 
 ## 3. Criativos
 Só cachorro (persona C), porque só a versão cachorro tem fornecedor.

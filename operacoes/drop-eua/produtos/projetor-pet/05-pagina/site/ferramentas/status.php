@@ -20,7 +20,7 @@ if ($o['config']) {
     ob_start(); require $pub . '/api/_lib.php'; ob_end_clean();
     $d = db();
     $o['precos'] = precos(); $o['custos'] = cfg()['custos'] ?? null;
-    $o['pedidos'] = $d->query("SELECT criado,pago_em,funil_fim,status,pet,kit,mix,bump,variante,valor_front,upsell,valor_upsell,downsell,valor_downsell,reembolsado,contestado,email_enviado,substr(pi_front,1,12) pi FROM pedidos ORDER BY criado DESC LIMIT 15")->fetchAll();
+    $o['pedidos'] = $d->query("SELECT criado,pago_em,funil_fim,status,pet,kit,mix,bump,variante,valor_front,upsell,valor_upsell,downsell,valor_downsell,extra,valor_extra,variante_pos,reembolsado,contestado,email_enviado,substr(pi_front,1,12) pi FROM pedidos ORDER BY criado DESC LIMIT 15")->fetchAll();
     $o['eventos'] = $d->query("SELECT evento, COUNT(*) n FROM eventos GROUP BY evento ORDER BY n DESC")->fetchAll();
     $o['webhooks'] = $d->query("SELECT id, criado FROM webhooks ORDER BY criado DESC LIMIT 10")->fetchAll();
   } catch (Throwable $e) { $o['erro_banco'] = $e->getMessage(); }

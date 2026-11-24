@@ -25,14 +25,25 @@ Regra do Kenui: **teste A/B de tudo, um por vez, inclusive preço**; decide o lu
 | T4 | `T4-bump-preco` | bump US$7,99 → US$5,99 | preço menor sobe o aceite o bastante para dar mais lucro por comprador | lucro do bump por comprador | longo (precisa de compradores) | junto da fila de compradores |
 | T5 | `T5-upsell-preco` | upsell US$24,99 → US$19,99 | dobra o aceite e compensa a margem menor | lucro do upsell por comprador | longo | idem |
 | T6 | `T6-downsell-digital` | downsell pelúcias (físico) → **Indoor Hunt Playbook** (PDF, US$9) | **a dúvida do Kenui**: digital tem valor percebido maior para esta persona? Hoje a evidência diz que não (conteúdo grátis abundante), então o padrão é físico; o teste decide | lucro do downsell por quem o vê | longo | só depois de escrever o PDF; não escrever antes de chegar aqui |
-| T7 | (a criar) | primeira tela: vídeo do fornecedor × foto parada | vídeo do efeito real faz entender em 2 s (persona §5: o pet reagindo) | clique no botão | ~690 por versão | quando chegar o vídeo da CJ |
-| T8 | (a criar) | prova antes ou depois da oferta | — | clique no botão | ~690 | quando houver prova real |
+| T9 | (a criar) | primeira tela: vídeo do fornecedor × foto parada | vídeo do efeito real faz entender em 2 s (persona §5: o pet reagindo) | clique no botão | ~690 por versão | quando chegar o vídeo da CJ |
+| T10 | (a criar) | prova antes ou depois da oferta | — | clique no botão | ~690 | quando houver prova real |
 
-**Por que preço não é o primeiro:** com R$500 de verba, ver 18% de diferença em conversão exige centenas de compras. Testes de página (T2, T7) decidem com métrica de topo em ~700 visitantes por versão. O preço espera o volume, mas o motor já está pronto.
+## Camada 2: testes do pós-compra (24/11, noite)
+Rodam **ao mesmo tempo** que o teste da página, porque não mexem em nada antes do pagamento. O sorteio é pelo número do pedido (não pelo visitante), fica gravado em `pedidos.variante_pos` e só o servidor decide preço e tipo (`api/_precos.php` → `testes_pos`). Um teste de pós-compra por vez.
+**Métrica de decisão: lucro pós-compra por comprador** (receita de upsell + downsell + extra − custo CJ − Stripe). Como a página é igual nos dois braços, ganhar em lucro por comprador é o mesmo que ganhar em lucro por visitante. Painel: "Teste do pós-compra".
+Régua: 200 compradores por braço ou 30 dias, decisão bayesiana ≥ 90%; guarda-corpo: reembolso das ofertas pós-compra.
+
+| # | id | O que muda | Hipótese | Status |
+|---|---|---|---|---|
+| T7 | `T7-downsell-kit` | downsell: A pelúcias US$7,99 (só sem bump) × B **o 2º kit por US$29,99** (todos que recusaram o upsell) | B vence se o aceite passar de ~31% do aceite das pelúcias (margem US$9,32 × US$2,91) e ainda alcança quem pegou o bump | **ativo desde 24/11** |
+| T8 | `T8-extra-preco` | oferta extra (pelúcias do 2º kit) US$7,99 × US$9,99 | comprador que acabou de aceitar o upsell é pouco sensível a US$2 | depois do T7 |
+
+**Por que preço não é o primeiro:** com R$500 de verba, ver 18% de diferença em conversão exige centenas de compras. Testes de página (T2, T9) decidem com métrica de topo em ~700 visitantes por versão. O preço espera o volume, mas o motor já está pronto.
 
 ## Registro
 Cada teste encerrado vira uma linha em `operacoes/drop-eua/registro-de-ganhos.csv` (data, id, versão vencedora, métrica, ganho em lucro por visitante, amostra, confirmou em 2 semanas?).
 
 ## Histórico
+- v3 (24/11, noite): camada de testes do pós-compra (T7 ativo, T8 na fila); os testes de página que eram T7/T8 viraram T9/T10.
 - v1 (24/11): 5 testes.
 - v2 (24/11): ids ligados ao motor de A/B, régua única, preço entra com regra de volume, T6 testa o digital pago contra o físico.

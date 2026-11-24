@@ -42,7 +42,9 @@
     var two=d.kit==="two",L=[[two?"Hunt kit (2 kits, "+(d.mix||[]).join(" + ")+")":"Hunt kit (1 kit, "+(d.pet||"cat")+")",Math.round((d.front||C.kits.one.price)*100)]];
     if(d.bump)L.push(["Spare plush pack",Math.round((d.bumpPrice||C.bump.price)*100)]);
     if(d.upsell)L.push(["Second kit ("+d.upsell+"), same box",Math.round(C.upsell.price*100)]);
-    if(d.downsell)L.push([C.downsell.kind==="guide"?"The Indoor Hunt Playbook (PDF)":"Spare plush pack",Math.round(C.downsell.price*100)]);
+    var dsk=new URLSearchParams(location.search).get("ds")==="kit";
+    if(d.downsell)L.push(dsk?["Second kit ("+d.downsell+"), same box",2999]:[C.downsell.kind==="guide"?"The Indoor Hunt Playbook (PDF)":"Spare plush pack",Math.round(C.downsell.price*100)]);
+    if(d.extra)L.push(["Spare plush pack for the second kit, same box",Math.round(((C.extra||{}).price||7.99)*100)]);
     var dls=C.bonus&&C.bonus.on?[["First Hunt Guide (PDF) [demo]","#"]].concat((d.pet||"dog")==="dog"?[["Rainy Day Play Plan (PDF) [demo]","#"]]:[]):[];
     show({linhas:L,total:L.reduce(function(a,l){return a+l[1]},0),event_id:"purchase.demo",downloads:dls});
     return;
