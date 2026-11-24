@@ -4,17 +4,17 @@ Gera duas versões: sem música e com música por IA baixa (abaixa sozinha quand
 A música é mixada em dois passos; o mix num passo só cortava o som aos 18 s."""
 import subprocess, os
 V="/mnt/project-files/operacoes/drop-eua/produtos/projetor-pet/videos"
-DOR=f"{V}/v1-chuva/clipe-dor-a.mp4"; PROVA=f"{V}/v1-chuva/clipe-prova-b.mp4"
+DOR=f"{V}/v1-chuva/clipe-dor-a.mp4"; PROVA=f"{V}/prova-esquilo/clipe-prova-esquilo.mp4"  # esquilo (versão que a CJ entrega) e bloco novo de voz
 MUS=f"{V}/v1-chuva/musica-ia-d-v1.mp3"; OUT=f"{V}/v1-chuva"
 TMP=os.path.dirname(os.path.abspath(__file__))+"/txt"; os.makedirs(TMP,exist_ok=True)
 FONT="/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
 # (entrada, início, fim): dor, virada, prova (8 s contínuos), recompensa
-CORTES=[(0,0.9,7.7),(0,11.9,14.2),(1,1.5,9.5),(1,11.7,15.0)]
+CORTES=[(0,0.9,7.7),(0,11.9,14.2),(1,2.2,10.2),(1,10.6,15.0)]
 # (início, fim, y, texto) dentro da zona segura (topo 14% livre, base 35% livre)
 TEXTOS=[(0,3.2,250,"no walk today."),(0,3.2,322,"he's been staring at me since 4."),
         (3.2,6.8,250,"rainy days = bored dog"),(6.8,9.1,250,"so I tried this"),
         (9.1,17.1,250,"works best with the lights low"),
-        (17.1,18.9,250,"rainy day, no walk, zero guilt"),(18.9,21,250,"tap to see the kit")]
+        (17.1,19.9,250,"rainy day, no walk, zero guilt"),(19.9,22,250,"tap to see the kit")]
 fc=[]; lab=""
 for i,(src,a,b) in enumerate(CORTES):
     fc.append(f"[{src}:v]trim={a}:{b},setpts=PTS-STARTPTS,fps=24,scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1[v{i}];"
