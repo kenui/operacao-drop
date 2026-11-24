@@ -56,6 +56,9 @@ Custo (23/11, conector): Nano Banana 2 9:16 2k = 1,5 crédito; Kling 3.0 pro 5 s
 ## Alvo de qualidade (referência aprovada pelo Kenui)
 - 23/11: capinha de glitter líquido com bichinhos, `referencias/2026-11-23_capinha-glitter.md`. É o nível de naturalidade que buscamos. Lições: celular no tripé (mãos livres), produto colado na lente com o efeito acontecendo, segundo ângulo no espelho, física certa do líquido, som do produto na ação, sem música, final em reação silenciosa.
 
+## Cenas da pesquisa como referência (desde 24/11, pedido do Kenui)
+Antes da ficha de uso, os vídeos reais achados na pesquisa passam pela ferramenta `ferramentas/ver-video` (cenas, quadros, som, transcrição). Cada comportamento do produto no prompt precisa de uma cena real que prove, com fonte e tempo. O vídeo gerado passa pela mesma ferramenta e é comparado cena a cena antes de aprovar. Método completo: `cenas-de-referencia.md`.
+
 ## Etapa obrigatória antes do prompt: ficha de uso do produto (desde 23/11, pedido do Kenui)
 Nenhum prompt de vídeo é escrito sem a ficha `operacoes/<op>/produtos/<produto>/uso-no-video.md`, feita a partir do modelo `conhecimento/video-ia/modelo-ficha-uso-produto.md`.
 Regras de conversão da ficha para o prompt:
