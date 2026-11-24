@@ -17,7 +17,7 @@
     <div class="ob">
       <div class="eyebrow" style="margin:0">One-Time Offer</div>
       <h2 style="font-size:24px;margin:4px 0 0">The Hunt &amp; Catch Kit, Again</h2>
-      <div class="price"><b data-f="upsell"></b><s data-f="upsellReg"></s><em id="upSave"></em></div>
+      <div class="price"><b data-o="upsell"></b><s data-o="regular"></s><em id="upSave"></em></div>
       <ul class="ticks">
         <li>Projector, the plush for the catch and its own gift box</li>
         <li>Ships in the same box, no extra shipping</li>
@@ -31,13 +31,13 @@
       </div></div>
       <input type="hidden" id="gpet" value="cat">
       <div class="err" id="err" role="alert"></div>
-      <button class="btn" id="yes" type="button">Yes, Add a Second Kit · <span data-f="upsell"></span></button>
+      <button class="btn" id="yes" type="button">Yes, Add a Second Kit · <span data-o="upsell"></span></button>
       <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
     </div>
   </div>
   <p class="src center">One-time charge. No subscription.</p>
 </div></main>
-<script src="assets/track.js"></script><script src="assets/pages.js"></script><script src="assets/funil.js"></script>
+<script src="assets/track.js"></script><script src="assets/pages.js"></script>
 <script>
 (function(){
   var C=CONFIG,g=document.getElementById("gpet"),img=document.getElementById("upImg");
@@ -48,5 +48,7 @@
   set(pet==="dog"?"dog":"cat"); if(pets.length<2) document.getElementById("petPick").hidden=true;
   [].forEach.call(document.querySelectorAll('[name="gp"]'),function(r){r.onchange=function(){set(r.value)}});
 })();
+window.onOferta=function(o){document.getElementById("upSave").textContent=o.regular>o.upsell?"You Save $"+((o.regular-o.upsell)/100).toFixed(2):""};
 </script>
+<script src="assets/funil.js"></script>
 </body></html>

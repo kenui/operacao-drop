@@ -75,23 +75,29 @@ if (isset($_GET['api'])) {
     $x = json_decode((string)$p['ctx'], true) ?: []; $cp = (string)($x['utm']['utm_campaign'] ?? '(sem campanha)');
     $campanhas[$cp] = 1; if ($camp !== '' && $cp !== $camp) continue; $p['_camp'] = $cp; $ped[] = $p;
   }
-  $tot = ['pedidos' => count($ped), 'receita' => 0, 'custo' => 0, 'taxas' => 0, 'reembolso' => 0, 'bump' => 0, 'up' => 0, 'down' => 0, 'contest' => 0, 'kit2' => 0];
-  $porDia = []; $porCamp = []; $porVar = []; $lista = [];
+  $tot = ['pedidos' => count($ped), 'receita' => 0, 'custo' => 0, 'taxas' => 0, 'reembolso' => 0, 'bump' => 0, 'up' => 0, 'down' => 0, 'contest' => 0, 'kit2' => 0, 'extra' => 0, 'down_kit' => 0];
+  $porDia = []; $porCamp = []; $porVar = []; $porPos = []; $lista = [];
   foreach ($ped as $p) {
-    $rec = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'];
-    $cus = (int)$p['custo_front'] + (int)$p['custo_upsell'] + (int)$p['custo_downsell'];
-    $cob = 1 + ($p['upsell'] === 'aceito' ? 1 : 0) + (str_starts_with((string)$p['downsell'], 'aceito') ? 1 : 0);
+    $rec = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
+    $cus = (int)$p['custo_front'] + (int)$p['custo_upsell'] + (int)$p['custo_downsell'] + (int)($p['custo_extra'] ?? 0);
+    $cob = 1 + ($p['upsell'] === 'aceito' ? 1 : 0) + (str_starts_with((string)$p['downsell'], 'aceito') ? 1 : 0) + (($p['extra'] ?? '') === 'aceito' ? 1 : 0);
     $tax = (int)round($rec * 0.06) + 10 * $cob;              // Stripe BR ~6% + US$0,10 por cobrança (inclui câmbio aproximado)
     $tot['receita'] += $rec; $tot['custo'] += $cus; $tot['taxas'] += $tax; $tot['reembolso'] += (int)$p['reembolsado'];
     $tot['bump'] += (int)$p['bump']; $tot['up'] += $p['upsell'] === 'aceito' ? 1 : 0; $tot['down'] += str_starts_with((string)$p['downsell'], 'aceito') ? 1 : 0;
     $tot['contest'] += (int)$p['contestado']; $tot['kit2'] += $p['kit'] === 'two' ? 1 : 0;
+    $tot['extra'] += ($p['extra'] ?? '') === 'aceito' ? 1 : 0; $tot['down_kit'] += $p['downsell'] === 'aceito-kit' ? 1 : 0;
     $luc = $rec - $cus - $tax - (int)$p['reembolsado'];
     $dia = substr((string)$p['pago_em'], 0, 10);
     $porDia[$dia] = ['r' => ($porDia[$dia]['r'] ?? 0) + $rec, 'l' => ($porDia[$dia]['l'] ?? 0) + $luc, 'n' => ($porDia[$dia]['n'] ?? 0) + 1];
     $porCamp[$p['_camp']] = ['n' => ($porCamp[$p['_camp']]['n'] ?? 0) + 1, 'r' => ($porCamp[$p['_camp']]['r'] ?? 0) + $rec, 'l' => ($porCamp[$p['_camp']]['l'] ?? 0) + $luc];
     $v = $p['variante'] ?: '(sem teste)';
     $porVar[$v] = ['n' => ($porVar[$v]['n'] ?? 0) + 1, 'r' => ($porVar[$v]['r'] ?? 0) + $rec, 'l' => ($porVar[$v]['l'] ?? 0) + $luc];
-    if (count($lista) < 20) $lista[] = ['quando' => $p['pago_em'], 'pet' => $p['pet'], 'kit' => $p['kit'], 'bump' => (int)$p['bump'], 'upsell' => $p['upsell'] ?: '-', 'downsell' => $p['downsell'] ?: '-', 'total' => $rec, 'lucro' => $luc, 'reemb' => (int)$p['reembolsado'], 'contest' => (int)$p['contestado'], 'camp' => $p['_camp'], 'estado' => $p['estado'] ?: ''];
+    // teste do pós-compra: só o que vem depois do pagamento (upsell + downsell + extra), por comprador
+    $vp = $p['variante_pos'] ?? ''; $vp = $vp ?: '(sem teste)';
+    $rp = (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
+    $lp = $rp - ((int)$p['custo_upsell'] + (int)$p['custo_downsell'] + (int)($p['custo_extra'] ?? 0)) - (int)round($rp * 0.06) - 10 * ($cob - 1);
+    $porPos[$vp] = ['n' => ($porPos[$vp]['n'] ?? 0) + 1, 'r' => ($porPos[$vp]['r'] ?? 0) + $rp, 'l' => ($porPos[$vp]['l'] ?? 0) + $lp];
+    if (count($lista) < 20) $lista[] = ['quando' => $p['pago_em'], 'pet' => $p['pet'], 'kit' => $p['kit'], 'bump' => (int)$p['bump'], 'upsell' => $p['upsell'] ?: '-', 'downsell' => $p['downsell'] ?: '-', 'extra' => ($p['extra'] ?? '') ?: '-', 'total' => $rec, 'lucro' => $luc, 'reemb' => (int)$p['reembolsado'], 'contest' => (int)$p['contestado'], 'camp' => $p['_camp'], 'estado' => $p['estado'] ?: ''];
   }
   // visitantes por campanha (para lucro por visitante da campanha)
   $visCamp = [];
@@ -119,9 +125,9 @@ if (isset($_GET['api'])) {
     'funil' => [
       ['Visitou a página', $vis], ['Viu o produto (3 s)', $n('view_content')], ['Escolheu um kit', $n('kit_select')],
       ['Abriu o checkout', $n('initiate_checkout')], ['Clicou em pagar', $n('add_payment_info')], ['Pagou', max($n('purchase_front'), count($ped))],
-      ['Viu o upsell', $n('upsell_view')], ['Aceitou o upsell', $n('upsell_accept')], ['Viu o downsell', $n('downsell_view')], ['Aceitou o downsell', $n('downsell_accept')],
+      ['Viu o upsell', $n('upsell_view')], ['Aceitou o upsell', $n('upsell_accept')], ['Viu o downsell', $n('downsell_view')], ['Aceitou o downsell', $n('downsell_accept')], ['Viu a oferta extra', $n('extra_view')], ['Aceitou a oferta extra', $n('extra_accept')],
     ],
-    'dia' => $porDia, 'camp' => $porCamp, 'var' => $porVar, 'lista' => $lista,
+    'dia' => $porDia, 'camp' => $porCamp, 'var' => $porVar, 'pos' => $porPos, 'lista' => $lista,
   ]);
   exit;
 }
@@ -144,7 +150,7 @@ main{max-width:1200px;margin:0 auto;padding:18px}
 .kpi b{display:block;font-size:26px;margin-top:4px}.kpi>span{font-size:12px;color:var(--ink2)}
 .kpi.main{background:var(--ink);color:#fff}.kpi.main small,.kpi.main>span{color:#cfcbe6}
 h2{font-size:16px;margin:0 0 12px}
-.two{grid-template-columns:1.3fr 1fr}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.two{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}@media(max-width:860px){.two{grid-template-columns:1fr}}
 .fun .row{display:grid;grid-template-columns:170px 1fr 70px 70px;gap:10px;align-items:center;margin:7px 0;font-size:14px}
 .fun .bar{height:24px;background:#eeeaf6;border-radius:8px;overflow:hidden}.fun .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--act),#ffa07a);border-radius:8px}
 .fun .row.up .bar i{background:linear-gradient(90deg,var(--ok),#5fd0a5)}
@@ -166,19 +172,19 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:7px 6px;b
 <main>
 <div class="grid k" id="kpis"></div>
 <div class="grid two" style="margin-top:14px">
-  <div class="card fun"><h2>Funil (pessoas diferentes em cada etapa)</h2><div id="fun"></div><p class="note">% = quantos passaram da etapa anterior para esta. Upsell conta sobre quem pagou; downsell sobre quem recusou o upsell.</p></div>
+  <div class="card fun"><h2>Funil (pessoas diferentes em cada etapa)</h2><div id="fun"></div><p class="note">% = quantos passaram da etapa anterior para esta. Upsell conta sobre quem pagou; downsell sobre quem recusou o upsell; oferta extra sobre quem aceitou o upsell.</p></div>
   <div class="card"><h2>Ofertas</h2><div id="ofe"></div><h2 style="margin-top:18px">Receita por dia</h2><div class="chart" id="chart"></div></div>
 </div>
 <div class="card" style="margin-top:14px"><h2>Páginas do funil</h2><div class="grid pages">
   <div class="pg" data-full="prints/pagina.jpg"><img src="prints/topo.jpg" alt=""><b>Página de vendas</b><span>galeria, kits, bônus, checkout</span></div>
   <div class="pg" data-full="prints/kits.jpg"><img src="prints/kits.jpg" alt=""><b>Kits + bump + checkout</b><span>bump e bônus no resumo</span></div>
   <div class="pg" data-full="prints/upsell.jpg"><img src="prints/upsell.jpg" alt=""><b>Upsell</b><span>2º kit, um clique</span></div>
-  <div class="pg" data-full="prints/downsell.jpg"><img src="prints/downsell.jpg" alt=""><b>Downsell</b><span>só se recusou upsell e bump</span></div>
+  <div class="pg" data-full="prints/downsell.jpg"><img src="prints/downsell.jpg" alt=""><b>Downsell</b><span>só se recusou o upsell</span></div><div class="pg" data-full="prints/extra.jpg"><img src="prints/extra.jpg" alt=""><b>Oferta extra</b><span>só se aceitou o upsell</span></div>
   <div class="pg" data-full="prints/obrigado.jpg"><img src="prints/obrigado.jpg" alt=""><b>Obrigado</b><span>recibo e downloads</span></div>
 </div><p class="note">Fotos da última versão publicada (atualizadas a cada mudança de página). Clique para ver inteira.</p></div>
 <div class="grid two" style="margin-top:14px">
   <div class="card"><h2>Por campanha (UTM)</h2><div class="tw" id="camp"></div></div>
-  <div class="card"><h2>Por versão de teste A/B</h2><div class="tw" id="var"></div></div>
+  <div class="card"><h2>Por versão de teste A/B</h2><h3 class="note" style="margin:0 0 6px">Teste da página (sorteio por visitante)</h3><div class="tw" id="var"></div><h3 class="note" style="margin:14px 0 6px">Teste do pós-compra (sorteio por pedido; decide o lucro por comprador)</h3><div class="tw" id="pos"></div></div>
 </div>
 <div class="card" style="margin-top:14px"><h2>Últimos pedidos (sem dados pessoais)</h2><div class="tw" id="lista"></div></div>
 <p class="note" id="rod"></p>
@@ -203,19 +209,21 @@ function load(){
       ["","Reembolsos",m(t.reembolso),t.contest+" contestações"]];
     $("#kpis").innerHTML=K.map(function(k){return '<div class="card kpi '+k[0]+'"><small>'+k[1]+'</small><b>'+k[2]+'</b><span>'+k[3]+'</span></div>'}).join("");
     var top=j.funil[0][1]||1,prev=null;
-    $("#fun").innerHTML=j.funil.map(function(f,i){var r='<div class="row'+(i>=6?' up':'')+'"><span>'+f[0]+'</span><div class="bar"><i style="width:'+Math.max(1,100*f[1]/top)+'%"></i></div><b>'+f[1]+'</b><em>'+(i===0?"":pc(f[1],i===6?j.funil[5][1]:(i===8?j.funil[6][1]-j.funil[7][1]:prev)))+'</em></div>';prev=f[1];return r}).join("");
+    $("#fun").innerHTML=j.funil.map(function(f,i){var r='<div class="row'+(i>=6?' up':'')+'"><span>'+f[0]+'</span><div class="bar"><i style="width:'+Math.max(1,100*f[1]/top)+'%"></i></div><b>'+f[1]+'</b><em>'+(i===0?"":pc(f[1],i===6?j.funil[5][1]:(i===8?j.funil[6][1]-j.funil[7][1]:(i===10?j.funil[7][1]:prev))))+'</em></div>';prev=f[1];return r}).join("");
     $("#ofe").innerHTML='<table><tr><th>Oferta</th><th>Preço</th><th>Aceite</th></tr>'+
       '<tr><td>Kit</td><td>'+m(j.precos.one)+'</td><td>–</td></tr><tr><td>2 kits</td><td>'+m(j.precos.two)+'</td><td>'+pc(t.kit2,t.pedidos)+'</td></tr>'+
       '<tr><td>Bump (pelúcias)</td><td>'+m(j.precos.bump)+'</td><td>'+pc(t.bump,t.pedidos)+'</td></tr><tr><td>Upsell (2º kit)</td><td>'+m(j.precos.upsell)+'</td><td>'+pc(t.up,t.pedidos)+'</td></tr>'+
-      '<tr><td>Downsell</td><td>'+m(j.precos.downsell)+'</td><td>'+pc(t.down,j.funil[8][1])+'</td></tr></table>';
+      '<tr><td>Downsell'+(t.down_kit?' ('+t.down_kit+' com 2º kit)':'')+'</td><td>'+m(j.precos.downsell)+'</td><td>'+pc(t.down,j.funil[8][1])+'</td></tr>'+
+      '<tr><td>Oferta extra (pelúcias do 2º kit)</td><td>'+m(j.precos.extra||0)+'</td><td>'+pc(t.extra,j.funil[10][1])+'</td></tr></table>';
     var D=Object.keys(j.dia),mx=Math.max.apply(null,D.map(function(d){return j.dia[d].r}).concat([1]));
     $("#chart").innerHTML=D.length?D.slice(-30).map(function(d){return '<div title="'+d+": "+m(j.dia[d].r)+" · "+j.dia[d].n+' pedidos'+(j.dia[d].g?" · anúncios "+m(j.dia[d].g):"")+'" style="height:'+(100*j.dia[d].r/mx)+'%"><span>'+d.slice(8)+'</span></div>'}).join(""):'<p class="note">Sem vendas no período.</p>';
     function tab(o,nome){var ks=Object.keys(o);if(!ks.length)return '<p class="note">Sem vendas no período.</p>';
       var C=nome==="Campanha";
       return '<table><tr><th>'+nome+'</th><th>Pedidos</th><th>Receita</th>'+(C?'<th>Anúncios</th><th>ROAS</th>':'')+'<th>Lucro'+(C?' (após anúncios)':'')+'</th>'+(C?'<th>Visit.</th><th>Lucro/visit.</th>':'')+'</tr>'+ks.map(function(k){var v=o[k],lc=C?v.la:v.l;return '<tr><td>'+(C?nm(k):k.replace(/</g,""))+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td>'+(C?'<td>'+m(v.g)+'</td><td>'+(v.g?(v.r/v.g).toFixed(2):"–")+'</td>':'')+'<td class="'+cls(lc)+'">'+m(lc)+'</td>'+(C?'<td>'+v.vis+'</td><td>'+(v.vis?m(lc/v.vis):"–")+'</td>':'')+'</tr>'}).join("")+'</table>'}
     $("#camp").innerHTML=tab(j.camp,"Campanha"); $("#var").innerHTML=tab(j.var,"Versão");
-    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+nm(p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
-    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta ("+(A.atualizado?"gasto atualizado em "+new Date(A.atualizado).toLocaleString("pt-BR"):"atualiza a cada 15 min")+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando o token de leitura do Meta for salvo)")+".";
+    var P=Object.keys(j.pos);$("#pos").innerHTML=P.length?'<table><tr><th>Versão</th><th>Compradores</th><th>Receita pós-compra</th><th>Lucro pós-compra</th><th>Lucro por comprador</th></tr>'+P.map(function(k){var v=j.pos[k];return '<tr><td>'+k.replace(/</g,"")+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td><td class="'+cls(v.l)+'">'+m(v.l)+'</td><td><b>'+m(v.l/v.n)+'</b></td></tr>'}).join("")+'</table>':'<p class="note">Sem vendas no período.</p>';
+    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Extra</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+p.extra+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+nm(p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
+    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta ("+(A.atualizado?"gasto atualizado em "+new Date(A.atualizado).toLocaleString("pt-BR"):"atualiza a cada 15 min")+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando chegar o primeiro envio do Meta)")+".";
   });
 }
 $("#p").onchange=load; $("#c").onchange=load; load(); setInterval(load,30000);
