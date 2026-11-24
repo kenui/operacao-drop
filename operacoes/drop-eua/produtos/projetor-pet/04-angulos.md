@@ -11,6 +11,12 @@ Legenda: **[certo]** / **[provável]** / **[suposição]**.
 | P3 | **Quem compra presente para dono de pet** | amigo, filho, colega; dezembro; "o que dar para quem só fala do gato?" | (sem frase literal ainda) | Pouncy vende kit de 2 e 3 "para dar a um amigo" **[provável]** |
 | P4 | **Dono de cachorro agitado em casa no inverno** | cão médio, frio lá fora, energia sobrando | (sem frase literal ainda) | Pouncy anuncia "dogs & cats" **[suposição]**; fica de fora do 1º teste |
 
+## 1b. O que a Biblioteca do Meta mostrou (24/11/2026)
+- ~140 anúncios de 46 lojas, todos de 1 a 8 dias, ainda subindo (40 novos em 23/11). Detalhes: [estudo](estudo/material-de-estudo.md#1b-biblioteca-de-anúncios-do-meta-24112026-eua-anúncios-ativos-certo).
+- **Ninguém usa o ângulo A (captura).** Confirmado.
+- Os vídeos são todos de **cachorro**; gato é minoria. O nosso kit é de gato: falamos com quem o mercado quase ignora.
+- O controle real é "This is a toy that plays with your pup without you" + "pet entediado em dia de chuva". O roteiro C passa a modelar isso: abrir a caixa, aparelho no chão, anéis de luz, bote. Variação de C para cachorro (P4) entra como **controle extra**, porque é o que já roda.
+
 ## 2. Matriz
 | Nível | P1 cansado | P2 culpa do laser | P3 presente | P4 cachorro |
 |---|---|---|---|---|
@@ -26,6 +32,7 @@ Legenda: **[certo]** / **[provável]** / **[suposição]**.
 | **A. "O gato finalmente pega alguma coisa"** (principal, o buraco) | P2, consciente da solução | mecanismo / problema-solução | É a objeção que o próprio mercado admite e não resolve **[certo]**. Tem fonte pública (pesquisa 2021, veterinários). É o único ângulo que só o nosso kit pode usar. | Tom não pode virar sermão nem susto ("laser faz mal"). Falar de "terminar a caça", não de dano. |
 | **B. "Brincar com o gato quando você está morto de cansado"** (dor do esforço) | P1, consciente do problema | problema-solução | Princípio 2 da casa. A Pouncy usa só como bloco de página; nenhum anúncio visto abre com isso **[provável]**. Cena filmável: dono no sofá, gato correndo. | Prometer só o que é verdade: não é babá de 8 horas. "10 minutos de caça enquanto você janta" é o limite certo. |
 | **C. "Olha o que ele faz com os ratinhos"** (controle) | P1, inconsciente | demonstração | É o que as 92 lojas fazem **[certo]**. Régua para saber se A e B batem o mercado. | Igual a todo mundo; depende 100% do vídeo real do fornecedor. |
+| Variação de C para P4 (cachorro) | P4, inconsciente | demonstração | É o criativo que o mercado inteiro roda agora **[certo]**; régua mais honesta que o C de gato. | Kit de gato (catnip) não serve: kit cachorro sem catnip. Só se A, B ou C empatarem. |
 | Variação de C para P3 | P3, consciente do problema | oferta / presente | Dezembro. "O presente para quem manda vídeo do gato todo dia." | Só testar se C ganhar; janela até ~15/12 pelo prazo de entrega. |
 
 Ordem de teste: A, B e C no mesmo dia, mesmo orçamento, público amplo (EUA, 25-55, interesse em gatos). Vence o menor custo por compra depois de ~1.000 impressões cada.

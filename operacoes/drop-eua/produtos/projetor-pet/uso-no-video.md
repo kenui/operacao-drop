@@ -5,6 +5,7 @@ Feita pelo [modelo](../../../../conhecimento/video-ia/modelo-ficha-uso-produto.m
 ## 1. Identidade
 - Nome interno: projetor-pet (kit "a caça completa").
 - O que é: um aparelhinho do tamanho de uma caneca que joga ratinhos de luz andando no chão para o gato caçar.
+- Efeito visto nos anúncios reais (Biblioteca do Meta, 24/11): anéis de luz laranja brilhantes de ~20 a 30 cm no piso, como buracos, e bichinhos (esquilos) saindo deles; visível à noite com luz da sala acesa, piso de madeira. Quadros: [estudo/frames/biblioteca-meta-quadros-4-anuncios.jpg](estudo/frames/biblioteca-meta-quadros-4-anuncios.jpg).
 - O que ele faz de verdade: [CJ] projetar vários ratinhos de luz se movendo no chão, saindo de "buracos" de luz, em penumbra.
 - O que ele NÃO faz: o rato não reage à pata (a não ser que o modelo tenha sensor, [CJ]); não aparece com sol na sala; não é para ficar ligado o dia inteiro; o gato não pega a luz (por isso o ratinho de pelúcia).
 

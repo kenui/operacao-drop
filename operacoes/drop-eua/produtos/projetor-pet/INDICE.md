@@ -13,6 +13,5 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [06-roteiros-video.md](06-roteiros-video.md) | 3 roteiros com 3 ganchos cada; todos terminam com o gato pegando o ratinho; estimativa de créditos |
 
 ## Lacunas da v1
-- Biblioteca de Anúncios do Meta não conferida (navegador indisponível nesta rodada).
 - Comentários de TikTok e Instagram do produto viral.
 - Qual formato a CJ vai cotar (pata viral ou luminária redonda) e se é recarregável.
