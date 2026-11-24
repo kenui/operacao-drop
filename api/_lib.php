@@ -29,6 +29,8 @@ function db(): PDO {
   $pdo = new PDO($c['db_dsn'], $c['db_user'] ?? null, $c['db_pass'] ?? null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
   try { $pdo->query('SELECT variante FROM pedidos LIMIT 1'); }
   catch (Throwable $e) { foreach (array_filter(array_map('trim', explode(';', file_get_contents(dirname(__DIR__, 2) . '/schema.sql')))) as $sql) { $pdo->exec($sql); } }
+  try { $pdo->query('SELECT telefone FROM pedidos LIMIT 1'); }   // v3: telefone para a correspondência do Meta e avisos de entrega
+  catch (Throwable $e) { $pdo->exec('ALTER TABLE pedidos ADD COLUMN telefone VARCHAR(30)'); }
   return $pdo;
 }
 
@@ -65,21 +67,30 @@ function pedido(string $tok): ?array { $s = db()->prepare('SELECT * FROM pedidos
 function limpa_pet(mixed $v): string { return $v === 'dog' ? 'dog' : 'cat'; }
 
 // ---------- Meta: API de Conversões ----------
+// telefone no padrão do Meta: só dígitos, com código do país (EUA = 1)
+function tel_meta(?string $t): string { $d = preg_replace('/\D/', '', (string)$t); if (strlen($d) === 10) $d = '1' . $d; return strlen($d) >= 11 ? $d : ''; }
+function nome_meta(string $n): string { return preg_replace('/[^\p{Ll}]/u', '', mb_strtolower(trim($n))); }
 function capi(string $evento, string $eventId, array $user, array $custom = [], string $url = ''): void {
   $c = cfg();
   if (empty($c['meta_pixel_id']) || empty($c['meta_capi_token'])) return;
   $ud = array_filter([
     'em' => !empty($user['email']) ? [hash('sha256', strtolower(trim($user['email'])))] : null,
+    'ph' => ($ph = tel_meta($user['phone'] ?? '')) ? [hash('sha256', $ph)] : null,
+    'fn' => !empty($user['fn']) ? [hash('sha256', nome_meta($user['fn']))] : null,
+    'ln' => !empty($user['ln']) ? [hash('sha256', nome_meta($user['ln']))] : null,
     'zp' => !empty($user['zip']) ? [hash('sha256', substr(preg_replace('/\D/', '', $user['zip']), 0, 5))] : null,
     'ct' => !empty($user['city']) ? [hash('sha256', preg_replace('/[^a-z]/', '', strtolower($user['city'])))] : null,
-    'st' => !empty($user['state']) ? [hash('sha256', strtolower($user['state']))] : null,
+    'st' => !empty($user['state']) ? [hash('sha256', substr(preg_replace('/[^a-z]/', '', strtolower($user['state'])), 0, 2))] : null,
     'country' => [hash('sha256', 'us')],
     'external_id' => !empty($user['vid']) ? [hash('sha256', $user['vid'])] : null,
     'client_ip_address' => $user['ip'] ?? null, 'client_user_agent' => $user['ua'] ?? null,
     'fbc' => $user['fbc'] ?? null, 'fbp' => $user['fbp'] ?? null,
   ]);
-  $data = ['data' => json_encode([[ 'event_name' => $evento, 'event_time' => time(), 'event_id' => $eventId, 'action_source' => 'website',
-    'event_source_url' => $url ?: ($c['site_url'] ?? ''), 'user_data' => $ud, 'custom_data' => $custom ?: new stdClass() ]]), 'access_token' => $c['meta_capi_token']];
+  $ev = [ 'event_name' => $evento, 'event_time' => time(), 'event_id' => $eventId, 'action_source' => 'website',
+    'event_source_url' => $url ?: ($c['site_url'] ?? ''), 'user_data' => $ud, 'custom_data' => $custom ?: new stdClass() ];
+  // GPC ou "Your Privacy Choices": Limited Data Use, o Meta descobre o estado pela localização (0, 0)
+  if (!empty($user['ldu'])) { $ev['data_processing_options'] = ['LDU']; $ev['data_processing_options_country'] = 0; $ev['data_processing_options_state'] = 0; }
+  $data = ['data' => json_encode([$ev]), 'access_token' => $c['meta_capi_token']];
   if (!empty($c['meta_test_code'])) $data['test_event_code'] = $c['meta_test_code'];
   $ch = curl_init('https://graph.facebook.com/v21.0/' . $c['meta_pixel_id'] . '/events');
   curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true, CURLOPT_POSTFIELDS => http_build_query($data), CURLOPT_TIMEOUT => 4]);
@@ -101,7 +112,8 @@ function finalizar(array $p): bool {
   if ($u->rowCount() === 0) return false;                       // outro processo já fechou
   $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'];
   $ctx = json_decode((string)$p['ctx'], true) ?: [];
-  capi('Purchase', 'purchase.' . $p['token'], ['email' => $p['email'], 'zip' => $p['cep'], 'city' => $p['cidade'], 'state' => $p['estado'], 'vid' => $ctx['visitante_id'] ?? '', 'ip' => $p['ip'], 'ua' => $p['ua'], 'fbc' => $ctx['fbc'] ?? null, 'fbp' => $ctx['fbp'] ?? null],
+  $nm = preg_split('/\s+/', trim((string)$p['nome'])) ?: [];
+  capi('Purchase', 'purchase.' . $p['token'], ['email' => $p['email'], 'phone' => $p['telefone'] ?? '', 'fn' => $nm[0] ?? '', 'ln' => count($nm) > 1 ? end($nm) : '', 'zip' => $p['cep'], 'city' => $p['cidade'], 'state' => $p['estado'], 'vid' => $ctx['visitante_id'] ?? '', 'ip' => $p['ip'], 'ua' => $p['ua'], 'fbc' => $ctx['fbc'] ?? null, 'fbp' => $ctx['fbp'] ?? null, 'ldu' => !empty($ctx['optout'])],
     ['value' => round($total / 100, 2), 'currency' => 'USD', 'content_ids' => ['projetor-pet-' . $p['pet']], 'content_type' => 'product', 'num_items' => $p['kit'] === 'two' ? 2 : 1]);
   enviar_confirmacao(pedido($p['token']));
   log_evento(['visitante_id' => $ctx['visitante_id'] ?? '', 'evento' => 'funnel_complete', 'event_id' => 'purchase.' . $p['token'], 'pet' => $p['pet'], 'angulo' => $p['angulo'], 'dados' => ['pedido' => $p['token'], 'total' => $total]]);

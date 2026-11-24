@@ -1,39 +1,58 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
-<title>One last thing</title><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
+<title>One Last Thing</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap"><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
 <body data-etapa="downsell">
 <div class="preview" id="previewBar" hidden>PRÉVIA</div>
+<div class="topbar"><span>Your Order Is Confirmed</span><span>Last Step</span></div>
 <main class="page"><div class="wrap">
-  <p class="eyebrow" style="color:var(--ok)">✓ Your order is confirmed</p>
+  <div class="progress" aria-label="Step 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+  <div class="okline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m7 12.5 3.2 3L17 9"/></svg>Payment received. One last thing.</div>
+
   <!-- versão A (controle): pelúcias extras. Só aparece para quem não pegou o bump. -->
   <section data-kind="plush" hidden>
-    <h1>No problem. Want spare plush toys instead?</h1>
-    <p id="plushTxt"></p>
-    <p>Same box, no extra shipping, <b data-f="downsell"></b>.</p>
+    <h1>No Problem. Want Spare Plush Toys Instead?</h1>
+    <div class="offer">
+      <img id="dsImg" src="assets/img/bump-cat.webp" alt="" width="800" height="800">
+      <div class="ob">
+        <div class="eyebrow" style="margin:0">One-Time Add-On</div>
+        <h2 style="font-size:24px;margin:4px 0 0" id="dsTitle"></h2>
+        <div class="price"><b data-f="downsell"></b><em>Same box, no extra shipping</em></div>
+        <p id="plushTxt" style="margin:0"></p>
+      </div>
+    </div>
   </section>
   <!-- versão B (teste T6): guia digital. Só liga quando o PDF existir em site/digital/. -->
   <section data-kind="guide" hidden>
-    <h1>No problem. Want the indoor hunt playbook instead?</h1>
-    <p>A PDF in your inbox right away, <b data-f="downsell"></b>:</p>
-    <ul class="limits">
-      <li>A 4-week rotation so the projector and toys stay new.</li>
-      <li>Games for the nights you're too tired to play.</li>
-      <li>What to do when your pet ignores it, barks at it or loses interest.</li>
-    </ul>
+    <h1>No Problem. Want the Indoor Hunt Playbook Instead?</h1>
+    <div class="offer"><div class="ob">
+      <div class="eyebrow" style="margin:0">Instant PDF</div>
+      <h2 style="font-size:24px;margin:4px 0 0">The Indoor Hunt Playbook</h2>
+      <div class="price"><b data-f="downsell"></b><em>In your inbox right away</em></div>
+      <ul class="ticks">
+        <li>A 4-week rotation so the projector and toys stay new</li>
+        <li>Games for the nights you're too tired to play</li>
+        <li>What to do when your pet ignores it, barks at it or loses interest</li>
+      </ul>
+    </div></div>
   </section>
   <div class="err" id="err" role="alert"></div>
-  <button class="btn" id="yes" type="button" style="margin-top:18px">Yes, add them</button>
+  <button class="btn" id="yes" type="button">Yes, Add Them</button>
   <button class="linkbtn" id="no" type="button">No thanks</button>
-  <p class="src">One-time charge to the card you just used. No subscription. Covered by the 30-day refund.</p>
+  <p class="src center">One-time charge to the card you just used. No subscription. Covered by the 30-day refund.</p>
 </div></main>
 <script src="assets/track.js"></script><script src="assets/pages.js"></script>
 <script>
 (function(){
   var k=CONFIG.downsell.kind||"plush", pet="cat";
-  try{pet=JSON.parse(sessionStorage.getItem("demo_order")||"{}").pet||JSON.parse(sessionStorage.getItem("ctx")||"{}").pet||"cat"}catch(e){}
+  try{pet=JSON.parse(sessionStorage.getItem("demo_order")||"{}").pet||sessionStorage.getItem("pet")||"cat"}catch(e){}
+  var dog=pet==="dog";
   document.querySelector('[data-kind="'+k+'"]').hidden=false;
-  document.getElementById("plushTxt").textContent=pet==="dog"?"Two more squeaky squirrels, for when the first one loses its squeak.":"Three more catnip mice. They end up under the couch faster than you'd think.";
-  if(k==="guide") document.getElementById("yes").textContent="Yes, send me the playbook";
+  document.getElementById("dsImg").src="assets/img/bump-"+(dog?"dog":"cat")+".webp";
+  document.getElementById("dsTitle").textContent=dog?"2 Spare Squeaky Squirrels":"3 Spare Catnip Mice";
+  document.getElementById("plushTxt").textContent=dog?"For when the first one loses its squeak.":"They end up under the couch faster than you'd think.";
+  document.getElementById("yes").textContent=k==="guide"?"Yes, Send Me the Playbook":(dog?"Yes, Add the Squirrels":"Yes, Add the Mice");
 })();
 </script>
 <script src="assets/funil.js"></script>

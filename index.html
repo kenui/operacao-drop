@@ -3,70 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Glowing mice to chase, a real toy to catch</title>
-<meta name="description" content="A floor projector that sends little glowing mice running for your cat or dog, plus a plush toy so every hunt ends with a catch.">
-<meta name="theme-color" content="#14121a">
+<title>The Hunt &amp; Catch Kit · Little Catch Co.</title>
+<meta name="description" content="A floor projector that sends little glowing critters running for your cat or dog, plus a plush toy so every hunt ends with a real catch.">
+<meta name="theme-color" content="#232046">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="preload" as="image" href="assets/img/hero-cat.webp">
 <script src="config.js"></script>
 <script>
-/* ---------- COPY (fonte: ../../copy.md). Ângulo pelo ?a=, pet pelo ?pet= ---------- */
+/* ---------- COPY (fonte: ../../copy.md). Ângulo pelo ?a=, pet pelo ?pet= ----------
+   v3: títulos em Title Case (regra do manual de design). Corpo em sentence case. */
 window.COPY = {
   cat: {
     plush: "a plush catnip mouse",
-    plushShort: "catnip mouse",
+    plushShort: "Catnip Mouse",
     critters: "mice",
-    pronoun: "they",
     angles: {
       pega: {
-        h1: "Let them chase the light. Then let them catch something real.",
-        sub: "Little glowing mice run across your floor. When the hunt is over, your cat gets a plush catnip mouse to grab, kick and carry off. It comes in the box.",
+        h1: "Let Them Chase the Light. Then Let Them Catch Something Real.",
+        sub: "Little glowing mice run in and out of rings of light on your floor. When the hunt is over, your cat gets a plush catnip mouse to grab, kick and carry off.",
         prob: [
           "She'll chase the red dot for twenty minutes. Then it's gone, and she sits there staring at the wall where it used to be.",
-          "A lot of cat people know that look, and some of us feel a little bad about it. Cats are built to finish the hunt by pinning something down. A dot never lets them.",
-          "So this kit ends differently."
+          "A lot of cat people know that look. Cats are built to finish the hunt by pinning something down, and a dot never lets them."
         ]
       },
       cansado: {
-        h1: "Ten minutes of hunting for him. Ten minutes on the couch for you.",
-        sub: "Set it on the floor, tap once, and little mice of light start running. You eat dinner. He hunts. When he's done, he gets a plush catnip mouse to finish the job.",
+        h1: "Ten Minutes of Hunting for Him. Ten Minutes on the Couch for You.",
+        sub: "Set it on the floor, tap once, and little mice of light start running. You eat dinner. He hunts. When he's done, a plush catnip mouse finishes the job.",
         prob: [
           "It's 9 pm. You've been on your feet all day. He's been asleep all day, and now he's standing on your chest.",
           "The feather wand works, as long as you keep waving it. This one doesn't need your arm."
         ]
       },
       caca: {
-        h1: "Little glowing mice. One tap. Full hunting mode.",
+        h1: "Little Glowing Mice. One Tap. Full Hunting Mode.",
         sub: "Turn the lights down, set it on the floor and watch the butt wiggle start. Every kit comes with a plush catnip mouse for the final pounce.",
         prob: [
           "Most cat toys get two sniffs and end up under the couch.",
-          "Moving mice on the floor are harder to ignore. Your cat sees small shapes darting in and out of little circles of light, at eye level, right where she hunts."
+          "Moving mice on the floor are harder to ignore. Small shapes dart in and out of rings of light, at eye level, right where she hunts."
         ]
       }
     },
+    probH: "The Hunt That Never Ends",
     mech: [
       "A laser dot moves, then vanishes. Your cat never gets the part where she actually pins something down.",
       "Many vets and cat behaviorists suggest ending light play with a toy your cat can catch. We put that toy in the box, so you don't have to remember to buy one."
     ],
     step3: "When the chase winds down, switch it off and toss the catnip mouse. That's the catch.",
-    bumpT: "Add 3 spare catnip mice, {bump}",
-    bumpD: "They end up under the couch faster than you'd think."
+    bumpT: "Add 3 Spare Catnip Mice",
+    bumpD: "They end up under the couch faster than you'd think. Ships in the same box.",
+    final: "Give the Hunt an Ending Tonight"
   },
   dog: {
     plush: "a squeaky plush squirrel",
-    plushShort: "squeaky squirrel",
+    plushShort: "Squeaky Squirrel",
     critters: "critters",
-    pronoun: "he",
     angles: {
       sozinho: {
-        h1: "The toy that plays with your dog while you sit down.",
-        sub: "Glowing critters pop up across your floor and he chases them from circle to circle. When he's done, he gets a squeaky plush squirrel to shake.",
+        h1: "The Toy That Plays With Your Dog While You Sit Down",
+        sub: "Glowing critters pop up in rings of light across your floor and he chases them from circle to circle. When he's done, a squeaky plush squirrel is his to shake.",
         prob: [
           "Rain again, so no long walk. He's brought you the same ball four times and you're still in your work clothes.",
           "This gives him something to chase in the living room for ten minutes, without you throwing anything."
         ]
       },
       pega: {
-        h1: "Let him chase the critters. Then give him something real to shake.",
+        h1: "Let Him Chase the Critters. Then Give Him Something Real to Shake.",
         sub: "Glowing critters run across your floor. When the chase is over, he gets a squeaky plush squirrel to grab. It comes in the box.",
         prob: [
           "He chases lights, reflections, the shine off your watch. He never gets to catch any of it.",
@@ -74,16 +77,22 @@ window.COPY = {
         ]
       }
     },
+    probH: "Too Much Energy, Not Enough Evening",
     mech: [
       "Dogs like a chase that ends with something in their mouth. Lights alone never give them that part.",
       "The squeaky plush gives the game an ending: lights off, toy down, a few good shakes."
     ],
     step3: "When he slows down, switch it off and drop the squeaky squirrel. Let him have the win.",
-    bumpT: "Add 2 spare squeaky squirrels, {bump}",
-    bumpD: "For when the first one loses its squeak."
+    bumpT: "Add 2 Spare Squeaky Squirrels",
+    bumpD: "For when the first one loses its squeak. Ships in the same box.",
+    final: "Give the Chase an Ending Tonight"
   }
 };
-
+/* fotos por pet (ilustrações geradas com o produto travado; trocar por material real da CJ quando chegar) */
+window.GAL = {
+  cat: [["hero-cat","Cat chasing glowing mice in rings of light on a living room floor at night"],["rest-cat","Woman resting on the sofa while her cat hunts the projected mice"],["catch-cat","Cat holding the plush catnip mouse after the hunt"],["kit-cat","The paw-shaped projector, plush catnip mouse and gift box"],["gift","Cat and dog kits in gift boxes under a Christmas tree"],["bump-cat","Three spare plush catnip mice"]],
+  dog: [["hero-dog","Dog chasing glowing critters in rings of light on the floor at night"],["catch-dog","Dog shaking the squeaky plush squirrel after the chase"],["kit-dog","The paw-shaped projector, squeaky plush squirrel and gift box"],["gift","Cat and dog kits in gift boxes under a Christmas tree"],["bump-dog","Two spare squeaky plush squirrels"]]
+};
 /* resolve pet e ângulo antes de pintar */
 (function(){
   var q=new URLSearchParams(location.search), C=window.CONFIG;
@@ -93,71 +102,144 @@ window.COPY = {
   document.documentElement.dataset.pet=pet;
   if(!C.preview) document.documentElement.classList.add("is-live");
 })();
+/* galeria (também usada pelo app.js ao trocar de pet) */
+window.buildGal=function(){
+  var pet=STATE.pet, L=GAL[pet], m=document.getElementById("media");
+  if(CONFIG.heroVideo){ m.innerHTML='<div class="gal"><video src="'+CONFIG.heroVideo+'" autoplay muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/5;object-fit:cover"></video></div>'; return; }
+  m.innerHTML='<div class="gal"><div class="slides" id="slides">'+L.map(function(x,i){return '<img src="assets/img/'+x[0]+'.webp" alt="'+x[1]+'" width="800" height="1000"'+(i?' loading="lazy"':' fetchpriority="high"')+'>'}).join("")+
+    '</div><span class="badge">Ships in a Gift Box</span><span class="count" id="gcount">1 / '+L.length+'</span></div>'+
+    '<div class="thumbs" role="tablist" aria-label="Product photos">'+L.map(function(x,i){return '<button type="button" aria-label="Photo '+(i+1)+'" aria-current="'+(i===0)+'" data-i="'+i+'"><img src="assets/img/'+x[0]+'-sm.webp" alt="" loading="lazy"></button>'}).join("")+'</div>';
+  var s=document.getElementById("slides"), th=[].slice.call(m.querySelectorAll(".thumbs button"));
+  th.forEach(function(b){b.onclick=function(){s.scrollTo({left:s.clientWidth*(+b.dataset.i),behavior:"smooth"})}});
+  s.addEventListener("scroll",function(){var i=Math.round(s.scrollLeft/s.clientWidth);document.getElementById("gcount").textContent=(i+1)+" / "+L.length;th.forEach(function(b,j){b.setAttribute("aria-current",j===i)})},{passive:true});
+};
 </script>
 </head>
 <body>
-<div class="preview" id="previewBar" hidden>PRÉVIA: campos em amarelo ainda dependem da CJ ou do Kenui. Não publicar assim.</div>
-<div class="topbar">Free US shipping · 30-day money-back · <span data-f="deliveryShort"></span></div>
+<!-- ícones (SVG inline, sem banco de imagens) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h14v12H1zM15 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4 9 8 12 8zm0 0s2-5 4.5-4S15 8 12 8z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V5a2 2 0 0 1 4 0v5M11 10V4a2 2 0 0 1 4 0v6M15 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3l-2.5-4a2 2 0 0 1 3.4-2L7 14"/></symbol>
+  <symbol id="i-paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="6" cy="10" rx="2.2" ry="2.8"/><ellipse cx="10" cy="6" rx="2.2" ry="2.8"/><ellipse cx="14.5" cy="6" rx="2.2" ry="2.8"/><ellipse cx="18.5" cy="10" rx="2.2" ry="2.8"/><path d="M12.2 11.5c-3 0-6 4.2-6 6.6 0 2 1.7 2.6 3 2.2 1.2-.4 2-.8 3-.8s1.8.4 3 .8c1.3.4 3-.2 3-2.2 0-2.4-3-6.6-6-6.6z"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 7H6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+</svg>
 
-<!-- 1. HERO -->
+<div class="preview" id="previewBar" hidden>PRÉVIA: campos em amarelo ainda dependem da CJ ou do Kenui. Não publicar assim.</div>
+<div class="topbar"><span>Free US Shipping</span><span>30-Day Money-Back</span></div>
+<header class="head"><a class="logo" href="./"><svg><use href="#i-paw"/></svg><span data-f="brand"></span></a></header>
+
+<!-- 1. PRODUTO (galeria + kits, estilo das lojas que escalam) -->
 <section class="hero" data-bloco="hero">
   <div class="wrap">
-    <div class="brand"><i></i><span data-f="brand"></span></div>
-    <div class="pets" role="group" aria-label="Choose your pet">
-      <button type="button" data-pet="cat">For my cat</button>
-      <button type="button" data-pet="dog">For my dog</button>
+    <div id="media"></div>
+    <script>buildGal()</script>
+    <div class="prod">
+      <div class="pets" role="group" aria-label="Choose your pet">
+        <button type="button" data-pet="cat">🐱 For My Cat</button>
+        <button type="button" data-pet="dog">🐶 For My Dog</button>
+      </div>
+      <div class="pname">THE HUNT &amp; CATCH KIT</div>
+      <h1 id="h1"></h1>
+      <p class="sub" id="sub"></p>
+      <div class="price-line"><b data-f="priceOne"></b><span>Full Kit · Free Shipping</span></div>
+      <div class="ship-line"><svg><use href="#i-truck"/></svg><span data-f="deliveryLong"></span></div>
+      <a class="btn" href="#kits" data-cta="hero">Get the Kit <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="trustrow">
+        <div><svg><use href="#i-truck"/></svg>Free US<br>Shipping</div>
+        <div><svg><use href="#i-back"/></svg>30-Day<br>Money-Back</div>
+        <div><svg><use href="#i-lock"/></svg>Secure<br>Checkout</div>
+      </div>
     </div>
-    <div class="media" id="media"></div>
-    <h1 id="h1"></h1>
-    <p class="sub" id="sub"></p>
-    <div class="price-line"><b data-f="priceOne"></b><span>full kit, free shipping</span></div>
-    <a class="btn" href="#kits" data-cta="hero">Get the kit</a>
-    <div class="micro"><span data-f="deliveryLong"></span><span>30-day money-back</span><span>Pay with Apple Pay or card</span></div>
   </div>
 </section>
-
-<!-- 2. PROBLEMA -->
-<section class="sec" data-bloco="problema" style="border-top:0">
-  <div class="wrap" id="prob"></div>
-</section>
 <script>
-/* pinta hero e problema já (sem piscar) */
+/* pinta o topo já (sem piscar) */
 (function(){
   var S=STATE,P=COPY[S.pet],A=P.angles[S.angle];
   document.getElementById("h1").textContent=A.h1;
   document.getElementById("sub").textContent=A.sub;
-  document.getElementById("prob").innerHTML=A.prob.map(function(t){return "<p>"+t+"</p>"}).join("");
 })();
 </script>
 
-<!-- 3. DEMONSTRAÇÃO -->
-<section class="sec" data-bloco="demonstracao">
+<!-- 2. BENEFÍCIOS EM ÍCONES -->
+<section class="sec" data-bloco="beneficios" style="padding-top:20px">
+  <div class="wrap">
+    <div class="feats">
+      <div><span class="ic"><svg><use href="#i-hand"/></svg></span><b>Hands-Free Play</b><span>No wand to wave, no dot to aim. You get to sit down.</span></div>
+      <div><span class="ic"><svg><use href="#i-paw"/></svg></span><b>A Real Catch</b><span>Every kit has a plush to grab when the lights go off.</span></div>
+      <div><span class="ic"><svg><use href="#i-tap"/></svg></span><b>Ready in One Tap</b><span>Set it on the floor, press the button, done.</span></div>
+      <div><span class="ic"><svg><use href="#i-gift"/></svg></span><b>Gift-Box Ready</b><span>Ships in its own gift box. Send it straight to them.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PROBLEMA -->
+<section class="sec white" data-bloco="problema">
+  <div class="wrap">
+    <div class="pic"><img id="probImg" src="assets/img/rest-cat.webp" alt="" loading="lazy" width="800" height="1000"></div>
+    <div class="eyebrow">Sound familiar?</div>
+    <h2 id="probH"></h2>
+    <div id="prob"></div>
+  </div>
+</section>
+
+<!-- 4. COMO FUNCIONA -->
+<section class="sec alt" data-bloco="demonstracao">
   <div class="wrap">
     <div class="eyebrow">How it works</div>
-    <h2>Lights down. One tap. Then the catch.</h2>
+    <h2>Ready in <span class="hl">Three</span> Steps</h2>
     <ol class="steps">
-      <li><b>Dim the room.</b> Evening light or closed curtains. The <span data-f="critters"></span> are hard to see in a sunny room.</li>
-      <li><b>Set it on the floor and tap the button.</b> Little glowing <span data-f="critters"></span> start running out of circles of light. Smooth floors work best.</li>
-      <li><b>Finish with the plush.</b> <span data-f="step3"></span></li>
+      <li><b>Dim the Room</b><span>Evening light or closed curtains. The <span data-f="critters"></span> are hard to see in a sunny room.</span></li>
+      <li><b>Set It Down and Tap</b><span>Little glowing <span data-f="critters"></span> start running in and out of rings of light. Smooth floors work best.</span></li>
+      <li><b>Finish With the Plush</b><span data-f="step3"></span></li>
     </ol>
     <p class="src" style="margin-top:14px">Size: <span data-f="size"></span> · Power: <span data-f="power"></span></p>
   </div>
 </section>
 
-<!-- 4. MECANISMO -->
-<section class="sec" data-bloco="mecanismo">
+<!-- 5. MECANISMO -->
+<section class="sec white" data-bloco="mecanismo">
   <div class="wrap">
+    <div class="pic"><img id="catchImg" src="assets/img/catch-cat.webp" alt="" loading="lazy" width="800" height="1000"></div>
     <div class="eyebrow">Why the plush is in the box</div>
-    <h2>Every hunt needs an ending.</h2>
+    <h2>Every Hunt Needs an <span class="hl">Ending</span></h2>
     <div id="mech"></div>
+    <a class="btn" href="#kits" data-cta="mecanismo">Get the Kit</a>
   </div>
 </section>
 
-<!-- 9. LIMITE (sobe para antes da oferta: limite honesto cedo, princípio 3) -->
-<section class="sec" data-bloco="limite">
+<!-- 6. COMPARAÇÃO -->
+<section class="sec" data-bloco="comparacao">
+  <div class="wrap">
+    <div class="eyebrow">Side by side</div>
+    <h2>The Kit vs. a Laser Pointer</h2>
+    <table class="cmp">
+      <thead><tr><th></th><th class="us">Hunt &amp; Catch Kit</th><th>Laser Pointer</th></tr></thead>
+      <tbody>
+        <tr><td>Ends with something to catch</td><td class="us"><span class="y">✓</span></td><td><span class="n">✕</span></td></tr>
+        <tr><td>Plays without you holding it</td><td class="us"><span class="y">✓</span></td><td><span class="n">✕</span></td></tr>
+        <tr><td>Plush toy included</td><td class="us"><span class="y">✓</span></td><td><span class="n">✕</span></td></tr>
+        <tr><td>Ready to give as a gift</td><td class="us"><span class="y">✓</span></td><td><span class="n">✕</span></td></tr>
+        <tr><td>Works in bright daylight</td><td class="us"><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+      </tbody>
+    </table>
+    <p class="src" style="margin-top:10px">We'd rather tell you now: the projection needs a dim room.</p>
+  </div>
+</section>
+
+<!-- 7. LIMITES (honestos, antes da oferta) -->
+<section class="sec alt" data-bloco="limite">
   <div class="wrap">
     <div class="eyebrow">Before you buy</div>
-    <h2>What it won't do</h2>
+    <h2>What It Won't Do</h2>
     <ul class="limits">
       <li>It needs low light. In a bright, sunny room you'll barely see the <span data-f="critters"></span>.</li>
       <li data-pet-only="cat">Some cats just stare at it and walk off. That's what the 30-day refund is for.</li>
@@ -168,78 +250,112 @@ window.COPY = {
   </div>
 </section>
 
-<!-- 6. OFERTA / KITS -->
-<section class="sec" data-bloco="oferta-kits" id="kits">
+<!-- 8. OFERTA / KITS -->
+<section class="sec white" data-bloco="oferta-kits" id="kits">
   <div class="wrap">
     <div class="eyebrow">Choose your kit</div>
-    <h2>The full hunt kit</h2>
-    <p>Each kit: the floor projector, <span data-f="plush"></span>, and a gift box. Free shipping.</p>
-    <p class="bonus" data-f-show-bonus><b>Free with every order:</b> the First Hunt Guide (PDF, by email). How to set up the first night, what to do if your pet ignores it, and how to end every session with a real catch.</p>
-    <div class="kits" role="radiogroup">
+    <h2>Pick Your Hunt &amp; Catch Kit</h2>
+    <p>Each kit: the floor projector, <span data-f="plush"></span> and a gift box. Free shipping.</p>
+    <div class="bonus" data-f-show-bonus><svg><use href="#i-book"/></svg><span><b>Free With Every Order:</b> the First Hunt Guide (PDF, by email). Setting up the first night, what to do if your pet ignores it, and how to end every session with a real catch.</span></div>
+    <div class="kits" role="radiogroup" aria-label="Kits">
       <label class="kit on" data-kit="one">
         <input type="radio" name="kit" value="one" checked>
-        <div class="row"><div class="name">1 kit</div><div><div class="p" data-f="priceOne"></div></div></div>
-        <div class="inc">Projector + <span data-f="plushShort"></span> + gift box</div>
+        <span class="radio"></span>
+        <img class="kimg" data-img="kit" src="assets/img/kit-cat-sm.webp" alt="">
+        <div class="kbody"><div class="name">1 Kit</div><div class="inc">Projector + <span data-f="plushShort"></span> + Gift Box</div></div>
+        <div class="kp"><div class="p" data-f="priceOne"></div></div>
       </label>
       <label class="kit" data-kit="two">
         <input type="radio" name="kit" value="two">
-        <div class="row"><div class="name">2 kits</div><div><div class="p" data-f="priceTwo"></div><div class="each" data-f="eachTwo"></div></div></div>
-        <div class="inc">One to keep, one to give. Mix cat and dog if you like.</div>
-        <span class="tag" data-f="saveTwo"></span> <span class="tag" id="hlTag" hidden>Mix cat + dog · good for gifts</span>
+        <span class="tag" id="hlTag">Best for Gifts</span>
+        <span class="radio"></span>
+        <img class="kimg" src="assets/img/gift-sm.webp" alt="">
+        <div class="kbody"><div class="name">2 Kits</div><div class="inc">One to keep, one to give. Mix cat and dog.</div><div class="save" data-f="saveTwo"></div></div>
+        <div class="kp"><div class="p" data-f="priceTwo"></div><div class="each" data-f="eachTwo"></div></div>
         <div class="mix">
           <label>Kit 1<select data-mix="0"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
           <label>Kit 2<select data-mix="1"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
         </div>
       </label>
     </div>
-  </div>
-</section>
 
-<!-- 7. CHECKOUT -->
-<section class="sec" data-bloco="checkout" id="checkout" style="border-top:0;padding-top:0">
-  <div class="wrap">
-    <div class="co">
-      <div class="sum"><span id="sumKit"></span><span id="sumKitP"></span></div>
-      <div class="sum" id="sumBumpRow" hidden><span>Spare plush pack</span><span data-f="priceBump"></span></div>
-      <div class="sum" data-f-show-bonus><span>First Hunt Guide (PDF)</span><span>Free</span></div>
-      <div class="sum"><span>Shipping</span><span>Free</span></div>
+    <!-- 9. CHECKOUT -->
+    <div class="co" id="checkout" data-bloco="checkout">
+      <div class="line"><img data-img="kit" src="assets/img/kit-cat-sm.webp" alt=""><div class="t"><span id="sumKit"></span><small>Projector, plush and gift box</small></div><div class="v" id="sumKitP"></div></div>
+      <div class="line" id="sumBumpRow" hidden><img data-img="bump" src="assets/img/bump-cat-sm.webp" alt=""><div class="t"><span id="sumBumpName"></span><small>Same box</small></div><div class="v" data-f="priceBump"></div></div>
+      <div class="line" data-f-show-bonus><span class="lic"><svg><use href="#i-book"/></svg></span><div class="t">First Hunt Guide<small>PDF by email</small></div><div class="v free">Free</div></div>
+      <div class="line"><span class="lic"><svg><use href="#i-truck"/></svg></span><div class="t">Shipping<small data-f="deliveryShort"></small></div><div class="v free">Free</div></div>
       <div class="sum total"><span>Total</span><span id="sumTotal"></span></div>
 
       <label class="bump" data-bloco="bump">
-        <input type="checkbox" id="bump">
-        <div><b id="bumpT"></b><span id="bumpD"></span></div>
+        <span class="bflag">One-Time Add-On</span>
+        <div class="brow">
+          <input type="checkbox" id="bump">
+          <img data-img="bump" src="assets/img/bump-cat-sm.webp" alt="">
+          <div><b id="bumpT"></b><span class="bp" data-f="priceBump"></span><span id="bumpD"></span></div>
+        </div>
       </label>
 
-      <button class="btn" id="startCo" type="button" data-cta="checkout">Continue to payment</button>
+      <button class="btn" id="startCo" type="button" data-cta="checkout"><svg width="20" height="20"><use href="#i-lock"/></svg> Continue to Secure Checkout</button>
 
       <div id="coArea" hidden>
         <div class="el" id="linkEl"></div>
         <div class="el" id="addrEl"></div>
         <div class="el" id="payEl"></div>
-        <p class="consent">By completing your purchase you agree we may charge this card for any add-on you accept on the next page. No subscriptions. Sales tax, if any, is shown before you pay.</p>
+        <p class="consent">By completing your purchase you agree we may charge this card for any add-on you accept on the next page. No subscriptions. Sales tax, if any, is shown before you pay. We use your phone number only for delivery updates about this order.</p>
         <div class="err" id="coErr" role="alert"></div>
-        <button class="btn" id="payBtn" type="button">Pay <span id="payAmt"></span></button>
+        <button class="btn" id="payBtn" type="button"><svg width="20" height="20"><use href="#i-lock"/></svg> Pay <span id="payAmt"></span></button>
       </div>
-      <div class="trust"><span>Secure checkout by Stripe</span><span>30-day money-back</span><span data-f="deliveryShort"></span></div>
+      <div class="pays"><span>Apple Pay</span><span>Google Pay</span><span>VISA</span><span>Mastercard</span><span>AMEX</span><span>Discover</span></div>
+      <p class="src center" style="margin:10px 0 0">Secure checkout by Stripe · 30-day money-back</p>
     </div>
   </div>
 </section>
 
-<!-- 8. GARANTIA -->
-<section class="sec" data-bloco="garantia">
+<!-- 10. PRESENTE -->
+<section class="sec alt" data-bloco="presente">
   <div class="wrap">
-    <div class="eyebrow">Guarantee</div>
-    <h2>30 days to decide</h2>
-    <p>If your pet isn't into it, or it's just not for you, email us within 30 days of delivery and we'll refund the full price. You don't need a reason, and you don't need to argue with anyone.</p>
-    <p>Write to <span data-f="email"></span> with your order number. Refunds go back to your card, and banks usually show them in 5 to 10 business days.</p>
+    <div class="pic sq"><img src="assets/img/gift.webp" alt="Cat and dog kits in gift boxes under a Christmas tree" loading="lazy" width="800" height="800"></div>
+    <div class="eyebrow">Gifting</div>
+    <h2>A Gift for the Pet <span class="hl">and</span> the Person</h2>
+    <p>Every kit ships in its own gift box. Use their address at checkout and it goes straight to them. The 2-kit pack lets you mix one cat kit and one dog kit.</p>
+    <p data-f-show="xmasCutoff">Ordering for Christmas? Order by <b data-f="xmasCutoff"></b>.</p>
   </div>
 </section>
 
-<!-- 10. OBJEÇÕES -->
-<section class="sec" data-bloco="objecoes">
+<!-- 11. GARANTIA -->
+<section class="sec white" data-bloco="garantia">
+  <div class="wrap">
+    <div class="guar">
+      <div class="seal"><div><b>30</b>DAY<br>REFUND</div></div>
+      <div>
+        <h3>30 Days to Decide</h3>
+        <p>If your pet isn't into it, or it's just not for you, email us within 30 days of delivery and we'll refund the full price. No reason needed.</p>
+        <p class="src" style="margin:0">Write to <span data-f="email"></span> with your order number. Banks usually show refunds in 5 to 10 business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. ENVIO -->
+<section class="sec" data-bloco="envio">
+  <div class="wrap">
+    <div class="eyebrow">Shipping</div>
+    <h2>From Your Order to Your Door</h2>
+    <ul class="tl">
+      <li><span class="dot"><svg><use href="#i-cart"/></svg></span><b>Order Placed</b><span>You get an email receipt right away, with every charge listed.</span></li>
+      <li><span class="dot"><svg><use href="#i-box"/></svg></span><b>Packed in a Gift Box</b><span>Ships from <span data-f="shipsFrom"></span>.</span></li>
+      <li><span class="dot"><svg><use href="#i-pin"/></svg></span><b>Tracking by Email</b><span>As soon as it ships. If it's going to be late, we tell you first and you can cancel for a full refund.</span></li>
+      <li><span class="dot"><svg><use href="#i-paw"/></svg></span><b>First Hunt Night</b><span data-f="deliveryLong"></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 13. OBJEÇÕES -->
+<section class="sec alt faq" data-bloco="objecoes">
   <div class="wrap">
     <div class="eyebrow">Questions</div>
-    <h2>Fair questions</h2>
+    <h2>Fair Questions</h2>
     <details><summary>Is it a laser?</summary><p data-f="laserAns"></p></details>
     <details><summary>Will my cat get frustrated chasing light?</summary><p>That's the reason the plush mouse is in the kit. Lights for the chase, a toy for the catch. Keep sessions to 10 or 15 minutes and end with the plush.</p></details>
     <details><summary>Does it work during the day?</summary><p>Not well. It's made for evenings or a room with the curtains closed. In bright daylight the projection is faint.</p></details>
@@ -251,38 +367,29 @@ window.COPY = {
   </div>
 </section>
 
-<!-- 11. ENVIO -->
-<section class="sec" data-bloco="envio">
+<!-- 14. CTA FINAL -->
+<section class="sec white center" data-bloco="cta-final">
   <div class="wrap">
-    <div class="eyebrow">Shipping</div>
-    <h2>When it gets there</h2>
-    <p>Ships from <span data-f="shipsFrom"></span>. Arrives in <span data-f="delivery"></span> after you order. You'll get tracking by email as soon as it ships.</p>
-    <p>If it's going to be late, we'll email you before the date we gave and you can cancel for a full refund.</p>
-    <p data-f-show="xmasCutoff">Ordering for Christmas? Order by <b data-f="xmasCutoff"></b>.</p>
-  </div>
-</section>
-
-<!-- 12. CTA FINAL -->
-<section class="sec" data-bloco="cta-final">
-  <div class="wrap">
+    <div class="pic"><img id="finalImg" src="assets/img/hero-cat.webp" alt="" loading="lazy" width="800" height="1000"></div>
     <h2 id="finalH"></h2>
-    <p>Projector, <span data-f="plush"></span>, gift box. <span data-f="priceOne"></span> with free shipping and 30 days to change your mind.</p>
-    <a class="btn" href="#kits" data-cta="final">Get the kit</a>
+    <p>Projector, <span data-f="plush"></span>, gift box. <b data-f="priceOne"></b> with free shipping and 30 days to change your mind.</p>
+    <a class="btn" href="#kits" data-cta="final">Get the Kit</a>
   </div>
 </section>
 
 <footer data-bloco="rodape">
   <div class="wrap">
-    <b data-f="brand"></b>
-    <nav><a href="shipping.html">Shipping</a><a href="returns.html">Returns &amp; refunds</a><a href="track-order.html">Track order</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    <a class="logo" href="./"><svg><use href="#i-paw"/></svg><span data-f="brand"></span></a>
+    <nav><a href="shipping.html">Shipping</a><a href="returns.html">Returns &amp; Refunds</a><a href="track-order.html">Track Order</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html#choices">Your Privacy Choices</a></nav>
     <p>Operated by <span data-f="legalName"></span><br>Contact: <span data-f="email"></span></p>
-    <p class="src">Pets and scenes in our videos may be created with AI to show how the product is used.</p>
+    <p class="src">Photos on this page are illustrations made with AI to show how the kit is used. The product you receive may differ slightly in color and finish.</p>
   </div>
 </footer>
 
 <div class="sticky" id="sticky" data-bloco="barra-fixa">
-  <div class="sp">Full kit<b data-f="priceOne"></b></div>
-  <a class="btn" href="#kits" data-cta="sticky">Get the kit</a>
+  <img data-img="kit" src="assets/img/kit-cat-sm.webp" alt="">
+  <div class="sp">Hunt &amp; Catch Kit<b data-f="priceOne"></b></div>
+  <a class="btn" href="#kits" data-cta="sticky">Get the Kit</a>
 </div>
 
 <script src="assets/track.js"></script>
