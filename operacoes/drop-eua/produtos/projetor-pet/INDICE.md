@@ -21,7 +21,8 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [05-pagina/qa.md](05-pagina/qa.md) e [prints](05-pagina/prints/) | QA local e prints a 390 px |
 | [testes/fila.md](testes/fila.md) | plano de testes A/B (T1 a T8, inclusive preço), régua e como ligar |
 | [08-videos-que-vendem.md](08-videos-que-vendem.md) | estratégia e roteiros dos vídeos com dor (V1 chuva, V2 cansada, V3 brinquedo de 10 minutos, V4 "achei que era fake"), com a DECISÃO CRIATIVA de cada um |
-| [videos/V1-chuva.md](videos/V1-chuva.md) | V1 montado (dor da chuva + prova aprovada), com e sem música, custo zero, script de montagem |
+| [videos/V1-chuva.md](videos/V1-chuva.md) | V1 montado (dor da chuva + prova nova com o cachorro brincando), versões 1 e 2, com e sem música, custo real, script de montagem |
+| [fichas/README.md](fichas/README.md) | fichas 4K da mulher e do cachorro, blocos de identidade e quadros de partida feitos com elas |
 | [videos/D-v6-topview.md](videos/D-v6-topview.md) | primeiro vídeo no Topview T1 (aprovado pelo Kenui em 24/11), custo zero, conferência |
 | [videos/D-v1.md](videos/D-v1.md) | primeiro vídeo (D, cachorro): prompts, links do bruto, da música por IA e das duas montagens, revisão honesta |
 | [../../../../conhecimento/video-ia/retencao-viralidade-credibilidade.md](../../../../conhecimento/video-ia/retencao-viralidade-credibilidade.md) | manual de retenção, credibilidade, viralidade e quando usar música (vale para todo criativo) |
@@ -35,4 +36,3 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 
 ## 24/11: oferta e página prontas para revisão (PR do funil)
 Nada publicado, nenhuma chave real. Falta a CJ (custo, prazo, origem, tamanho, energia, LED x laser, vídeo) e o Kenui (nome da loja, domínio, rodapé legal, promessas de atendimento). Lista em 05-pagina/site/README.md.
-- [fichas/README.md](fichas/README.md): fichas 4K da mulher e do cachorro, blocos de identidade e quadros de partida feitos com elas.
