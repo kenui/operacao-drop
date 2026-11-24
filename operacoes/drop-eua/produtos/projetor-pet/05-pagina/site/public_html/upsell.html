@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>One more thing</title><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
+<body data-etapa="upsell">
+<div class="preview" id="previewBar" hidden>PRÉVIA</div>
+<main class="page"><div class="wrap">
+  <p class="eyebrow" style="color:var(--ok)">✓ Your order is confirmed</p>
+  <h1>Want a second kit for someone else's pet?</h1>
+  <p>Add one more full kit for <b data-f="upsell"></b> instead of <s data-f="upsellReg"></s>. It goes in the same box as your order, so there's no extra shipping and nothing to type. It's charged to the card you just used.</p>
+  <p>Good for the friend who sends you cat videos every day, or the dog at your parents' house.</p>
+  <div class="box">
+    <b>Second kit includes</b>
+    <p style="margin:6px 0 10px">Projector, the plush for the catch, and its own gift box.</p>
+    <label>For a <select id="gpet" style="height:42px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:16px;padding:0 8px"><option value="cat">cat</option><option value="dog">dog</option></select></label>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn" id="yes" type="button">Yes, add a second kit for <span data-f="upsell"></span></button>
+  <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
+  <p class="src">One-time charge. No subscription. 30-day money-back covers this kit too.</p>
+</div></main>
+<script src="assets/track.js"></script><script src="assets/pages.js"></script><script src="assets/funil.js"></script>
+<script>try{var d=JSON.parse(sessionStorage.getItem("demo_order")||"{}");if(d.pet)document.getElementById("gpet").value=d.pet}catch(e){}</script>
+</body></html>
