@@ -39,4 +39,4 @@ Quadros (10 momentos, de 0,2 s a 12 s): [frames/referencia-enjoyaitlife-10-quadr
 - Roteiro **D (cachorro, controle)**: mesma estrutura (ponto de vista do sofá, unboxing com o pet, uma tomada, dona descansando no fim, CTA de comentário), com o nosso fim diferente: o cachorro ganha o brinquedo de pelúcia.
 - Gancho de identidade com frase nossa, não a deles: cachorro "if your dog gets zoomies on rainy days, watch this"; gato "cat people, this one's for the 9 pm zoomies".
 - CTA de comentário em todos: "Comment CATCH" ou "Comment MOUSE".
-- Música animada da Meta Sound Collection em todos.
+- Música: decisão do Kenui (24/11) de gerar por IA, usada só onde o tipo de anúncio pede (tabela de som em [06-roteiros-video.md](../06-roteiros-video.md)). A do D foi gerada no ElevenLabs Music pelo Higgsfield.

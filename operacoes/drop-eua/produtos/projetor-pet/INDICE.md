@@ -13,6 +13,14 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [04-angulos.md](04-angulos.md) | 4 personas, matriz, 3 ângulos (captura, dono cansado, demonstração), títulos, coerência anúncio → página |
 | [uso-no-video.md](uso-no-video.md) | ficha de uso e PRODUCT LOCK (provisória, fecha com o vídeo da CJ) |
 | [06-roteiros-video.md](06-roteiros-video.md) | 5 roteiros (gato A, B, C de reserva; cachorro D, E), 3 ganchos cada; todos terminam com o pet pegando a pelúcia; estimativa de créditos |
+<<<<<<< HEAD
+=======
+| [07-funil.md](07-funil.md) | oferta (1 kit US$34,99, 2 kits US$59,99 com mistura gato+cachorro), bump, upsell, downsell, conta do lucro por visitante |
+| [05-pagina/copy.md](05-pagina/copy.md) | copy da página e do funil por ângulo, e-mails, passada de voz humana |
+| [05-pagina/site/](05-pagina/site/) | página HTML + checkout Stripe em PHP (modo teste), upsell, obrigado, políticas; campos da CJ em `config.js` |
+| [05-pagina/qa.md](05-pagina/qa.md) e [prints](05-pagina/prints/) | QA local e prints a 390 px |
+| [testes/fila.md](testes/fila.md) | 5 primeiros testes do funil |
+>>>>>>> origin/main
 | [estudo/referencia-estilo.md](estudo/referencia-estilo.md) | anúncio da Enjoyaitlife escolhido pelo Kenui, segundo a segundo, e como usar música sem problema de direitos |
 
 ## Lacunas da v1
@@ -20,3 +28,6 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 - Cotação da CJ precisa incluir também a pelúcia com apito para cachorro (além do ratinho com catnip).
 - Nome da música do anúncio de referência (não identificável pela Biblioteca).
 - Qual formato a CJ vai cotar (pata viral ou luminária redonda) e se é recarregável.
+
+## 24/11: oferta e página prontas para revisão (PR do funil)
+Nada publicado, nenhuma chave real. Falta a CJ (custo, prazo, origem, tamanho, energia, LED x laser, vídeo) e o Kenui (nome da loja, domínio, rodapé legal, promessas de atendimento). Lista em 05-pagina/site/README.md.
