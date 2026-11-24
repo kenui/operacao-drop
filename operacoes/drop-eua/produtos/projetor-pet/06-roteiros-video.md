@@ -5,10 +5,13 @@ Formato: 9:16, 15 a 22 s, cortes secos, legenda queimada, fala natural em inglê
 
 **Trava antes de gerar:** (1) produto aprovado na trava de custo; (2) vídeo real do fornecedor com os bichos no chão; (3) orçamento de créditos aprovado pelo Kenui. Sem o vídeo real, os WOW BEATs ficam suspensos.
 
-Regras fixas nos três:
+Frentes (decisão do Kenui, 24/11): **gato** (roteiros A, B; C de reserva) e **cachorro** (roteiros D, E). Estilo de referência: [estudo/referencia-estilo.md](estudo/referencia-estilo.md) (anúncio da Enjoyaitlife que o Kenui escolheu).
+Música em todos: faixa animada da **Meta Sound Collection** (liberada para anúncio). Nunca música de sucesso sem licença.
+
+Regras fixas em todos:
 - O aparelho aparece na mão ou ao lado de uma caneca antes dos 8 s (escala real).
 - Sala na penumbra e uma frase de limite honesto ("works best with the lights low" ou "some cats just stare at it").
-- O ratinho de pelúcia aparece no fim de **todos** os roteiros (é o que nos separa das 92 lojas).
+- O brinquedo de pelúcia (ratinho para gato, pelúcia com apito para cachorro) aparece no fim de **todos** os roteiros (é o que nos separa das 92 lojas).
 - A última tela repete o título da página do ângulo.
 - Rótulo de IA no Meta.
 
@@ -76,6 +79,48 @@ Página: `?a=caca`, título "Little glowing mice. One tap. Full hunting mode."
 
 ---
 
+## Roteiro D: "O brinquedo que brinca com seu cachorro sem você" (P4, inconsciente; controle modelado)
+Página: `?pet=dog&a=sozinho`, título "The toy that plays with your dog while you sit down."
+Modelo: a estrutura do anúncio da Enjoyaitlife (ponto de vista do sofá, unboxing com o cachorro, uma tomada só, dona descansando no fim, CTA de comentário). Frase, cena e música nossas.
+
+**Ganchos (texto no topo, mesmo corpo):**
+- D1: "if your dog gets zoomies on rainy days, watch this"
+- D2: "no walk today. he didn't even notice."
+- D3 (fala, rindo): "Okay, he's been staring at this box since it got here."
+
+| Tempo | Imagem | Fala / som | Texto na tela |
+|---|---|---|---|
+| 0-3 s | Ponto de vista sentado no sofá: caixa no colo, chuva na janela ao fundo. Buldogue francês cinza cheirando a caixa. Mãos abrem e tiram o aparelho. | (música animada baixa; chuva) | D1 |
+| 3-5 s | Mão põe o aparelho no chão de madeira, ao lado de uma caneca, e aperta o botão. | (clique) | |
+| 5-9 s | **WOW BEAT** numa tomada: anéis de luz laranja aparecem no piso, bichinhos saindo. O cachorro abaixa a frente (play bow), late curto, bate a pata num anel. | (latido curto, unhas no piso) | |
+| 9-12 s | Plano do sofá: a dona de moletom com uma caneca, pés para cima, o cachorro correndo de anel em anel. | "Best rainy day in a while." | |
+| 12-15 s | **CATCH BEAT**: ela desliga e joga a pelúcia de esquilo; ele agarra e sacode a cabeça. Apito. | (apito) | |
+| 15-17 s | Cachorro deitado mastigando a pelúcia ao lado do aparelho. | | Comment "SQUEAK" if your dog needs one |
+
+Limite: "Works best with the lights low" na legenda do anúncio e na página; "best for small and medium dogs" na página.
+
+---
+
+## Roteiro E: "Ele finalmente pega alguma coisa" versão cachorro (P4, consciente da solução)
+Página: `?pet=dog&a=pega`, título "Let him chase the critters. Then give him something real to shake."
+
+**Ganchos:**
+- E1 (fala): "He chases every light in this house and never gets anything."
+- E2 (texto sobre o cachorro latindo para um reflexo na parede): "he's been barking at this reflection for 10 minutes"
+- E3 (fala): "Light toys are fun until he can't figure out where it went."
+
+| Tempo | Imagem | Fala / som | Texto na tela |
+|---|---|---|---|
+| 0-3 s | Cachorro latindo para o reflexo de um relógio na parede. Homem ~35 no chão da sala. | E1 | never gets anything |
+| 3-5 s | Ele mostra o aparelho na palma, perto da câmera, e a pelúcia com apito na outra mão. | "So this comes with the light AND a real toy." | the light + a real toy |
+| 5-10 s | **WOW BEAT**: aperta, anéis e bichinhos no chão, o cachorro corre e bate a pata. | (patas, latido curto) | |
+| 10-12 s | Ele desliga. O cachorro procura. | "Now the part he actually wants." | |
+| 12-16 s | **CATCH BEAT**: joga a pelúcia, o cachorro agarra e sacode; apito; volta trotando com ela na boca. | (apito) "There it is." | |
+| 16-19 s | Cachorro deitado, pelúcia entre as patas. | | Let him chase the critters. Then give him something real to shake. |
+
+
+---
+
 ## Passada de voz humana (3 trocas)
 - "Unleash your cat's inner hunter!" → "Okay, watch his butt wiggle."
 - "Hands-free play that keeps your cat entertained for hours" → "He hunts, I eat. Ten minutes."
@@ -87,4 +132,4 @@ Tiques removidos: "unleash", "purr-fect", "game-changer", "hours of fun", "insti
 Taxa de gancho (3 s / impressões), retenção até o WOW BEAT (7 s) e até o CATCH BEAT (14 s), CTR, custo por compra e reembolso por "my cat didn't care" ou "too dim". Resultados voltam para a seção 9 da [ficha](uso-no-video.md) e para `conhecimento/copy/aprendizados.md`.
 
 ## Custo estimado de geração (para pedir aval depois)
-Pelo JEITO-CERTO v0 (23/11): por roteiro ~6 cortes de Kling 3.0 pro 5 s com som (12,5 créditos) + ~4 imagens Nano Banana 2 (1,5) ≈ **81 créditos por roteiro**, ~245 para os três, sem refações. Com uma refação por corte, ~400. Pedir aval ao Kenui com o número fechado antes de gerar.
+Pelo JEITO-CERTO v0 (23/11): por roteiro ~6 cortes de Kling 3.0 pro 5 s com som (12,5 créditos) + ~4 imagens Nano Banana 2 (1,5) ≈ **81 créditos por roteiro**. Plano de 4 roteiros (A, B, D, E): ~325 créditos sem refações, ~520 com uma refação por corte. Cabe nos ~800 créditos, mas é mais da metade: começar pelos 2 que o Kenui preferir e gerar os outros depois. Pedir aval ao Kenui com o número fechado antes de gerar.

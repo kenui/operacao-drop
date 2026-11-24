@@ -9,7 +9,7 @@ Legenda: **[certo]** / **[provável]** / **[suposição]**.
 | P1 | **O dono cansado de gato de apartamento** | 25 a 45, mora sozinho ou em casal, trabalha fora o dia todo, gato só dentro de casa | "this is the first toy I've found that will get him to play independently while I get stuff done" | avaliações de brinquedos automáticos, VCA, Quartz, caso da HumanePro **[certo]** |
 | P2 | **O dono culpado pelo laser** | já brinca de laser, leu que o gato "nunca pega nada" e ficou com dó | "I feel bad that she can't catch it" | Quora, TheCatSite, matéria do BILD de 18/11/2026 **[certo]** |
 | P3 | **Quem compra presente para dono de pet** | amigo, filho, colega; dezembro; "o que dar para quem só fala do gato?" | (sem frase literal ainda) | Pouncy vende kit de 2 e 3 "para dar a um amigo" **[provável]** |
-| P4 | **Dono de cachorro agitado em casa no inverno** | cão médio, frio lá fora, energia sobrando | (sem frase literal ainda) | Pouncy anuncia "dogs & cats" **[suposição]**; fica de fora do 1º teste |
+| P4 | **Dono de cachorro agitado em casa no inverno** | cão pequeno ou médio, frio ou chuva lá fora, energia sobrando | "Rainy days mean no outdoor walks" (o próprio mercado; falta frase de dono) | 98 de 117 anúncios citam cachorro e todos os vídeos que rodam são de cachorro **[certo]**. **Frente própria desde 24/11 (decisão do Kenui).** |
 
 ## 1b. O que a Biblioteca do Meta mostrou (24/11/2026)
 - ~140 anúncios de 46 lojas, todos de 1 a 8 dias, ainda subindo (40 novos em 23/11). Detalhes: [estudo](estudo/material-de-estudo.md#1b-biblioteca-de-anúncios-do-meta-24112026-eua-anúncios-ativos-certo).
@@ -35,7 +35,18 @@ Legenda: **[certo]** / **[provável]** / **[suposição]**.
 | Variação de C para P4 (cachorro) | P4, inconsciente | demonstração | É o criativo que o mercado inteiro roda agora **[certo]**; régua mais honesta que o C de gato. | Kit de gato (catnip) não serve: kit cachorro sem catnip. Só se A, B ou C empatarem. |
 | Variação de C para P3 | P3, consciente do problema | oferta / presente | Dezembro. "O presente para quem manda vídeo do gato todo dia." | Só testar se C ganhar; janela até ~15/12 pelo prazo de entrega. |
 
-Ordem de teste: A, B e C no mesmo dia, mesmo orçamento, público amplo (EUA, 25-55, interesse em gatos). Vence o menor custo por compra depois de ~1.000 impressões cada.
+Ordem de teste antiga (só gato) substituída pelo plano de duas frentes abaixo.
+
+## 3b. Duas frentes: gato e cachorro (24/11, decisão do Kenui)
+| Frente | Ângulo | Roteiro | Por quê |
+|---|---|---|---|
+| Gato | A. captura | A | O buraco: ninguém fala disso, e gato é quase ausente nos vídeos. |
+| Gato | B. dono cansado | B | Dor do esforço, nossa aposta própria. |
+| Cachorro | D. controle modelado da Enjoyaitlife ("o brinquedo que brinca com seu cachorro sem você") | D | É o que roda agora no mercado; a régua mais honesta. Termina com o cachorro ganhando a pelúcia que apita. |
+| Cachorro | E. captura para cachorro ("ele finalmente pega alguma coisa") | E | O mesmo buraco, do lado provado do mercado. |
+| (reserva) | C. demonstração gato | C | Entra se A ou B não baterem o controle. |
+
+**Plano de verba (R$500):** 4 anúncios (A, B, D, E), mesmo orçamento, duas campanhas separadas por pet (público de interesse em gatos e em cachorros), cada uma levando à página no pet certo. Vence o menor custo por compra de cada frente depois de ~1.000 impressões por anúncio. Se uma frente sozinha ganhar com folga, ela fica com a verba.
 
 ## 4. Coerência anúncio → página
 Uma página, `hero` e `problema` trocados por `?a=`.
@@ -45,10 +56,22 @@ Uma página, `hero` e `problema` trocados por `?a=`.
 | A (`?a=pega`) | "He chases the red dot every night. He's never caught it once." | "Let them chase the light. Then let them catch something real." | o gato procurando o ponto depois que a luz apaga; o dono com dó |
 | B (`?a=cansado`) | "It's 9 pm, I'm done, and he's just getting started." | "Ten minutes of hunting for him. Ten minutes on the couch for you." | gato atacando o pé na cama às 4h, a varinha que cansa o braço |
 | C (`?a=caca`) | "Okay, watch his butt wiggle." | "Little glowing mice. One tap. Full hunting mode." | sem dor: direto para a demonstração |
+| D (`?pet=dog&a=sozinho`) | "if your dog gets zoomies on rainy days, watch this" (texto) | "The toy that plays with your dog while you sit down." | o cachorro entediado olhando para você na chuva |
+| E (`?pet=dog&a=pega`) | "He chases lights all day and never gets anything." | "Let him chase the critters. Then give him something real to shake." | o cachorro latindo para a luz e ficando agitado |
 
 Limite honesto em todas, dito cedo: **"Works best with the lights low."** e **"Some cats just stare at it. That's what the 30-day return is for."**
 
 ## 5. Títulos para o `hero` (quatro U de Bly)
+**D. Cachorro sozinho (controle)**
+1. The toy that plays with your dog while you sit down.
+2. Rainy day, no walk, zero guilt.
+3. Critters on the floor. Zoomies in the living room. You on the couch.
+
+**E. Cachorro captura**
+1. Let him chase the critters. Then give him something real to shake.
+2. Every chase ends with a squeak.
+3. The light toy that ends with a real toy in his mouth.
+
 **A. A captura**
 1. Let them chase the light. Then let them catch something real.
 2. The light toy that ends with a catch.
