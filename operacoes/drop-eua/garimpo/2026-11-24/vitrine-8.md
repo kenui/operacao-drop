@@ -1,0 +1,19 @@
+# Vitrine 8: produtos novos com dor ou efeito uau (24/11/2026)
+
+Passo 0.05 do JEITO-CERTO v5: o Kenui escolhe pelo gosto, e só depois roda a trava. Fontes: TikTok Shop (Kolvant/EchoTik/TransClipper), lista de produtos novos do freespyads, Amazon.
+
+| # | Produto | Por que chama | Prova de que é novo e está crescendo | Loja e preço | Amazon hoje | Foto |
+|---|---|---|---|---|---|---|
+| 1 | **Projetor de "presas" para pet**: joga ratinhos de luz no chão e o pet caça | Uau em 5 s: o pet pulando na luz. Resolve o tédio do pet dentro de casa no inverno | 1º anúncio em 16/11; ~100 lojas; +881 anúncios em 7 dias; nº 1 do nicho Pet. https://freespyads.io/products/usb-pet-projector-toy | https://pouncy.shop/products/pouncy-light-chase-projector US$34,99 (lojas cobram US$30–48) | Só cópias de 18/11, sem Prime, 1 avaliação (B0HS38P47B US$24,99) | https://cdn.shopify.com/s/files/1/1125/6404/4115/files/pouncy-light-chase-projector.png?v=1794959425 |
+| 2 | **Taça térmica com haste magnética**: a haste sai com um clique e vira copo de piscina | Uau no clique do ímã; presente para quem gosta de vinho | TikTok Shop desde 30/10, ~10.700 vendidas em 12 dias, vídeo com 2,1 mi de views. https://kolvant.com/trending-products/frost-buddy-wine-buddy-tiktok-shop-us/ | Original da marca Frost Buddy: https://frostbuddy.com/collections/wine-buddy US$39,99 (cores esgotadas) | Genérico a US$33,99 com 81 avaliações | https://cdn.shopify.com/s/files/1/0294/5453/2743/files/wine-gradient.png?v=1792783234 |
+| 3 | **Óculos-lanterna com sensor de aceno**: barra de luz nos óculos, liga com um aceno | Dor clara: luz onde você olha, mãos livres (carro, casa, pesca) | TikTok Shop desde 22/09, 6.312 vendidas até 16/10, vídeo com 3,5 mi de views. https://kolvant.com/trending-products/tiktok-shop-glasses-light-joytutus-sensor/ | https://shop.henorwa.com/products/joytutus-rechargeable-led-headlamp US$29,90 | Cópias de US$11–26 com poucas avaliações | https://cdn.shopify.com/s/files/1/0752/7809/0408/files/8e932c134c3b4d61ad062bba2f39b58e_tplv-fhlh96nyum-crop-webp_800_800.webp?v=1792587789 |
+| 4 | **Projetor de asas na coleira do cachorro**: asas de luz no chão em volta do cão no passeio | Uau na rua; presente | Onda nova desde 17/11 (34 lojas, +315 anúncios em 7 dias); já circulou em abril. https://freespyads.io/products/led-wing-projector-dog-collar | https://unigifta.com/products/led-wing-projector-dog-collar-12-designs US$39,99 | Cópia de US$16,99, 2 avaliações, sem Prime | https://cdn.shopify.com/s/files/1/1010/7928/6124/files/wp4-inferno.png?v=1794785733 |
+| 5 | **Cubo infinito luminária**: espelho com LED que vira um "túnel sem fim" | Efeito visual forte; presente para homem ou gamer | Em alta no TikTok de 25/10 a 24/11 (prova de volume fraca). https://transclipper.ai/trending-tiktok-products | https://shop.solisfortune.com/products/solis-tesseract-infinity-mirror-cube-lamp US$54,99 | INFICUBE US$49,90, 94 avaliações | https://cdn.shopify.com/s/files/1/0766/0506/3335/files/solis-tesseract-infinity-mirror-cube-lamp-01.jpg?v=1794431100 |
+| 6 | **Holograma 3D de Natal para o jardim**: estaca solar que projeta um Papai Noel "flutuando" | Visual forte à noite | 1º anúncio em 16/11; 32 lojas; +566 anúncios em 7 dias. https://freespyads.io/products/3d-christmas-hologram-yard-light | https://altamoro.com/products/3d-christmas-hologram-yard-lights-solar-usb-outdoor-decor US$28,99–39,99 | Não achei igual | https://cdn.shopify.com/s/files/1/0697/0218/9139/files/fb8614da-9708-4250-86d7-a22508d14f89.png?v=1794821071 |
+
+Observações honestas:
+- Os nºs 1, 4 e 6 têm anúncios com menos de 30 dias: a prova de lucro ainda é fraca, mas é exatamente a "beira da tendência".
+- O nº 6 só vende até ~15/12.
+- O nº 2 é de marca: venderíamos a versão genérica (cuidado com nome e fotos).
+- Os nºs 3 e 5 já têm concorrência na Amazon; o 3 só funciona em kit.
+- Ainda não passaram pela trava (custo, prazo, margem). Isso vem depois da escolha.
