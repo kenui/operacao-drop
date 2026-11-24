@@ -33,7 +33,7 @@ window.CONFIG = {
 
   heroVideo: "",       // caminho do vídeo real do fornecedor (mp4/webm). Vazio = ilustração.
   stripePk: "pk_test_51UefZS9fGfTx7kShypVC0uVAM4MfKRZo7eVHwDuMLJssfF90tIY5OdUJnFZdz3PYSQUH2zFhYMmE15bMZhpK55zI00bIwNKQXd", // TESTE conta Brasil (Kenui, 24/11). Chave pública: pode ficar no Git.
-  metaPixelId: "",     // vazio = pixel desligado
+  metaPixelId: "545543757913721", // pixel do Meta (Kenui, 24/11). ID público.
   clarityId: "",       // vazio = Clarity desligado
   defaultPet: "cat",
   defaultAngle: { cat: "pega", dog: "sozinho" },
