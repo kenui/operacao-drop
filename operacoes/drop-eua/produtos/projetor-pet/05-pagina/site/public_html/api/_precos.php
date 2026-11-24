@@ -9,12 +9,13 @@ return [
   // oferta extra (24/11, pedido do Kenui): quem ACEITA o upsell vê pelúcias extras para o 2º kit, na mesma caixa.
   'extra_on' => true,
   'testes' => [
-    'active' => '',
+    'active' => 'T11-porque-aqui',   // tem que ser igual a config.js (registra a versão em cada pedido)
     'list' => [
       'T3-preco-front'      => ['split' => 50, 'B' => ['one' => 5999, 'two' => 10999]],
       'T4-bump-preco'       => ['split' => 50, 'B' => ['bump' => 799]],
       'T5-upsell-preco'     => ['split' => 50, 'B' => ['upsell' => 3499]],
       'T6-downsell-digital' => ['split' => 50, 'B' => ['downsell' => 900, 'downsell_kind' => 'guide']],
+      'T11-porque-aqui'     => ['split' => 50, 'B' => []],   // só visual (bloco 'por que comprar aqui'); preços iguais
     ],
   ],
   // Testes do PÓS-COMPRA (camada separada do teste da página: sorteio pelo pedido, roda junto com um teste de página).

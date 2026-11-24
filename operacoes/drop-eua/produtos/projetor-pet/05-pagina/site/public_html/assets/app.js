@@ -48,6 +48,9 @@
     media(); summary();
   }
 
+  /* ---------- blocos ligados/desligados pelo config ou por teste (ex.: T11 desliga "porque") ---------- */
+  Object.keys(C.blocos||{}).forEach(function(k){ if(C.blocos[k]===false) $$('[data-bloco="'+k+'"]').forEach(function(el){el.hidden=true}) });
+
   /* ---------- fotos por pet: galeria, kit, bump, barra fixa e blocos ---------- */
   function media(){
     buildGal();
