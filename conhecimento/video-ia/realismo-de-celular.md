@@ -75,6 +75,9 @@ Limites que não mudam com o formato:
 - Urgência só se for verdadeira.
 - O rótulo de IA do Meta vai em todo anúncio.
 
+## 4c. Imagem de partida e fichas
+O quadro inicial e as fichas de pessoa, animal e produto seguem o [guia de imagem realista](../imagem-ia/guia-imagem-realista.md) (prompt em blocos, bloco de identidade colado palavra por palavra, ficha aprovada como imagem 1). Para escolher a técnica de cada problema, ver [arsenal.md](arsenal.md).
+
 ## 5. Modelo de prompt longo (Seedance 2.5 ou Kling 3.0, um por clipe)
 ```
 (primeiro: DECISÃO CRIATIVA preenchida, ver 4b)
