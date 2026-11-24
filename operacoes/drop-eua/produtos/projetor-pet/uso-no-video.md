@@ -19,7 +19,8 @@ Feita pelo [modelo](../../../../conhecimento/video-ia/modelo-ficha-uso-produto.m
 | Estados | desligado → ligado (luz acesa embaixo, bichos aparecem no chão) | "off: plain white object; on: a soft glow under it and small light shapes appear on the floor" |
 | Som | [CJ] em geral silencioso ou zumbido baixo de motor | "near silent, faint motor hum up close" |
 | Luz própria | LED que projeta para baixo/para frente | "the light falls on the floor in a wide soft circle, not a beam into the air" |
-| Ratinho de pelúcia | ~8 a 10 cm, cinza, rabo de cordão [CJ] | "small gray plush mouse, palm-sized, string tail" |
+| Ratinho de pelúcia (kit gato) | ~8 a 10 cm, cinza, rabo de cordão [CJ] | "small gray plush mouse, palm-sized, string tail" |
+| Pelúcia com apito (kit cachorro) | ~15 a 20 cm, formato de esquilo ou raposa [CJ] | "plush squirrel toy about the length of a hand, squeaks when bitten" |
 | Rótulo | sem marca | "blank surface, no readable text" |
 
 ## 3. Como se segura
@@ -46,6 +47,11 @@ Feita pelo [modelo](../../../../conhecimento/video-ia/modelo-ficha-uso-produto.m
 - Por que surpreende: a pessoa espera um ponto; vê vários bichos saindo do chão. E nunca viu o "final feliz" num anúncio de luz.
 - Reação de quem testa: "sits back on her heels, covers her mouth, laughs once through her nose, glances at the camera".
 - Filmagem real de referência: [CJ] pedir 3 a 10 s do aparelho projetando no chão, em ambiente escuro.
+
+## 5b. Cachorro (frente própria)
+- Sequência real (do anúncio de referência): fareja a caixa → fareja os anéis de luz → bate a pata num anel → corre de anel em anel. Cachorro não "agacha e balança o traseiro" como gato; ele abaixa a frente com o traseiro para cima (play bow), late curto, pula de lado.
+- CATCH BEAT do cachorro: a luz apaga, a pelúcia cai, ele morde e sacode a cabeça de um lado para o outro; ouve-se o apito.
+- Cachorro: um só, raça comum e reconhecível (buldogue francês ou vira-lata médio), mesma pelagem em todos os cortes.
 
 ## 6. Física que a IA costuma errar aqui
 - **Luz:** os bichos ficam no chão, achatados no piso, seguem a perspectiva do chão. Não flutuam, não brilham no ar, não fazem feixe de laser visível. Ficam por cima da pata do gato (a luz projeta sobre o pelo), não por baixo.
@@ -74,6 +80,14 @@ Sound: near silent device; real sounds only: paws thumping on the floor, a soft 
 WOW BEAT: empty dim floor -> light mice run out -> the cat crouches, butt wiggles, pounces, looks under its paw. One continuous shot, real speed, no slow motion, matching reference video @[n].
 CATCH BEAT: the light switches off, the plush mouse lands in front of the cat, the cat grabs it with both front paws and walks off with it in its mouth.
 Reaction: she sits back, laughs once through her nose, glances at the lens. She does not claim she bought it or long-term results.
+```
+
+### PRODUCT LOCK, linhas extras para cachorro
+```
+Dog: ONE small gray French bulldog, same markings in every shot, real dog anatomy; play bow (front down, rear up), short barks, sniffs the light rings, paws at them.
+Plush: ONE plush squirrel toy about the length of a hand; squeaks only when bitten; squashes when bitten.
+CATCH BEAT (dog): the light switches off, the plush lands in front of the dog, the dog grabs it and shakes its head side to side, squeak sounds.
+Light: 6-8 glowing orange rings on the wooden floor like little holes, small critters pop out of them; flat on the floor, never floating.
 ```
 
 ## 9. Histórico de vídeos

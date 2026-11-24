@@ -18,14 +18,19 @@ Imagem de referência (não é nossa, só para ver): https://cdn.shopify.com/s/f
   - Nem todo gato liga. Gatos velhos ou calmos olham e vão embora.
   - Não substitui o dono: é para sessões de 10 a 15 min, não para deixar ligado o dia inteiro sozinho.
 
-## 2. Oferta proposta (kit exclusivo)
+## 2. Oferta proposta (kit exclusivo, duas frentes: gato e cachorro)
+**Decisão do Kenui (24/11): trabalhar gato e cachorro, os dois como públicos de verdade.** Mesmo aparelho, kit e página trocados pelo pet.
 - **Kit "a caça completa":** projetor recarregável + 1 ratinho de pelúcia com catnip (o "fim da caça") + caixa de presente. **US$34,99**.
 - Por que o kit: (1) resolve a objeção nº 1 do próprio mercado (a Pouncy manda "terminar com um brinquedo de verdade" mas não vende o brinquedo); (2) afasta a comparação com a cópia de US$14 da Amazon; (3) vira presente pronto.
 - Kit de 2 (um para o seu pet, um para dar): preço a definir depois do custo.
-- Ratinho com catnip: só gato. Para cachorro, a versão do kit troca por bolinha ou pelúcia sem catnip **[suposição]**, testar só se o ângulo de cachorro rodar.
+- **Kit gato:** projetor + ratinho de pelúcia com catnip + caixa de presente.
+- **Kit cachorro:** projetor + brinquedo de pelúcia com apito (squeaky), tamanho para cão pequeno e médio, sem catnip + caixa de presente. O "fim da caça" do cachorro é morder e sacudir algo que apita.
+- Página única com escolha "for my cat / for my dog"; o link de cada anúncio já abre no pet certo (`?pet=cat` ou `?pet=dog`).
+- Cachorro grande: a projeção funciona, mas um cão grande e agitado pode derrubar ou morder o aparelho. A página diz "best for small and medium dogs" até termos prova melhor (os anúncios vistos mostram buldogue francês, golden e labrador).
 - **Conta (da trava):** a US$34,99, custo entregue do kit tem que ser ≤ US$10,50. O ratinho de pelúcia custa centavos, mas pesa no frete: pedir à CJ o kit embalado junto.
 
 ## 3. Mercado
+- **Gato x cachorro na Biblioteca do Meta (24/11):** os vídeos que rodam são todos de cachorro; o texto cita cachorro em 98 de 117 anúncios. Cachorro é o mercado provado; gato é o espaço livre. Por isso as duas frentes.
 - **Desejo de massa (Schwartz):** "quero que meu gato gaste energia e fique feliz sem eu ter que ficar balançando varinha depois de um dia cansativo." Para presente: "quero dar algo que faça o dono rir na primeira vez que liga."
 - **Desejos básicos (Whitman):** cuidar de quem ama (o pet), conforto (o dono descansa), livre de dor (sem gato acordando às 4h, sem móvel destruído), aprovação social (o vídeo do gato que todo mundo quer gravar).
 - **Sofisticação:** estágio 3 em 8 dias. Biblioteca do Meta (24/11): ~140 anúncios de 46 lojas, todos com a mesma promessa "pet entediado em dia de chuva" e vídeo de cachorro; nenhum fala de captura, nenhum de gato em vídeo, nenhum de recarregável. 92 lojas, mesmo criativo, mesma promessa ("instant zoomies"). Promessa direta já não diferencia; diferencia o **mecanismo do kit (a captura)** e a **identificação com o dono cansado**.
@@ -101,10 +106,12 @@ Reforço: caixa de presente, prazo real dito antes da compra, devolução clara.
 | "Funciona de dia?" | Melhor à noite ou com cortina fechada. Dizemos isso na página. |
 | "E se meu gato não ligar?" | Alguns gatos não ligam. Devolução de 30 dias. |
 | "Essas lojas de anúncio são golpe." | Contato real, prazo real com rastreio, política de devolução escrita, cobrança pela Stripe. |
-| "Serve para cachorro?" | Muitos cães perseguem; cachorro grande e agitado pode querer morder o aparelho: colocar em lugar alto. (Confirmar com vídeo antes de prometer.) |
+| "Serve para cachorro?" | Sim, tem kit próprio com pelúcia que apita. Melhor para cães pequenos e médios; cão grande e agitado pode derrubar o aparelho. |
+| "Meu cachorro vai ficar latindo para a luz?" | Alguns latem no começo. Sessões curtas e o brinquedo no fim ajudam a encerrar a brincadeira. Não prometemos silêncio. |
 
 ## 8. Ideia central (uma frase)
 **"Your cat gets the chase, then gets the catch, and you get to stay on the couch."**
+Versão cachorro: **"He chases the critters, then gets a real toy to shake, and you don't have to get off the couch."**
 Em português: o gato caça a luz, termina pegando o ratinho de verdade, e o dono cansado não precisa levantar.
 
 ## 9. Conformidade (FTC e Meta), específica deste produto
