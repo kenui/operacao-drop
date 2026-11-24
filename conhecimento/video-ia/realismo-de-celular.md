@@ -39,8 +39,42 @@ Cortes secos entre ângulos (3 a 5 cortes em 15 s). Texto na tela só para refor
 ## 4. O produto como ele é (projetor pet como exemplo)
 Antes de escrever, abra a ficha `uso-no-video.md` e a tabela de verdade (`cenas-de-referencia.md`). Copie no prompt a forma, o tamanho, de onde sai a luz, o que se mexe e o que fica parado. Nada que não esteja provado em vídeo real.
 
+## 4b. Bloco de decisão criativa (vem antes do prompt; pedido do Kenui, 24/11)
+O formato muda conforme a persona, o ângulo e o tipo de anúncio. Cada escolha tem um porquê baseado em dados, fica registrada e vira teste, porque o dado pode estar errado.
+
+Preencha antes de escrever o prompt e guarde na ficha do vídeo (`videos/<id>.md`):
+```
+DECISÃO CRIATIVA
+- Persona e nível de consciência: [de 03-persona.md, ex.: dona de cachorro, sabe da dor, não conhece o produto]
+- Ângulo: [de 04-angulos.md, ex.: B dono cansado]
+- Tipo de anúncio: [demonstração | criador recomendando | problema-solução | reação | comparação | presente]
+- Quem fala e como: [criador demonstrando ao vivo | casal conversando | criador recomendando para quem tem o mesmo problema]
+- Força do CTA: [suave "comment X" | médio "link in bio, it's on sale" | forte "get yours before it sells out" + motivo real]
+- Por quê (dados): [ex.: 46 anunciantes usam "comment DOG" e o anúncio mais antigo tem 8 dias; persona fria pede prova antes de pedido; buraco do mercado = captura]
+- Fonte de cada dado: [link ou arquivo]
+- Hipótese: [ex.: CTA forte com motivo real aumenta CTR sem derrubar a taxa de gancho]
+- Teste: [variável única, ex.: mesmo vídeo com CTA suave x forte; métrica: CTR e custo por compra; mínimo 1.000-2.000 impressões, 7 dias]
+- Resultado: [preencher depois; vencedor vira padrão no JEITO-CERTO e no painel.csv]
+```
+
+Guia rápido para escolher (ponto de partida, a confirmar com teste):
+| Situação do público | Formato que costuma servir | CTA |
+|---|---|---|
+| Não sabe que o problema tem solução (frio) | demonstração com o efeito uau nos 3 primeiros segundos, criador reagindo | suave ou médio |
+| Sabe da dor, não conhece o produto | problema-solução: dor visível, criador mostra e conversa | médio |
+| Já viu o produto (remarketing, quente) | criador recomendando com objeção respondida (luz baixa, captura) e oferta | forte, com motivo verdadeiro (kit, frete, estoque real) |
+| Época de presente | criador dando de presente ou mostrando a caixa | médio ou forte com prazo real de entrega |
+
+Limites que não mudam com o formato:
+- "Alguém recomendando" é o criador recomendando a partir do que ele está vendo ao vivo, por exemplo: "honestly, if your dog gets bored, get this".
+- Ele não diz que comprou, que usa há semanas, nem que é cliente verificado.
+- Não há resultado inventado.
+- Urgência só se for verdadeira.
+- O rótulo de IA do Meta vai em todo anúncio.
+
 ## 5. Modelo de prompt longo (Seedance 2.5 ou Kling 3.0, um por clipe)
 ```
+(primeiro: DECISÃO CRIATIVA preenchida, ver 4b)
 CORE CONCEPT: Real UGC video filmed on an iPhone in a lived-in American living room at dusk. [Creator] shows her partner how [product] works with their [animal]. It must look and sound like a real couple filming a real moment, not an ad.
 
 CHARACTER LOCK: [descrição física fixa do criador, roupa, cabelo, marcas]. Same face, hair and clothes in every shot. [bloco de pele do Riley]
@@ -76,6 +110,7 @@ BANS: no text, no subtitles, no music, no slow motion, no morphing, no extra ani
 Quadro inicial de cada clipe (imagem barata) com tudo já no lugar: criador, produto, efeito no estado certo e o animal olhando para a presa. O vídeo só anima a partir dele.
 
 ## 6. Conferência antes de mostrar ao Kenui
+- [ ] A DECISÃO CRIATIVA está preenchida, com dados, fonte e teste?
 - [ ] O criador aparece falando, e tem conversa com o parceiro?
 - [ ] As vozes soam como pessoas num cômodo (eco leve, ritmo irregular, risada)?
 - [ ] O animal olha para a presa em todos os quadros do efeito?
