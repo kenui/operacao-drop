@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
   upsell VARCHAR(20), pi_upsell VARCHAR(64), upsell_pet VARCHAR(10), valor_upsell INTEGER DEFAULT 0, custo_upsell INTEGER DEFAULT 0,
   downsell VARCHAR(20), pi_downsell VARCHAR(64), valor_downsell INTEGER DEFAULT 0, custo_downsell INTEGER DEFAULT 0,
   reembolsado INTEGER DEFAULT 0, contestado INTEGER DEFAULT 0,
-  email VARCHAR(190), nome VARCHAR(190), cep VARCHAR(20), cidade VARCHAR(80), estado VARCHAR(10), endereco TEXT,
+  email VARCHAR(190), nome VARCHAR(190), telefone VARCHAR(30), cep VARCHAR(20), cidade VARCHAR(80), estado VARCHAR(10), endereco TEXT,
   ip VARCHAR(45), ua VARCHAR(255), ctx TEXT
 );
 CREATE TABLE IF NOT EXISTS eventos (

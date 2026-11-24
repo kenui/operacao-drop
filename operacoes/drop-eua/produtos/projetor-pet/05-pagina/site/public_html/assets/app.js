@@ -14,10 +14,10 @@
     return {
       brand:C.brand||pend("nome da loja"),
       priceOne:money(C.kits.one.price), priceTwo:money(C.kits.two.price),
-      eachTwo:money(C.kits.two.price/2)+" each", saveTwo:"Save "+money(C.kits.two.save),
+      eachTwo:money(C.kits.two.price/2)+" each", saveTwo:"You Save "+money(C.kits.two.save),
       priceBump:money(C.bump.price),
       delivery:C.delivery||pend("prazo real da CJ"),
-      deliveryLong:C.delivery?("Arrives in "+C.delivery):pend("prazo da CJ"),
+      deliveryLong:C.delivery?("Arrives in "+C.delivery+" after you order"):pend("prazo da CJ"),
       deliveryShort:C.delivery?("Arrives in "+C.delivery):pend("prazo"),
       shipsFrom:C.shipsFrom||pend("origem do envio, CJ"),
       xmasCutoff:C.xmasCutoff,
@@ -33,36 +33,28 @@
     $$("[data-f]").forEach(function(el){var v=F[el.dataset.f]; if(v!==undefined&&v!==null) el.innerHTML=v;});
     $$("[data-f-show]").forEach(function(el){el.hidden=!C[el.dataset.fShow]});
     $$("[data-f-show-bonus]").forEach(function(el){el.hidden=!(C.bonus&&C.bonus.on)});
-    if(C.kits.two.highlight){$('[data-kit="two"]').classList.add("hl");$("#hlTag").hidden=false;}
+    $("#hlTag").textContent=C.kits.two.highlight?"Mix Cat + Dog":"Best for Gifts";
     $$("[data-pet-only]").forEach(function(el){el.hidden=el.dataset.petOnly!==S.pet});
     $$(".pets button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.pet===S.pet)});
     $("#h1").textContent=A.h1; $("#sub").textContent=A.sub;
     $("#prob").innerHTML=A.prob.map(function(t){return "<p>"+t+"</p>"}).join("");
     $("#mech").innerHTML=P.mech.map(function(t){return "<p>"+t+"</p>"}).join("");
-    $("#bumpT").textContent=P.bumpT.replace("{bump}",money(C.bump.price)); $("#bumpD").textContent=P.bumpD;
-    $("#finalH").textContent=S.pet==="cat"?"Give the hunt an ending tonight.":"Give the chase an ending tonight.";
+    $("#probH").textContent=P.probH;
+    $("#bumpT").textContent=P.bumpT; $("#bumpD").textContent=P.bumpD; $("#sumBumpName").textContent=P.bumpT.replace(/^Add /,"");
+    $("#finalH").textContent=P.final;
+    try{sessionStorage.setItem("pet",S.pet)}catch(e){}
     media(); summary();
   }
 
-  /* ---------- mídia: vídeo real do fornecedor ou ilustração ---------- */
+  /* ---------- fotos por pet: galeria, kit, bump, barra fixa e blocos ---------- */
   function media(){
-    var m=$("#media");
-    if(C.heroVideo){ m.innerHTML='<video src="'+C.heroVideo+'" autoplay muted loop playsinline preload="metadata"></video>'; return; }
-    var dog=S.pet==="dog";
-    var critter=function(id,path,dur,delay){
-      return '<g filter="url(#gl)"><g><ellipse rx="13" ry="7" fill="#ffd27a"/><circle cx="12" cy="0" r="5.5" fill="#ffd27a"/>'+
-      (dog?'<path d="M-12 0 q-14 -16 -4 -20" stroke="#ffd27a" stroke-width="6" fill="none" stroke-linecap="round"/>':'<path d="M-12 0 q-12 6 -20 -2" stroke="#ffd27a" stroke-width="2" fill="none"/>')+
-      '<animateMotion dur="'+dur+'s" begin="'+delay+'s" repeatCount="indefinite" rotate="auto" path="'+path+'"/></g></g>';
-    };
-    m.innerHTML='<svg viewBox="0 0 400 300" role="img" aria-label="Drawing: glowing '+(dog?"critters":"mice")+' running across a dark floor around the projector">'+
-      '<defs><radialGradient id="fl" cx="50%" cy="70%" r="70%"><stop offset="0" stop-color="#3a2f3f"/><stop offset="1" stop-color="#14121a"/></radialGradient>'+
-      '<filter id="gl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
-      '<rect width="400" height="300" fill="url(#fl)"/>'+
-      '<g fill="none" stroke="#ffb547" stroke-width="3" opacity=".75" filter="url(#gl)"><ellipse cx="95" cy="215" rx="38" ry="12"/><ellipse cx="300" cy="235" rx="42" ry="13"/><ellipse cx="250" cy="150" rx="30" ry="9"/></g>'+
-      critter(1,"M95 215 C150 260 230 250 300 235",3.4,0)+critter(2,"M300 235 C330 190 300 160 250 150",2.8,-.9)+critter(3,"M250 150 C190 140 120 180 95 215",3.1,-1.7)+
-      '<ellipse cx="200" cy="118" rx="60" ry="16" fill="#ffb547" opacity=".12"/>'+
-      '<g><path d="M178 112 q22 -40 44 0 z" fill="#efe8de"/><circle cx="183" cy="74" r="7" fill="#efe8de"/><circle cx="199" cy="66" r="7" fill="#efe8de"/><circle cx="215" cy="74" r="7" fill="#efe8de"/><rect x="176" y="108" width="48" height="8" rx="4" fill="#d8cfc2"/></g>'+
-      '</svg><div class="cap">Illustration · real product video coming</div>';
+    buildGal();
+    var pet=S.pet;
+    $$('[data-img="kit"]').forEach(function(i){i.src="assets/img/kit-"+pet+"-sm.webp"});
+    $$('[data-img="bump"]').forEach(function(i){i.src="assets/img/bump-"+pet+"-sm.webp"});
+    $("#catchImg").src="assets/img/catch-"+pet+".webp";
+    $("#finalImg").src="assets/img/hero-"+pet+".webp";
+    $("#probImg").src=pet==="dog"?"assets/img/hero-dog.webp":"assets/img/rest-cat.webp";
   }
 
   /* ---------- trocar pet ---------- */
@@ -79,7 +71,8 @@
   function total(){return (S.kit==="two"?C.kits.two.price:C.kits.one.price)+(S.bump?C.bump.price:0)}
   function summary(){
     var two=S.kit==="two";
-    $("#sumKit").textContent=two?("2 kits ("+S.mix.join(" + ")+")"):("1 kit ("+S.pet+")");
+    var cap=function(x){return x==="dog"?"Dog":"Cat"};
+    $("#sumKit").textContent=two?("Hunt & Catch Kit × 2 ("+S.mix.map(cap).join(" + ")+")"):("Hunt & Catch Kit ("+cap(S.pet)+")");
     $("#sumKitP").textContent=money(two?C.kits.two.price:C.kits.one.price);
     $("#sumBumpRow").hidden=!S.bump;
     $("#sumTotal").textContent=money(total()); $("#payAmt").textContent=money(total());
@@ -143,9 +136,14 @@
       if(Math.round(total()*100)!==j.amount){ err("Price updated: your total is $"+(j.amount/100).toFixed(2)+"."); }
       loadStripe(function(){
         stripe=Stripe(C.stripePk);
-        elements=stripe.elements({clientSecret:j.clientSecret,appearance:{theme:"stripe",variables:{colorPrimary:"#e8590c",borderRadius:"10px",fontSizeBase:"16px"}}});
-        var link=elements.create("linkAuthentication"); link.mount("#linkEl"); link.on("change",function(e){email=e.value.email||""});
-        elements.create("address",{mode:"shipping",allowedCountries:["US"]}).mount("#addrEl");
+        elements=stripe.elements({clientSecret:j.clientSecret,appearance:{theme:"stripe",variables:{colorPrimary:"#ff6b3d",colorText:"#232046",borderRadius:"12px",fontSizeBase:"16px",fontFamily:"Nunito Sans, system-ui, sans-serif"}},fonts:[{cssSrc:"https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"}]});
+        var link=elements.create("linkAuthentication"); link.mount("#linkEl");
+        link.on("change",function(e){email=e.value.email||""; if(e.complete&&window.identify) identify({email:email});});
+        // telefone obrigatório: avisos de entrega e correspondência do Meta (ph)
+        var addr=elements.create("address",{mode:"shipping",allowedCountries:["US"],fields:{phone:"always"},validation:{phone:{required:"always"}}});
+        addr.mount("#addrEl");
+        addr.on("change",function(e){ if(!e.complete||!window.identify) return; var v=e.value,a=v.address||{};
+          identify({name:v.name,phone:v.phone,city:a.city,state:a.state,zip:a.postal_code,country:a.country}); });
         var pay=elements.create("payment",{layout:"tabs"}); pay.mount("#payEl");
         btn.hidden=true; $("#coArea").hidden=false;
       });

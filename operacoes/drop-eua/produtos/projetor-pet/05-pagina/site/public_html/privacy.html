@@ -1,19 +1,25 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy policy</title>
-<link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap"><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head><body>
 <div class="preview" id="previewBar" hidden>PRÉVIA: campos em amarelo pendentes</div>
 <main class="page"><div class="wrap"><p><a href="index.html">← Back</a></p><h1>Privacy policy</h1>
 
 <p>This policy explains what <span data-f="brand"></span> (operated by <span data-f="legalName"></span>) collects when you visit or buy, and what you can do about it.</p>
 <h2>What we collect</h2><p>When you buy: your name, email, shipping address and order details. Card details go straight to Stripe, our payment processor; we never see or store your full card number.</p>
-<p>When you visit: pages viewed, clicks, device type, and how you arrived (for example, an ad link). We use a first-party cookie to recognize your visit.</p>
-<h2>Who we share it with</h2><ul><li><b>Stripe</b>, to process payments and prevent fraud.</li><li><b>Our fulfillment partner</b>, to pack and ship your order (name and address only).</li><li><b>Meta (Facebook/Instagram)</b>, through the Meta Pixel and Conversions API, to measure our ads. Emails and addresses sent to Meta are hashed first.</li><li><b>Microsoft Clarity</b>, to see anonymized heatmaps of how people use the page.</li></ul>
-<p>We don't sell your personal information for money.</p>
-<h2>Your choices</h2><p>Click "Opt out" on the cookie banner, or <a href="#" onclick="try{localStorage.setItem('optout','1')}catch(e){};alert('Opted out on this browser.');return false">opt out here</a>, to stop ad measurement cookies on this browser. You can also email us to see, correct or delete your data.</p>
-<h2>California residents (CCPA/CPRA)</h2><p>You have the right to know what personal information we collect and how it's used, to ask us to delete or correct it, and to opt out of the "sharing" of your information for cross-context behavioral advertising (our use of the Meta Pixel counts as sharing under California law). Use the opt-out link above or email <span data-f="email"></span>. We won't treat you differently for using these rights. We honor Global Privacy Control signals as an opt-out.</p>
+<p>When you visit: pages viewed, clicks, device type, and how you arrived (for example, an ad link). We use first-party cookies to recognize your visit and to connect a purchase to the ad that brought you. Your phone number is used for delivery updates about your order and, hashed, for ad measurement.</p>
+<h2>Who we share it with</h2><ul><li><b>Stripe</b>, to process payments and prevent fraud.</li><li><b>Our fulfillment partner</b>, to pack and ship your order (name and address only).</li><li><b>Meta (Facebook/Instagram)</b>, through the Meta Pixel and Conversions API, to measure our ads. Emails, phone numbers, names and addresses sent to Meta are hashed first.</li><li><b>Microsoft Clarity</b>, to see anonymized heatmaps of how people use the page.</li></ul>
+<h2 id="choices">Your Privacy Choices</h2>
+<p>We don't sell your personal information for money. We do share some of it with Meta to measure and improve our ads: pages you view, items you add, and, when you check out, your email, phone, name and city/state/ZIP. These are hashed (scrambled) before they leave our server or your browser. Under California and some other state laws, this counts as "sharing" for cross-context behavioral advertising.</p>
+<div class="box"><label style="display:flex;gap:12px;align-items:center;font-weight:800;cursor:pointer"><input type="checkbox" id="optBox" style="width:24px;height:24px;accent-color:var(--act)"> Limit the use of my data for ads on this browser</label>
+<p class="src" id="optMsg" style="margin:8px 0 0"></p></div>
+<p>When this box is on, or when your browser sends a Global Privacy Control (GPC) signal, we tell Meta to process your data under its Limited Data Use mode, and we turn off Microsoft Clarity. You can also email <span data-f="email"></span> to see, correct or delete your data. We won't treat you differently for using these rights.</p>
+<h2>California residents (CCPA/CPRA)</h2><p>You have the right to know what personal information we collect and how it's used, to ask us to delete or correct it, and to opt out of the "sharing" of your information for cross-context behavioral advertising. Use the box above or email <span data-f="email"></span>. We honor Global Privacy Control signals as an opt-out.</p>
 <h2>How long we keep it</h2><p>Order records for as long as tax and accounting rules require. Visit data for up to 13 months.</p>
 <h2>Kids</h2><p>This site isn't directed to children under 13.</p>
 <h2>Contact</h2><p><span data-f="email"></span></p><p class="src">Last updated: <span data-f="updated"></span></p></div></main>
-<footer><div class="wrap"><b data-f="brand"></b><nav><a href="shipping.html">Shipping</a><a href="returns.html">Returns &amp; refunds</a><a href="track-order.html">Track order</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+<footer><div class="wrap"><b data-f="brand"></b><nav><a href="shipping.html">Shipping</a><a href="returns.html">Returns &amp; refunds</a><a href="track-order.html">Track order</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html#choices">Your Privacy Choices</a></nav>
 <p><span data-f="legalName"></span> · <span data-f="email"></span></p></div></footer>
-<script src="assets/track.js"></script><script src="assets/pages.js"></script></body></html>
+<script src="assets/track.js"></script><script src="assets/pages.js"></script>
+<script>(function(){var b=document.getElementById("optBox"),m=document.getElementById("optMsg");
+function show(){var on=privacyChoice();b.checked=on;m.textContent=navigator.globalPrivacyControl?"Your browser is sending a GPC signal, so this is on.":(on?"On for this browser.":"Off.");b.disabled=navigator.globalPrivacyControl===true}
+b.onchange=function(){setPrivacyChoice(b.checked);show()};show();})();</script></body></html>
