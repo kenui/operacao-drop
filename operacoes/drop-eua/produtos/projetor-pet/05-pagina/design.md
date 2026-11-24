@@ -28,4 +28,4 @@ hero-cat, hero-dog (caça à noite), rest-cat (dona no sofá), catch-cat, catch-
 - Selo do kit 2: "Best for Gifts" vs. "Mix Cat + Dog".
 
 ## Prints
-`05-pagina/prints/v3-*.png` (390 px).
+`05-pagina/prints/v3-*.jpg` (390 px).
