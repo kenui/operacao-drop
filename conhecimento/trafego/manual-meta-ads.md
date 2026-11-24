@@ -62,7 +62,7 @@ Ad set de Vendas Advantage+ aceita até 50 anúncios; o antigo "ASC" acabou na A
 ## 5. Criativo: o que testar e como
 
 ### 5.0 Primeiro modelar o que já vende (regra do Kenui, 24/11)
-"Modelar criativos escalados que estão vendendo e/ou vídeos orgânicos de sucesso aumenta demais as nossas chances." Por isso **a maioria dos conceitos do teste nasce de uma referência provada**. O conceito "do zero" fica como aposta, não como base.
+"Modelar criativos escalados que estão vendendo e/ou vídeos orgânicos de sucesso aumenta demais as nossas chances." E o ajuste dele, no mesmo dia: "Não precisa ser cada anúncio, porque ainda podemos fazer bons anúncios com nossa pesquisa avançada de persona, mas sempre considerar isso dependendo da oferta e da consciência do que estamos vendendo." Por isso **toda rodada de criativos começa olhando o que já escala**. Quanto isso pesa depende da oferta e do nível de consciência (tabela abaixo). Conceito saído da pesquisa de persona é tão legítimo quanto o modelado.
 
 **Por quê (dado):** um anúncio que roda há semanas com várias variações já passou no teste mais caro, que é o dinheiro de outra loja. Um vídeo orgânico com milhões de views provou o gancho e o formato com o público, sem verba. Modelar troca a pergunta "isso funciona?" por "funciona com o nosso produto e a nossa página?", que é mais barata de responder. A Meta continua pedindo diversidade (§1), então modelamos a **estrutura** de referências **diferentes entre si**, nunca 5 cópias do mesmo anúncio.
 
@@ -79,7 +79,13 @@ Ad set de Vendas Advantage+ aceita até 50 anúncios; o antigo "ASC" acabou na A
 3. Refazer com o **nosso** produto real, a nossa persona e o nosso ângulo: mesma estrutura e ritmo, outra cena, outra pessoa, outro texto. Nunca reaproveitar vídeo, música, rosto ou marca de terceiros (direito autoral e política da Meta), nunca fingir que é cliente nem mostrar o que o produto não faz.
 4. O nome do anúncio leva a referência: `<angulo>-<persona>-<formato>-ref<id>-v1`, para medir depois se modelar funciona melhor que criar do zero (teste H-T8, §9).
 
-**Na seleção dos 3 a 5 conceitos do teste:** pelo menos **2 de cada 3** saem de referências provadas e diferentes entre si (ângulos, personas ou formatos distintos); no máximo 1 é aposta própria (por exemplo, um buraco que ninguém usa). Peso na escolha: prova da referência (tempo no ar × versões, ou views) > encaixe com a persona > custo de produção.
+**Na seleção dos 3 a 5 conceitos do teste:** o peso da modelagem muda com a oferta e a consciência do público:
+| Situação | Peso da modelagem | Por quê |
+|---|---|---|
+| Produto que o público **já viu** em anúncios de concorrentes (consciente do produto/solução, mercado com vários anúncios escalados) | **alto**: a maioria dos conceitos modela referências provadas, cada uma de um ângulo/formato diferente | o mercado já mostrou qual gancho e formato vendem esse produto; a diferença está na nossa oferta e página |
+| Produto novo ou pouco anunciado (público inconsciente ou só consciente do problema) | **médio**: modelar a **estrutura e o formato** de orgânicos de sucesso do nicho (ex.: vídeos virais de pets) e tirar a dor e o ângulo da pesquisa de persona | não existe anúncio escalado do produto para copiar; a persona diz qual dor abre a conversa |
+| Oferta diferente do mercado (kit, bônus, preço, ângulo que ninguém usa) | **baixo a médio**: pelo menos um conceito próprio para provar o diferencial | modelar só o concorrente esconde exatamente o que nos diferencia |
+Em todos os casos: registrar no plano a referência de cada conceito, ou "persona" quando ele vem da pesquisa. Peso na escolha entre candidatos: prova (tempo no ar × versões, ou views) e encaixe com a persona > custo de produção.
 
 ### 5.1 O que é um "criativo diferente"
 Diferente em pelo menos **dois** destes: ângulo (motivo de compra), persona/avatar (quem aparece e para quem fala), formato (UGC falado, demo sem fala, estático, carrossel, depoimento, "trend"), nível de consciência. Agrupar por **persona × conceito**, não só conceito. **[META; PRÁTICA: Pigeon Digital]**
@@ -171,7 +177,7 @@ O painel casa gasto e venda **pelo ID** (nome muda, ID não). Combinado com a th
 | H-T4 | Audience Network traz clique barato sem compra | compras e IC por posicionamento | ao dia 3: se AN levar >15% do gasto com 0 IC, excluir AN e registrar |
 | H-T5 | Custo-alvo no CPA alvo estabiliza a escala melhor que maior volume | lucro do painel por semana | depois de 30+ compras |
 | H-T6 | Remarketing separado é incremental | venda total com e sem (§7) | 4 semanas após abrir |
-| H-T8 | Conceito modelado de referência provada bate conceito do zero | CPA e hook rate por origem (`ref` no nome) | contínuo, a partir do lançamento |
+| H-T8 | Conceito modelado de referência provada bate conceito saído só da persona | CPA e hook rate por origem (`ref` no nome) | contínuo, a partir do lançamento |
 | H-T7 | Abrir a mesma oferta para o Canadá/Reino Unido barateia o CPA | CPA por país | só depois de lucro estável nos EUA e prazo de entrega confirmado |
 
 Cada teste encerrado vira linha em `operacoes/drop-eua/registro-de-ganhos.csv` e parágrafo em [aprendizados.md](aprendizados.md).
