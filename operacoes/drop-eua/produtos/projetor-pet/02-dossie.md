@@ -38,6 +38,46 @@ Imagem de referência (não é nossa, só para ver): https://cdn.shopify.com/s/f
 - **Concorrência indireta forte:** laser automático com milhares de avaliações por US$16 a 19 no Walmart e na Amazon; projetores de mão a US$10. O nosso precisa parecer **outra categoria** (bichos no chão, fim com captura), não "um laser mais caro".
 - **Desconfiança alta:** matérias e vídeos de "is it legit or scam?" na mesma semana do lançamento. Loja nova com contato real, prazo honesto e devolução clara já se destaca.
 
+## 3b. Quem é o público e o que chama a atenção dele (pesquisa de 24/11, pedido do Kenui)
+**Quem são**
+- **A geração millennial é a que mais tem pet**: 80% dos donos millennials têm cachorro e 61% têm gato. Donos têm renda acima da média e 59 a 61% têm casa própria. O gênero dos donos é quase meio a meio. Fonte: Morning Consult, 1,5 milhão de entrevistas em 2025 (https://morningconsult.com/reports/pet-ownership-america-dogs-cats-brand-data). [certo]
+- **O pet é filho**:
+  - 81% dos casais sem filhos se chamam de "mãe" ou "pai" do pet;
+  - 94% falam com o pet como se fosse gente;
+  - 65% deixam TV ou música ligada quando saem;
+  - 61% compram brinquedo todo mês;
+  - 31% compram brinquedo caro.
+  Fonte: Insurify, 750 casais sem filhos de 22 a 44 anos, março de 2025 (https://insurify.com/pet-insurance/insights/dink-pet-owners/). [certo]
+- 48% da geração Z vê o pet igual a um filho (Talker Research/Vetster, 2025: https://talkerresearch.com/paw-rental-differences-how-each-generation-views-their-pets/). A geração Z gasta em média US$178 por mês com o pet (Lemonade, via Newsweek). [certo]
+- **A posse de gato subiu 23% em 2024** (49 milhões de casas). Cresce o "tempo de qualidade" com o gato: 21% fazem festa para o gato (APPA 2025: https://americanpetproducts.org/news/the-american-pet-products-association-appa-releases-2025-dog-cat-report). [certo]
+
+**O que valorizam e querem** [leitura nossa a partir dos dados acima]
+- Ver o pet feliz e entretido, e sentir menos culpa quando não podem brincar (dia de chuva, cansaço, trabalho).
+- Ter uma relação de mãe ou pai com o pet: falam com ele, filmam e mostram para os outros.
+- Um tempo para si sem abandonar o pet ("ele brinca, eu descanso").
+
+**O que para o dedo no feed**
+- **Primeiro quadro com movimento**: 46,5% dos vídeos passaram de 2× a visualização normal da conta. Com **pessoa falando para a câmera**, foram 45,2%; com narração sem rosto, só 19,7%. Ganchos em forma de pergunta e de "como fazer" foram os melhores. Base: 608 demonstrações de produto pet entre outubro e novembro de 2026 (Virlo: https://virlo.ai/tiktok-ideas/pets/product-demos). [certo]
+- Em 2.572 anúncios e posts de pet de novembro de 2026 (inBeat: https://inbeat.agency/reports/pet-ugc-study) [certo]:
+  - 74% dos anúncios citam um problema concreto do pet ou do dono;
+  - em 60% o pet aparece no 1º segundo, então isso já é o mínimo;
+  - **o que diferencia é a reação do pet entre o segundo 2 e o 5**.
+- Formatos de pet que viralizam [mercado]:
+  - zoomies e reação engraçada;
+  - "POV" e texto do ponto de vista do pet;
+  - pet "falando" ou com voz de filho;
+  - a mãe ou o pai do pet falando com ele em voz de bebê;
+  - expectativa contra realidade.
+  Fontes: https://wigglepet.app/blog/make-your-pet-go-viral-on-social-media, https://www.miracamp.com/learn/content-creation/how-to-create-viral-pet-content-on-tiktok-instagram e a tese de Roskilde 2025 sobre narrativas de fofura (https://rucforsk.ruc.dk/ws/files/111143494/).
+
+**Quem aparece no vídeo (decisão do criativo)**
+- **Uma mulher de 25 a 34 anos, bonita de um jeito comum**:
+  - "girl next door", coque bagunçado, moletom, casa real e aconchegante, luz de abajur;
+  - fala com o cachorro em voz de mãe e depois com a câmera.
+  - Por quê: é a cara da mãe de pet millennial que domina esse conteúdo, e pessoa falando para a câmera é o formato com mais saltos de visualização. O Kenui sugeriu mulher bonita. Bonita sem cara de modelo ou de influencer, senão vira propaganda.
+- O cachorro perto da câmera, na altura dele, com reação clara entre o 2º e o 5º segundo.
+- Para gato: a mesma lógica, com uma mulher ou um casal jovem em apartamento.
+
 ## 4. Voz real de compradores (literal, com origem)
 São 31 frases, abaixo das 100 do padrão. Faltam comentários de TikTok e Instagram e a Biblioteca do Meta (ver lacunas no estudo).
 
