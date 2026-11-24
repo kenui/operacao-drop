@@ -32,7 +32,7 @@ window.CONFIG = {
   },
 
   heroVideo: "",       // caminho do vídeo real do fornecedor (mp4/webm). Vazio = ilustração.
-  stripePk: "pk_test_51UfBltKBZVjCik1bOIZRMdKohs1Dp4GgYhpRU8YTc2NayDCePYzuqt6LtyIeLX5HGvr6fTSzhf6eCT06I5P6JQBB00guNp0jnk", // TESTE (Kenui, 24/11). Chave pública: pode ficar no Git.
+  stripePk: "pk_test_51UefZS9fGfTx7kShypVC0uVAM4MfKRZo7eVHwDuMLJssfF90tIY5OdUJnFZdz3PYSQUH2zFhYMmE15bMZhpK55zI00bIwNKQXd", // TESTE conta Brasil (Kenui, 24/11). Chave pública: pode ficar no Git.
   metaPixelId: "",     // vazio = pixel desligado
   clarityId: "",       // vazio = Clarity desligado
   defaultPet: "cat",
