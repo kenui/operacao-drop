@@ -248,3 +248,4 @@ footer .src{color:#a9a5c4}
 .bitem b{display:block;font-size:16px;line-height:1.25}
 .bitem span{display:block;font-size:14px;color:var(--ink2);line-height:1.4;margin-top:2px}
 .bonuses .src{padding:0 14px}
+.feats.why span span{display:inline;font-size:inherit;color:inherit;margin:0}

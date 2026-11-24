@@ -22,6 +22,7 @@ window.CONFIG = {
   downsell: { price: 7.99, on: true, kind: "plush" },  // control: pelúcias extras só para quem não pegou o bump
   extra:    { price: 7.99, on: true },  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
   /* Testes do pós-compra (T7, T8) rodam no servidor, sorteados pelo pedido: ver api/_precos.php -> testes_pos. */
+  blocos: { porque: true },  // false esconde o bloco. "porque" = "Everything a Bare Projector Leaves Out" (24/11, objeções; teste T11)
   bonus: { on: true, name: "First Hunt Guide" },        // PDF grátis por e-mail (objeções 2 e 4 da persona)
 
   delivery: "7–15 days",  // CJ 24/11: CJPacket Sensitive, ~90% entregue em 4–12 dias + 1–3 de separação
@@ -46,14 +47,15 @@ window.CONFIG = {
      pessoa sempre vê a mesma versão). Preços de teste precisam existir também em
      ../config.php ('testes'), porque é o servidor quem cobra. */
   tests: {
-    active: "",
+    active: "T11-porque-aqui",   // 24/11: pedido do Kenui (objeções na página). Só visual: o servidor não precisa saber.
     list: {
       "T1-angulo":     { split: 50, note: "ângulo vem do anúncio (?a=); este teste só registra", variants: { A: {}, B: {} } },
       "T2-kit2-mix":   { split: 50, variants: { A: {}, B: { "kits.two.highlight": true } } },
       "T3-preco-front":{ split: 50, variants: { A: {}, B: { "kits.one.price": 59.99, "kits.two.price": 109.99, "kits.two.save": 9.99, "upsell.regular": 59.99 } } },
       "T4-bump-preco": { split: 50, variants: { A: {}, B: { "bump.price": 7.99 } } },
       "T5-upsell-preco":{ split: 50, variants: { A: {}, B: { "upsell.price": 34.99 } } },
-      "T6-downsell-digital":{ split: 50, variants: { A: {}, B: { "downsell.kind": "guide", "downsell.price": 9.00 } } }
+      "T6-downsell-digital":{ split: 50, variants: { A: {}, B: { "downsell.kind": "guide", "downsell.price": 9.00 } } },
+      "T11-porque-aqui":{ split: 50, note: "A = com o bloco por que comprar aqui (padrão); B = sem. Decide por lucro por visitante", variants: { A: {}, B: { "blocos.porque": false } } }
     }
   }
 };
