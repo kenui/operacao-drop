@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Mockup dos bônus feito por código (sem crédito). Render: node mockup-bonus.js -> public_html/assets/img/bonus-*.webp -->
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;background:#fff}
+.cover{width:340px;height:440px;border-radius:6px 14px 14px 6px;padding:30px 26px;position:relative;overflow:hidden;color:#fff8ef;box-shadow:inset 6px 0 0 rgba(0,0,0,.18)}
+.cover .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffb547}
+.cover h1{font-size:38px;line-height:1.05;font-weight:900;margin:14px 0 12px;color:#fff}
+.cover p{font-size:15px;line-height:1.4;color:#d9d6ea}
+.cover .tag{position:absolute;left:26px;bottom:26px;font-size:12px;font-weight:800;background:#fff8ef;color:#232046;border-radius:999px;padding:6px 12px}
+.cover .rings{position:absolute;right:-30px;bottom:40px;width:220px;height:120px}
+.c1{background:#232046}
+.c2{background:#1f8f6a}.c2 .k{color:#d8f3ea}.c2 p{color:#e6f6ef}
+#stack{width:900px;height:720px;background:radial-gradient(circle at 50% 40%,#fff8ef,#f6e7d3);position:relative}
+#stack .b{position:absolute;filter:drop-shadow(0 22px 26px rgba(35,32,70,.28))}
+#stack .b1{left:120px;top:120px;transform:rotate(-8deg)}
+#stack .b2{left:420px;top:150px;transform:rotate(7deg)}
+#stack .ribbon{position:absolute;left:50%;transform:translateX(-50%);bottom:46px;background:#ff6b3d;color:#fff;font-weight:900;font-size:26px;padding:12px 28px;border-radius:999px;box-shadow:0 6px 0 #e8531f;letter-spacing:.02em}
+.thumb{width:400px;height:400px;background:#fff8ef;display:grid;place-items:center}
+.thumb .cover{transform:scale(.8);filter:drop-shadow(0 14px 18px rgba(35,32,70,.25))}
+</style></head><body>
+<template id="t1"><div class="cover c1"><div class="k">First Hunt Guide · Dogs</div><h1>Chase the light. Then catch something real.</h1><p>The first night, what to do if he ignores it or barks at it, and how to end every session with a toy in his mouth.</p>
+<svg class="rings" viewBox="0 0 220 120" fill="none" stroke="#ffb547" stroke-width="5" opacity=".85"><ellipse cx="60" cy="80" rx="46" ry="14"/><ellipse cx="165" cy="40" rx="40" ry="12"/></svg><span class="tag">PDF · 3 pages</span></div></template>
+<template id="t2"><div class="cover c2"><div class="k">Rainy Day Play Plan · Dogs</div><h1>No walk today? Here's the plan.</h1><p>12 indoor games with things you already have, and a simple week to rotate them.</p>
+<svg class="rings" viewBox="0 0 220 120" fill="#d8f3ea" opacity=".9"><path d="M40 20c-10 20-20 32-20 44a20 20 0 0 0 40 0c0-12-10-24-20-44zM150 0c-8 16-16 26-16 36a16 16 0 0 0 32 0c0-10-8-20-16-36z"/></svg><span class="tag">PDF · 3 pages</span></div></template>
+<div id="stack"><div class="b b1"></div><div class="b b2"></div><div class="ribbon">2 Free Bonuses</div></div>
+<div class="thumb" id="th1"></div>
+<div class="thumb" id="th2"></div>
+<script>
+var t1=document.getElementById("t1").innerHTML,t2=document.getElementById("t2").innerHTML;
+document.querySelector(".b1").innerHTML=t1;document.querySelector(".b2").innerHTML=t2;
+document.getElementById("th1").innerHTML=t1;document.getElementById("th2").innerHTML=t2;
+</script>
+</body></html>

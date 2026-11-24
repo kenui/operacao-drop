@@ -34,7 +34,7 @@
     $$("[data-f-show]").forEach(function(el){el.hidden=!C[el.dataset.fShow]});
     $$("[data-f-show-bonus]").forEach(function(el){el.hidden=!(C.bonus&&C.bonus.on)});
     $("#hlTag").textContent=C.kits.two.highlight?"Mix Cat + Dog":"Best for Gifts";
-    $$("[data-pet-only]").forEach(function(el){el.hidden=el.dataset.petOnly!==S.pet});
+    $$("[data-pet-only]").forEach(function(el){el.hidden=el.dataset.petOnly!==S.pet||(el.hasAttribute("data-f-show-bonus")&&!(C.bonus&&C.bonus.on))});
     var multi=(C.pets||["cat","dog"]).length>1;
     $$("[data-multi-pet]").forEach(function(el){el.hidden=!multi});
     $$(".pets button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.pet===S.pet)});
