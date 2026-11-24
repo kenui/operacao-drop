@@ -198,6 +198,12 @@ def main():
           "- Como o produto se comporta de verdade (liga, acende, gira ou não, som):",
           "- Ângulos usados:", "- Texto na tela e chamada final:", "- O que copiar como estrutura / o que NÃO copiar:"]
     open(os.path.join(pasta, "relatorio.md"), "w").write("\n".join(L) + "\n")
+    json.dump({"video": os.path.basename(v), "duracao": dur, "largura": lw, "altura": lh, "fps": fps,
+               "cenas": [{"ini": round(x, 2), "fim": round(y, 2), "quadro": f"cenas/cena_{i:02d}.jpg"}
+                         for i, (x, y) in enumerate(pares, 1)],
+               "som": [{"t": t, "db": round(db, 1)} for t, db in mapa],
+               "falas": falas, "idioma": lang, "erro_transcricao": erro},
+              open(os.path.join(pasta, "analise.json"), "w"), ensure_ascii=False, indent=1)
     print(os.path.join(pasta, "relatorio.md"))
 
 
