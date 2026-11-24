@@ -32,3 +32,9 @@
 - Para hobby, escritório e tecnologia, os nichos certos no freespyads são crafts-and-diy, jewelry e personalized-gifts. O CSV mostra só o top 20.
 - Amazon e Walmart pelo web_fetch_exa funcionam (preço e prazo). Lojas Shopify às vezes respondem em /products.json.
 - Rede inflada, novos domínios: quantifty, consensuts, feasiblte, decisivte, probablei, statisticalt, preferablen, accompanyk, ivorydpresion, expotsition, infinitne, landscapte, ascribeavail, glowsoftnook, wisebookvibe, booksoftmind, possiblemay, perpetualing, definitein, divisionl, wordmindglow, slimdescent, colaborateam, corelration, novthra, briarvibe, devmindglow, lifesparking.
+
+## 24/11: rodada 6, kits (0 aprovados)
+- Acessórios baratos quase não sobem a soma da Amazon: a razão depende do produto principal.
+- Frete CJ China→EUA ~US$17/kg: base de ~1 kg já estoura o item 1. Kit tem que ser leve.
+- A Amazon tem cópias chinesas de US$1–9 sem avaliações para quase toda peça leve. Proposta ao Kenui: o item 3 conta só Prime/FBA ou ≥50 avaliações com entrega antes da data.
+- A busca por palavra da CJ não acha muita coisa (TPMS, fogareiro mini, capa tática, testador de relé). Usar o pedido de sourcing da CJ para os finalistas.

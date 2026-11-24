@@ -1,4 +1,4 @@
-# Portão de viabilidade (v1.1, 23/11/2026)
+# Portão de viabilidade (v1.3, 24/11/2026)
 
 Nenhum produto passa para dossiê, página ou vídeo sem passar por este portão. Quem roda: o Garimpeiro antes de apresentar candidatos ao Kenui, e o agente de Dossiê confere de novo antes de começar (Fase 0).
 Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado (US$14 a 20) e, na checagem, o fornecedor real custava US$24 a 30, saía só da China, a peça tinha 17 cm contra fotos de IA que a faziam parecer grande, e a Amazon já vendia igual a US$33. Ver [a lição](../../operacoes/drop-eua/produtos/vila-teleferico/LICAO.md).
@@ -16,6 +16,12 @@ Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado
 | 8 | **Verba de teste cabe** | **CPA esperado da época** × 3 compras (Q4: US$25; janeiro a setembro: US$18). Não usar o CPA de empate aqui: margem alta não pode reprovar. | ≤ verba disponível (hoje R$500 ≈ US$90) |
 
 Um item reprovado = produto parado. Dois itens "a confirmar" = não apresentar como recomendado, só como "em checagem".
+
+### Item 3 com kit (decisão do Kenui, 24/11: "kit exclusivo de produto provado")
+- O produto principal precisa ter prova de venda (Biblioteca/freespyads). O kit junta itens que **resolvem o trabalho inteiro** (ex.: bomba + mangueiras + funil + bandeja), não brindes soltos.
+- Comparar **kit com kit**: (a) buscar o kit pronto na Amazon e no Walmart; se existe igual, vale a regra normal; (b) se não existe, somar os itens mais baratos de cada peça na Amazon. O kit passa se essa soma for ≥ 85% do nosso preço.
+- O custo (item 1) é a soma do custo entregue de todas as peças do **mesmo fornecedor** (frete único; peças de fornecedores diferentes chegam separadas e encarecem).
+- Peso e volume do kit inteiro entram no frete e no prazo.
 
 ## 2. A conta
 ```
@@ -39,4 +45,5 @@ Exemplo de aprovado: P 39,98; C 11; reserva 5% 2,00 → M = 25,52 (64% do preço
 ## Histórico
 - v1 (2026-11-23): criado depois do descarte da vila de Natal.
 - v1.1 (2026-11-23): item 8 passa a usar o CPA esperado da época, não o de empate. Na v1, qualquer margem acima de US$30 reprovava (30 × 3 > US$90), barrando os melhores produtos. Achado pela thread do garimpo na rodada 4.
+- v1.3 (2026-11-24): regra do item 3 para kit (thread do garimpo, depois de 0 aprovados em ~115 produtos avulsos).
 - v1.2 (2026-11-23): aviso sobre a taxa da Stripe para conta do Brasil (thread de funil e checkout).
