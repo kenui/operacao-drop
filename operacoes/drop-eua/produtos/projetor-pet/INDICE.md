@@ -14,6 +14,7 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [uso-no-video.md](uso-no-video.md) | ficha de uso e PRODUCT LOCK (provisória, fecha com o vídeo da CJ) |
 | [06-roteiros-video.md](06-roteiros-video.md) | 5 roteiros (gato A, B, C de reserva; cachorro D, E), 3 ganchos cada; todos terminam com o pet pegando a pelúcia; estimativa de créditos |
 | [07-funil.md](07-funil.md) | v2: oferta pela equação de valor, decisões D1 a D8 com evidência da persona, guia grátis, downsell físico, digital pago só como teste, conta |
+| [09-plano-campanha.md](09-plano-campanha.md) | plano de campanha no Meta: portão, contas (CPA de empate US$26,64, alvo US$18), estrutura, 4 criativos, régua, verba e marcos |
 | [05-pagina/site/digital/](05-pagina/site/digital/) | First Hunt Guide (PDF gato e cachorro), bônus grátis por e-mail |
 | [05-pagina/copy.md](05-pagina/copy.md) | copy da página e do funil por ângulo, e-mails, passada de voz humana |
 | [05-pagina/site/](05-pagina/site/) | página HTML + checkout Stripe em PHP (modo teste), upsell, obrigado, políticas; campos da CJ em `config.js` |
