@@ -1,2 +1,6 @@
 config.php
 *.sqlite
+meta_ads.php
+painel.pass
+_cache/
+instalacao.log

@@ -47,6 +47,7 @@ if (empty($_SESSION['ok'])) {
 if (isset($_GET['api'])) {
   $_SERVER['REQUEST_METHOD'] = $_SERVER['REQUEST_METHOD'] ?? 'GET';
   require dirname(__DIR__) . '/api/_lib.php';           // db(), cfg(), precos()
+  require dirname(__DIR__) . '/api/_ads.php';           // gasto_ads(): gasto do Meta por campanha e dia
   $c = cfg(); $d = db();
   $dias = ['hoje' => 0, '7d' => 7, '30d' => 30, 'tudo' => 3650][$_GET['p'] ?? '7d'] ?? 7;
   $desde = $dias === 0 ? gmdate('Y-m-d 00:00:00', time() - 4 * 3600 + 4 * 3600) : gmdate('Y-m-d H:i:s', time() - $dias * 86400);
@@ -97,13 +98,23 @@ if (isset($_GET['api'])) {
   $ev->execute([$desde]);
   foreach ($ev->fetchAll() as $r) if ($r['evento'] === 'page_view') { $u = json_decode((string)$r['utm'], true) ?: []; $visCamp[(string)($u['utm_campaign'] ?? '(sem campanha)')][$r['visitante_id']] = 1; }
   foreach ($porCamp as $k => $v) $porCamp[$k]['vis'] = count($visCamp[$k] ?? []);
+  // gasto com anúncios (Meta). Casa por utm_campaign={{campaign.id}}; aceita o nome como reserva.
+  $ads = gasto_ads($desde, $dias === 3650);
+  $gCamp = fn(string $k) => $ads['id'][$k] ?? $ads['nome'][$k] ?? 0;
+  $nomeCamp = fn(string $k) => $ads['ids'][$k] ?? '';
+  foreach ($ads['ids'] as $id => $nm) { $campanhas[$id] = 1; if (!isset($porCamp[$id]) && ($camp === '' || $camp === $id)) $porCamp[$id] = ['n' => 0, 'r' => 0, 'l' => 0, 'vis' => count($visCamp[$id] ?? [])]; }
+  foreach ($porCamp as $k => $v) { $g = $gCamp((string)$k); $porCamp[$k]['g'] = $g; $porCamp[$k]['la'] = $v['l'] - $g; $porCamp[$k]['nome'] = $nomeCamp((string)$k); }
+  $gasto = $camp === '' ? $ads['total'] : $gCamp($camp);
+  if ($camp === '') foreach ($ads['dia'] as $dd => $g) { $porDia[$dd] = ($porDia[$dd] ?? ['r' => 0, 'l' => 0, 'n' => 0]) + ['g' => 0]; $porDia[$dd]['g'] = $g; }
   ksort($porDia);
   $tot['lucro'] = $tot['receita'] - $tot['custo'] - $tot['taxas'] - $tot['reembolso'];
+  $tot['gasto'] = $gasto; $tot['lucro_ads'] = $tot['lucro'] - $gasto;
   $vis = $n('page_view');
   header('Content-Type: application/json; charset=utf-8');
   echo json_encode([
-    'modo' => $c['modo'] ?? '?', 'gerado' => gmdate('c'), 'desde' => $desde, 'agora' => (int)$vv->fetchColumn(), 'campanhas' => array_keys($campanhas),
+    'modo' => $c['modo'] ?? '?', 'gerado' => gmdate('c'), 'desde' => $desde, 'agora' => (int)$vv->fetchColumn(), 'campanhas' => array_map('strval', array_keys($campanhas)),
     'precos' => precos(), 'custos' => $c['custos'] ?? [],
+    'ads' => ['ligado' => $ads['ligado'], 'erro' => $ads['erro'], 'moeda' => $ads['moeda'], 'acrescimo' => $ads['acrescimo'] ?? 0, 'nomes' => $ads['ids']],
     'tot' => $tot + ['visitantes' => $vis],
     'funil' => [
       ['Visitou a página', $vis], ['Viu o produto (3 s)', $n('view_content')], ['Escolheu um kit', $n('kit_select')],
@@ -175,16 +186,18 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:7px 6px;b
 <div id="lb" onclick="this.style.display='none'"><img alt=""></div>
 <script>
 var $=function(s){return document.querySelector(s)};
-function m(c){return "$"+(c/100).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}
+function m(c){return (c<0?"−$":"$")+(Math.abs(c)/100).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}
 function pc(a,b){return b?(100*a/b).toFixed(1)+"%":"–"}
 function cls(v){return v>=0?"pos":"neg"}
 document.querySelectorAll(".pg").forEach(function(p){p.onclick=function(){$("#lb img").src=p.dataset.full;$("#lb").style.display="block";$("#lb").scrollTop=0}});
 function load(){
   fetch("?api=1&p="+$("#p").value+"&c="+encodeURIComponent($("#c").value),{cache:"no-store"}).then(function(r){if(r.status!==200)location.reload();return r.json()}).then(function(j){
-    var t=j.tot,lpv=t.visitantes?t.lucro/t.visitantes:0;
+    var t=j.tot,A=j.ads,L=A.ligado&&!A.erro?t.lucro_ads:t.lucro,lpv=t.visitantes?L/t.visitantes:0,nm=function(c){c=String(c);return (A.nomes[c]||c).replace(/</g,"")};
     $("#modo").hidden=j.modo!=="teste"; $("#agora").textContent=j.agora;
-    var sel=$("#c"),cur=sel.value; sel.innerHTML='<option value="">Todas as campanhas</option>'+j.campanhas.map(function(c){return '<option'+(c===cur?' selected':'')+'>'+c.replace(/</g,"")+'</option>'}).join("");
-    var K=[["main","Lucro por visitante",m(lpv),"antes do gasto com anúncio"],["","Lucro",'<span class="'+cls(t.lucro)+'">'+m(t.lucro)+'</span>',"receita − custo CJ − Stripe − reembolso"],
+    var sel=$("#c"),cur=sel.value; sel.innerHTML='<option value="">Todas as campanhas</option>'+j.campanhas.map(function(c){return '<option value="'+c.replace(/"/g,"")+'"'+(c===cur?' selected':'')+'>'+nm(c)+'</option>'}).join("");
+    var semAds=!A.ligado?"Meta ainda não ligado: sem o gasto com anúncios":(A.erro?"Meta com erro: "+A.erro:"");
+    var K=[["main","Lucro por visitante",m(lpv),semAds||"já descontado o gasto com anúncios"],["","Lucro",'<span class="'+cls(L)+'">'+m(L)+'</span>',semAds?"receita − CJ − Stripe − reembolso":"receita − CJ − Stripe − reembolso − anúncios"],
+      ["","Gasto com anúncios",A.ligado&&!A.erro?m(t.gasto):"–",A.ligado&&!A.erro?("ROAS "+(t.gasto?(t.receita/t.gasto).toFixed(2):"–")+" · custo por compra "+(t.pedidos&&t.gasto?m(t.gasto/t.pedidos):"–")+(A.moeda&&A.moeda!=="USD"?" · convertido de "+A.moeda:"")):"liga com o token de leitura do Meta"],
       ["","Receita",m(t.receita),t.pedidos+" pedidos"],["","Visitantes",t.visitantes,"pessoas diferentes"],["","Conversão",pc(t.pedidos,t.visitantes),"pedidos ÷ visitantes"],
       ["","Ticket médio",t.pedidos?m(t.receita/t.pedidos):"–","por pedido, com upsell"],["","Custo CJ",m(t.custo),"kit "+m(j.custos.kit||0)+" cada"],["","Taxas Stripe",m(t.taxas),"~6% + $0,10 por cobrança"],
       ["","Reembolsos",m(t.reembolso),t.contest+" contestações"]];
@@ -196,12 +209,13 @@ function load(){
       '<tr><td>Bump (pelúcias)</td><td>'+m(j.precos.bump)+'</td><td>'+pc(t.bump,t.pedidos)+'</td></tr><tr><td>Upsell (2º kit)</td><td>'+m(j.precos.upsell)+'</td><td>'+pc(t.up,t.pedidos)+'</td></tr>'+
       '<tr><td>Downsell</td><td>'+m(j.precos.downsell)+'</td><td>'+pc(t.down,j.funil[8][1])+'</td></tr></table>';
     var D=Object.keys(j.dia),mx=Math.max.apply(null,D.map(function(d){return j.dia[d].r}).concat([1]));
-    $("#chart").innerHTML=D.length?D.slice(-30).map(function(d){return '<div title="'+d+": "+m(j.dia[d].r)+" · "+j.dia[d].n+' pedidos" style="height:'+(100*j.dia[d].r/mx)+'%"><span>'+d.slice(8)+'</span></div>'}).join(""):'<p class="note">Sem vendas no período.</p>';
+    $("#chart").innerHTML=D.length?D.slice(-30).map(function(d){return '<div title="'+d+": "+m(j.dia[d].r)+" · "+j.dia[d].n+' pedidos'+(j.dia[d].g?" · anúncios "+m(j.dia[d].g):"")+'" style="height:'+(100*j.dia[d].r/mx)+'%"><span>'+d.slice(8)+'</span></div>'}).join(""):'<p class="note">Sem vendas no período.</p>';
     function tab(o,nome){var ks=Object.keys(o);if(!ks.length)return '<p class="note">Sem vendas no período.</p>';
-      return '<table><tr><th>'+nome+'</th><th>Pedidos</th><th>Receita</th><th>Lucro</th>'+(nome==="Campanha"?'<th>Visit.</th><th>Lucro/visit.</th>':'')+'</tr>'+ks.map(function(k){var v=o[k];return '<tr><td>'+k.replace(/</g,"")+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td><td class="'+cls(v.l)+'">'+m(v.l)+'</td>'+(nome==="Campanha"?'<td>'+v.vis+'</td><td>'+(v.vis?m(v.l/v.vis):"–")+'</td>':'')+'</tr>'}).join("")+'</table>'}
+      var C=nome==="Campanha";
+      return '<table><tr><th>'+nome+'</th><th>Pedidos</th><th>Receita</th>'+(C?'<th>Anúncios</th><th>ROAS</th>':'')+'<th>Lucro'+(C?' (após anúncios)':'')+'</th>'+(C?'<th>Visit.</th><th>Lucro/visit.</th>':'')+'</tr>'+ks.map(function(k){var v=o[k],lc=C?v.la:v.l;return '<tr><td>'+(C?nm(k):k.replace(/</g,""))+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td>'+(C?'<td>'+m(v.g)+'</td><td>'+(v.g?(v.r/v.g).toFixed(2):"–")+'</td>':'')+'<td class="'+cls(lc)+'">'+m(lc)+'</td>'+(C?'<td>'+v.vis+'</td><td>'+(v.vis?m(lc/v.vis):"–")+'</td>':'')+'</tr>'}).join("")+'</table>'}
     $("#camp").innerHTML=tab(j.camp,"Campanha"); $("#var").innerHTML=tab(j.var,"Versão");
-    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+p.camp.replace(/</g,"")+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
-    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · lucro antes do gasto com anúncios (entra quando o Meta for ligado ao painel).";
+    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+nm(p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
+    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta (atualiza a cada 15 min"+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando o token de leitura do Meta for salvo)")+".";
   });
 }
 $("#p").onchange=load; $("#c").onchange=load; load(); setInterval(load,30000);
