@@ -52,3 +52,21 @@ Versão curta de 10 s: dor (0 a 3), clique (3 a 4), prova (4 a 8), pedido (8 a 1
 - Juiz: custo por compra de cada ângulo, mesmo orçamento, mínimo de 1.000 a 2.000 impressões por anúncio.
 - Diagnóstico: taxa de gancho (a dor para o dedo?), retenção de 3 s até 15 s (a prova segura?), CTR do link (a recompensa dá vontade?).
 - Comparar sempre com o controle: a demonstração pura aprovada. Se nenhum ângulo de dor bater a demonstração, o dado manda e a demonstração fica.
+
+## 6. Modelar o que já vende (regra do Kenui, 24/11)
+Palavras dele: "considerar e dar um peso importante para modelar criativos escalados que estão vendendo e ou vídeos orgânicos de sucesso, modelar eles aumenta nossas chances de sucesso demais". E o ajuste: "Não precisa ser cada anúncio, porque ainda podemos fazer bons anúncios com nossa pesquisa avançada de persona, mas sempre considerar isso dependendo da oferta e da consciência do que estamos vendendo".
+
+Como aplicar:
+1. **Sempre considerar, nem sempre usar.** Antes de escrever um roteiro, procurar referência: anúncio escalado (Biblioteca de Anúncios do Meta, ativo há 14 dias ou mais, com várias cópias) ou vídeo orgânico com alcance alto para o tamanho do perfil, do mesmo público e da mesma dor.
+2. **O peso depende da oferta e do nível de consciência.**
+
+| Situação | Peso da modelagem | Por quê |
+|---|---|---|
+| Produto já anunciado por outros, público que já viu o produto ou conhece a solução | Alto: o primeiro criativo do teste modela o que está escalado | o mercado já pagou para descobrir a estrutura que converte |
+| Público que sente a dor e não conhece o produto | Médio: modelar o gancho e o ritmo de orgânicos da dor (não do produto); o resto vem da persona | o viral prova o que para o dedo; a persona diz o que vende |
+| Ângulo novo, sem referência com prova (dor oculta, objeção específica) | Baixo: roteiro sai da pesquisa de persona e vira aposta própria | não existe o que modelar; copiar referência de outro público engana |
+
+3. **O que se copia:** estrutura, ordem das funções, tempo de cada cena, tipo de gancho, ritmo de corte, posição do texto. **O que nunca se copia:** rosto, voz, áudio, música, texto literal, marca, trechos do vídeo.
+4. **Registro obrigatório** na DECISÃO CRIATIVA de cada roteiro, numa linha "Referência modelada": link, prova de escala (dias ativo, cópias, visualizações), o que foi copiado e por quê. Se não houver, a linha diz "sem referência: roteiro de persona" e o motivo.
+5. **Mistura no teste:** cada rodada de anúncios leva pelo menos um criativo modelado, quando existir referência válida, ao lado dos de persona. O custo por compra diz qual caminho ganha naquele produto.
+6. Ferramentas: `ferramentas/ver-video` e `ferramentas/refazer-viral`; critérios de quando vale em [arsenal.md](arsenal.md), seção "Refazer viral".

@@ -47,5 +47,14 @@ Pausar é sempre permitido: reduz gasto, nunca aumenta.
 - Se a conta for em BRL, a API devolve gasto em BRL: converter pelo câmbio do dia para comparar com o painel (USD).
 - Conta faturada no Brasil: custo real = gasto da API × 1,1383 (PIS/Cofins + ISS por fora desde 01/01/2026). Combinado com a thread do painel.
 
+## 7. Enquanto o caminho direto não existe (desde 24/11): conector Higgsfield
+O Meta bloqueou a criação do app (dispositivo não confiável). Por enquanto a IA gerencia pelo conector Higgsfield (`meta_ads_tools/read/write`, login OAuth do Meta). As mesmas regras de aval da §4 valem.
+**Gasto no painel sem Token B** (combinado com a thread do painel): na rotina diária a IA lê o gasto por campanha e por dia pelo conector e grava `_dados/ads-gasto.json` no ramo `deploy-littlecatchco` (pasta bloqueada por .htaccess). Uma cópia vai para o histórico em `operacoes/drop-eua/produtos/projetor-pet/05-pagina/site/dados/ads-gasto.json` no main. Formato:
+```json
+{"atualizado":"2026-11-25T10:00:00Z","fonte":"conector","moeda":"BRL","acrescimo":0.1383,
+ "linhas":[{"campaign_id":"120...","campaign_name":"...","date":"2026-11-24","spend":12.34}]}
+```
+`spend` vai na moeda da conta e `date` no fuso da conta. Pode mandar o arquivo inteiro a cada vez: vale a última linha de cada campanha e dia. Nunca vai token nem dado pessoal. Se o Token B existir, ele tem prioridade. Gravar no ramo de deploy pede a autorização do Kenui uma vez, antes da primeira gravação.
+
 ## Histórico
 - v1 (24/11/2026): caminho direto escolhido pelo Kenui; dois tokens; rotina.

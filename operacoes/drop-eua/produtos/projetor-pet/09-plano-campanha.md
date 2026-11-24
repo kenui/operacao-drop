@@ -9,8 +9,8 @@ Feito a partir do [manual de tráfego](../../../../conhecimento/trafego/manual-m
 | Produto do anúncio = fornecedor | ❌ vídeo aprovado mostra coelho; a CJ cotou a versão com esquilo. Os vídeos V1–V4 precisam mostrar a projeção que a CJ entrega |
 | Prazo na página | ✅ 7–15 dias (config.js) |
 | Pixel + API de Conversões | ✅ ligados (pixel 545543757913721, event_id deduplicado); conferir eventos de teste com a conta ligada |
-| Acesso da IA à conta (Marketing API) | ⏳ Kenui criando usuário do sistema e tokens |
-| Domínio verificado / Página / Instagram | ⏳ conferir quando o acesso chegar |
+| Acesso da IA à conta | ✅ conector Higgsfield (24/11), conta ADS act_1528246354605953 (BRL, fuso Los Angeles) |
+| Domínio verificado / Página / Instagram | ✅ Página Little Catch Co. (1591074544081441); ⏳ Instagram e verificação de domínio |
 | Criativos V1, V2, V4 + controle | ⏳ thread "Criar vídeos que vendem o projetor pet" |
 | Conformidade dos textos | ⏳ passar a skill antes de subir |
 | Valor aprovado | ✅ **R$850 por 7 dias (US$20/dia, opção B)**, escolhido pelo Kenui em 24/11. Ativa só quando o resto do portão fechar; spend cap da campanha = esse valor |
@@ -39,6 +39,8 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
 
+**Rascunho na conta (24/11, PAUSADO, sem anúncios):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+
 ## 3. Criativos
 Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
 
@@ -48,6 +50,13 @@ Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
 | `cansada-donac-ugc-v1` (V2) | ela chega acabada | dona que trabalha fora, culpa | UGC falado | sabe da dor | a dor do esforço, que ninguém usa, rende CTR mais alto que V1 |
 | `fake-cetica-demo-v1` (V4) | "achei que era fake" | quem já viu o produto em outro anúncio | demo em sala normal: desligado, clique, luz | já viu o produto | prova crua baixa o custo por início de checkout para quem desconfia |
 | `aprovado-controle-v1` | vídeo aprovado (sem dor) | — | demo | — | controle: mede quanto a dor acrescenta |
+
+**Modelagem (regra do Kenui, 24/11; manual §5.0):** sempre olhar o que já escala antes de fechar os conceitos, sem obrigar todos a serem modelados. O projetor já tem ~140 anúncios de 46 lojas e o público americano começa a conhecer o produto, então o peso da modelagem é **alto**. Mesmo assim fica um conceito saído da persona para provar o nosso diferencial. Situação hoje:
+- V1 (chuva) modela a dor mais usada no mercado (74 anúncios de "rainy days/bored" na Biblioteca em 24/11). Falta escolher o anúncio específico que está há 14+ dias com várias versões e decupá-lo.
+- O vídeo aprovado segue a referência da Enjoyaitlife que o Kenui escolheu ([estudo/referencia-estilo.md](estudo/referencia-estilo.md)).
+- V4 ("achei que era fake") modela o formato de demo crua que os anúncios mais antigos usam. Falta a referência específica.
+- V2 (ela chega acabada) **vem da persona**: a dor do esforço, que nenhum anúncio usa hoje.
+Antes do lançamento: buscar na Biblioteca (EUA, "pet projector", "dog projector toy", "interactive projector") e no TikTok os anúncios com 14+ dias e várias versões e os vídeos orgânicos com mais views. Guardar as fichas em `estudo/referencias-anuncios.md`. Se aparecer uma referência mais forte que V1 ou V4, ela entra no lugar. Nome dos anúncios com `ref<id>`.
 
 V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
 
