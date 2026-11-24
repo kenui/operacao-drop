@@ -48,3 +48,11 @@ O próprio Pouncy recomenda terminar a brincadeira com um brinquedo de verdade "
 
 ## Próximo passo
 Kenui abre o Chrome (CJ) para eu puxar custo, estoque nos EUA, prazo e vídeo, ou cola o pedido acima no sourcing da CJ.
+
+## Atualização 24/11 04:20: tentativa de custo sem a CJ
+Kenui não sabe usar o sourcing da CJ e pediu AliExpress. Resultado:
+- **AliExpress:** a busca aberta (aliexpress.com/w/wholesale-cat-projector-toy.html) mostra os anúncios ("2pcs Mouse Hunt Cat Projector", "Interactive Pet Projector Toy... Paw-Shaped", "Cat Mouse Projector Light... 360° base"), mas **sem preço**. A versão dos EUA (aliexpress.us) não abre daqui, e no Chrome do Kenui cai no site do Brasil.
+- **Alibaba, DHgate e Temu:** não há página deste projetor com preço legível; só lasers automáticos (US$3–12, outro produto).
+- **Dois produtos diferentes no mercado:** (a) o viral, com corpo em forma de pata e bichos no chão (Pouncy, "Mouse Hunt"), cópias na Amazon a US$23,99–29,99; (b) a luminária redonda que gira silhueta de rato, US$12,99–16,99. A vitrine escolheu o (a).
+- **Sinal, não custo:** vendedor chinês na Amazon vende o (b) a US$12,99 + US$4,49 de frete. Isso sugere fábrica barata, mas pela regra não vale como custo.
+- **Conclusão:** nenhum preço confirmado com entrega nos EUA. Caminho mais simples: Kenui deixa o Chrome aberto com a extensão do Claude conectada e eu mesmo busco na CJ (ela mostra preço, frete para os EUA, armazém e prazo sem precisar de pedido de sourcing).
