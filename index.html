@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Glowing mice to chase, a real toy to catch</title>
+<meta name="description" content="A floor projector that sends little glowing mice running for your cat or dog, plus a plush toy so every hunt ends with a catch.">
+<meta name="theme-color" content="#14121a">
+<link rel="stylesheet" href="assets/site.css">
+<script src="config.js"></script>
+<script>
+/* ---------- COPY (fonte: ../../copy.md). Ângulo pelo ?a=, pet pelo ?pet= ---------- */
+window.COPY = {
+  cat: {
+    plush: "a plush catnip mouse",
+    plushShort: "catnip mouse",
+    critters: "mice",
+    pronoun: "they",
+    angles: {
+      pega: {
+        h1: "Let them chase the light. Then let them catch something real.",
+        sub: "Little glowing mice run across your floor. When the hunt is over, your cat gets a plush catnip mouse to grab, kick and carry off. It comes in the box.",
+        prob: [
+          "She'll chase the red dot for twenty minutes. Then it's gone, and she sits there staring at the wall where it used to be.",
+          "A lot of cat people know that look, and some of us feel a little bad about it. Cats are built to finish the hunt by pinning something down. A dot never lets them.",
+          "So this kit ends differently."
+        ]
+      },
+      cansado: {
+        h1: "Ten minutes of hunting for him. Ten minutes on the couch for you.",
+        sub: "Set it on the floor, tap once, and little mice of light start running. You eat dinner. He hunts. When he's done, he gets a plush catnip mouse to finish the job.",
+        prob: [
+          "It's 9 pm. You've been on your feet all day. He's been asleep all day, and now he's standing on your chest.",
+          "The feather wand works, as long as you keep waving it. This one doesn't need your arm."
+        ]
+      },
+      caca: {
+        h1: "Little glowing mice. One tap. Full hunting mode.",
+        sub: "Turn the lights down, set it on the floor and watch the butt wiggle start. Every kit comes with a plush catnip mouse for the final pounce.",
+        prob: [
+          "Most cat toys get two sniffs and end up under the couch.",
+          "Moving mice on the floor are harder to ignore. Your cat sees small shapes darting in and out of little circles of light, at eye level, right where she hunts."
+        ]
+      }
+    },
+    mech: [
+      "A laser dot moves, then vanishes. Your cat never gets the part where she actually pins something down.",
+      "Many vets and cat behaviorists suggest ending light play with a toy your cat can catch. We put that toy in the box, so you don't have to remember to buy one."
+    ],
+    step3: "When the chase winds down, switch it off and toss the catnip mouse. That's the catch.",
+    bumpT: "Add 3 spare catnip mice, {bump}",
+    bumpD: "They end up under the couch faster than you'd think."
+  },
+  dog: {
+    plush: "a squeaky plush squirrel",
+    plushShort: "squeaky squirrel",
+    critters: "critters",
+    pronoun: "he",
+    angles: {
+      sozinho: {
+        h1: "The toy that plays with your dog while you sit down.",
+        sub: "Glowing critters pop up across your floor and he chases them from circle to circle. When he's done, he gets a squeaky plush squirrel to shake.",
+        prob: [
+          "Rain again, so no long walk. He's brought you the same ball four times and you're still in your work clothes.",
+          "This gives him something to chase in the living room for ten minutes, without you throwing anything."
+        ]
+      },
+      pega: {
+        h1: "Let him chase the critters. Then give him something real to shake.",
+        sub: "Glowing critters run across your floor. When the chase is over, he gets a squeaky plush squirrel to grab. It comes in the box.",
+        prob: [
+          "He chases lights, reflections, the shine off your watch. He never gets to catch any of it.",
+          "Every round with this one ends with a squeak in his mouth."
+        ]
+      }
+    },
+    mech: [
+      "Dogs like a chase that ends with something in their mouth. Lights alone never give them that part.",
+      "The squeaky plush gives the game an ending: lights off, toy down, a few good shakes."
+    ],
+    step3: "When he slows down, switch it off and drop the squeaky squirrel. Let him have the win.",
+    bumpT: "Add 2 spare squeaky squirrels, {bump}",
+    bumpD: "For when the first one loses its squeak."
+  }
+};
+
+/* resolve pet e ângulo antes de pintar */
+(function(){
+  var q=new URLSearchParams(location.search), C=window.CONFIG;
+  var pet=q.get("pet")==="dog"?"dog":(q.get("pet")==="cat"?"cat":C.defaultPet);
+  var a=q.get("a"); if(!window.COPY[pet].angles[a]) a=C.defaultAngle[pet];
+  window.STATE={pet:pet,angle:a,kit:"one",mix:[pet,pet],bump:false};
+  document.documentElement.dataset.pet=pet;
+  if(!C.preview) document.documentElement.classList.add("is-live");
+})();
+</script>
+</head>
+<body>
+<div class="preview" id="previewBar" hidden>PRÉVIA: campos em amarelo ainda dependem da CJ ou do Kenui. Não publicar assim.</div>
+<div class="topbar">Free US shipping · 30-day money-back · <span data-f="deliveryShort"></span></div>
+
+<!-- 1. HERO -->
+<section class="hero" data-bloco="hero">
+  <div class="wrap">
+    <div class="brand"><i></i><span data-f="brand"></span></div>
+    <div class="pets" role="group" aria-label="Choose your pet">
+      <button type="button" data-pet="cat">For my cat</button>
+      <button type="button" data-pet="dog">For my dog</button>
+    </div>
+    <div class="media" id="media"></div>
+    <h1 id="h1"></h1>
+    <p class="sub" id="sub"></p>
+    <div class="price-line"><b data-f="priceOne"></b><span>full kit, free shipping</span></div>
+    <a class="btn" href="#kits" data-cta="hero">Get the kit</a>
+    <div class="micro"><span data-f="deliveryLong"></span><span>30-day money-back</span><span>Pay with Apple Pay or card</span></div>
+  </div>
+</section>
+
+<!-- 2. PROBLEMA -->
+<section class="sec" data-bloco="problema" style="border-top:0">
+  <div class="wrap" id="prob"></div>
+</section>
+<script>
+/* pinta hero e problema já (sem piscar) */
+(function(){
+  var S=STATE,P=COPY[S.pet],A=P.angles[S.angle];
+  document.getElementById("h1").textContent=A.h1;
+  document.getElementById("sub").textContent=A.sub;
+  document.getElementById("prob").innerHTML=A.prob.map(function(t){return "<p>"+t+"</p>"}).join("");
+})();
+</script>
+
+<!-- 3. DEMONSTRAÇÃO -->
+<section class="sec" data-bloco="demonstracao">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Lights down. One tap. Then the catch.</h2>
+    <ol class="steps">
+      <li><b>Dim the room.</b> Evening light or closed curtains. The <span data-f="critters"></span> are hard to see in a sunny room.</li>
+      <li><b>Set it on the floor and tap the button.</b> Little glowing <span data-f="critters"></span> start running out of circles of light. Smooth floors work best.</li>
+      <li><b>Finish with the plush.</b> <span data-f="step3"></span></li>
+    </ol>
+    <p class="src" style="margin-top:14px">Size: <span data-f="size"></span> · Power: <span data-f="power"></span></p>
+  </div>
+</section>
+
+<!-- 4. MECANISMO -->
+<section class="sec" data-bloco="mecanismo">
+  <div class="wrap">
+    <div class="eyebrow">Why the plush is in the box</div>
+    <h2>Every hunt needs an ending.</h2>
+    <div id="mech"></div>
+  </div>
+</section>
+
+<!-- 9. LIMITE (sobe para antes da oferta: limite honesto cedo, princípio 3) -->
+<section class="sec" data-bloco="limite">
+  <div class="wrap">
+    <div class="eyebrow">Before you buy</div>
+    <h2>What it won't do</h2>
+    <ul class="limits">
+      <li>It needs low light. In a bright, sunny room you'll barely see the <span data-f="critters"></span>.</li>
+      <li data-pet-only="cat">Some cats just stare at it and walk off. That's what the 30-day refund is for.</li>
+      <li data-pet-only="dog">Best for small and medium dogs. A big, excited dog can knock it over or try to chew it.</li>
+      <li data-pet-only="dog">Some dogs bark at the lights at first. Short sessions help. We can't promise quiet.</li>
+      <li>It's for 10 to 15 minute play sessions with you in the room, not for leaving on all day.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. OFERTA / KITS -->
+<section class="sec" data-bloco="oferta-kits" id="kits">
+  <div class="wrap">
+    <div class="eyebrow">Choose your kit</div>
+    <h2>The full hunt kit</h2>
+    <p>Each kit: the floor projector, <span data-f="plush"></span>, and a gift box. Free shipping.</p>
+    <p class="bonus" data-f-show-bonus><b>Free with every order:</b> the First Hunt Guide (PDF, by email). How to set up the first night, what to do if your pet ignores it, and how to end every session with a real catch.</p>
+    <div class="kits" role="radiogroup">
+      <label class="kit on" data-kit="one">
+        <input type="radio" name="kit" value="one" checked>
+        <div class="row"><div class="name">1 kit</div><div><div class="p" data-f="priceOne"></div></div></div>
+        <div class="inc">Projector + <span data-f="plushShort"></span> + gift box</div>
+      </label>
+      <label class="kit" data-kit="two">
+        <input type="radio" name="kit" value="two">
+        <div class="row"><div class="name">2 kits</div><div><div class="p" data-f="priceTwo"></div><div class="each" data-f="eachTwo"></div></div></div>
+        <div class="inc">One to keep, one to give. Mix cat and dog if you like.</div>
+        <span class="tag" data-f="saveTwo"></span> <span class="tag" id="hlTag" hidden>Mix cat + dog · good for gifts</span>
+        <div class="mix">
+          <label>Kit 1<select data-mix="0"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
+          <label>Kit 2<select data-mix="1"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
+        </div>
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CHECKOUT -->
+<section class="sec" data-bloco="checkout" id="checkout" style="border-top:0;padding-top:0">
+  <div class="wrap">
+    <div class="co">
+      <div class="sum"><span id="sumKit"></span><span id="sumKitP"></span></div>
+      <div class="sum" id="sumBumpRow" hidden><span>Spare plush pack</span><span data-f="priceBump"></span></div>
+      <div class="sum" data-f-show-bonus><span>First Hunt Guide (PDF)</span><span>Free</span></div>
+      <div class="sum"><span>Shipping</span><span>Free</span></div>
+      <div class="sum total"><span>Total</span><span id="sumTotal"></span></div>
+
+      <label class="bump" data-bloco="bump">
+        <input type="checkbox" id="bump">
+        <div><b id="bumpT"></b><span id="bumpD"></span></div>
+      </label>
+
+      <button class="btn" id="startCo" type="button" data-cta="checkout">Continue to payment</button>
+
+      <div id="coArea" hidden>
+        <div class="el" id="linkEl"></div>
+        <div class="el" id="addrEl"></div>
+        <div class="el" id="payEl"></div>
+        <p class="consent">By completing your purchase you agree we may charge this card for any add-on you accept on the next page. No subscriptions. Sales tax, if any, is shown before you pay.</p>
+        <div class="err" id="coErr" role="alert"></div>
+        <button class="btn" id="payBtn" type="button">Pay <span id="payAmt"></span></button>
+      </div>
+      <div class="trust"><span>Secure checkout by Stripe</span><span>30-day money-back</span><span data-f="deliveryShort"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. GARANTIA -->
+<section class="sec" data-bloco="garantia">
+  <div class="wrap">
+    <div class="eyebrow">Guarantee</div>
+    <h2>30 days to decide</h2>
+    <p>If your pet isn't into it, or it's just not for you, email us within 30 days of delivery and we'll refund the full price. You don't need a reason, and you don't need to argue with anyone.</p>
+    <p>Write to <span data-f="email"></span> with your order number. Refunds go back to your card, and banks usually show them in 5 to 10 business days.</p>
+  </div>
+</section>
+
+<!-- 10. OBJEÇÕES -->
+<section class="sec" data-bloco="objecoes">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2>Fair questions</h2>
+    <details><summary>Is it a laser?</summary><p data-f="laserAns"></p></details>
+    <details><summary>Will my cat get frustrated chasing light?</summary><p>That's the reason the plush mouse is in the kit. Lights for the chase, a toy for the catch. Keep sessions to 10 or 15 minutes and end with the plush.</p></details>
+    <details><summary>Does it work during the day?</summary><p>Not well. It's made for evenings or a room with the curtains closed. In bright daylight the projection is faint.</p></details>
+    <details><summary>Does it work for dogs?</summary><p>Yes, there's a dog kit with a squeaky plush squirrel instead of catnip. It's best for small and medium dogs; a large, excited dog may knock it over.</p></details>
+    <details><summary>I saw a projector like this for less on Amazon.</summary><p>You probably did. Those usually ship the projector on its own. Ours is a kit: projector, a plush for the catch, and a gift box, with a delivery date you see before you pay and a 30-day refund from people who answer email.</p></details>
+    <details><summary>How is it powered?</summary><p><span data-f="power"></span>.</p></details>
+    <details><summary>Is this a real store? I've seen these ads called scams.</summary><p>Fair worry. You pay through Stripe, you get an email receipt right away with every charge listed, and you get a tracking number when your order ships. A person answers at <span data-f="email"></span>. If anything goes wrong, email us before you call your bank. A refund is faster that way.</p></details>
+    <details><summary>Can I send it as a gift?</summary><p>Yes. Every kit ships in a gift box. Just use the recipient's address at checkout.</p></details>
+  </div>
+</section>
+
+<!-- 11. ENVIO -->
+<section class="sec" data-bloco="envio">
+  <div class="wrap">
+    <div class="eyebrow">Shipping</div>
+    <h2>When it gets there</h2>
+    <p>Ships from <span data-f="shipsFrom"></span>. Arrives in <span data-f="delivery"></span> after you order. You'll get tracking by email as soon as it ships.</p>
+    <p>If it's going to be late, we'll email you before the date we gave and you can cancel for a full refund.</p>
+    <p data-f-show="xmasCutoff">Ordering for Christmas? Order by <b data-f="xmasCutoff"></b>.</p>
+  </div>
+</section>
+
+<!-- 12. CTA FINAL -->
+<section class="sec" data-bloco="cta-final">
+  <div class="wrap">
+    <h2 id="finalH"></h2>
+    <p>Projector, <span data-f="plush"></span>, gift box. <span data-f="priceOne"></span> with free shipping and 30 days to change your mind.</p>
+    <a class="btn" href="#kits" data-cta="final">Get the kit</a>
+  </div>
+</section>
+
+<footer data-bloco="rodape">
+  <div class="wrap">
+    <b data-f="brand"></b>
+    <nav><a href="shipping.html">Shipping</a><a href="returns.html">Returns &amp; refunds</a><a href="track-order.html">Track order</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    <p>Operated by <span data-f="legalName"></span><br>Contact: <span data-f="email"></span></p>
+    <p class="src">Pets and scenes in our videos may be created with AI to show how the product is used.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky" data-bloco="barra-fixa">
+  <div class="sp">Full kit<b data-f="priceOne"></b></div>
+  <a class="btn" href="#kits" data-cta="sticky">Get the kit</a>
+</div>
+
+<script src="assets/track.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# fase de teste: fora do Google
+Header set X-Robots-Tag "noindex, nofollow"
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+<FilesMatch "\.(sqlite|log|sql)$">
+  Require all denied
+</FilesMatch>

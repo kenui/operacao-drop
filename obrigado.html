@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>Thank you</title><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
+<body>
+<div class="preview" id="previewBar" hidden>PRÉVIA</div>
+<main class="page"><div class="wrap">
+  <p class="eyebrow" style="color:var(--ok)">✓ Order complete</p>
+  <h1>Thank you. Here's what happens next.</h1>
+  <div class="box"><b>What you were charged</b><table class="receipt" style="width:100%" id="rec"></table>
+    <p class="src" style="margin:8px 0 0">Each item may show as a separate charge on your statement from <span data-f="brand"></span>. A receipt is on its way to <span id="em">your email</span>.</p></div>
+  <div class="box" id="dlBox" hidden><b>Your downloads</b><div id="dl"></div><p class="src" style="margin:8px 0 0">The same links are in your confirmation email.</p></div>
+  <h2>Delivery</h2>
+  <p>Your order ships from <span data-f="shipsFrom"></span> and arrives in <span data-f="delivery"></span>. We email your tracking number as soon as it ships. If anything changes, we'll tell you before the date and you can cancel for a full refund.</p>
+  <h2>First night tips</h2>
+  <p>Dim the lights, use a smooth floor, keep it to 10 or 15 minutes, and finish with the plush so the hunt has an ending.</p>
+  <h2>Need anything?</h2>
+  <p>Email <span data-f="email"></span> with your order number. For a refund, just ask within 30 days of delivery. Please write to us before calling your bank. It's faster for you.</p>
+</div></main>
+<script src="assets/track.js"></script><script src="assets/pages.js"></script>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),o=q.get("o")||"",C=CONFIG,$=function(s){return document.querySelector(s)};
+  var m=function(c){return "$"+(c/100).toFixed(2)};
+  function show(j){
+    $("#rec").innerHTML=j.linhas.map(function(l){return "<tr><td>"+l[0]+"</td><td>"+m(l[1])+"</td></tr>"}).join("")+"<tr><td><b>Total</b></td><td>"+m(j.total)+"</td></tr>";
+    if(j.email) $("#em").textContent=j.email;
+    if(j.downloads&&j.downloads.length){$("#dlBox").hidden=false;$("#dl").innerHTML=j.downloads.map(function(d){return '<p style="margin:8px 0 0"><a class="btn ghost" href="'+d[1]+'">Download: '+d[0]+'</a></p>'}).join("")}
+    // Purchase no navegador com o MESMO event_id que o servidor mandou pela API de Conversões
+    var key="purch_"+o; try{ if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,"1"); }catch(e){}
+    track("purchase_browser",{pedido:o,total:j.total},{eventId:j.event_id,meta:"Purchase",metaData:{value:j.total/100,currency:"USD"}});
+  }
+  if(o==="demo"){
+    var d={};try{d=JSON.parse(sessionStorage.getItem("demo_order")||"{}")}catch(e){}
+    var two=d.kit==="two",L=[[two?"Hunt kit (2 kits, "+(d.mix||[]).join(" + ")+")":"Hunt kit (1 kit, "+(d.pet||"cat")+")",Math.round((d.front||C.kits.one.price)*100)]];
+    if(d.bump)L.push(["Spare plush pack",Math.round((d.bumpPrice||C.bump.price)*100)]);
+    if(d.upsell)L.push(["Second kit ("+d.upsell+"), same box",Math.round(C.upsell.price*100)]);
+    if(d.downsell)L.push([C.downsell.kind==="guide"?"The Indoor Hunt Playbook (PDF)":"Spare plush pack",Math.round(C.downsell.price*100)]);
+    var dls=C.bonus&&C.bonus.on?[["First Hunt Guide (PDF) [demo: o link real vai assinado por e-mail]","#"]]:[];
+    show({linhas:L,total:L.reduce(function(a,l){return a+l[1]},0),event_id:"purchase.demo",downloads:dls});
+    return;
+  }
+  fetch("api/pedido.php?fim=1&o="+encodeURIComponent(o)).then(function(r){return r.json()}).then(function(j){if(j.linhas)show(j)});
+})();
+</script>
+</body></html>
