@@ -41,14 +41,16 @@ Sem "valor de US$X" para o guia e sem preço riscado: não existe preço anterio
 | D10 | **Políticas**: reembolso em até 2 dias úteis, sem precisar devolver o produto (etiqueta paga se pedirmos), resposta em 1 dia útil | Decidido pela IA | Objeção nº 1 "Is this legit?" (persona §6); devolver da China custa mais que o kit; reembolso custa menos que contestação (US$15 + venda). Guarda-corpo: se reembolso passar de 8%, rever. | no site |
 | D11 | **Rodapé sem endereço físico**: marca, "Operated by" com o nome legal, e-mail | Decidido pela IA | Não há endereço nos EUA; endereço de casa no Brasil não vai a público. Lei americana não exige endereço numa loja online; contato rápido por e-mail cobre a confiança. | falta só o nome legal |
 | D12 | **Bônus 2 grátis: Rainy Day Play Plan** (cachorro; 12 jogos com coisas de casa + semana de rodízio) | **Entra** (24/11, pedido do Kenui para deixar a oferta mais atraente) | Ângulo "dia de chuva sem culpa" (persona §7) e objeção nº 2 "vai enjoar" (rodízio). Capa e mockup feitos por código, sem crédito. Sem "valor de US$X" (FTC). Sobrepõe parte do Indoor Hunt Playbook do T6: se o T6 entrar na fila, o playbook precisa de outro conteúdo. Método: `conhecimento/oferta/manual-bonus.md`. | **Pronto**: `05-pagina/site/digital/rainy-day-play-plan-dog.pdf` |
+| D13 | **Oferta extra para quem ACEITA o upsell: pelúcias para o 2º kit**, US$7,99, mesma caixa | **Entra** (24/11, pedido do Kenui: "se a pessoa já comprou o upsell, também você poderia usar um downsell") | Quem aceita o upsell acabou de dizer sim duas vezes (é o comprador mais quente do funil). O 2º kit vem com uma pelúcia só; a mesma evidência de D4 (pelúcia perde o apito, some, renova o interesse) vale para ele. Custo conhecido (US$4,50, o mesmo do bump), não cria item novo na CJ. Aparece também para quem pegou o bump, porque o bump é do 1º kit (o texto diz isso). Margem ~US$2,91 por aceite. | no ar; T8 testa o preço (US$9,99) |
+| D14 | **Downsell como preço menor do upsell** (o 2º kit por US$29,99) | **Braço B do T7**, contra as pelúcias (A) | É o que o Kenui entendia por downsell, e é o desenho clássico. A conta: kit a US$29,99 deixa ~US$9,32 de margem (custo US$18,77); pelúcias deixam ~US$2,91. B vence se o aceite ficar acima de ~31% do aceite das pelúcias. Também aparece para quem pegou o bump (no A, quem pegou o bump não vê nada). Preço riscado US$49,99 é o preço real de 1 kit (FTC ok). | T7 no ar (sorteio pelo pedido) |
 | D8 | Embrulho, processamento prioritário, proteção de pacote | Fora | Kit já vem em caixa de presente; prioridade não muda o prazo do fornecedor; proteção só quando houver reenvio real. | — |
 
 ## 3. Funil (como roda)
 ```
 Anúncio (ângulo, pet) → página ?pet=&a= → kits 1/2 → checkout na página (+ bump pelúcias, desmarcado)
-  → Upsell: 2º kit US$24,99 (um clique, cartão salvo com consentimento)
-      ├ sim → Obrigado
-      └ não → Downsell: pelúcias US$7,99 (só se não pegou o bump) → Obrigado
+  → Upsell: 2º kit US$39,99 (um clique, cartão salvo com consentimento)
+      ├ sim → Oferta extra: pelúcias para o 2º kit US$7,99 (D13; T8 testa US$9,99) → Obrigado
+      └ não → Downsell (T7): A = pelúcias US$7,99 (só sem bump) · B = 2º kit por US$29,99 (todos) → Obrigado
   → E-mail de confirmação: cada cobrança numa linha + link assinado do First Hunt Guide
   → Purchase no Meta uma vez, com o total (pixel + API, mesmo event_id)
 ```
@@ -72,5 +74,6 @@ A ordem, a hipótese, a métrica e a régua de cada um ficam em [testes/fila.md]
 Em [05-pagina/copy.md](05-pagina/copy.md).
 
 ## Histórico
+- v3 (24/11, noite): D13 (oferta para quem aceita o upsell) e D14 (downsell = 2º kit mais barato, como teste T7). Testes do pós-compra ganham camada própria, sorteada pelo pedido, que roda junto com o teste da página.
 - v1 (24/11, 05:00): primeira versão, downsell = guia PDF pago.
 - v2 (24/11): pedido do Kenui. Decisões D1 a D8 pela persona; guia grátis como bônus (pronto); downsell físico; digital pago só como teste T6; motor de A/B com preço; conta refeita.

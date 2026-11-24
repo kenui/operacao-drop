@@ -21,11 +21,11 @@ switch ($ev['type']) {
     log_evento(['evento' => 'payment_failed_srv', 'event_id' => $ev['id'], 'dados' => ['pedido' => $obj['metadata']['pedido'] ?? '', 'motivo' => $obj['last_payment_error']['code'] ?? '']]);
     break;
   case 'charge.refunded':
-    db()->prepare('UPDATE pedidos SET reembolsado = reembolsado + ? WHERE pi_front = ? OR pi_upsell = ? OR pi_downsell = ?')->execute([(int)$obj['amount_refunded'], $obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent']]);
+    db()->prepare('UPDATE pedidos SET reembolsado = reembolsado + ? WHERE pi_front = ? OR pi_upsell = ? OR pi_downsell = ? OR pi_extra = ?')->execute([(int)$obj['amount_refunded'], $obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent']]);
     log_evento(['evento' => 'refund', 'event_id' => $ev['id'], 'dados' => ['pi' => $obj['payment_intent'], 'valor' => $obj['amount_refunded']]]);
     break;
   case 'charge.dispute.created':
-    db()->prepare('UPDATE pedidos SET contestado = 1 WHERE pi_front = ? OR pi_upsell = ? OR pi_downsell = ?')->execute([$obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent']]);
+    db()->prepare('UPDATE pedidos SET contestado = 1 WHERE pi_front = ? OR pi_upsell = ? OR pi_downsell = ? OR pi_extra = ?')->execute([$obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent'], $obj['payment_intent']]);
     log_evento(['evento' => 'dispute', 'event_id' => $ev['id'], 'dados' => ['pi' => $obj['payment_intent'], 'motivo' => $obj['reason'] ?? '']]);
     break;
   case 'radar.early_fraud_warning.created':
