@@ -25,6 +25,7 @@ Regra do Kenui: **teste A/B de tudo, um por vez, inclusive preço**; decide o lu
 | T4 | `T4-bump-preco` | bump US$7,99 → US$5,99 | preço menor sobe o aceite o bastante para dar mais lucro por comprador | lucro do bump por comprador | longo (precisa de compradores) | junto da fila de compradores |
 | T5 | `T5-upsell-preco` | upsell US$24,99 → US$19,99 | dobra o aceite e compensa a margem menor | lucro do upsell por comprador | longo | idem |
 | T6 | `T6-downsell-digital` | downsell pelúcias (físico) → **Indoor Hunt Playbook** (PDF, US$9) | **a dúvida do Kenui**: digital tem valor percebido maior para esta persona? Hoje a evidência diz que não (conteúdo grátis abundante), então o padrão é físico; o teste decide | lucro do downsell por quem o vê | longo | só depois de escrever o PDF; não escrever antes de chegar aqui |
+| T11 | `T11-porque-aqui` | bloco "por que comprar aqui" antes dos kits: A com (padrão) × B sem | responder as objeções 1, 2, 5 e 6 perto do preço sobe a conversão sem baixar o ticket (pedido do Kenui, 24/11) | **lucro por visitante**; topo: início de checkout por visitante | ~700 por versão para o topo | **ativo desde 24/11** (teste de página; roda junto com o T7 do pós-compra) |
 | T9 | (a criar) | primeira tela: vídeo do fornecedor × foto parada | vídeo do efeito real faz entender em 2 s (persona §5: o pet reagindo) | clique no botão | ~690 por versão | quando chegar o vídeo da CJ |
 | T10 | (a criar) | prova antes ou depois da oferta | — | clique no botão | ~690 | quando houver prova real |
 
@@ -44,6 +45,7 @@ Régua: 200 compradores por braço ou 30 dias, decisão bayesiana ≥ 90%; guard
 Cada teste encerrado vira uma linha em `operacoes/drop-eua/registro-de-ganhos.csv` (data, id, versão vencedora, métrica, ganho em lucro por visitante, amostra, confirmou em 2 semanas?).
 
 ## Histórico
+- v3.1 (24/11, noite): T11 ativo (objeções na página).
 - v3 (24/11, noite): camada de testes do pós-compra (T7 ativo, T8 na fila); os testes de página que eram T7/T8 viraram T9/T10.
 - v1 (24/11): 5 testes.
 - v2 (24/11): ids ligados ao motor de A/B, régua única, preço entra com regra de volume, T6 testa o digital pago contra o físico.
