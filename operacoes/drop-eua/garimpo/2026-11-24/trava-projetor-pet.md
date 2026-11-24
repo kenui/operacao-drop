@@ -85,3 +85,8 @@ Página (abre pelo QKsource, site irmão da CJ): https://qksource.com/product/in
 - Item 7: falta vídeo real.
 
 **Veredito pela regra: reprovado no item 1.** Margem absoluta é boa (US$20–26), diferente da vila (US$6,50). Decisão do Kenui: abrir exceção no item 1 para este produto ou descartar.
+
+## Decisão 24/11 13:20 (Kenui): exceção no item 1, kit a US$49,99
+- Oferta: kit projetor + pelúcia (esquilo com apito para cão; ratinho para gato) a **US$49,99**. Custo US$18,77 (37,5%), margem ~US$25,60 (51%).
+- Motivo da exceção: margem absoluta e CPA de empate ≥US$25 passam com folga; o kit não se compara com as cópias de US$24 da Amazon.
+- Antes de anunciar: vídeo real do fornecedor (item 7). Ticket aberto na CJ às 13:22 pedindo vídeo real, versão gato (ratinhos), tipo de energia e estoque nos EUA; resposta prometida até 25/11 04:00 UTC.

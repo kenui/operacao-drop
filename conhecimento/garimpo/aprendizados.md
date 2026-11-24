@@ -43,3 +43,7 @@
 - Produto atraente pode ter anúncio de só 7 dias: medir a idade do anúncio mais antigo antes da vitrine, para Kenui escolher sabendo se é explosão nova ou prova antiga.
 - Cópias chinesas sem Prime não contam no item 3, mas o cliente as vê. Registrar o menor preço visível como risco de conversão, e responder com kit ou versão superior.
 - Sem o Chrome do Kenui não há custo real (CJ). Pedir o Chrome no início da trava, não no fim.
+
+## 24/11/2026 — exceção do item 1 (projetor pet)
+- Produto leve e eletrônico vindo da China: frete de US$8–9 domina o custo (produto US$6,74). O teto de 30% reprova quase todo gadget eletrônico a US$30–40. Kenui aceitou exceção quando a margem absoluta passa (≥US$25 no kit). Próximos garimpos: calcular o frete "sensitive" na calculadora logada (cjdropshipping.com/calculation.html) logo no início.
+- Produto novo demais não está no catálogo da CJ: o sourcing grátis respondeu em ~7 horas com item parecido (SPU no QKsource, site irmão).
