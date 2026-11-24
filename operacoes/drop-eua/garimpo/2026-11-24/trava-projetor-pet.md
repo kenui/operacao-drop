@@ -56,3 +56,32 @@ Kenui não sabe usar o sourcing da CJ e pediu AliExpress. Resultado:
 - **Dois produtos diferentes no mercado:** (a) o viral, com corpo em forma de pata e bichos no chão (Pouncy, "Mouse Hunt"), cópias na Amazon a US$23,99–29,99; (b) a luminária redonda que gira silhueta de rato, US$12,99–16,99. A vitrine escolheu o (a).
 - **Sinal, não custo:** vendedor chinês na Amazon vende o (b) a US$12,99 + US$4,49 de frete. Isso sugere fábrica barata, mas pela regra não vale como custo.
 - **Conclusão:** nenhum preço confirmado com entrega nos EUA. Caminho mais simples: Kenui deixa o Chrome aberto com a extensão do Claude conectada e eu mesmo busco na CJ (ela mostra preço, frete para os EUA, armazém e prazo sem precisar de pedido de sourcing).
+
+## Atualização 24/11 13:30: cotação da CJ chegou (sourcing CJSPU961146136)
+CJ indicou produto parecido: **"Interactive 3D Squirrel Projection Dog Toy"**, SPU CJYD3738299, fornecedor "ledi" (nota 4,9), estoque de fábrica 7.089, sai da China.
+Página (abre pelo QKsource, site irmão da CJ): https://qksource.com/product/interactive-3d-squirrel-projection-dog-toy---automatic-pet-training-light-for-indoor-play-and-mental-stimulation-p-2611220303091607600.html
+- É o mesmo projetor em forma de pata, projetando um esquilo no chão (versão cachorro). A versão gato (ratinhos) não veio.
+- Preço US$6,74; 250 g; caixa 11×11×14 cm; plástico. Fotos da página parecem renderização; **sem vídeo real** (item 7 continua aberto).
+- Frete China→EUA (CEP 90001), calculadora da CJ logada, como eletrônico:
+  - CJPacket SP Sensitive US$7,50 (7–13 dias)
+  - CJPacket Sensitive US$8,73 (61% em 4–9 dias, 29% em 10–12)
+  - YunExpress Sensitive US$9,33 (62% em 4–7 dias, 29% em 8–9)
+- Kit com pelúcia (340 g): CJPacket Sensitive US$10,53; YunExpress Sensitive US$11,17. Pelúcia do esquilo: cotação CJSPU961146540 ainda pendente (usei US$1,50 como alvo).
+- 2 projetores (500 g): CJPacket Sensitive US$13,09; YunExpress Sensitive US$14,23.
+
+### Conta (M = 0,89P − 0,10 − C; Stripe BR + 5% reserva)
+| Oferta | Custo entregue C | Preço P | C/P (item 1 ≤30%) | Margem M (item 4 ≥US$20 e ≥45%) |
+|---|---|---|---|---|
+| Projetor só | 15,47 | 39,99 | 38,7% ❌ | 20,02 (50%) ✅ |
+| Projetor só | 15,47 | 44,99 | 34,4% ❌ | 24,47 (54%) ✅ |
+| Kit + pelúcia | 18,77 | 49,99 | 37,5% ❌ | 25,62 (51%) ✅ |
+| Kit + pelúcia | 18,77 | 59,99 | 31,3% ❌ | 34,52 (58%) ✅ |
+| 2 projetores | 26,57 | 69,99 | 38,0% ❌ | 35,62 (51%) ✅ |
+
+- Item 2 (prazo ≤12 dias): passa com CJPacket Sensitive ou YunExpress (~90% em até 9–12 dias).
+- Item 3: passa (cópias da Amazon sem Prime e sem avaliações).
+- Item 4 e 5: passam a partir de US$39,99 (margem e CPA de empate ≥US$20).
+- **Item 1 reprova** em todo preço que o mercado pratica (concorrentes US$29,99–47,90). Só passaria com o kit a ~US$62,99.
+- Item 7: falta vídeo real.
+
+**Veredito pela regra: reprovado no item 1.** Margem absoluta é boa (US$20–26), diferente da vila (US$6,50). Decisão do Kenui: abrir exceção no item 1 para este produto ou descartar.
