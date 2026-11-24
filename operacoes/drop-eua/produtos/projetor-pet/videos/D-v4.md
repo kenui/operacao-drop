@@ -29,7 +29,7 @@ Textos: "rainy day. no walk. he's been staring at me like this" / "so I got him 
 - Forma do produto conferida com a cotação da CJ (SPU CJYD3738299: pata que projeta um esquilo no chão). As fotos do fornecedor parecem renderização, então a projeção exata segue os anúncios reais.
 
 ## Custo
-Quadro inicial ~4, rascunho 36, final 84. Total ~124 créditos.
+Quadro inicial 4, rascunho 36, final **192** (extrato; saiu em 1080p e foi cobrado como 1080p, não os 84 cotados). **Total real 232 créditos.**
 
 ## Resultado
 Aguardando avaliação do Kenui.

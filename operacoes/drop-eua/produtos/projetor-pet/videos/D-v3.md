@@ -37,7 +37,7 @@ Prompts completos: modelo C do guia + AVATAR, ANIMAL e PRODUCT LOCK (guardados n
 - Ponto fraco: a pelúcia fica alaranjada sob a luz dos anéis (coerente com a física, mas parece outra cor que na mão).
 
 ## Custo
-Imagens ~10 créditos (base e quadros), 2 rascunhos 60, 2 finais 140. Total ~210.
+Imagens ~12 créditos (base e quadros), 2 rascunhos 60, 2 finais **320** (o extrato cobrou 160 por final: a finalização do rascunho saiu em 1080p e foi cobrada como 1080p, não os 70 do 720p que eu tinha cotado). **Total real ~392.**
 
 ## Resultado
 Aguardando avaliação do Kenui.
