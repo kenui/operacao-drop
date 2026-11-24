@@ -1,4 +1,4 @@
-# Portão de viabilidade (v1.3, 24/11/2026)
+# Portão de viabilidade (v1.4, 24/11/2026)
 
 Nenhum produto passa para dossiê, página ou vídeo sem passar por este portão. Quem roda: o Garimpeiro antes de apresentar candidatos ao Kenui, e o agente de Dossiê confere de novo antes de começar (Fase 0).
 Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado (US$14 a 20) e, na checagem, o fornecedor real custava US$24 a 30, saía só da China, a peça tinha 17 cm contra fotos de IA que a faziam parecer grande, e a Amazon já vendia igual a US$33. Ver [a lição](../../operacoes/drop-eua/produtos/vila-teleferico/LICAO.md).
@@ -6,9 +6,9 @@ Nasceu da vila de Natal (23/11/2026): o produto foi escolhido com custo estimado
 ## 1. Os 8 itens (todos com link ou print; "estimado" não conta)
 | # | Item | Como checar | Passa se |
 |---|---|---|---|
-| 1 | **Custo real entregue nos EUA** | carrinho do fornecedor (CJ, AliExpress em dólar, ou cotação por escrito) com frete para um CEP dos EUA | custo ≤ **30%** do preço de venda |
+| 1 | **Custo real entregue nos EUA** | carrinho do fornecedor (CJ, AliExpress em dólar) ou **cotação por escrito do pedido de sourcing da CJ** (feito na conta do Kenui), com frete para um CEP dos EUA | custo ≤ **30%** do preço de venda |
 | 2 | **Estoque e prazo** | "ship from" do fornecedor + prazo informado | entrega em ≤ 12 dias, e a janela de venda que sobra (data-limite do evento − prazo − 5 dias de montagem) é ≥ 21 dias, ou o produto não é sazonal |
-| 3 | **Preço na Amazon e no Walmart** | busca pelo produto e por foto | o mais barato com entrega antes do evento custa ≥ **85%** do nosso preço, ou o nosso tem algo que lá não tem (kit, versão, tamanho) |
+| 3 | **Preço na Amazon e no Walmart** | busca pelo produto e por foto; **só contam anúncios com Prime/entrega pela Amazon (Walmart: vendido/entregue pelo Walmart) OU com 50+ avaliações**, que entreguem antes da data do evento (decisão do Kenui, 24/11) | o mais barato com entrega antes do evento custa ≥ **85%** do nosso preço, ou o nosso tem algo que lá não tem (kit, versão, tamanho) |
 | 4 | **Margem antes do anúncio** | conta da seção 2 | ≥ **US$20** e ≥ 45% do preço |
 | 5 | **CPA de empate** cabe no mercado | margem antes do anúncio = CPA máximo | CPA máximo ≥ US$20 (Q4) ou ≥ US$15 (janeiro a setembro) |
 | 6 | **Tamanho e aparência reais** | medida do fornecedor + foto ou vídeo real (não render) | o real bate com o que os anúncios mostram, ou dá para vender honestamente com a escala real |
@@ -45,5 +45,6 @@ Exemplo de aprovado: P 39,98; C 11; reserva 5% 2,00 → M = 25,52 (64% do preço
 ## Histórico
 - v1 (2026-11-23): criado depois do descarte da vila de Natal.
 - v1.1 (2026-11-23): item 8 passa a usar o CPA esperado da época, não o de empate. Na v1, qualquer margem acima de US$30 reprovava (30 × 3 > US$90), barrando os melhores produtos. Achado pela thread do garimpo na rodada 4.
+- v1.4 (2026-11-24): item 3 conta só Prime/FBA ou 50+ avaliações com entrega a tempo; item 1 aceita cotação do sourcing da CJ. Decisão do Kenui depois de 0 aprovados em ~150 produtos (cópias chinesas de US$1–9 sem avaliações derrubavam tudo).
 - v1.3 (2026-11-24): regra do item 3 para kit (thread do garimpo, depois de 0 aprovados em ~115 produtos avulsos).
 - v1.2 (2026-11-23): aviso sobre a taxa da Stripe para conta do Brasil (thread de funil e checkout).
