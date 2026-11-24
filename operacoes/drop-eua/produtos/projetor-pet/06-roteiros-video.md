@@ -6,7 +6,14 @@ Formato: 9:16, 15 a 22 s, cortes secos, legenda queimada, fala natural em inglê
 **Trava antes de gerar:** (1) produto aprovado na trava de custo; (2) vídeo real do fornecedor com os bichos no chão; (3) orçamento de créditos aprovado pelo Kenui. Sem o vídeo real, os WOW BEATs ficam suspensos.
 
 Frentes (decisão do Kenui, 24/11): **gato** (roteiros A, B; C de reserva) e **cachorro** (roteiros D, E). Estilo de referência: [estudo/referencia-estilo.md](estudo/referencia-estilo.md) (anúncio da Enjoyaitlife que o Kenui escolheu).
-Música em todos: faixa animada da **Meta Sound Collection** (liberada para anúncio). Nunca música de sucesso sem licença.
+Som por roteiro (24/11, regra em [retencao-viralidade-credibilidade.md](../../../../conhecimento/video-ia/retencao-viralidade-credibilidade.md#6-música-quando-usar)). Nunca música de sucesso sem licença; música só gerada por IA no Higgsfield (ElevenLabs, uso comercial liberado) ou Meta Sound Collection.
+| Roteiro | Som | Por quê |
+|---|---|---|
+| A (gato captura) | som natural; música bem baixa só no WOW BEAT, se a versão sem música perder | a fala dela é o gancho e a prova |
+| B (dono cansado) | som natural | fala de cansaço com música vira propaganda |
+| C (demonstração gato) | sem música no começo (sussurro), música entra no bote | o sussurro é o gancho |
+| D (cachorro controle) | **música por IA baixa sob latido e apito** | demonstração sem fala, igual ao formato que viraliza |
+| E (cachorro captura) | som natural com música baixa nos trechos sem fala | mistura fala e demonstração |
 
 Regras fixas em todos:
 - O aparelho aparece na mão ou ao lado de uma caneca antes dos 8 s (escala real).
@@ -14,6 +21,7 @@ Regras fixas em todos:
 - O brinquedo de pelúcia (ratinho para gato, pelúcia com apito para cachorro) aparece no fim de **todos** os roteiros (é o que nos separa das 92 lojas).
 - A última tela repete o título da página do ângulo.
 - Rótulo de IA no Meta.
+- Retenção (manual acima): texto na tela no quadro 1 dentro da zona segura; algo muda a cada 1 a 3 s; efeito até 5 s; CTA nos últimos 3 s (comentário em D, ver o produto nos outros).
 
 ---
 
