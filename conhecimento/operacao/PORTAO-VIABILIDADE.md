@@ -26,7 +26,7 @@ preço de venda (P)
 = margem antes do anúncio (M) = CPA de empate
 Kit de 2 (se fizer sentido): recalcular com 2C e o preço do kit.
 ```
-**Atenção à taxa da Stripe (23/11):** a fórmula acima usa a taxa de conta dos EUA. Se a conta do Kenui for do Brasil, a taxa é 3,99% + R$0,39 + 2% por cartão internacional (todo cartão americano), com repasse em reais e câmbio embutido: use **0,06 × P + 0,10** mais o câmbio medido na primeira venda ([Stripe Brasil](https://stripe.com/en-br/pricing)). País da conta: a confirmar com o Kenui.
+**Atenção à taxa da Stripe (23/11):** a fórmula acima usa a taxa de conta dos EUA. Se a conta do Kenui for do Brasil, a taxa é 3,99% + R$0,39 + 2% por cartão internacional (todo cartão americano), com repasse em reais e câmbio embutido: use **0,06 × P + 0,10** mais o câmbio medido na primeira venda ([Stripe Brasil](https://stripe.com/en-br/pricing)). Conta confirmada como **do Brasil** pelo Kenui em 24/11: usar esta taxa.
 Exemplo da vila: P 39,98; Stripe 1,46; C 28; reserva 10% 4,00 → **M = 6,52**. Reprovada nos itens 1, 4 e 5.
 Exemplo de aprovado: P 39,98; C 11; reserva 5% 2,00 → M = 25,52 (64% do preço). Passa.
 

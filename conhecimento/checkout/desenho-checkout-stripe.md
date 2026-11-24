@@ -6,12 +6,21 @@ Objetivo: checkout na própria landing page, com bump e upsell de um clique, med
 
 ---
 
-## 1. Perguntas que mudam o desenho (para o Kenui)
-1. **A conta da Stripe é do Brasil ou dos EUA?** Muda a taxa: conta BR cobra 3,99% + R$0,39 **+ 2% por cartão internacional** e repassa só em reais, com câmbio embutido ([Stripe Brasil](https://stripe.com/en-br/pricing)); conta dos EUA cobra 2,9% + US$0,30. O portão de viabilidade usava a taxa americana.
-2. **Qual plano da Hostinger?** Todo plano roda PHP. Node.js só no Business, Cloud ou VPS ([Hostinger](https://www.hostinger.com/support/1583661-is-node-js-supported-at-hostinger/)).
-3. **Tem empresa nos EUA?** Afeta rodapé legal, imposto sobre vendas e o nome que aparece na fatura do cartão.
+## 1. Realidade do Kenui (respondido em 24/11/2026) e caminho para vender em dólar
+- Conta da Stripe: **do Brasil**. Hospedagem: plano de hospedagem compartilhada (médio) e um VPS. Empresa nos EUA: **não tem**.
 
-Suposição até a resposta: conta BR, plano com PHP, sem empresa nos EUA.
+**Caminho escolhido para começar: conta da Stripe do Brasil cobrando em dólar.**
+- A conta brasileira pode exibir e cobrar o preço em US$ (a Stripe processa em mais de 135 moedas). O americano vê e paga em dólar, com Apple Pay e Google Pay; o repasse cai em reais na conta bancária do mesmo CPF ou CNPJ ([Stripe Brasil](https://stripe.com/en-br/pricing)).
+- Custo: 3,99% + R$0,39 + 2% por cartão internacional, mais o câmbio embutido no repasse (a Stripe não publica o percentual; medir na primeira venda pelo extrato da transação no painel). Usar **0,06 × P + 0,10** mais o câmbio medido na conta de margem.
+- Vantagem: nada a abrir, nada a pagar agora, cabe na verba de R$500.
+- Do lado do Kenui: (1) conferir no painel que a conta está ativada e verificada para receber pagamentos; (2) definir o descritor da fatura com o nome da página; (3) falar com um contador sobre como declarar receita de vendas ao exterior (pessoa física ou CNPJ) antes de escalar.
+
+**Depois, quando o lucro pagar: empresa americana (LLC) e conta da Stripe dos EUA.**
+- Ganho: taxa de 2,9% + US$0,30, repasse em dólar, sem câmbio por venda; nome e endereço americanos no rodapé (mais confiança).
+- Custo estimado [HIPÓTESE, conferir antes]: abertura pela Stripe Atlas por US$500 ([Stripe Atlas](https://stripe.com/atlas)), taxa anual do estado (Delaware US$300 por ano, Wyoming US$60), agente registrado, banco americano (Mercury, Relay) e contador para o formulário 5472 da Receita americana, obrigatório para LLC de dono estrangeiro, com multa de **US$25.000** se não for entregue ([BusinessToday](https://www.businesstoday.in/impact-feature/story/forming-a-us-llc-to-access-stripe-is-a-legitimate-move-the-tax-compliance-it-creates-is-not-small-519932-2026-03-10)). Total de US$1.100 a 1.400 no primeiro ano.
+- Ponto de virada [HIPÓTESE]: a diferença de taxa é cerca de US$1,60 por pedido de US$40. A LLC se paga a partir de uns 60 a 70 pedidos por mês. O agente de funil acompanha esse número e avisa quando passar.
+
+**Servidor:** rodar o backend em PHP no plano de hospedagem compartilhada (gerenciado, com HTTPS e MySQL, sem manutenção). O VPS fica de reserva para quando o volume ou um processo contínuo exigir.
 
 ## 2. Peças da Stripe que vamos usar
 | Peça | Para quê | Fonte |
@@ -85,3 +94,4 @@ Escrever o servidor, testar tudo no modo de teste da Stripe (cartões de teste, 
 
 ## Histórico
 - v1 (2026-11-23): desenho inicial, sem código.
+- v1.1 (2026-11-24): respostas do Kenui (Stripe BR, hospedagem + VPS, sem empresa nos EUA); caminho para vender em dólar.
