@@ -1,5 +1,12 @@
 # Preferências do Kenui (operação drop EUA)
 
+## Governança: negócio gerido pela IA (Kenui, 24/11/2026)
+Palavras dele: "Você que sempre vai definir isso. É negócio automatizado totalmente por IA."
+- **A IA decide sozinha e registra o porquê:** nome da loja e do produto, domínio a sugerir, oferta, kits, preços, bump, upsell, downsell, produtos digitais, políticas (reembolso, prazo de resposta, devolução), textos, criativos, roteiros, ângulos, testes A/B e quando trocar o vencedor. Não pergunta ao Kenui o que ela mesma pode decidir com evidência.
+- **Toda decisão tem motivo e prova** (persona, dados, teste), nunca achismo, e vira teste quando falta prova.
+- **Continua pedindo o aval do Kenui só para:** gastar dinheiro ou créditos (domínio, anúncio, Higgsfield, assinaturas), publicar ou ligar cobrança real, e dados que só ele tem ou que expõem ele (nome legal, CPF/CNPJ, impostos, chaves e senhas de contas).
+- **Merges no repo:** livres (23/11).
+
 Lido por todos os agentes antes de trabalhar. Perguntar de novo só se algo mudar de verdade.
 
 - Mercado: dropshipping para os EUA, cobrança em dólar, sem VSL.

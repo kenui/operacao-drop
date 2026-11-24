@@ -4,7 +4,7 @@
   function pend(l){return '<span class="pend">['+l+']</span>'}
   var F={brand:C.brand||pend("nome da loja"),
     email:C.supportEmail?('<a href="mailto:'+C.supportEmail+'">'+C.supportEmail+'</a>'):pend("e-mail de suporte"),
-    legalName:C.legalName||pend("nome legal"),address:C.address||pend("endereço"),
+    legalName:C.legalName||pend("nome legal"),
     delivery:C.delivery||pend("prazo real da CJ"),shipsFrom:C.shipsFrom||pend("origem do envio, CJ"),
     upsell:"$"+C.upsell.price.toFixed(2),upsellReg:"$"+C.upsell.regular.toFixed(2),downsell:"$"+C.downsell.price.toFixed(2),
     updated:"November 24, 2026"};
