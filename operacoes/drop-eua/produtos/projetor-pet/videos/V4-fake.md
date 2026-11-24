@@ -36,5 +36,8 @@ Saldo: 105,8 → 104,4 créditos (total gasto em fichas e quadros: 5,6 do teto d
 - A garantia de 30 dias no texto precisa continuar igual à da página.
 - Referência modelada: sem referência; roteiro de persona (objeção nº 1, 03-persona.md §5 e §6).
 
+## Áudio (24/11, depois do pedido do Kenui: "parece muito de IA")
+Montagem refeita com a mixagem de celular ([audio-realista.md](../../../../../conhecimento/video-ia/audio-realista.md), camada 1): piso de sala contínuo, curva de microfone, reflexo curto igual em todos os trechos, ganho linear, música a 22%. Custo zero. A versão anterior ficou guardada como `*-audio-antes.mp4` para comparar. A voz em si continua a gerada pelo T1; trocar a voz é a camada 3 e pede aval.
+
 ## Resultado
 Aguardando avaliação do Kenui.
