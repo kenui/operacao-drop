@@ -2,6 +2,9 @@
 
 Diferente do `JEITO-CERTO.md` (o que venceu em teste real), aqui ficam as regras de **como trabalhar** que o Kenui definiu. Valem para todo produto. Quando um teste real mostrar que um princípio precisa mudar, a mudança entra aqui com data e prova, e a versão antiga fica no histórico.
 
+## 0. Pesquisa de persona antes de tudo (Kenui, 24/11)
+Antes da matriz, roda a pesquisa de persona com a skill do Kenui, adaptada: [persona-padrao-drop.md](persona-padrao-drop.md). Sem persona com evidência, não se escreve ângulo, roteiro nem página.
+
 ## 1. Ângulo = consciência x persona, o mesmo na página e no vídeo
 Origem: Kenui, 23/11/2026, ao escolher a vila de Natal ("avaliar a consciência do público e cruzar com as personas para ver ângulos que a gente vai usar tanto na página quanto no vídeo").
 

@@ -48,6 +48,9 @@ Cada vídeo aprovado ou reprovado volta para a seção 9 da ficha. A ficha nunca
 - Reação natural de quem testa (comportamento, não emoção): ex.: "pauses, raises eyebrows, leans closer, tries it again"
 - Filmagem real de referência desse efeito (link na mídia):
 
+## 5c. Checagem obrigatória de estados (antes de gerar e depois, quadro a quadro)
+Regra do Kenui: o vídeo nunca mostra algo que o produto não faz ou fora da ordem real de uso. Para cada estado do produto (desligado, ligando, ligado, desligado de novo), escrever o que **não pode** aparecer nele (ex.: nenhuma luz no chão antes do clique). Uma tomada por estado; corte no momento da ação. Depois de gerar, extrair um quadro por segundo e marcar cada um contra esta lista. Reprovou um quadro, não mostra.
+
 ## 6. Física que a IA costuma errar com este produto
 - Gravidade e queda (líquido escorre para baixo, pó assenta, objeto pesado não flutua):
 - Líquidos, espuma, vapor, fumaça:
