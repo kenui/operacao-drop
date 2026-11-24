@@ -59,8 +59,11 @@ Custo (23/11, conector): Nano Banana 2 9:16 2k = 1,5 crédito; Kling 3.0 pro 5 s
 ## Cenas da pesquisa como referência (desde 24/11, pedido do Kenui)
 Antes da ficha de uso, os vídeos reais achados na pesquisa passam pela ferramenta `ferramentas/ver-video` (cenas, quadros, som, transcrição). Cada comportamento do produto no prompt precisa de uma cena real que prove, com fonte e tempo. O vídeo gerado passa pela mesma ferramenta e é comparado cena a cena antes de aprovar. Método completo: `cenas-de-referencia.md`.
 
-## Realismo de celular (desde 24/11, retorno do Kenui sobre o D-v3)
-Todo vídeo gerado passa por `ferramentas/celularizar` antes do texto na tela (sem crédito). Voz: preferir sem narração ou só reações curtas; voz gerada longa é proibida. O momento uau precisa de aparelho + efeito + pet reagindo no mesmo quadro, com o efeito já no quadro inicial. Pelúcia/brinde só no fim e menor. Detalhes: `realismo-de-celular.md`.
+## Realismo UGC (v2, 24/11; a v1 sem voz e com imagem degradada foi reprovada no D-v4)
+Realismo é textura e detalhe (pele, pelo, casa vivida, luz de casa), escrito dentro do prompt, não filtro nem qualidade ruim (`celularizar` só para teste). Prompts escritos pelo Fable 5.2 ou modelo mais inteligente. UGC precisa do criador na tela, com voz e conversa natural com o parceiro que filma. O animal sempre olha para a presa (GAZE LOCK). O prompt é longo, em blocos com travas, e descreve o produto exatamente como ele é. Antes do prompt, o bloco DECISÃO CRIATIVA (persona, ângulo, tipo de anúncio, força do CTA, por quê com dados, teste) é obrigatório. Modelo completo: `realismo-de-celular.md`.
+
+## Arsenal de técnicas e imagem (desde 24/11, pedido do Kenui)
+Antes de planejar um vídeo, consultar a matriz problema, técnica, por quê e custo em [arsenal.md](arsenal.md): refazer viral (só estrutura e ritmo), cena 3D por código como guia de movimento e quadro inicial (custo zero de crédito), fichas de personagem, voz e lip sync. Toda imagem base, quadro inicial e ficha de personagem segue o [guia de imagem realista](../imagem-ia/guia-imagem-realista.md).
 
 ## Etapa obrigatória antes do prompt: ficha de uso do produto (desde 23/11, pedido do Kenui)
 Nenhum prompt de vídeo é escrito sem a ficha `operacoes/<op>/produtos/<produto>/uso-no-video.md`, feita a partir do modelo `conhecimento/video-ia/modelo-ficha-uso-produto.md`.

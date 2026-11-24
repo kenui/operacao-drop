@@ -85,3 +85,15 @@ Página (abre pelo QKsource, site irmão da CJ): https://qksource.com/product/in
 - Item 7: falta vídeo real.
 
 **Veredito pela regra: reprovado no item 1.** Margem absoluta é boa (US$20–26), diferente da vila (US$6,50). Decisão do Kenui: abrir exceção no item 1 para este produto ou descartar.
+
+## Decisão 24/11 13:20 (Kenui): exceção no item 1, kit a US$49,99
+- Oferta: kit projetor + pelúcia (esquilo com apito para cão; ratinho para gato) a **US$49,99**. Custo US$18,77 (37,5%), margem ~US$25,60 (51%).
+- Motivo da exceção: margem absoluta e CPA de empate ≥US$25 passam com folga; o kit não se compara com as cópias de US$24 da Amazon.
+- Antes de anunciar: vídeo real do fornecedor (item 7). Ticket aberto na CJ às 13:22 pedindo vídeo real, versão gato (ratinhos), tipo de energia e estoque nos EUA; resposta prometida até 25/11 04:00 UTC.
+
+## Atualização 24/11 15:30: a versão gato existe (pedido específico na CJ)
+Kenui notou que a CJ só achou a versão cachorro. Conferi nas lojas concorrentes:
+- **Existe, e é um modelo separado** (não é disco trocável). A loja aintimall.com vende o mesmo aparelho em pata com as variantes "Dog Squirrel Style", "Cat Mouse Style" e as duas juntas (US$59,99 / 59,99 / 99,99). A versão gato projeta um ratinho entrando e saindo de buracos iluminados no chão. https://aintimall.com/products/interactive-paw-projector-pet-toy-%F0%9F%90%B1%F0%9F%90%B6-moving-squirrel-mouse-projection-game-for-cats-dogs
+  - Imagens: https://cdn.shopify.com/s/files/1/0735/6766/6287/files/01_8_381f3aba-7bf5-4c15-8852-b798362f4a53.jpg?v=1795075783 e https://cdn.shopify.com/s/files/1/0735/6766/6287/files/01_10_5a738675-f910-452c-9a24-c615e004c428.jpg?v=1795075783
+- Amazon: "Mouse Hunt Cat Projector" em pata, US$22,99, ligado no USB: https://www.amazon.com/dp/B0HS4J73MY
+- **3º pedido grátis de sourcing na CJ: CJSPU961157737** (15:28), com 2 fotos da versão gato, link da aintimall, Amazon B0HS4J73MY e o SPU do cachorro (CJYD3738299) como referência. Pede preço, peso, frete para 90001, prazo, tipo de energia, estoque nos EUA, vídeo real e, se for a mesma fábrica, as duas versões como variantes. Restam 2 pedidos grátis.
