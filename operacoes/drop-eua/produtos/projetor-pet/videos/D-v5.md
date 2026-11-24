@@ -31,5 +31,15 @@ Quadros iniciais 4 (2 × 2) + Kling 15 s **37,5** = **41,5 créditos**. Saldo de
 - Quadro inicial com o cachorro já de pé e em movimento (quadro dos 11,5 s deste clipe, media a4295fad-3325-45f5-8ef5-28456ba6260f), para o modelo não ler "cachorro descansando".
 - Custo: 14 s = 35 créditos (o saldo não cobre 15 s).
 
+## v5b (gerada com o aval do Kenui, cartão de 24/11 16:05 UTC)
+- Kling 3.0 pro, 14 s, som, 9:16, job ff86b937-4d4a-428b-b054-74950047527c. Prompt de 2.071 caracteres, uma tomada, 3 falas (sandbox `pet5/p5b.txt`). Quadro inicial: quadro dos 11,5 s da v5 (media a4295fad-3325-45f5-8ef5-28456ba6260f).
+- **Falas: as 3 saíram exatas e na ordem** (transcrição base.en): "Babe, look, he's actually hunting it." (0 a 5,8 s) / "No way." (voz dele, 5,8 a 7,8 s) / "Honestly, if your dog gets bored, get this." (7,8 a 14 s).
+- Produto parado, em pé, lente azul, anéis planos no chão. Ela sem celular.
+- Cachorro de pé o vídeo todo; o coelho aparece entre 5 e 8 s e ele pula em cima dele aos 9 s.
+- Pontos fracos: nos primeiros 5 s o cachorro olha mais para a câmera do que para os anéis; ele aparece com um objeto claro na boca (parece um petisco ou brinquedo que o modelo inventou), mais visível dos 11 s em diante; no reenquadramento final o projetor quase sai do quadro.
+- Final (textura + textos): https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/5d7ac726-6c70-46f4-b3aa-e94a8b3a3e48.mp4
+- Bruto: https://d8j0ntlcm91z4.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/hf_20261124_160641_ff86b937-4d4a-428b-b054-74950047527c.mp4
+- Custo conferido no extrato: **35 créditos**. Total da v5 (a + b): 76,5. Saldo: 0,76.
+
 ## Resultado
 Aguardando avaliação do Kenui.
