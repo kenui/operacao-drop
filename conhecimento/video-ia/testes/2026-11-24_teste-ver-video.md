@@ -10,14 +10,16 @@ Pedido do Kenui (24/11): um jeito aberto, do GitHub, de a operação entender v�
 | huggingface.co | liberado |
 | us.aws.cdn.hf.co, cas-bridge.xethub.hf.co, cdn-lfs.hf.co | **bloqueados**: o modelo de transcrição não baixa |
 
-Conclusão: cenas, folhas, recortes e mapa do som funcionam. A transcrição continua pendente até liberar os três endereços de arquivo do Hugging Face no ambiente.
+Conclusão da 1ª rodada: cenas, folhas, recortes e mapa do som funcionam; transcrição bloqueada.
+
+**2ª rodada (24/11, 12:05 UTC), depois de o Kenui liberar os três endereços:** us.aws.cdn.hf.co passou a responder e o modelo small baixou. Apareceu outro erro, de versão (o PyAV 19 removeu um argumento que o faster-whisper 1.2 usa). Corrigido na ferramenta: o áudio vai já decodificado. Transcrição funcionando, frase por frase com tempo.
 
 ## Vídeos rodados
 | Vídeo | Duração | Cenas detectadas | Transcrição |
 |---|---|---|---|
-| Capinha de glitter (upload do Kenui, 23/11) | 15,1 s | 6 (0 / 1,5 / 3,2 / 6,8 / 9,5 / 11,9 s) | pendente (rede) |
-| D-v1 som natural (84a746b1) | 15,0 s | 1 (tomada única) | pendente (rede) |
-| D-v2 som natural (656745b0) | 20,2 s | 4 (cortes de 5 s certinhos) | pendente (rede) |
+| Capinha de glitter (upload do Kenui, 23/11) | 15,1 s | 6 (0 / 1,5 / 3,2 / 6,8 / 9,5 / 11,9 s) | 6 frases de 0 a 9,5 s (na [referência](../referencias/2026-11-23_capinha-glitter.md)) |
+| D-v1 som natural (84a746b1) | 15,0 s | 1 (tomada única) | nenhuma fala (certo: o roteiro não tinha fala) |
+| D-v2 som natural (656745b0) | 20,2 s | 4 (cortes de 5 s certinhos) | igual ao roteiro, menos "look at it" no lugar de "look at him" aos 13,1 s |
 
 A detecção de cortes acertou os 4 cortes do D-v2 e não inventou corte no plano único do D-v1.
 

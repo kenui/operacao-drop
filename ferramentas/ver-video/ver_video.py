@@ -89,8 +89,23 @@ def transcrever(wav, modelo, idioma):
     try:
         from faster_whisper import WhisperModel
         m = WhisperModel(modelo, compute_type="int8")
-        segs, info = m.transcribe(wav, language=idioma, vad_filter=True)
-        return info.language, [{"ini": round(s.start, 1), "fim": round(s.end, 1), "texto": s.text.strip()} for s in segs], None
+        # Passa o áudio já decodificado (16 kHz mono): o PyAV 19 removeu um argumento que o
+        # faster-whisper 1.2 usa ao abrir arquivos, e assim o PyAV nem entra.
+        import numpy as np
+        w = wave.open(wav)
+        audio = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+        segs, info = m.transcribe(audio, language=idioma, vad_filter=True, word_timestamps=True)
+        falas = []
+        for sg in segs:  # quebra em frases, cada uma com o seu tempo
+            atual = []
+            for p in (sg.words or []):
+                atual.append(p)
+                if p.word.strip()[-1:] in ".?!":
+                    falas.append(atual); atual = []
+            if atual:
+                falas.append(atual)
+        return info.language, [{"ini": round(f[0].start, 1), "fim": round(f[-1].end, 1),
+                                "texto": "".join(p.word for p in f).strip()} for f in falas], None
     except Exception as e:
         return None, [], f"{type(e).__name__}: {str(e)[:200]}"
 

@@ -13,8 +13,26 @@ Arquivo: 15 s, 720x1280, 24 fps, com áudio. Quadros: 2026-11-23_capinha-glitter
 | 11 a 15 s | Volta para a frontal, mais longe. Capinha ao lado do rosto, sorriso leve e olhar para a câmera, em silêncio. | Final sem fala, só reação; som ambiente do quarto. Dá para repetir em loop. |
 
 ## Áudio (visto no espectrograma)
-- Fala de 0 a cerca de 9,5 s, com pausas naturais. Não consegui transcrever as palavras: o modelo de transcrição não baixa nesta máquina (rede bloqueada).
-- Rodada da ferramenta ver-video (24/11): 6 cortes em 0 / 1,5 / 3,2 / 6,8 / 9,5 / 11,9 s; mapa do som com som de 0 a 0,5 s, 1,5 a 5 s, 5,5 a 6,5 s, 7 a 7,5 s, 8 a 9 s e 11 a 11,5 s, e silêncio de 11,5 a 15 s. **Transcrição ainda pendente**: no ambiente "operacao-drop (vídeo)" o huggingface.co abre, mas os servidores de arquivo dele (us.aws.cdn.hf.co, cas-bridge.xethub.hf.co, cdn-lfs.hf.co) estão bloqueados e o modelo não baixa. Quando liberar, rodar `ver_video.py` neste vídeo e colar as falas aqui. Ver [teste](../testes/2026-11-24_teste-ver-video.md).
+- Fala de 0 a cerca de 9,5 s, com pausas naturais. Transcrição abaixo.
+- Rodada da ferramenta ver-video (24/11): 6 cortes em 0 / 1,5 / 3,2 / 6,8 / 9,5 / 11,9 s. Ver [teste](../testes/2026-11-24_teste-ver-video.md).
+
+## Transcrição (faster-whisper, modelo small, 24/11)
+| Tempo | Fala |
+|---|---|
+| 0,0 a 0,5 s | Wait. |
+| 1,3 a 2,4 s | Wait, look at this. |
+| 2,7 a 4,8 s | There is a dinosaur in here and a duck. |
+| 5,6 a 6,6 s | Why is there a duck? |
+| 6,8 a 7,3 s | That's it. |
+| 8,0 a 9,5 s | I cannot stop doing this. |
+
+O que a fala ensina:
+- O gancho é uma palavra só ("Wait.") no primeiro meio segundo, falada como quem acabou de notar algo, não como anúncio.
+- Ela descreve o que vê dentro do produto ("a dinosaur in here and a duck") e faz uma pergunta curiosa ("Why is there a duck?"). Isso mostra o produto sem falar de preço, benefício ou compra.
+- Frases curtas de 1 a 2 s com pausas entre elas: ritmo de conversa real.
+- Fecha com o efeito viciante ("I cannot stop doing this"), que é a promessa do produto dita como confissão, sem exagero.
+- Nenhuma fala sobre comprar, link ou desconto. A fala acaba aos 9,5 s e o resto é som do produto e silêncio.
+- Molde de fala para os nossos roteiros: [interjeição de descoberta] → [descrição concreta do que se vê] → [pergunta ou reação curiosa] → [confissão do efeito]. Tudo em até 10 s.
 - De 9,5 a 11 s: série de batidinhas rítmicas, compatível com os bichinhos batendo dentro da capinha.
 - De 11,5 a 15 s: só som do ambiente. Não há música.
 
