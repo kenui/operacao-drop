@@ -35,3 +35,4 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 
 ## 24/11: oferta e página prontas para revisão (PR do funil)
 Nada publicado, nenhuma chave real. Falta a CJ (custo, prazo, origem, tamanho, energia, LED x laser, vídeo) e o Kenui (nome da loja, domínio, rodapé legal, promessas de atendimento). Lista em 05-pagina/site/README.md.
+- [fichas/README.md](fichas/README.md): fichas 4K da mulher e do cachorro, blocos de identidade e quadros de partida feitos com elas.
