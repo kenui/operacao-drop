@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>One Last Thing</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap"><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
+<body data-etapa="extra">
+<!-- Oferta para quem ACEITOU o upsell (07-funil.md, D13). Mesma caixa, custo conhecido, uma tela só, sem insistir. -->
+<div class="preview" id="previewBar" hidden>PRÉVIA</div>
+<div class="topbar"><span>Your Order Is Confirmed</span><span>Last Step</span></div>
+<main class="page"><div class="wrap">
+  <div class="progress" aria-label="Step 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+  <div class="okline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m7 12.5 3.2 3L17 9"/></svg>Second kit added. One last thing.</div>
+  <h1 id="exH">Spares for the Second Kit Too?</h1>
+  <p id="exP">Each kit comes with one plush for the catch. A spare means the hunt still ends with a catch the day the first one goes missing or loses its squeak.</p>
+  <div class="offer">
+    <img id="exImg" src="assets/img/bump-dog.webp" alt="Spare plush toys" width="800" height="800">
+    <div class="ob">
+      <div class="eyebrow" style="margin:0">One-Time Add-On</div>
+      <h2 style="font-size:24px;margin:4px 0 0" id="exTitle">2 Spare Squeaky Squirrels</h2>
+      <div class="price"><b data-o="extra"></b><em>Same box, no extra shipping</em></div>
+      <ul class="ticks">
+        <li id="exFor">Packed with the second kit, so it arrives ready to give</li>
+        <li>Charged to the card you just used, nothing to type</li>
+        <li>Covered by the same 30-day refund</li>
+      </ul>
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn" id="yes" type="button">Yes, Add the Spares · <span data-o="extra"></span></button>
+      <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
+    </div>
+  </div>
+  <p class="src center">One-time charge. No subscription.</p>
+</div></main>
+<script src="assets/track.js"></script><script src="assets/pages.js"></script>
+<script>
+window.onOferta=function(o,info){
+  var pet=info.upsell_pet||info.pet||"dog", dog=pet!=="cat";
+  document.getElementById("exImg").src="assets/img/bump-"+(dog?"dog":"cat")+".webp";
+  document.getElementById("exTitle").textContent=dog?"2 Spare Squeaky Squirrels":"3 Spare Catnip Mice";
+  if(info.bump){ // já pegou pelúcias no checkout: estas são para o 2º kit (não é a mesma oferta repetida)
+    document.getElementById("exP").textContent="Your first kit already has its spares. This pack is for the second kit, so both pets get the same.";
+  }
+};
+</script>
+<script src="assets/funil.js"></script>
+</body></html>

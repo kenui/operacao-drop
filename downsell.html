@@ -18,7 +18,7 @@
       <div class="ob">
         <div class="eyebrow" style="margin:0">One-Time Add-On</div>
         <h2 style="font-size:24px;margin:4px 0 0" id="dsTitle"></h2>
-        <div class="price"><b data-f="downsell"></b><em>Same box, no extra shipping</em></div>
+        <div class="price"><b data-o="downsell"></b><em>Same box, no extra shipping</em></div>
         <p id="plushTxt" style="margin:0"></p>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="offer"><div class="ob">
       <div class="eyebrow" style="margin:0">Instant PDF</div>
       <h2 style="font-size:24px;margin:4px 0 0">The Indoor Hunt Playbook</h2>
-      <div class="price"><b data-f="downsell"></b><em>In your inbox right away</em></div>
+      <div class="price"><b data-o="downsell"></b><em>In your inbox right away</em></div>
       <ul class="ticks">
         <li>A 4-week rotation so the projector and toys stay new</li>
         <li>Games for the nights you're too tired to play</li>
@@ -37,23 +37,45 @@
       </ul>
     </div></div>
   </section>
+  <!-- versão B (teste T7, pedido do Kenui 24/11): o mesmo 2º kit do upsell, por um preço menor. Para todos que recusaram o upsell. -->
+  <section data-kind="kit" hidden>
+    <h1>Fair Enough. Would $<span id="kitP"></span> Change Your Mind?</h1>
+    <p>Same second kit, same box. This lower price only shows up once, right here.</p>
+    <div class="offer">
+      <img id="dkImg" src="assets/img/kit-dog.webp" alt="The paw-shaped projector with its plush toy and gift box" width="800" height="800">
+      <div class="ob">
+        <div class="eyebrow" style="margin:0">Last Offer</div>
+        <h2 style="font-size:24px;margin:4px 0 0">The Hunt &amp; Catch Kit, Again</h2>
+        <div class="price"><b data-o="downsell"></b><s data-o="regular"></s><em id="dkSave"></em></div>
+        <ul class="ticks">
+          <li>Projector, the plush for the catch and its own gift box</li>
+          <li>Ships in the same box, no extra shipping</li>
+          <li>Covered by the same 30-day refund</li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <div class="err" id="err" role="alert"></div>
   <button class="btn" id="yes" type="button">Yes, Add Them</button>
   <button class="linkbtn" id="no" type="button">No thanks</button>
   <p class="src center">One-time charge to the card you just used. No subscription. Covered by the 30-day refund.</p>
 </div></main>
 <script src="assets/track.js"></script><script src="assets/pages.js"></script>
+<input type="hidden" id="gpet" value="dog">
 <script>
-(function(){
-  var k=CONFIG.downsell.kind||"plush", pet="cat";
-  try{pet=JSON.parse(sessionStorage.getItem("demo_order")||"{}").pet||sessionStorage.getItem("pet")||"cat"}catch(e){}
-  var dog=pet==="dog";
-  document.querySelector('[data-kind="'+k+'"]').hidden=false;
+// o tipo e o preço vêm do servidor (teste T7 sorteado pelo pedido); sem resposta, fica o controle do config
+window.onOferta=function(o,info){
+  var k=o.downsell_kind||"plush", pet=info.pet||"dog", dog=pet!=="cat";
+  [].forEach.call(document.querySelectorAll("[data-kind]"),function(s){s.hidden=s.dataset.kind!==k});
+  document.getElementById("gpet").value=dog?"dog":"cat";
   document.getElementById("dsImg").src="assets/img/bump-"+(dog?"dog":"cat")+".webp";
+  document.getElementById("dkImg").src="assets/img/kit-"+(dog?"dog":"cat")+".webp";
   document.getElementById("dsTitle").textContent=dog?"2 Spare Squeaky Squirrels":"3 Spare Catnip Mice";
   document.getElementById("plushTxt").textContent=dog?"For when the first one loses its squeak.":"They end up under the couch faster than you'd think.";
-  document.getElementById("yes").textContent=k==="guide"?"Yes, Send Me the Playbook":(dog?"Yes, Add the Squirrels":"Yes, Add the Mice");
-})();
+  document.getElementById("kitP").textContent=(o.downsell/100).toFixed(2);
+  document.getElementById("dkSave").textContent=o.regular>o.downsell?"You Save $"+((o.regular-o.downsell)/100).toFixed(2):"";
+  document.getElementById("yes").textContent=k==="guide"?"Yes, Send Me the Playbook":k==="kit"?"Yes, Add the Second Kit · $"+(o.downsell/100).toFixed(2):(dog?"Yes, Add the Squirrels":"Yes, Add the Mice");
+};
 </script>
 <script src="assets/funil.js"></script>
 </body></html>

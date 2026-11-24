@@ -20,6 +20,8 @@ window.CONFIG = {
   bump:     { price: 9.99 },
   upsell:   { price: 39.99, regular: 49.99 },  // regular = preço real de 1 kit
   downsell: { price: 7.99, on: true, kind: "plush" },  // control: pelúcias extras só para quem não pegou o bump
+  extra:    { price: 7.99, on: true },  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
+  /* Testes do pós-compra (T7, T8) rodam no servidor, sorteados pelo pedido: ver api/_precos.php -> testes_pos. */
   bonus: { on: true, name: "First Hunt Guide" },        // PDF grátis por e-mail (objeções 2 e 4 da persona)
 
   delivery: "7–15 days",  // CJ 24/11: CJPacket Sensitive, ~90% entregue em 4–12 dias + 1–3 de separação
