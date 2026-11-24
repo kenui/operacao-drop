@@ -27,8 +27,8 @@ function db(): PDO {
   if ($pdo) return $pdo;
   $c = cfg();
   $pdo = new PDO($c['db_dsn'], $c['db_user'] ?? null, $c['db_pass'] ?? null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-  $flag = sys_get_temp_dir() . '/pp_schema_' . md5($c['db_dsn']);
-  if (!is_file($flag)) { foreach (array_filter(array_map('trim', explode(';', file_get_contents(dirname(__DIR__, 2) . '/schema.sql')))) as $sql) { $pdo->exec($sql); } @touch($flag); }
+  try { $pdo->query('SELECT variante FROM pedidos LIMIT 1'); }
+  catch (Throwable $e) { foreach (array_filter(array_map('trim', explode(';', file_get_contents(dirname(__DIR__, 2) . '/schema.sql')))) as $sql) { $pdo->exec($sql); } }
   return $pdo;
 }
 
@@ -44,8 +44,22 @@ function stripe(string $method, string $path, array $params = [], ?string $idem 
   $j['_http'] = $code; return $j;
 }
 
+// ---------- teste A/B (FNV-1a igual ao de config.js) ----------
+function fnv(string $s): int { $x = 0x811c9dc5; for ($i = 0; $i < strlen($s); $i++) { $x ^= ord($s[$i]); $x = ($x * 16777619) & 0xffffffff; } return $x; }
+function variante(string $vid): string {
+  $t = cfg()['testes'] ?? []; $id = $t['active'] ?? '';
+  if ($id === '' || $vid === '' || empty($t['list'][$id])) return $id === '' ? '' : $id . ':A';
+  return $id . ':' . ((fnv($id . ':' . $vid) % 100) < ($t['list'][$id]['split'] ?? 50) ? 'B' : 'A');
+}
+// preços (e tipo do downsell) da versão do visitante
+function precos(?string $var = ''): array {
+  $c = cfg(); $p = $c['precos'] + ['downsell_kind' => $c['downsell_kind'] ?? 'plush'];
+  if ($var && str_ends_with($var, ':B')) { $id = substr($var, 0, -2); $p = array_merge($p, $c['testes']['list'][$id]['B'] ?? []); }
+  return $p;
+}
+
 // ---------- pedido ----------
-function valor_front(string $kit, bool $bump): int { $p = cfg()['precos']; return ($kit === 'two' ? $p['two'] : $p['one']) + ($bump ? $p['bump'] : 0); }
+function valor_front(string $kit, bool $bump, string $var = ''): int { $p = precos($var); return ($kit === 'two' ? $p['two'] : $p['one']) + ($bump ? $p['bump'] : 0); }
 function custo_front(string $kit, bool $bump): int { $c = cfg()['custos']; return ($kit === 'two' ? 2 : 1) * $c['kit'] + ($bump ? $c['bump'] : 0); }
 function pedido(string $tok): ?array { $s = db()->prepare('SELECT * FROM pedidos WHERE token = ?'); $s->execute([$tok]); return $s->fetch() ?: null; }
 function limpa_pet(mixed $v): string { return $v === 'dog' ? 'dog' : 'cat'; }
@@ -89,6 +103,48 @@ function finalizar(array $p): bool {
   $ctx = json_decode((string)$p['ctx'], true) ?: [];
   capi('Purchase', 'purchase.' . $p['token'], ['email' => $p['email'], 'zip' => $p['cep'], 'city' => $p['cidade'], 'state' => $p['estado'], 'vid' => $ctx['visitante_id'] ?? '', 'ip' => $p['ip'], 'ua' => $p['ua'], 'fbc' => $ctx['fbc'] ?? null, 'fbp' => $ctx['fbp'] ?? null],
     ['value' => round($total / 100, 2), 'currency' => 'USD', 'content_ids' => ['projetor-pet-' . $p['pet']], 'content_type' => 'product', 'num_items' => $p['kit'] === 'two' ? 2 : 1]);
+  enviar_confirmacao(pedido($p['token']));
   log_evento(['visitante_id' => $ctx['visitante_id'] ?? '', 'evento' => 'funnel_complete', 'event_id' => 'purchase.' . $p['token'], 'pet' => $p['pet'], 'angulo' => $p['angulo'], 'dados' => ['pedido' => $p['token'], 'total' => $total]]);
   return true;
+}
+
+// ---------- produtos digitais ----------
+// arquivos ficam em site/digital/ (fora da pasta pública). Link assinado: só quem tem o pedido baixa.
+function digitais(array $p): array {
+  $c = cfg(); $pet = $p['pet'] === 'dog' ? 'dog' : 'cat'; $d = [];
+  if (!empty($c['bonus_on'])) $d['first-hunt'] = ['First Hunt Guide (PDF)', "first-hunt-guide-$pet.pdf"];
+  if ($p['downsell'] === 'aceito-guide') $d['playbook'] = ['The Indoor Hunt Playbook (PDF)', "indoor-hunt-playbook-$pet.pdf"];
+  return $d;
+}
+function assinatura(string $tok, string $f): string { return substr(hash_hmac('sha256', "$tok|$f", cfg()['stripe_webhook'] ?? 'x'), 0, 20); }
+function links_download(array $p): array {
+  $base = rtrim(cfg()['site_url'] ?? '', '/'); $out = [];
+  foreach (digitais($p) as $id => [$nome, $arq]) {
+    if (!is_file(dirname(__DIR__, 2) . '/digital/' . $arq)) continue;        // só oferece o que existe
+    $out[] = [$nome, $base . '/api/download.php?o=' . $p['token'] . '&f=' . $id . '&s=' . assinatura($p['token'], $id)];
+  }
+  return $out;
+}
+
+// ---------- e-mail de confirmação (uma vez, no fim do funil) ----------
+function enviar_confirmacao(?array $p): void {
+  $c = cfg();
+  if (!$p || empty($c['email_from']) || empty($p['email']) || (int)$p['email_enviado'] === 1) return;
+  $pr = precos((string)$p['variante']); $m = fn($v) => '$' . number_format($v / 100, 2);
+  $l = ["Hunt kit (" . ($p['kit'] === 'two' ? "2 kits, {$p['mix']}" : "1 kit, {$p['pet']}") . ")  " . $m((int)$p['valor_front'] - ($p['bump'] ? $pr['bump'] : 0))];
+  if ($p['bump']) $l[] = 'Spare plush pack  ' . $m($pr['bump']);
+  if ($p['upsell'] === 'aceito') $l[] = "Second kit ({$p['upsell_pet']}), same box  " . $m((int)$p['valor_upsell']);
+  if (str_starts_with((string)$p['downsell'], 'aceito')) $l[] = ($p['downsell'] === 'aceito-guide' ? 'The Indoor Hunt Playbook (PDF)' : 'Spare plush pack') . '  ' . $m((int)$p['valor_downsell']);
+  $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'];
+  $dl = links_download($p);
+  $prazo = $c['prazo'] ? "It should arrive in {$c['prazo']}." : "We'll email your tracking number as soon as it ships.";
+  $nome = $c['email_nome'] ?? 'Order';
+  $corpo = "Hi" . ($p['nome'] ? ' ' . explode(' ', $p['nome'])[0] : '') . ",\n\nThanks for your order. Here's exactly what you were charged:\n\n" . implode("\n", $l) . "\nTotal  " . $m($total) .
+    "\n\nEach item may show as a separate charge from $nome on your statement.\n\n$prazo If it's going to be late, we'll tell you before that date and you can cancel for a full refund.\n" .
+    ($dl ? "\nYour downloads:\n" . implode("\n", array_map(fn($d) => "- {$d[0]}: {$d[1]}", $dl)) . "\n" : '') .
+    "\nFirst night: dim the lights, use a smooth floor, keep it to 10-15 minutes, and finish with the plush.\n\nChanged your mind? Reply to this email within 30 days of delivery and we'll refund you. Please write to us before calling your bank. It's faster for you.\n\n$nome\n";
+  $h = "From: $nome <{$c['email_from']}>\r\nReply-To: {$c['email_from']}\r\nContent-Type: text/plain; charset=UTF-8";
+  if (@mail($p['email'], "Your order is confirmed ($nome)", $corpo, $h, '-f' . $c['email_from'])) {
+    db()->prepare('UPDATE pedidos SET email_enviado = 1 WHERE token = ?')->execute([$p['token']]);
+  }
 }

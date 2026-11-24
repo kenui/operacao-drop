@@ -127,5 +127,42 @@ Sempre mostrar também o **cenário pessimista** (taxas 30% piores).
 - Upsell recusável com um clique; nada pré-marcado; nada de assinatura sem consentimento expresso.
 - Escassez e urgência só verdadeiras. Avaliação só real (regra da FTC de 2024, multa civil por avaliação falsa: [FTC](https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials)).
 
+---
+
+## Parte 7. Produto digital: só com valor percebido comprovado (regra do Kenui, 24/11/2026)
+Palavras dele: "só vamos usar produto digital se vale a pena, se ele vai ter um valor percebido maior para aquele público… a gente não faz nada porque acha."
+
+**Os três papéis possíveis, do mais barato de provar ao mais caro:**
+| Papel | Quando entra | Prova exigida |
+|---|---|---|
+| **Bônus grátis** (vai junto da compra) | quando responde a uma objeção da persona que vira reembolso ou contestação ("vai ignorar", "não sei usar", "vai frustrar") | a objeção existe no dossiê/persona com fonte. Custo zero. Mede-se pelo reembolso e pelo download. |
+| **Downsell/upsell digital pago** | quando a persona **paga** por informação parecida e não acha grátis com facilidade | evidência de compra (cursos, e-books vendidos para o mesmo público, reclamação de "não achei em lugar nenhum"). Sem isso: entra só como **braço B de um teste**, contra uma oferta física. |
+| **Bump digital** | raramente em drop físico: o bump precisa de decisão de 2 segundos e valor óbvio | idem acima, e ganhar do bump físico em teste |
+
+**Teste do valor percebido (responder por escrito no `07-funil.md`):**
+1. Qual frase da persona pede isso? (literal, com fonte)
+2. A informação é fácil de achar grátis? (se a persona já busca e acha páginas de veterinário/blog, o valor percebido de pagar é baixo)
+3. A persona já compra coisa parecida? (sinal de valor)
+4. Entregar custa quanto (escrever, revisar, manter)? Só escrever o PDF pago quando o teste dele chegar na fila.
+5. Risco: nada de saúde, renda ou resultado garantido; nunca assinatura.
+
+**Entrega:** link assinado no e-mail de confirmação e na página de obrigado, arquivo fora da pasta pública (ver `site/api/download.php` do projetor pet). Sem área de membros.
+
+**Primeiro caso (projetor pet, 24/11):** bônus grátis aprovado (objeções nº 2 e 4); PDF pago reprovado como padrão (conteúdo grátis abundante em AAHA, PetMD, AARP) e colocado como braço B do teste T6.
+
+## Parte 8. Protocolo de teste contínuo (teste A/B de tudo, um por vez, inclusive preço)
+1. **Sempre há um teste rodando** quando há tráfego. Um por vez, para saber o que causou o ganho.
+2. **Motor:** sorteio fixo por visitante (hash do id do visitante + id do teste), a mesma pessoa vê sempre a mesma versão; a versão vai em todo evento e em cada pedido; preço de teste mora no servidor, que é quem cobra (nunca confiar no preço que vem do navegador).
+3. **Fila ordenada** por ganho esperado em lucro por visitante ÷ custo de fazer, em `produtos/<produto>/testes/fila.md`. Cada linha: id, o que muda, hipótese com a fonte, métrica de decisão, amostra, quando roda.
+4. **Régua:** 7 dias e 300 visitantes por versão no mínimo; bayesiana ≥ 90%; guarda-corpos (reembolso, contestação, reclamação, velocidade) anulam vitória; confirmação 2 semanas depois.
+5. **Teste de preço:**
+   - Decide por **lucro por visitante**, nunca por conversão.
+   - Antes de ligar, calcular quanto a conversão pode cair e ainda empatar (ex.: projetor pet, US$34,99 → 39,99 empata com queda de até 18%).
+   - Só roda com volume (regra de bolso: ~150 compras por versão para ver diferença de ~20%). Antes disso, testar página e oferta com métrica de topo.
+   - Sem "de/por" falso: o preço B é o preço daquela versão, não um desconto inventado.
+   - Sorteio fixo por visitante para a mesma pessoa não ver dois preços.
+6. **Registro:** `registro-de-ganhos.csv`, `aprendizados.md`; vencedor confirmado vira padrão no `JEITO-CERTO.md` com a prova.
+
 ## Histórico
 - v1 (2026-11-23): criação, com pesquisa e marcação fato/opinião. Próxima versão: números reais do primeiro produto.
+- v2 (2026-11-24): Partes 7 (produto digital só com valor percebido comprovado) e 8 (protocolo de teste contínuo, inclusive preço), a pedido do Kenui.

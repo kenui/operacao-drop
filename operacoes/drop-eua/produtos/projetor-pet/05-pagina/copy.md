@@ -38,7 +38,10 @@ Subtítulos e blocos `problema` de cada ângulo: ver o objeto `COPY` em `site/pu
 - **Consentimento do cartão (acima do botão):** "By completing your purchase you agree we may charge this card for any add-on you accept on the next page. No subscriptions."
 - **Bump gato:** "Add 3 spare catnip mice, $7.99. They end up under the couch faster than you'd think." **Cachorro:** "Add 2 spare squeaky squirrels, $7.99. For when the first one loses its squeak." Caixinha sempre desmarcada.
 - **Upsell:** "Want a second kit for someone else's pet? Add one more full kit for $24.99 instead of $34.99. It goes in the same box as your order, so there's no extra shipping and nothing to type." Botões: "Yes, add a second kit for $24.99" / "No thanks, finish my order".
-- **Downsell (desligado até o PDF existir):** "No problem. Want the 10-minute play plan instead?"
+- **Bônus (bloco dos kits e resumo do checkout):** "Free with every order: the First Hunt Guide (PDF, by email). How to set up the first night, what to do if your pet ignores it, and how to end every session with a real catch."
+- **Downsell A (controle, só para quem recusou o upsell e não pegou o bump):** "No problem. Want spare plush toys instead?" + texto do bump do pet + "Same box, no extra shipping, $7.99."
+- **Downsell B (teste T6, PDF pago):** "No problem. Want the indoor hunt playbook instead?" (desligado até o PDF existir).
+- **First Hunt Guide:** texto completo em `site/digital/fonte/gerar_guias.py` (gato e cachorro). Sem promessa de saúde; "may help her settle at night"; aviso "isn't veterinary advice".
 - **Obrigado:** cobranças em linhas separadas, prazo, dica da primeira noite, "Please write to us before calling your bank. It's faster for you."
 - **Rodapé:** "Pets and scenes in our videos may be created with AI to show how the product is used."
 

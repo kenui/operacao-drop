@@ -8,7 +8,7 @@
   function ck(n){var m=document.cookie.match("(^|; )"+n+"=([^;]*)");return m?decodeURIComponent(m[2]):""}
   function setck(n,v,d){document.cookie=n+"="+encodeURIComponent(v)+"; path=/; max-age="+(d*86400)+"; SameSite=Lax"+(location.protocol==="https:"?"; Secure":"")}
 
-  var vid=ck("vid")||ls("vid")||rid(); setck("vid",vid,365); ls("vid",vid);
+  var vid=C.vid||ck("vid")||ls("vid")||rid(); setck("vid",vid,365); ls("vid",vid);
   var sid=ss("sid")||rid(); ss("sid",sid);
   // UTMs e fbclid ficam guardados para a sessão inteira (upsell e obrigado também)
   var keep=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","a","pet"];
@@ -33,7 +33,7 @@
   function base(){
     var st=window.STATE||{};
     return {visitante_id:vid,sessao_id:sid,produto:"projetor-pet",pet:st.pet||ctx.pet||"",angulo:st.angle||ctx.a||"",
-      variante:st.variant||"",utm:ctx,fbc:ck("_fbc"),fbp:ck("_fbp"),pagina:location.pathname,
+      variante:C.variant||"",utm:ctx,fbc:ck("_fbc"),fbp:ck("_fbp"),pagina:location.pathname,
       disp:(matchMedia("(max-width:760px)").matches?"mobile":"desktop"),optout:optout?1:0};
   }
   // track(nome, dados, opções) -> event_id

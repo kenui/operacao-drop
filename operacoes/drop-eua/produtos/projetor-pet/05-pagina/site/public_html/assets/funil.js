@@ -12,7 +12,8 @@
     track(etapa+(acao==="aceitar"?"_accept":"_decline"),{pedido:order,pet:pet});
     if(demo){
       try{var d=JSON.parse(sessionStorage.getItem("demo_order")||"{}");d[etapa]=acao==="aceitar"?(pet||true):false;sessionStorage.setItem("demo_order",JSON.stringify(d))}catch(e){}
-      return go(etapa==="upsell"&&acao!=="aceitar"&&C.downsell.on?"downsell":"obrigado");
+      var show=C.downsell.on&&!(C.downsell.kind==="plush"&&d.bump);
+      return go(etapa==="upsell"&&acao!=="aceitar"&&show?"downsell":"obrigado");
     }
     fetch("api/upsell.php",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order:order,etapa:etapa,acao:acao,pet:pet})})
     .then(function(r){return r.json()}).then(function(j){

@@ -13,11 +13,12 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [04-angulos.md](04-angulos.md) | 4 personas, matriz, 3 ângulos (captura, dono cansado, demonstração), títulos, coerência anúncio → página |
 | [uso-no-video.md](uso-no-video.md) | ficha de uso e PRODUCT LOCK (provisória, fecha com o vídeo da CJ) |
 | [06-roteiros-video.md](06-roteiros-video.md) | 5 roteiros (gato A, B, C de reserva; cachorro D, E), 3 ganchos cada; todos terminam com o pet pegando a pelúcia; estimativa de créditos |
-| [07-funil.md](07-funil.md) | oferta (1 kit US$34,99, 2 kits US$59,99 com mistura gato+cachorro), bump, upsell, downsell, conta do lucro por visitante |
+| [07-funil.md](07-funil.md) | v2: oferta pela equação de valor, decisões D1 a D8 com evidência da persona, guia grátis, downsell físico, digital pago só como teste, conta |
+| [05-pagina/site/digital/](05-pagina/site/digital/) | First Hunt Guide (PDF gato e cachorro), bônus grátis por e-mail |
 | [05-pagina/copy.md](05-pagina/copy.md) | copy da página e do funil por ângulo, e-mails, passada de voz humana |
 | [05-pagina/site/](05-pagina/site/) | página HTML + checkout Stripe em PHP (modo teste), upsell, obrigado, políticas; campos da CJ em `config.js` |
 | [05-pagina/qa.md](05-pagina/qa.md) e [prints](05-pagina/prints/) | QA local e prints a 390 px |
-| [testes/fila.md](testes/fila.md) | 5 primeiros testes do funil |
+| [testes/fila.md](testes/fila.md) | plano de testes A/B (T1 a T8, inclusive preço), régua e como ligar |
 | [videos/D-v1.md](videos/D-v1.md) | primeiro vídeo (D, cachorro): prompts, links do bruto, da música por IA e das duas montagens, revisão honesta |
 | [../../../../conhecimento/video-ia/retencao-viralidade-credibilidade.md](../../../../conhecimento/video-ia/retencao-viralidade-credibilidade.md) | manual de retenção, credibilidade, viralidade e quando usar música (vale para todo criativo) |
 | [estudo/referencia-estilo.md](estudo/referencia-estilo.md) | anúncio da Enjoyaitlife escolhido pelo Kenui, segundo a segundo, e como usar música sem problema de direitos |
