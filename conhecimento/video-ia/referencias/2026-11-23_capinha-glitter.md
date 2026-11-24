@@ -14,6 +14,7 @@ Arquivo: 15 s, 720x1280, 24 fps, com áudio. Quadros: 2026-11-23_capinha-glitter
 
 ## Áudio (visto no espectrograma)
 - Fala de 0 a cerca de 9,5 s, com pausas naturais. Não consegui transcrever as palavras: o modelo de transcrição não baixa nesta máquina (rede bloqueada).
+- Rodada da ferramenta ver-video (24/11): 6 cortes em 0 / 1,5 / 3,2 / 6,8 / 9,5 / 11,9 s; mapa do som com som de 0 a 0,5 s, 1,5 a 5 s, 5,5 a 6,5 s, 7 a 7,5 s, 8 a 9 s e 11 a 11,5 s, e silêncio de 11,5 a 15 s. **Transcrição ainda pendente**: no ambiente "operacao-drop (vídeo)" o huggingface.co abre, mas os servidores de arquivo dele (us.aws.cdn.hf.co, cas-bridge.xethub.hf.co, cdn-lfs.hf.co) estão bloqueados e o modelo não baixa. Quando liberar, rodar `ver_video.py` neste vídeo e colar as falas aqui. Ver [teste](../testes/2026-11-24_teste-ver-video.md).
 - De 9,5 a 11 s: série de batidinhas rítmicas, compatível com os bichinhos batendo dentro da capinha.
 - De 11,5 a 15 s: só som do ambiente. Não há música.
 

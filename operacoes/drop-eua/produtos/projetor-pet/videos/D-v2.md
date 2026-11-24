@@ -37,7 +37,7 @@ Base: [03-persona.md](../03-persona.md), [manual de retenção](../../../../../c
 - **Com música** (a música por IA entra baixa no clique, aos 5 s): https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/bbd1c657-cfdb-48c5-aed9-56319b0e9ec3.mp4
 - **Som natural:** https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/656745b0-5e2b-4b60-a6a3-665eaa922936.mp4
 - 20 s, 4 cortes, texto em y = 330 (zona segura). A fala saiu igual ao roteiro, conferida com transcrição automática; no corte 3 ela diz "look at it".
-- Checagem de estados: passou nos 4 cortes. No corte 2 o chão fica liso do começo ao fim e só o botão acende no clique.
+- ~~Checagem de estados: passou nos 4 cortes.~~ Correção (24/11, teste do ver-video): reprovado. No recorte ampliado do corte 4 o aparelho gira sozinho na base, e a pata está deitada (o real é em pé). Ver [teste](../../../../../conhecimento/video-ia/testes/2026-11-24_teste-ver-video.md). No corte 2 o chão fica liso do começo ao fim e só o botão acende no clique.
 - Pontos fracos:
   - no corte 4 um dos anéis some;
   - no corte 3, por volta dos 4 s, o corpo do cachorro estica no borrão do movimento;
