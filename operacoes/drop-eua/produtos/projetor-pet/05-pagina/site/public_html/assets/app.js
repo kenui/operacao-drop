@@ -35,6 +35,8 @@
     $$("[data-f-show-bonus]").forEach(function(el){el.hidden=!(C.bonus&&C.bonus.on)});
     $("#hlTag").textContent=C.kits.two.highlight?"Mix Cat + Dog":"Best for Gifts";
     $$("[data-pet-only]").forEach(function(el){el.hidden=el.dataset.petOnly!==S.pet});
+    var multi=(C.pets||["cat","dog"]).length>1;
+    $$("[data-multi-pet]").forEach(function(el){el.hidden=!multi});
     $$(".pets button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.pet===S.pet)});
     $("#h1").textContent=A.h1; $("#sub").textContent=A.sub;
     $("#prob").innerHTML=A.prob.map(function(t){return "<p>"+t+"</p>"}).join("");
@@ -52,6 +54,9 @@
     var pet=S.pet;
     $$('[data-img="kit"]').forEach(function(i){i.src="assets/img/kit-"+pet+"-sm.webp"});
     $$('[data-img="bump"]').forEach(function(i){i.src="assets/img/bump-"+pet+"-sm.webp"});
+    var multi=(C.pets||["cat","dog"]).length>1;
+    $$('[data-img="kit2"]').forEach(function(i){i.src=multi?"assets/img/gift-sm.webp":"assets/img/kit-"+pet+"-sm.webp"});
+    $$('[data-img="giftbig"]').forEach(function(i){i.src=multi?"assets/img/gift.webp":"assets/img/kit-"+pet+".webp"});
     $("#catchImg").src="assets/img/catch-"+pet+".webp";
     $("#finalImg").src="assets/img/hero-"+pet+".webp";
     $("#probImg").src=pet==="dog"?"assets/img/hero-dog.webp":"assets/img/rest-cat.webp";
@@ -72,7 +77,8 @@
   function summary(){
     var two=S.kit==="two";
     var cap=function(x){return x==="dog"?"Dog":"Cat"};
-    $("#sumKit").textContent=two?("Hunt & Catch Kit × 2 ("+S.mix.map(cap).join(" + ")+")"):("Hunt & Catch Kit ("+cap(S.pet)+")");
+    var multi=(C.pets||["cat","dog"]).length>1;
+    $("#sumKit").textContent=two?("Hunt & Catch Kit × 2"+(multi?" ("+S.mix.map(cap).join(" + ")+")":"")):("Hunt & Catch Kit"+(multi?" ("+cap(S.pet)+")":""));
     $("#sumKitP").textContent=money(two?C.kits.two.price:C.kits.one.price);
     $("#sumBumpRow").hidden=!S.bump;
     $("#sumTotal").textContent=money(total()); $("#payAmt").textContent=money(total());

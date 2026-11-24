@@ -10,6 +10,7 @@ function cfg(): array {
     $p = getenv('PP_CONFIG') ?: dirname(__DIR__, 2) . '/config.php';
     if (!is_file($p)) { out(['error' => 'Checkout is not configured yet.'], 503); }
     $c = require $p;
+    if (is_file(__DIR__ . '/_precos.php')) $c = array_replace($c, require __DIR__ . '/_precos.php'); // preços/custos/prazo do Git
   }
   return $c;
 }
