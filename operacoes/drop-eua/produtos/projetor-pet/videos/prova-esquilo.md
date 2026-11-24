@@ -30,4 +30,4 @@ Todos passam pela mixagem de celular. As versões com coelho do V1 e do V4 ficar
 - Referência modelada do controle: formato do controle da Enjoyaitlife (bicho perseguindo a luz em tomada contínua, gancho de identidade); só a estrutura.
 
 ## Resultado
-Aguardando avaliação do Kenui.
+Aprovado pelo Kenui em 24/11 (versão com esquilo): "Ok, ficou muito bom".
