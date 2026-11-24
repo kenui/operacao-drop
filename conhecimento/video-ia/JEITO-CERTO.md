@@ -3,6 +3,7 @@
 Versão atual: v0 (23/11/2026) = método do Kenui de 16/11/2026 no Higgsfield. Provisória: qualidade visual aprovada pelo Kenui, sem métrica de anúncio ainda.
 Guia completo: https://claude.ai/artifact/BLavwj65DLQWSpSJKHZjrV
 Montagem do anúncio (retenção, credibilidade, viralidade, música): [retencao-viralidade-credibilidade.md](retencao-viralidade-credibilidade.md)
+Regras de consistência (pessoa, animal, produto) e portões antes e depois de gerar: [regras-consistencia.md](regras-consistencia.md). Ler antes de qualquer geração.
 
 ## Histórico
 | Versão | Data | O que mudou | Prova (ficha) |
