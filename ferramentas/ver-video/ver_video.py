@@ -2,6 +2,7 @@
 """Ver e ouvir um vídeo: cenas, quadros, mapa do som e transcrição.
 
 Uso: python3 ver_video.py VIDEO_OU_URL [--saida PASTA] [--modelo small] [--idioma en]
+           [--recorte INICIO-FIM:X,Y,L,A ...]
 
 Gera na pasta de saída:
   relatorio.md          resumo, tabela de cenas, mapa do som, transcrição com tempo
@@ -9,10 +10,11 @@ Gera na pasta de saída:
   folha_N.jpg           folhas de contato com 2 quadros por segundo
   espectro.png          espectrograma do áudio (fala, música, batidas, silêncio)
   transcricao.json      falas com tempo (quando o modelo está disponível)
+  recorte_N.jpg         faixa do produto ampliado, 3 quadros por segundo (com --recorte)
 
 Ferramentas abertas usadas: ffmpeg, PySceneDetect (github.com/Breakthrough/PySceneDetect),
 faster-whisper (github.com/SYSTRAN/faster-whisper) e, para links, yt-dlp (github.com/yt-dlp/yt-dlp).
-Instalação: pip install "scenedetect[opencv-headless]" faster-whisper yt-dlp
+Instalação: pip install scenedetect opencv-python-headless faster-whisper yt-dlp
 """
 import argparse, json, math, os, re, subprocess, sys, wave, struct
 
@@ -93,6 +95,27 @@ def transcrever(wav, modelo, idioma):
         return None, [], f"{type(e).__name__}: {str(e)[:200]}"
 
 
+def recortes(v, pasta, specs):
+    """Faixa do produto ampliado, 3 quadros por segundo.
+    Na folha comum o produto ocupa poucos pixels e um giro ou uma troca de forma passa batido
+    (o giro do D-v2 só apareceu assim)."""
+    feitos = []
+    for i, spec in enumerate(specs, 1):
+        m = re.match(r"^([\d.]+)-([\d.]+):(\d+),(\d+),(\d+),(\d+)$", spec)
+        if not m:
+            sys.exit(f"--recorte inválido: {spec} (formato INICIO-FIM:X,Y,LARGURA,ALTURA em segundos e pixels)")
+        a, b = float(m[1]), float(m[2])
+        x, y, w, h = (int(m[k]) for k in range(3, 7))
+        n = max(1, math.ceil((b - a) * 3))
+        cols = min(n, 5)
+        linhas = math.ceil(n / cols)
+        saida = os.path.join(pasta, f"recorte_{i}.jpg")
+        sh(["ffmpeg", "-v", "error", "-y", "-ss", f"{a}", "-t", f"{b - a}", "-i", v, "-vf",
+            f"fps=3,crop={w}:{h}:{x}:{y},scale=250:-1,tile={cols}x{linhas}", "-frames:v", "1", saida])
+        feitos.append((a, b, f"recorte_{i}.jpg"))
+    return feitos
+
+
 def rotulo_som(db):
     if db < -45:
         return "silêncio"
@@ -107,6 +130,8 @@ def main():
     ap.add_argument("--saida")
     ap.add_argument("--modelo", default=os.environ.get("VER_VIDEO_MODELO", "small"))
     ap.add_argument("--idioma", default=None)
+    ap.add_argument("--recorte", action="append", default=[],
+                    help="INICIO-FIM:X,Y,LARGURA,ALTURA, ex. 15-20:660,1300,360,300 (pode repetir)")
     a = ap.parse_args()
 
     base = re.sub(r"[^\w.-]", "_", os.path.basename(a.video))[:60]
@@ -117,6 +142,7 @@ def main():
     dur, lw, lh, fps, tem_audio = metadados(v)
     pares = cenas(v, pasta, dur)
     nf = folhas(v, pasta, dur)
+    rec = recortes(v, pasta, a.recorte)
     mapa, lang, falas, erro = [], None, [], None
     if tem_audio:
         wav, mapa = som(v, pasta)
@@ -130,6 +156,9 @@ def main():
          "|---|---|---|---|---|---|---|---|"]
     for i, (x, y) in enumerate(pares, 1):
         L.append(f"| {i} | {x:.1f} s | {y:.1f} s | {y - x:.1f} s | cenas/cena_{i:02d}.jpg | | | |")
+    if rec:
+        L += ["", "## Produto ampliado (3 quadros por segundo; conferir forma, giro, posição e luz)", ""]
+        L += [f"- {x:.1f} a {y:.1f} s: {f} | forma: | se mexe?: | luz:" for x, y, f in rec]
     if mapa:
         L += ["", "## Mapa do som (a cada 0,5 s; ver espectro.png para separar fala, música e batidas)", ""]
         trechos, atual = [], None
@@ -143,7 +172,7 @@ def main():
         L += [f"- {x:.1f} a {y:.1f} s: {r}" for x, y, r in trechos]
         L += ["", "## Transcrição", ""]
         if erro:
-            L.append(f"Pendente: o modelo de transcrição não carregou ({erro}). Rode num ambiente que libere huggingface.co.")
+            L.append(f"Pendente: o modelo de transcrição não carregou ({erro}). O modelo vem de huggingface.co e dos servidores de arquivo dele (us.aws.cdn.hf.co, cas-bridge.xethub.hf.co, cdn-lfs.hf.co); a rede precisa liberar todos.")
         elif not falas:
             L.append("Nenhuma fala detectada.")
         else:

@@ -39,10 +39,12 @@ Depois, monte uma tabela comparando os vídeos e pese pelo tempo ativo. O que se
 - Cada cena do nosso roteiro cita a cena real que a sustenta (ex.: "WOW BEAT igual a meta-1814…, cena 4: anéis no piso, aparelho parado").
 
 ## 6. Conferir o vídeo gerado antes de aprovar
-Rode o `ver-video` no nosso vídeo gerado e compare cena por cena com a tabela de verdade. Reprova se:
+Rode o `ver-video` no nosso vídeo gerado **com `--recorte` no produto em cada corte onde ele aparece** e compare cena por cena com a tabela de verdade. A folha comum (2 quadros por segundo, quadro pequeno) basta para ordem de estados, mas não para forma e giro: no teste de 24/11 ela pegou a luz antes do clique do D-v1, e só o recorte mostrou o aparelho do D-v2 girando. Reprova se:
 - o produto muda de estado fora da ordem (ex.: luz antes do clique);
 - o produto se mexe quando o real fica parado, ou vice-versa;
 - o tamanho, o formato ou o lado de onde sai o efeito diferem do real;
 - o produto duplica ou some;
 - a fala transcrita promete algo que a ficha não autoriza.
+- a forma do produto no recorte difere da cena real (ex.: pata deitada quando o real é pata em pé).
+Quem confere escreve, para cada corte, o tempo e o quadro que provam "passou". "Passou" sem quadro citado não vale (a ficha do D-v2 dizia "passou nos 4 cortes" e o aparelho girava no corte 4).
 Cada reprovação vira uma linha em `aprendizados.md` e na seção 9 da ficha do produto.
