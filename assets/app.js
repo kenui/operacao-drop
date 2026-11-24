@@ -48,6 +48,10 @@
     media(); summary();
   }
 
+  /* ---------- fora da prévia: esconde o que depende de dado pendente da CJ (nunca mostrar a marca amarela ao cliente) ---------- */
+  function semPendencia(){ if(C.preview) return; $$(".pend").forEach(function(el){ var box=el.closest("[data-hide-if-pend]"); (box||el).hidden=true; }); }
+  setTimeout(semPendencia,0); document.addEventListener("DOMContentLoaded",semPendencia);
+
   /* ---------- blocos ligados/desligados pelo config ou por teste (ex.: T11 desliga "porque") ---------- */
   Object.keys(C.blocos||{}).forEach(function(k){ if(C.blocos[k]===false) $$('[data-bloco="'+k+'"]').forEach(function(el){el.hidden=true}) });
 
