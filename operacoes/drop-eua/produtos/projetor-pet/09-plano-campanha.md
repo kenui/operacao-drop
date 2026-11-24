@@ -1,0 +1,96 @@
+# Projetor pet: plano de campanha no Meta (v1, 24/11/2026)
+
+Feito a partir do [manual de tráfego](../../../../conhecimento/trafego/manual-meta-ads.md), do [funil](07-funil.md), da [persona](03-persona.md) e dos [vídeos que vendem](08-videos-que-vendem.md). Nada ativado; nenhum gasto. Ativar e o valor dependem do aval do Kenui.
+
+## 0. Portão (24/11)
+| Item | Estado |
+|---|---|
+| Stripe em produção | ❌ modo teste |
+| Produto do anúncio = fornecedor | ❌ vídeo aprovado mostra coelho; a CJ cotou a versão com esquilo. Os vídeos V1–V4 precisam mostrar a projeção que a CJ entrega |
+| Prazo na página | ✅ 7–15 dias (config.js) |
+| Pixel + API de Conversões | ✅ ligados (pixel 545543757913721, event_id deduplicado); conferir eventos de teste com a conta ligada |
+| Acesso da IA à conta (Marketing API) | ⏳ Kenui criando usuário do sistema e tokens |
+| Domínio verificado / Página / Instagram | ⏳ conferir quando o acesso chegar |
+| Criativos V1, V2, V4 + controle | ⏳ thread "Criar vídeos que vendem o projetor pet" |
+| Conformidade dos textos | ⏳ passar a skill antes de subir |
+| Valor aprovado | ✅ **R$850 por 7 dias (US$20/dia, opção B)**, escolhido pelo Kenui em 24/11. Ativa só quando o resto do portão fechar; spend cap da campanha = esse valor |
+
+## 1. Contas (preços e custos do config em 24/11)
+Hipóteses do funil: 80% kit 1 (US$49,99), 20% kit 2 (US$89,99); bump US$9,99 em 10%; upsell US$39,99 em 5%; downsell US$7,99 em 3% de quem vê; reembolso 5%. Custo entregue CJ: kit US$18,77, pelúcias extras US$4,50 (`api/_precos.php`). Stripe BR ~6% + US$0,10 por cobrança.
+
+| Item | Valor |
+|---|---|
+| Receita média por comprador | US$61,19 |
+| Contribuição por comprador (antes do anúncio) | US$30,33 |
+| **CPA de empate no Gerenciador** (÷ 1,1383, imposto da Meta no Brasil) | **US$26,64** |
+| Cenário pessimista (só kit 1, sem extras, reembolso 8%) | US$21,19 |
+| **CPA alvo** (deixa ~US$8 de lucro por pedido e cobre o pessimista) | **US$18** |
+| ROAS de empate no Gerenciador | ~2,3 |
+
+Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se ninguém pegar bump/upsell e o reembolso for alto, a escala não dá prejuízo. **[HIPÓTESE]** até termos 30+ compras; aí o alvo é recalculado com o ticket real do painel.
+
+## 2. Estrutura do lançamento
+| Nível | Configuração | Porquê (manual) |
+|---|---|---|
+| Campanha | `projetor_lanc_vendas_AAAAMMDD`, objetivo Vendas, orçamento da campanha diário, **spend cap = valor aprovado** | §3.1 consolidar; spend cap é a trava de gasto |
+| Conjunto | `broad_us`: EUA, 18+, Advantage+ audience com sugestão 25–54; posicionamentos Advantage+; evento **Purchase**; lance maior volume; atribuição padrão | §3.2 e §4; persona C tem 25–44 no centro (persona §1) |
+| Anúncios | 4 conceitos (§3), cada um com texto e título próprios | §5.2: 3–5 conceitos distintos |
+| Destino | `https://littlecatchco.com/?pet=dog&a=<angulo>&utm_source=meta&utm_medium=paid&utm_campaign={{campaign.id}}&utm_term={{adset.id}}&utm_content={{ad.id}}` | §8.2; painel casa por ID |
+
+Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
+
+## 3. Criativos
+Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
+
+| Anúncio | Ângulo | Quem aparece / para quem | Formato | Consciência | Hipótese |
+|---|---|---|---|---|---|
+| `chuva-donac-ugc-v1` (V1) | dia de chuva, sem passeio | dona em casa, cachorro inquieto | UGC falado | sabe da dor | a dor que o mercado já valida (74 anúncios) traz o CPA mais baixo no início |
+| `cansada-donac-ugc-v1` (V2) | ela chega acabada | dona que trabalha fora, culpa | UGC falado | sabe da dor | a dor do esforço, que ninguém usa, rende CTR mais alto que V1 |
+| `fake-cetica-demo-v1` (V4) | "achei que era fake" | quem já viu o produto em outro anúncio | demo em sala normal: desligado, clique, luz | já viu o produto | prova crua baixa o custo por início de checkout para quem desconfia |
+| `aprovado-controle-v1` | vídeo aprovado (sem dor) | — | demo | — | controle: mede quanto a dor acrescenta |
+
+V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
+
+## 4. Régua com os números deste produto (E = US$26,64; A = US$18)
+| Situação | Regra | Ação |
+|---|---|---|
+| Esperar | anúncio com < US$36 gasto ou < 3 dias | não mexer |
+| Corte duro | **US$40 gastos sem compra** (1,5 × E) | pausar o anúncio (regra automática na Meta) |
+| Corte | CPA > US$26,64 depois de US$36–54 e 3 dias | pausar |
+| Segurar | US$18 < CPA ≤ US$26,64 | sem mexer no orçamento; variação de gancho como anúncio novo |
+| Escalar | CPA ≤ US$18 com 10+ compras e lucro do painel positivo | +20% de orçamento, esperar 3 dias |
+| Fadiga | frequência 7 d ≥ 3,5 e CTR −30% | criativo novo, não escalar |
+
+**Diagnóstico pelo funil (antes de culpar o criativo):** CTR de saída abaixo de ~1% → gancho; CTR bom e visualização da página baixa → velocidade da página; visualização boa e quase nenhum início de checkout → preço/oferta/página; checkout iniciado sem compra → checkout ou confiança. Referências de partida **[HIPÓTESE]** até termos histórico: CPM US$12–25 nos EUA no fim do ano, CTR de saída 1–2%, conversão da página 2–3% (o funil precisa de ~2,5% com clique a US$0,50).
+
+## 5. Verba e marcos (para o Kenui decidir)
+Câmbio de referência R$5,40 por dólar **[HIPÓTESE]**, imposto da Meta incluído no valor em reais.
+
+| Opção | Total no cartão | Vira anúncio | Ritmo | O que compra |
+|---|---|---|---|---|
+| A. Sinal | R$500 | ~US$81 | US$15/dia por ~5 dias | 2 a 4 compras se o CPA ficar entre US$20 e 30; pode ser zero. Responde "o anúncio gera clique e checkout?" e julga 1 a 2 conceitos, não 4 |
+| **B. Teste de verdade (recomendado)** | **R$850** | **~US$138** | **US$20/dia por 7 dias** | julga 3 conceitos a 2,5 × A cada (manual §5.2) e cobre a semana inteira de aprendizado; 5 a 7 compras esperadas no cenário base |
+
+**Por que B:** com R$500, cada conceito recebe menos que o mínimo para ser julgado (US$45 por conceito), então o dinheiro compra mais ruído do que resposta. 7 dias também evita julgar só dias de semana. Os dois cabem no limite diário de conta nova (US$25–50).
+
+**Marcos e o que cada resultado faz:**
+- **Dia 1:** conferir entrega, aprovação dos anúncios e Purchase chegando no Gerenciador e no painel (compra real do Kenui reembolsada antes de ligar, se possível).
+- **Dia 3:** ler hook rate, CTR de saída, custo por início de checkout por anúncio; aplicar corte duro; checar Audience Network (H-T4).
+- **Dia 7:** veredito por conceito pela régua. Três saídas:
+  1. CPA ≤ US$26,64 com 3+ compras → pedir ao Kenui verba da fase 2 (lucro reinvestido + extra), subir +20% a cada 3 dias, pedir mais criativos do conceito vencedor.
+  2. Cliques e checkouts bons, poucas compras → problema depois do clique: testes da página (T2, T7 da [fila](testes/fila.md)), não mais anúncio.
+  3. CTR fraco em tudo → criativo: novos ganchos/formatos pela thread de vídeos antes de gastar mais.
+
+## 6. Calendário
+- Black Friday 27/11, Cyber Monday 30/11: o portão ainda não fecha até lá; não forçar lançamento na semana mais disputada com conta nova.
+- **Corte de presente:** prazo de até 15 dias → mensagem "chega antes do Natal" só para pedidos até **8/12** **[HIPÓTESE, confirmar com a CJ]**; depois trocar para "for your dog" e "New Year". Preencher `xmasCutoff` no config.js junto.
+- 26/12 a 31/12 ("Q5"): CPM no menor nível com intenção alta; bom momento para escalar o que estiver no alvo.
+
+## 7. Depois
+- 30+ compras: recalcular CPA alvo com o ticket real; testar custo-alvo (H-T5).
+- Conceito vencedor estável por 7 dias: abrir campanha de teste separada (fase de tração) e passar o vencedor para Vendas Advantage+ com o mesmo ID de publicação.
+- Gato volta quando houver fornecedor: conjunto próprio só se a verba alimentar dois (manual §1.6); senão, anúncios de gato no mesmo conjunto.
+
+## Histórico
+- v1.1 (24/11/2026): Kenui aprovou a opção B (R$850, 7 dias).
+- v1 (24/11/2026): primeiro plano, thread "Gerenciar e escalar campanhas no Meta".
