@@ -1,0 +1,3 @@
+# Trava: este repositório nunca deve ser servido por um site.
+# O site do projetor sobe só pelo ramo deploy-littlecatchco.
+Require all denied
