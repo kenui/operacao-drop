@@ -28,3 +28,4 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - Com 5,2 mil caracteres, 4 tomadas e 6 falas, o Kling fez uma tomada contínua, ignorou o roteiro de falas e improvisou uma fala ruim ("he totally ignores it now"). Detalhe no visual funciona (produto, pele, sala e efeito saíram certos); roteiro de muitas tomadas e muitas falas não.
 - Regra: no Kling, uma tomada por geração, no máximo 3 falas curtas, e conferir a transcrição antes de montar.
 - O quadro inicial manda no comportamento: cachorro deitado no quadro inicial ficou deitado 10 s mesmo com o GAZE LOCK. Começar com o animal já de pé e em movimento.
+- Confirmado na v5b (24/11): com uma tomada, prompt de cerca de 2 mil caracteres e 3 falas marcadas com tempo, quem fala e tom, o Kling falou as 3 exatamente. Usar quadro de um clipe anterior como quadro inicial funciona e custa zero.
