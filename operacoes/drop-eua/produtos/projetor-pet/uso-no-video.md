@@ -9,6 +9,15 @@ Feita pelo [modelo](../../../../conhecimento/video-ia/modelo-ficha-uso-produto.m
 - O que ele faz de verdade: [CJ] projetar vários ratinhos de luz se movendo no chão, saindo de "buracos" de luz, em penumbra.
 - O que ele NÃO faz: o rato não reage à pata (a não ser que o modelo tenha sensor, [CJ]); não aparece com sol na sala; não é para ficar ligado o dia inteiro; o gato não pega a luz (por isso o ratinho de pelúcia).
 
+## 1b. Como o aparelho é de verdade (visto nos anúncios reais da Biblioteca do Meta, 24/11; vale até a CJ mandar o vídeo do nosso)
+- **Formato:** uma pata **em pé**, na vertical, com cerca de 15 a 18 cm de altura. É creme ou bege, com as almofadinhas pretas e o contorno escuro. Fica encaixada numa base redonda preta e baixa. Na frente da base há uma lente ou luz azul redonda que brilha quando está ligado.
+- **Onde fica:** no chão, encostado na parede ou num canto, virado para o meio da sala.
+- **De onde sai a luz:** da frente, pela lente azul da base, inclinada para baixo, sobre o piso **à frente** do aparelho. Logo na frente da base aparece uma mancha azul fraca no chão.
+- **Até onde vai:** de 6 a 8 anéis laranja com tufos de grama e bichinhos (coelho, esquilo), espalhados num leque de cerca de 1 a 3 m à frente. Nunca aparecem atrás nem do lado da parede.
+- **Funciona com a luz da sala acesa** (abajur aceso, fim de tarde). Com menos luz o efeito fica mais forte.
+- **Parado:** ele não gira, não balança e não se move. Só a luz muda.
+- Erro da v1 e da v2: o aparelho estava **deitado** numa base cinza, a luz não saía dele e na v2 ele girou.
+
 ## 2. Física do produto
 | Campo | Valor real | Como a IA vai entender |
 |---|---|---|
@@ -69,7 +78,7 @@ Feita pelo [modelo](../../../../conhecimento/video-ia/modelo-ficha-uso-produto.m
 
 ## 8. PRODUCT LOCK (rascunho; números fecham com a CJ)
 ```
-PRODUCT LOCK: ONE small matte white pet projector, about the size of a coffee mug, never duplicates, same size and same spot on the floor in every shot.
+PRODUCT LOCK (gato, rascunho antigo; para o cachorro vale o bloco v3 abaixo): ONE small matte white pet projector, about the size of a coffee mug, never duplicates, same size and same spot on the floor in every shot.
 Weight: light, set down with one hand. Material: matte plastic, no shine. Blank surface, no readable text.
 Grip: held from below in one palm; the other hand presses the single button on top.
 States only move forward: off -> on (soft glow, small light mice appear on the floor) -> off. Never flickers.
@@ -93,3 +102,10 @@ Light: 6-8 glowing orange rings on the wooden floor like little holes, small cri
 ## 9. Histórico de vídeos
 | id | versão do jeito certo | o que mudou | nota interna | taxa de gancho | custo por compra | resultado |
 |---|---|---|---|---|---|---|
+
+### PRODUCT LOCK v3 (cachorro; a forma vem dos anúncios reais)
+```
+PRODUCT LOCK: ONE upright paw-shaped pet projector, about 6-7 inches tall (as tall as a coffee mug stacked on a coffee mug): a cream paw standing vertically with four black toe pads and one black main pad, mounted on a low round black base. On the front of the base, one round lens. It sits on the floor against the wall, facing the middle of the room. It NEVER rotates, spins, tilts, slides or wobbles; it stays in the exact same spot and orientation in every shot. Never duplicates, never changes size.
+States only move forward: OFF (lens dark, the floor completely plain, no light anywhere on the floor) -> a finger presses the top -> ON (the lens glows soft blue).
+Projection physics when ON: the light comes out of the front lens only, angled down onto the floor in front of it. A faint blue glow lies on the floor right in front of the base. 6-8 glowing orange rings like little burrows with tiny grass tufts sit flat on the floor in a fan 1 to 3 m in front of the projector, never behind it or beside it. Small cartoon critters (a bunny, a squirrel) pop up inside one ring at a time, flat light on the floor. When the dog steps into a ring, the orange light falls ON TOP of his paw and fur. No beams in the air, no glow floating, no light on the walls.
+```
