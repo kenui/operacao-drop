@@ -25,3 +25,10 @@
 - AliExpress no Chrome do Kenui redireciona para o site BR (gatewayAdapt=usa2bra): sem preço para os EUA. CJ abre e a busca é legível via JS (innerText após "Sort by").
 - O preço de grupo do freespyads pode ser de outra variante: abrir a loja antes.
 - Detalhe em operacoes/drop-eua/garimpo/2026-11-23/portao-rodada-4.md.
+
+## 24/11: rodada 5, Amazon primeiro (0 de ~68; somando a rodada 4, 0 de ~115)
+- O item 3 do portão é incompatível com a fonte freespyads: produto que escala ganha cópia na Amazon por US$10–35 em semanas. Decisão pendente com o Kenui: kit exclusivo, afrouxar o item 3 ou fonte nova (operacoes/drop-eua/garimpo/2026-11-24/portao-rodada-5.md).
+- Descarte rápido: loja de outro ramo (ex.: moda) anunciando ferramenta pesada barata = isca.
+- Para hobby, escritório e tecnologia, os nichos certos no freespyads são crafts-and-diy, jewelry e personalized-gifts. O CSV mostra só o top 20.
+- Amazon e Walmart pelo web_fetch_exa funcionam (preço e prazo). Lojas Shopify às vezes respondem em /products.json.
+- Rede inflada, novos domínios: quantifty, consensuts, feasiblte, decisivte, probablei, statisticalt, preferablen, accompanyk, ivorydpresion, expotsition, infinitne, landscapte, ascribeavail, glowsoftnook, wisebookvibe, booksoftmind, possiblemay, perpetualing, definitein, divisionl, wordmindglow, slimdescent, colaborateam, corelration, novthra, briarvibe, devmindglow, lifesparking.
