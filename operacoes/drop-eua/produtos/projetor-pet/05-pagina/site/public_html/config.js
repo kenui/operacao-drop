@@ -9,7 +9,8 @@ window.CONFIG = {
   preview: true,                 // true = faixa amarela e campos pendentes destacados. false só para publicar.
   brand: "Little Catch Co.",     // decidido 24/11 (a IA decide; Kenui): domínio littlecatchco.com livre na checagem, a comprar com o aval dele
   supportEmail: "help@littlecatchco.com", // funciona depois de comprar o domínio e criar a caixa na Hostinger
-  legalName: "",                 // ÚNICO dado que só o Kenui dá: nome legal (dele ou do CNPJ). Não inventar.
+  legalName: "",                 // razão social exata do CNPJ (Kenui vai mandar). Não inventar.
+  legalId: "52.594.756/0001-00", // CNPJ do Kenui (24/11), aparece no rodapé como "Brazil, CNPJ ..."
 
   currency: "USD",
   kits: {
@@ -31,7 +32,7 @@ window.CONFIG = {
   },
 
   heroVideo: "",       // caminho do vídeo real do fornecedor (mp4/webm). Vazio = ilustração.
-  stripePk: "",        // pk_test_... (modo teste). Vazio = checkout de demonstração.
+  stripePk: "pk_test_51UfBltKBZVjCik1bOIZRMdKohs1Dp4GgYhpRU8YTc2NayDCePYzuqt6LtyIeLX5HGvr6fTSzhf6eCT06I5P6JQBB00guNp0jnk", // TESTE (Kenui, 24/11). Chave pública: pode ficar no Git.
   metaPixelId: "",     // vazio = pixel desligado
   clarityId: "",       // vazio = Clarity desligado
   defaultPet: "cat",

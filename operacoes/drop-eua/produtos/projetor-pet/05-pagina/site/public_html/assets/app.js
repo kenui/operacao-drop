@@ -24,7 +24,7 @@
       size:sp.size||pend("tamanho real, CJ"), power:sp.power||pend("USB ou recarregável, CJ"),
       laserAns:laser,
       email:C.supportEmail?('<a href="mailto:'+C.supportEmail+'">'+C.supportEmail+'</a>'):pend("e-mail de suporte"),
-      legalName:C.legalName||pend("nome legal"),
+      legalName:(C.legalName||pend("razão social"))+(C.legalId?" (Brazil, CNPJ "+C.legalId+")":""),
       critters:P.critters, plush:P.plush, plushShort:P.plushShort, step3:P.step3
     };
   }
