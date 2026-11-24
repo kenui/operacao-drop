@@ -1,23 +1,51 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
-<title>One more thing</title><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
+<title>Add a Second Kit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap"><link rel="stylesheet" href="assets/site.css"><script src="config.js"></script></head>
 <body data-etapa="upsell">
 <div class="preview" id="previewBar" hidden>PRÉVIA</div>
+<div class="topbar"><span>Your Order Is Confirmed</span><span>Step 2 of 3</span></div>
 <main class="page"><div class="wrap">
-  <p class="eyebrow" style="color:var(--ok)">✓ Your order is confirmed</p>
-  <h1>Want a second kit for someone else's pet?</h1>
-  <p>Add one more full kit for <b data-f="upsell"></b> instead of <s data-f="upsellReg"></s>. It goes in the same box as your order, so there's no extra shipping and nothing to type. It's charged to the card you just used.</p>
-  <p>Good for the friend who sends you cat videos every day, or the dog at your parents' house.</p>
-  <div class="box">
-    <b>Second kit includes</b>
-    <p style="margin:6px 0 10px">Projector, the plush for the catch, and its own gift box.</p>
-    <label>For a <select id="gpet" style="height:42px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:16px;padding:0 8px"><option value="cat">cat</option><option value="dog">dog</option></select></label>
+  <div class="progress" aria-label="Step 2 of 3"><i class="on"></i><i class="on"></i><i></i></div>
+  <div class="okline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m7 12.5 3.2 3L17 9"/></svg>Payment received. Don't close this page yet.</div>
+  <h1>Add a Second Kit for Someone Else's Pet?</h1>
+  <p>Good for the friend who sends you cat videos every day, or the dog at your parents' house. It goes in the same box as your order.</p>
+
+  <div class="offer">
+    <img id="upImg" src="assets/img/kit-cat.webp" alt="The paw-shaped projector with its plush toy and gift box" width="800" height="800">
+    <div class="ob">
+      <div class="eyebrow" style="margin:0">One-Time Offer</div>
+      <h2 style="font-size:24px;margin:4px 0 0">The Hunt &amp; Catch Kit, Again</h2>
+      <div class="price"><b data-f="upsell"></b><s data-f="upsellReg"></s><em id="upSave"></em></div>
+      <ul class="ticks">
+        <li>Projector, the plush for the catch and its own gift box</li>
+        <li>Ships in the same box, no extra shipping</li>
+        <li>Charged to the card you just used, nothing to type</li>
+        <li>Covered by the same 30-day refund</li>
+      </ul>
+      <p style="font-weight:800;margin:16px 0 0">Which pet is it for?</p>
+      <div class="choice" role="radiogroup">
+        <label><input type="radio" name="gp" value="cat" checked><span>🐱 Cat</span></label>
+        <label><input type="radio" name="gp" value="dog"><span>🐶 Dog</span></label>
+      </div>
+      <input type="hidden" id="gpet" value="cat">
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn" id="yes" type="button">Yes, Add a Second Kit · <span data-f="upsell"></span></button>
+      <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
+    </div>
   </div>
-  <div class="err" id="err" role="alert"></div>
-  <button class="btn" id="yes" type="button">Yes, add a second kit for <span data-f="upsell"></span></button>
-  <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
-  <p class="src">One-time charge. No subscription. 30-day money-back covers this kit too.</p>
+  <p class="src center">One-time charge. No subscription.</p>
 </div></main>
 <script src="assets/track.js"></script><script src="assets/pages.js"></script><script src="assets/funil.js"></script>
-<script>try{var d=JSON.parse(sessionStorage.getItem("demo_order")||"{}");if(d.pet)document.getElementById("gpet").value=d.pet}catch(e){}</script>
+<script>
+(function(){
+  var C=CONFIG,g=document.getElementById("gpet"),img=document.getElementById("upImg");
+  document.getElementById("upSave").textContent="You Save $"+(C.upsell.regular-C.upsell.price).toFixed(2);
+  function set(p){g.value=p;img.src="assets/img/kit-"+p+".webp";[].forEach.call(document.querySelectorAll('[name="gp"]'),function(r){r.checked=r.value===p})}
+  var pet="cat"; try{pet=JSON.parse(sessionStorage.getItem("demo_order")||"{}").pet||sessionStorage.getItem("pet")||"cat"}catch(e){}
+  set(pet==="dog"?"dog":"cat");
+  [].forEach.call(document.querySelectorAll('[name="gp"]'),function(r){r.onchange=function(){set(r.value)}});
+})();
+</script>
 </body></html>
