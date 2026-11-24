@@ -10,7 +10,7 @@
   <div class="progress" aria-label="Step 2 of 3"><i class="on"></i><i class="on"></i><i></i></div>
   <div class="okline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m7 12.5 3.2 3L17 9"/></svg>Payment received. Don't close this page yet.</div>
   <h1>Add a Second Kit for Someone Else's Pet?</h1>
-  <p>Good for the friend who sends you cat videos every day, or the dog at your parents' house. It goes in the same box as your order.</p>
+  <p>Good for the friend who sends you dog videos every day, or the dog at your parents' house. It goes in the same box as your order.</p>
 
   <div class="offer">
     <img id="upImg" src="assets/img/kit-cat.webp" alt="The paw-shaped projector with its plush toy and gift box" width="800" height="800">
@@ -24,11 +24,11 @@
         <li>Charged to the card you just used, nothing to type</li>
         <li>Covered by the same 30-day refund</li>
       </ul>
-      <p style="font-weight:800;margin:16px 0 0">Which pet is it for?</p>
+      <div id="petPick"><p style="font-weight:800;margin:16px 0 0">Which pet is it for?</p>
       <div class="choice" role="radiogroup">
         <label><input type="radio" name="gp" value="cat" checked><span>🐱 Cat</span></label>
         <label><input type="radio" name="gp" value="dog"><span>🐶 Dog</span></label>
-      </div>
+      </div></div>
       <input type="hidden" id="gpet" value="cat">
       <div class="err" id="err" role="alert"></div>
       <button class="btn" id="yes" type="button">Yes, Add a Second Kit · <span data-f="upsell"></span></button>
@@ -44,7 +44,8 @@
   document.getElementById("upSave").textContent="You Save $"+(C.upsell.regular-C.upsell.price).toFixed(2);
   function set(p){g.value=p;img.src="assets/img/kit-"+p+".webp";[].forEach.call(document.querySelectorAll('[name="gp"]'),function(r){r.checked=r.value===p})}
   var pet="cat"; try{pet=JSON.parse(sessionStorage.getItem("demo_order")||"{}").pet||sessionStorage.getItem("pet")||"cat"}catch(e){}
-  set(pet==="dog"?"dog":"cat");
+  var pets=C.pets||["cat","dog"]; if(pets.indexOf(pet)<0) pet=pets[0];
+  set(pet==="dog"?"dog":"cat"); if(pets.length<2) document.getElementById("petPick").hidden=true;
   [].forEach.call(document.querySelectorAll('[name="gp"]'),function(r){r.onchange=function(){set(r.value)}});
 })();
 </script>

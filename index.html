@@ -91,12 +91,13 @@ window.COPY = {
 /* fotos por pet (ilustrações geradas com o produto travado; trocar por material real da CJ quando chegar) */
 window.GAL = {
   cat: [["hero-cat","Cat chasing glowing mice in rings of light on a living room floor at night"],["rest-cat","Woman resting on the sofa while her cat hunts the projected mice"],["catch-cat","Cat holding the plush catnip mouse after the hunt"],["kit-cat","The paw-shaped projector, plush catnip mouse and gift box"],["gift","Cat and dog kits in gift boxes under a Christmas tree"],["bump-cat","Three spare plush catnip mice"]],
-  dog: [["hero-dog","Dog chasing glowing critters in rings of light on the floor at night"],["catch-dog","Dog shaking the squeaky plush squirrel after the chase"],["kit-dog","The paw-shaped projector, squeaky plush squirrel and gift box"],["gift","Cat and dog kits in gift boxes under a Christmas tree"],["bump-dog","Two spare squeaky plush squirrels"]]
+  dog: [["hero-dog","Dog chasing glowing critters in rings of light on the floor at night"],["catch-dog","Dog shaking the squeaky plush squirrel after the chase"],["kit-dog","The paw-shaped projector, squeaky plush squirrel and gift box"],["bump-dog","Two spare squeaky plush squirrels"]]
 };
 /* resolve pet e ângulo antes de pintar */
 (function(){
   var q=new URLSearchParams(location.search), C=window.CONFIG;
-  var pet=q.get("pet")==="dog"?"dog":(q.get("pet")==="cat"?"cat":C.defaultPet);
+  var pets=C.pets||["cat","dog"], pet=q.get("pet")==="dog"?"dog":(q.get("pet")==="cat"?"cat":C.defaultPet);
+  if(pets.indexOf(pet)<0) pet=pets[0];
   var a=q.get("a"); if(!window.COPY[pet].angles[a]) a=C.defaultAngle[pet];
   window.STATE={pet:pet,angle:a,kit:"one",mix:[pet,pet],bump:false};
   document.documentElement.dataset.pet=pet;
@@ -142,7 +143,7 @@ window.buildGal=function(){
     <div id="media"></div>
     <script>buildGal()</script>
     <div class="prod">
-      <div class="pets" role="group" aria-label="Choose your pet">
+      <div class="pets" role="group" aria-label="Choose your pet" data-multi-pet>
         <button type="button" data-pet="cat">🐱 For My Cat</button>
         <button type="button" data-pet="dog">🐶 For My Dog</button>
       </div>
@@ -269,10 +270,10 @@ window.buildGal=function(){
         <input type="radio" name="kit" value="two">
         <span class="tag" id="hlTag">Best for Gifts</span>
         <span class="radio"></span>
-        <img class="kimg" src="assets/img/gift-sm.webp" alt="">
-        <div class="kbody"><div class="name">2 Kits</div><div class="inc">One to keep, one to give. Mix cat and dog.</div><div class="save" data-f="saveTwo"></div></div>
+        <img class="kimg" data-img="kit2" src="assets/img/gift-sm.webp" alt="">
+        <div class="kbody"><div class="name">2 Kits</div><div class="inc">One to keep, one to give.<span data-multi-pet> Mix cat and dog.</span></div><div class="save" data-f="saveTwo"></div></div>
         <div class="kp"><div class="p" data-f="priceTwo"></div><div class="each" data-f="eachTwo"></div></div>
-        <div class="mix">
+        <div class="mix" data-multi-pet>
           <label>Kit 1<select data-mix="0"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
           <label>Kit 2<select data-mix="1"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
         </div>
@@ -315,10 +316,10 @@ window.buildGal=function(){
 <!-- 10. PRESENTE -->
 <section class="sec alt" data-bloco="presente">
   <div class="wrap">
-    <div class="pic sq"><img src="assets/img/gift.webp" alt="Cat and dog kits in gift boxes under a Christmas tree" loading="lazy" width="800" height="800"></div>
+    <div class="pic sq"><img data-img="giftbig" src="assets/img/gift.webp" alt="The kit in its gift box" loading="lazy" width="800" height="800"></div>
     <div class="eyebrow">Gifting</div>
     <h2>A Gift for the Pet <span class="hl">and</span> the Person</h2>
-    <p>Every kit ships in its own gift box. Use their address at checkout and it goes straight to them. The 2-kit pack lets you mix one cat kit and one dog kit.</p>
+    <p>Every kit ships in its own gift box. Use their address at checkout and it goes straight to them.<span data-multi-pet> The 2-kit pack lets you mix one cat kit and one dog kit.</span></p>
     <p data-f-show="xmasCutoff">Ordering for Christmas? Order by <b data-f="xmasCutoff"></b>.</p>
   </div>
 </section>
@@ -357,9 +358,10 @@ window.buildGal=function(){
     <div class="eyebrow">Questions</div>
     <h2>Fair Questions</h2>
     <details><summary>Is it a laser?</summary><p data-f="laserAns"></p></details>
-    <details><summary>Will my cat get frustrated chasing light?</summary><p>That's the reason the plush mouse is in the kit. Lights for the chase, a toy for the catch. Keep sessions to 10 or 15 minutes and end with the plush.</p></details>
+    <details data-pet-only="cat"><summary>Will my cat get frustrated chasing light?</summary><p>That's the reason the plush mouse is in the kit. Lights for the chase, a toy for the catch. Keep sessions to 10 or 15 minutes and end with the plush.</p></details>
     <details><summary>Does it work during the day?</summary><p>Not well. It's made for evenings or a room with the curtains closed. In bright daylight the projection is faint.</p></details>
-    <details><summary>Does it work for dogs?</summary><p>Yes, there's a dog kit with a squeaky plush squirrel instead of catnip. It's best for small and medium dogs; a large, excited dog may knock it over.</p></details>
+    <details data-pet-only="cat"><summary>Does it work for dogs?</summary><p>Yes, there's a dog kit with a squeaky plush squirrel instead of catnip. It's best for small and medium dogs; a large, excited dog may knock it over.</p></details>
+    <details data-pet-only="dog"><summary>What size dog is it for?</summary><p>Small and medium dogs do best. A large, excited dog may knock it over or try to chew it, so stay in the room and keep sessions short.</p></details>
     <details><summary>I saw a projector like this for less on Amazon.</summary><p>You probably did. Those usually ship the projector on its own. Ours is a kit: projector, a plush for the catch, and a gift box, with a delivery date you see before you pay and a 30-day refund from people who answer email.</p></details>
     <details><summary>How is it powered?</summary><p><span data-f="power"></span>.</p></details>
     <details><summary>Is this a real store? I've seen these ads called scams.</summary><p>Fair worry. You pay through Stripe, you get an email receipt right away with every charge listed, and you get a tracking number when your order ships. A person answers at <span data-f="email"></span>. If anything goes wrong, email us before you call your bank. A refund is faster that way.</p></details>

@@ -14,16 +14,16 @@ window.CONFIG = {
 
   currency: "USD",
   kits: {
-    one: { price: 34.99, label: "1 kit" },
-    two: { price: 59.99, label: "2 kits", save: 10.00 }
+    one: { price: 49.99, label: "1 kit" },   // decisão do Kenui 24/11 (kit projetor + pelúcia a US$49,99)
+    two: { price: 89.99, label: "2 kits", save: 9.99 }   // save = 2 × 49,99 − 89,99
   },
-  bump:     { price: 7.99 },
-  upsell:   { price: 24.99, regular: 34.99 },
+  bump:     { price: 9.99 },
+  upsell:   { price: 39.99, regular: 49.99 },  // regular = preço real de 1 kit
   downsell: { price: 7.99, on: true, kind: "plush" },  // control: pelúcias extras só para quem não pegou o bump
   bonus: { on: true, name: "First Hunt Guide" },        // PDF grátis por e-mail (objeções 2 e 4 da persona)
 
-  delivery: "",        // ex.: "7–12 business days"  [PENDENTE: prazo real da CJ]
-  shipsFrom: "",       // ex.: "our US warehouse" ou "our partner warehouse overseas"  [PENDENTE: CJ]
+  delivery: "7–15 days",  // CJ 24/11: CJPacket Sensitive, ~90% entregue em 4–12 dias + 1–3 de separação
+  shipsFrom: "our partner warehouse in China",  // CJ 24/11: fornecedor sai da China
   xmasCutoff: "",      // ex.: "Dec 10" só se o prazo garantir  [PENDENTE]
   specs: {
     size: "",          // ex.: "about 4.5 in tall, roughly a coffee mug"  [PENDENTE: CJ]
@@ -35,7 +35,8 @@ window.CONFIG = {
   stripePk: "pk_test_51UefZS9fGfTx7kShypVC0uVAM4MfKRZo7eVHwDuMLJssfF90tIY5OdUJnFZdz3PYSQUH2zFhYMmE15bMZhpK55zI00bIwNKQXd", // TESTE conta Brasil (Kenui, 24/11). Chave pública: pode ficar no Git.
   metaPixelId: "545543757913721", // pixel do Meta (Kenui, 24/11). ID público.
   clarityId: "",       // vazio = Clarity desligado
-  defaultPet: "cat",
+  pets: ["dog"],       // só a versão cachorro (esquilo) tem fornecedor (CJ 24/11). Gato volta quando houver.
+  defaultPet: "dog",
   defaultAngle: { cat: "pega", dog: "sozinho" },
 
   /* ---------- TESTE A/B (um por vez). Plano e ordem: ../../testes/fila.md ----------
@@ -47,9 +48,9 @@ window.CONFIG = {
     list: {
       "T1-angulo":     { split: 50, note: "ângulo vem do anúncio (?a=); este teste só registra", variants: { A: {}, B: {} } },
       "T2-kit2-mix":   { split: 50, variants: { A: {}, B: { "kits.two.highlight": true } } },
-      "T3-preco-front":{ split: 50, variants: { A: {}, B: { "kits.one.price": 39.99, "kits.two.price": 69.99, "kits.two.save": 9.99 } } },
-      "T4-bump-preco": { split: 50, variants: { A: {}, B: { "bump.price": 5.99 } } },
-      "T5-upsell-preco":{ split: 50, variants: { A: {}, B: { "upsell.price": 19.99 } } },
+      "T3-preco-front":{ split: 50, variants: { A: {}, B: { "kits.one.price": 59.99, "kits.two.price": 109.99, "kits.two.save": 9.99, "upsell.regular": 59.99 } } },
+      "T4-bump-preco": { split: 50, variants: { A: {}, B: { "bump.price": 7.99 } } },
+      "T5-upsell-preco":{ split: 50, variants: { A: {}, B: { "upsell.price": 34.99 } } },
       "T6-downsell-digital":{ split: 50, variants: { A: {}, B: { "downsell.kind": "guide", "downsell.price": 9.00 } } }
     }
   }
