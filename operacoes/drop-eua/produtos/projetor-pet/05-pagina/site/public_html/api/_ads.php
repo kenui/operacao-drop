@@ -43,7 +43,7 @@ function ads_cambio(string $moeda, string $cache): float {
 function gasto_ads(string $desde, bool $tudo = false): array {
   $vazio = ['ligado' => false, 'erro' => null, 'moeda' => null, 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => []];
   $cr = ads_cred();
-  if (!$cr) return $vazio;
+  if (!$cr) return gasto_ads_arquivo($desde, $tudo, $vazio);
   $cache = dirname(__DIR__, 2) . '/_cache';
   if (!is_dir($cache)) @mkdir($cache, 0700, true);
   $ini = (new DateTime($desde, new DateTimeZone('UTC')))->setTimezone(new DateTimeZone('America/New_York'))->format('Y-m-d');
@@ -70,4 +70,37 @@ function gasto_ads(string $desde, bool $tudo = false): array {
   } catch (Throwable $e) {
     return ['ligado' => true, 'erro' => substr($e->getMessage(), 0, 200)] + $vazio;
   }
+}
+
+// Caminho B (sem token no servidor): a thread do Meta lê o gasto pelo conector e commita um JSON só com números
+// no ramo deploy em _dados/ads-gasto.json (pasta bloqueada por .htaccess). Formato:
+// {"atualizado":"2026-11-25T10:00:00Z","fonte":"conector","moeda":"BRL","acrescimo":0.1383,
+//  "linhas":[{"campaign_id":"120...","campaign_name":"...","date":"2026-11-24","spend":12.34}]}
+// Opcional: "usd_por_unidade": 0.19 (senão o servidor busca o câmbio do dia). spend na moeda da conta, date no fuso da conta, uma linha por campanha e dia (a última repetida vale).
+function gasto_ads_arquivo(string $desde, bool $tudo, array $vazio): array {
+  $f = dirname(__DIR__) . '/_dados/ads-gasto.json';
+  if (!is_file($f)) return $vazio;
+  $j = json_decode((string)file_get_contents($f), true);
+  if (!is_array($j) || !isset($j['linhas']) || !is_array($j['linhas'])) return ['ligado' => true, 'erro' => 'ads-gasto.json inválido'] + $vazio;
+  $moeda = strtoupper((string)($j['moeda'] ?? 'USD'));
+  $acr = (float)($j['acrescimo'] ?? ($moeda === 'BRL' ? 0.1383 : 0));
+  $cache = dirname(__DIR__, 2) . '/_cache';
+  if (!is_dir($cache)) @mkdir($cache, 0700, true);
+  try { $fx = (!empty($j['usd_por_unidade']) ? (float)$j['usd_por_unidade'] : ads_cambio($moeda, $cache)) * (1 + $acr); }
+  catch (Throwable $e) { return ['ligado' => true, 'erro' => 'câmbio indisponível'] + $vazio; }
+  $ini = (new DateTime($desde, new DateTimeZone('UTC')))->setTimezone(new DateTimeZone('America/New_York'))->format('Y-m-d');
+  $u = [];
+  foreach ($j['linhas'] as $l) {
+    $d = (string)($l['date'] ?? ''); $id = (string)($l['campaign_id'] ?? '');
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $d) || $id === '' || (!$tudo && $d < $ini)) continue;
+    $u["$id|$d"] = $l;
+  }
+  $r = ['ligado' => true, 'erro' => null, 'moeda' => $moeda, 'acrescimo' => $acr, 'fonte' => (string)($j['fonte'] ?? 'arquivo'), 'atualizado' => (string)($j['atualizado'] ?? ''), 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => []];
+  foreach ($u as $l) {
+    $c = (int)round((float)($l['spend'] ?? 0) * $fx * 100);
+    $d = (string)$l['date']; $id = (string)$l['campaign_id']; $nm = (string)($l['campaign_name'] ?? $id);
+    $r['total'] += $c; $r['dia'][$d] = ($r['dia'][$d] ?? 0) + $c;
+    $r['id'][$id] = ($r['id'][$id] ?? 0) + $c; $r['nome'][$nm] = ($r['nome'][$nm] ?? 0) + $c; $r['ids'][$id] = $nm;
+  }
+  return $r;
 }

@@ -114,7 +114,7 @@ if (isset($_GET['api'])) {
   echo json_encode([
     'modo' => $c['modo'] ?? '?', 'gerado' => gmdate('c'), 'desde' => $desde, 'agora' => (int)$vv->fetchColumn(), 'campanhas' => array_map('strval', array_keys($campanhas)),
     'precos' => precos(), 'custos' => $c['custos'] ?? [],
-    'ads' => ['ligado' => $ads['ligado'], 'erro' => $ads['erro'], 'moeda' => $ads['moeda'], 'acrescimo' => $ads['acrescimo'] ?? 0, 'nomes' => $ads['ids']],
+    'ads' => ['ligado' => $ads['ligado'], 'erro' => $ads['erro'], 'moeda' => $ads['moeda'], 'acrescimo' => $ads['acrescimo'] ?? 0, 'nomes' => $ads['ids'], 'atualizado' => $ads['atualizado'] ?? ''],
     'tot' => $tot + ['visitantes' => $vis],
     'funil' => [
       ['Visitou a página', $vis], ['Viu o produto (3 s)', $n('view_content')], ['Escolheu um kit', $n('kit_select')],
@@ -215,7 +215,7 @@ function load(){
       return '<table><tr><th>'+nome+'</th><th>Pedidos</th><th>Receita</th>'+(C?'<th>Anúncios</th><th>ROAS</th>':'')+'<th>Lucro'+(C?' (após anúncios)':'')+'</th>'+(C?'<th>Visit.</th><th>Lucro/visit.</th>':'')+'</tr>'+ks.map(function(k){var v=o[k],lc=C?v.la:v.l;return '<tr><td>'+(C?nm(k):k.replace(/</g,""))+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td>'+(C?'<td>'+m(v.g)+'</td><td>'+(v.g?(v.r/v.g).toFixed(2):"–")+'</td>':'')+'<td class="'+cls(lc)+'">'+m(lc)+'</td>'+(C?'<td>'+v.vis+'</td><td>'+(v.vis?m(lc/v.vis):"–")+'</td>':'')+'</tr>'}).join("")+'</table>'}
     $("#camp").innerHTML=tab(j.camp,"Campanha"); $("#var").innerHTML=tab(j.var,"Versão");
     $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+nm(p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
-    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta (atualiza a cada 15 min"+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando o token de leitura do Meta for salvo)")+".";
+    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta ("+(A.atualizado?"gasto atualizado em "+new Date(A.atualizado).toLocaleString("pt-BR"):"atualiza a cada 15 min")+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando o token de leitura do Meta for salvo)")+".";
   });
 }
 $("#p").onchange=load; $("#c").onchange=load; load(); setInterval(load,30000);
