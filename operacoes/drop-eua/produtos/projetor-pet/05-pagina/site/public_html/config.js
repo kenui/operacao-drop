@@ -9,7 +9,7 @@ window.CONFIG = {
   preview: true,                 // true = faixa amarela e campos pendentes destacados. false só para publicar.
   brand: "Little Catch Co.",     // decidido 24/11 (a IA decide; Kenui): domínio littlecatchco.com livre na checagem, a comprar com o aval dele
   supportEmail: "help@littlecatchco.com", // funciona depois de comprar o domínio e criar a caixa na Hostinger
-  legalName: "",                 // razão social exata do CNPJ (Kenui vai mandar). Não inventar.
+  legalName: "52.594.756 KENUI SILVEIRA ALVES DE OLIVEIRA CABRAL", // nome empresarial do MEI (CCMEI, 24/11)
   legalId: "52.594.756/0001-00", // CNPJ do Kenui (24/11), aparece no rodapé como "Brazil, CNPJ ..."
 
   currency: "USD",
