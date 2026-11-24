@@ -38,3 +38,8 @@
 - Frete CJ China→EUA ~US$17/kg: base de ~1 kg já estoura o item 1. Kit tem que ser leve.
 - A Amazon tem cópias chinesas de US$1–9 sem avaliações para quase toda peça leve. Proposta ao Kenui: o item 3 conta só Prime/FBA ou ≥50 avaliações com entrega antes da data.
 - A busca por palavra da CJ não acha muita coisa (TPMS, fogareiro mini, capa tática, testador de relé). Usar o pedido de sourcing da CJ para os finalistas.
+
+## 24/11/2026 — trava do projetor de presas para pet
+- Produto atraente pode ter anúncio de só 7 dias: medir a idade do anúncio mais antigo antes da vitrine, para Kenui escolher sabendo se é explosão nova ou prova antiga.
+- Cópias chinesas sem Prime não contam no item 3, mas o cliente as vê. Registrar o menor preço visível como risco de conversão, e responder com kit ou versão superior.
+- Sem o Chrome do Kenui não há custo real (CJ). Pedir o Chrome no início da trava, não no fim.
