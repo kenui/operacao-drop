@@ -34,8 +34,8 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         g($conta . '/insights', ['date_preset' => 'last_7d', 'fields' => 'spend', 'access_token' => $tk]); // confirma leitura do gasto
         $moeda = ''; foreach ($contas as $c) if ('act_' . $c['account_id'] === $conta) $moeda = (string)$c['currency'];
         $php = "<?php\n// Gravado por instalar/meta-ads.php em " . gmdate('c') . ". Só leitura de anúncios (ads_read). Não versionar.\n"
-             . "// acrescimo: imposto cobrado por cima do gasto na fatura do Meta (fração). Conferir na fatura e ajustar.\n"
-             . 'return ' . var_export(['token' => $tk, 'conta' => $conta, 'moeda' => $moeda, 'acrescimo' => 0.0], true) . ";\n";
+             . "// acrescimo: imposto cobrado por cima do gasto na fatura do Meta (fração). BRL: 13,83% (PIS/Cofins + ISS desde 01/01/2026, fora do spend da API). Conferir na 1ª fatura.\n"
+             . 'return ' . var_export(['token' => $tk, 'conta' => $conta, 'moeda' => $moeda, 'acrescimo' => $moeda === 'BRL' ? 0.1383 : 0.0], true) . ";\n";
         if (file_put_contents($dest, $php) === false) throw new RuntimeException('não consegui gravar no servidor; avise o Claude');
         @chmod($dest, 0600);
         file_put_contents($raiz . '/instalacao.log', gmdate('c') . " meta_ads ok conta=$conta moeda=$moeda\n", FILE_APPEND);
