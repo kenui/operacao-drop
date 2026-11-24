@@ -17,9 +17,9 @@ site/
 
 ## Antes de publicar (cada item precisa do Kenui ou da CJ)
 1. **CJ:** custo do kit (gato e cachorro), prazo real até a porta, origem (armazém EUA ou China), tamanho, energia (USB ou recarregável), se é LED e não laser, vídeo real da projeção. Preencher em `config.js` (`delivery`, `shipsFrom`, `specs`, `heroVideo`) e o custo em `config.php` (`custos`). Refazer a conta de `07-funil.md`.
-2. **Nome da loja e domínio** (`brand`; hoje "Catchlight" é provisório).
-3. **Rodapé legal:** nome de quem vende, endereço de contato e e-mail de suporte. Sem empresa nos EUA, o vendedor é o Kenui (CPF ou CNPJ): decidir com o contador.
-4. **Promessas de atendimento** nas políticas: reembolso em até 2 dias úteis, resposta em 1 dia útil, reembolso sem devolver o produto (etiqueta paga se pedirmos). Confirmar ou mudar.
+2. **Domínio littlecatchco.com** (marca Little Catch Co., decidida em 24/11): comprar com o aval do Kenui (gasto) e criar a caixa help@littlecatchco.com no hPanel.
+3. **Nome legal** no `legalName` (o nome do Kenui ou do CNPJ dele): único dado que só ele dá. Sem endereço físico no site (decisão D11).
+4. Políticas já decididas (D10): reembolso em 2 dias úteis, sem devolver, resposta em 1 dia útil.
 5. **Stripe (modo teste primeiro):** chave `pk_test` no `config.js`, `sk_test` e segredo do webhook no `config.php`; webhook apontando para `https://DOMINIO/api/webhook.php` com os eventos `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.refunded`, `charge.dispute.created`, `radar.early_fraud_warning.created`; registrar o domínio para Apple Pay; descritor da fatura.
 6. **Meta:** ID do pixel no `config.js` e no `config.php`, token da API de Conversões no `config.php`. **Clarity:** ID no `config.js`.
 7. `preview: false` no `config.js` (some a faixa amarela). Nenhum campo amarelo pode sobrar.

@@ -12,7 +12,7 @@ return [
   'db_user'         => '',
   'db_pass'         => '',
   'site_url'        => 'https://SEU-DOMINIO.com',
-  'descritor'       => 'CATCHLIGHT',     // aparece no extrato do cartão (até 22 letras)
+  'descritor'       => 'LITTLECATCHCO',     // aparece no extrato do cartão (até 22 letras)
 
   // PREÇOS EM CENTAVOS. O servidor é quem cobra: precisam bater com public_html/config.js.
   'precos' => ['one' => 3499, 'two' => 5999, 'bump' => 799, 'upsell' => 2499, 'downsell' => 799],
@@ -31,8 +31,8 @@ return [
   'custos' => ['kit' => 1050, 'bump' => 200, 'downsell_plush' => 200, 'downsell_guide' => 0],
   'downsell_on' => true,
   // E-MAIL de confirmação (PHP mail() da Hostinger; criar a caixa no hPanel). Vazio = não envia.
-  'email_from'  => '',                 // ex.: 'help@dominio.com'
-  'email_nome'  => 'Catchlight',
+  'email_from'  => 'help@littlecatchco.com',  // criar a caixa no hPanel depois de comprar o domínio
+  'email_nome'  => 'Little Catch Co.',
   'bonus_on'    => true,               // manda o link do First Hunt Guide (PDF) no e-mail e no obrigado
   'prazo'       => '',                 // o mesmo prazo de config.js, para o e-mail. Vazio = e-mail diz "tracking soon".
 

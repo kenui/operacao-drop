@@ -7,10 +7,9 @@
    ============================================================ */
 window.CONFIG = {
   preview: true,                 // true = faixa amarela e campos pendentes destacados. false só para publicar.
-  brand: "Catchlight",           // [NOME A DEFINIR com o Kenui] não lembrar Pouncy/PounceBeam
-  supportEmail: "",              // ex.: help@dominio.com  [PENDENTE]
-  legalName: "",                 // nome legal de quem vende  [PENDENTE: CPF/CNPJ do Kenui ou LLC]
-  address: "",                   // endereço de contato  [PENDENTE]
+  brand: "Little Catch Co.",     // decidido 24/11 (a IA decide; Kenui): domínio littlecatchco.com livre na checagem, a comprar com o aval dele
+  supportEmail: "help@littlecatchco.com", // funciona depois de comprar o domínio e criar a caixa na Hostinger
+  legalName: "",                 // ÚNICO dado que só o Kenui dá: nome legal (dele ou do CNPJ). Não inventar.
 
   currency: "USD",
   kits: {
