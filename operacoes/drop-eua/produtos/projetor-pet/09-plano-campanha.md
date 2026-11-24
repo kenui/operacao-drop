@@ -49,6 +49,13 @@ Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
 | `fake-cetica-demo-v1` (V4) | "achei que era fake" | quem já viu o produto em outro anúncio | demo em sala normal: desligado, clique, luz | já viu o produto | prova crua baixa o custo por início de checkout para quem desconfia |
 | `aprovado-controle-v1` | vídeo aprovado (sem dor) | — | demo | — | controle: mede quanto a dor acrescenta |
 
+**Modelagem (regra do Kenui, 24/11; manual §5.0):** antes de subir, cada conceito precisa da sua referência provada, ou ficar marcado como aposta. Situação hoje:
+- V1 (chuva) modela a dor mais usada no mercado (74 anúncios de "rainy days/bored" na Biblioteca em 24/11). Falta escolher o anúncio específico que está há 14+ dias com várias versões e decupá-lo.
+- O vídeo aprovado segue a referência da Enjoyaitlife que o Kenui escolheu ([estudo/referencia-estilo.md](estudo/referencia-estilo.md)).
+- V4 ("achei que era fake") modela o formato de demo crua que os anúncios mais antigos usam. Falta a referência específica.
+- V2 (ela chega acabada) é a **aposta**: ninguém usa esse ângulo hoje.
+Antes do lançamento: buscar na Biblioteca (EUA, "pet projector", "dog projector toy", "interactive projector") e no TikTok os anúncios com 14+ dias e várias versões e os vídeos orgânicos com mais views. Guardar as fichas em `estudo/referencias-anuncios.md`. Se aparecer uma referência mais forte que V1 ou V4, ela entra no lugar. Nome dos anúncios com `ref<id>`.
+
 V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
 
 ## 4. Régua com os números deste produto (E = US$26,64; A = US$18)
