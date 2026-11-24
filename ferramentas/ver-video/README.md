@@ -21,6 +21,7 @@ Depois, o agente abre `relatorio.md`, as imagens `cenas/` e `folha_N.jpg` e o `e
 - yt-dlp (github.com/yt-dlp/yt-dlp): baixar por link
 
 ## Rede
-- A transcrição precisa de huggingface.co **e** dos servidores de arquivo dele: us.aws.cdn.hf.co, cas-bridge.xethub.hf.co e cdn-lfs.hf.co. Teste de 24/11: no ambiente "operacao-drop (vídeo)" só huggingface.co estava liberado, o download do modelo parou nesses três e a transcrição ficou pendente. Os vídeos do Higgsfield vêm de d8j0ntlcm91z4.cloudfront.net e d2ol7oe51mr4n9.cloudfront.net.
+- A transcrição precisa de huggingface.co e do servidor de arquivos us.aws.cdn.hf.co (liberados no ambiente "operacao-drop (vídeo)" em 24/11; transcrição testada e funcionando). Se outro ambiente bloquear, liberar também cas-bridge.xethub.hf.co e cdn-lfs.hf.co.
+- O áudio vai já decodificado para o faster-whisper, porque o PyAV 19 quebra a abertura de arquivos do faster-whisper 1.2. A transcrição sai frase por frase, com tempo.
 - Os dois endereços do cloudfront estão liberados no ambiente "operacao-drop (vídeo)", criado em 24/11/2026 (testado: baixou D-v1 e D-v2). Para usá-lo, selecione esse ambiente em Project settings, Cloud environment. No ambiente padrão (Built-in), cenas e som funcionam, mas a transcrição fica marcada como pendente.
 - Facebook, TikTok e YouTube continuam bloqueados para download direto. Para usar um anúncio da Biblioteca do Meta, baixe o vídeo pelo navegador (menu do anúncio) e mande o arquivo no chat.
