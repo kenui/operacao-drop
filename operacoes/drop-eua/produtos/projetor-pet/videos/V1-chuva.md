@@ -33,5 +33,26 @@ Duas versões: sem música e com música a 30%, que abaixa sozinha quando há fa
 - O bicho projetado é um coelho; a CJ cotou a versão com esquilo.
 - Quadro de partida em 1K (o da cota grátis). O vídeo sai em 720p, então o ganho de um quadro em 4K seria pequeno; vale testar com créditos se a pele incomodar.
 
+## Versão 2 (24/11, depois da avaliação do Kenui)
+Avaliação dele da versão 1: "O com música ficou sem som no final, o vídeo ficou bom, só o cachorro sem brincar e o avatar ainda não tá muito real". E perguntou se havia ficha do avatar de perto, em vários ângulos e em alta qualidade. Não havia.
+
+O que mudou e por quê:
+| Mudança | Por quê | Custo real |
+|---|---|---|
+| Fichas 4K da mulher e do cachorro ([fichas/README.md](../fichas/README.md)) | identidade fixa e pele real vêm da imagem, não do vídeo | 2,8 créditos |
+| Quadro de partida da prova em 4K (3072×5504) com as fichas: cachorro já em posição de brincar, mulher rindo, rosto maior | o modelo anima o que já está no quadro; partir do cachorro brincando puxa a brincadeira | 1,4 crédito |
+| Clipe novo da prova (`clipe-prova-b.mp4`, T1, 15 s, 720p, áudio nativo) com o cachorro descrito segundo a segundo | na v1 a prova vinha do D-v6, onde o cachorro ficava quase parado | 0 (teste grátis) |
+| Música mixada em dois passos | o mix num passo só cortava o som aos 18 s | 0 |
+
+Saldo: 110 → 105,8 créditos (4,2 gastos, dentro do teto de 10 aprovado por ele). Cota restante: 2 vídeos T1 e 8 imagens.
+
+Montagem v2 (20,4 s): dor 0 a 6,8 s e virada 6,8 a 9,1 s iguais à v1; prova 9,1 a 17,1 s = clipe novo de 1,5 a 9,5 s, tomada contínua ("Babe, look at him, he's actually hunting it." / "No way, he's obsessed."); recompensa 17,1 a 20,4 s = clipe novo de 11,7 a 15 s ("Honestly, if your dog gets bored inside, get this.").
+
+Conferência do clipe novo (1 quadro por segundo + transcrição): as 3 falas exatas; o cachorro brinca os 15 s (posição de brincar, bote com as duas patas, corre de anel em anel, olho no chão); boca vazia; aparelho parado e ligado; anéis e coelho planos no chão; a luz cai nas costas do cachorro quando ele passa na frente do feixe, como num projetor real. Som da versão com música conferido até o fim (20,4 s).
+
+Referência modelada: sem referência nova nesta versão; a estrutura continua a do molde de 20 s e a prova segue o formato do controle da Enjoyaitlife (bicho perseguindo a luz em tomada contínua).
+
+Pontos fracos que ficam: a parte da dor ainda usa o quadro de 1K sem as fichas, então o rosto dela nos primeiros 9 s é o da v1; se ainda parecer pouco real, refazer o quadro da dor em 4K (1,4 crédito) e o clipe (1 teste grátis).
+
 ## Resultado
-Aguardando avaliação do Kenui.
+Versão 2 aguardando avaliação do Kenui.
