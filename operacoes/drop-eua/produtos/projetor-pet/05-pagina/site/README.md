@@ -17,13 +17,16 @@ site/
 
 ## Antes de publicar (cada item precisa do Kenui ou da CJ)
 1. **CJ:** custo do kit (gato e cachorro), prazo real até a porta, origem (armazém EUA ou China), tamanho, energia (USB ou recarregável), se é LED e não laser, vídeo real da projeção. Preencher em `config.js` (`delivery`, `shipsFrom`, `specs`, `heroVideo`) e o custo em `config.php` (`custos`). Refazer a conta de `07-funil.md`.
-2. **Domínio littlecatchco.com** (marca Little Catch Co., decidida em 24/11): comprar com o aval do Kenui (gasto) e criar a caixa help@littlecatchco.com no hPanel.
-3. **Nome legal** no `legalName` (o nome do Kenui ou do CNPJ dele): único dado que só ele dá. Sem endereço físico no site (decisão D11).
+2. **Domínio littlecatchco.com**: comprado em 24/11 (ativo até 24/11/2027), site criado na Hostinger (conta u629614698). Falta criar a caixa help@littlecatchco.com no hPanel.
+3. **Vendedor:** CNPJ 52.594.756/0001-00 em `legalId`; falta a razão social exata em `legalName`. Sem endereço físico no site (decisão D11).
 4. Políticas já decididas (D10): reembolso em 2 dias úteis, sem devolver, resposta em 1 dia útil.
 5. **Stripe (modo teste primeiro):** chave `pk_test` no `config.js`, `sk_test` e segredo do webhook no `config.php`; webhook apontando para `https://DOMINIO/api/webhook.php` com os eventos `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.refunded`, `charge.dispute.created`, `radar.early_fraud_warning.created`; registrar o domínio para Apple Pay; descritor da fatura.
 6. **Meta:** ID do pixel no `config.js` e no `config.php`, token da API de Conversões no `config.php`. **Clarity:** ID no `config.js`.
 7. `preview: false` no `config.js` (some a faixa amarela). Nenhum campo amarelo pode sobrar.
 8. Chaves reais (`sk_live`/`pk_live`) só com o aval do Kenui, depois da compra de teste completa (ver `../qa.md`).
+
+## Instalação das chaves sem passar pela conversa
+`instalar/configurar.php` sobe em `public_html/` com nome aleatório (`configurar-<token>.php`), junto de `_subir/` (config.php com `__SK__`/`__WHSEC__`, schema, cron, PDFs; `.htaccess` nega acesso). O Kenui cola a `sk_test` ali; a página confere a chave na Stripe, cria o webhook e guarda o segredo, registra o domínio para Apple Pay, grava `../config.php` (0600), move schema/cron/PDFs um nível acima e se apaga. Recusa se `../config.php` já existe. Registro sem segredo em `../instalacao.log`. Fase de teste: banco SQLite (`dados-teste.sqlite`) e `.htaccess` com noindex.
 
 ## Teste A/B
 Um teste por vez: `tests.active` em `config.js` e, se mexe na cobrança, `testes.active` em `config.php` (mesmo id). Conferir com `?v=A` e `?v=B`. Plano e régua: `../../testes/fila.md`.
