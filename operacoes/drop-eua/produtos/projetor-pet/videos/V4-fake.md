@@ -43,4 +43,4 @@ Montagem refeita com a mixagem de celular ([audio-realista.md](../../../../../co
 Remontado com a prova nova, que mostra o esquilo da versão da CJ e usa o bloco novo de voz: [prova-esquilo.md](prova-esquilo.md). Duração agora: 15,2 s. A parte anterior à prova não mudou.
 
 ## Resultado
-Aguardando avaliação do Kenui.
+Aprovado pelo Kenui em 24/11 (versão com esquilo): "Ok, ficou muito bom".
