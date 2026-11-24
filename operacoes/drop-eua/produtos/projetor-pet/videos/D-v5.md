@@ -37,7 +37,8 @@ Quadros iniciais 4 (2 × 2) + Kling 15 s **37,5** = **41,5 créditos**. Saldo de
 - Produto parado, em pé, lente azul, anéis planos no chão. Ela sem celular.
 - Cachorro de pé o vídeo todo; o coelho aparece entre 5 e 8 s e ele pula em cima dele aos 9 s.
 - Pontos fracos: nos primeiros 5 s o cachorro olha mais para a câmera do que para os anéis; ele aparece com um objeto claro na boca (parece um petisco ou brinquedo que o modelo inventou), mais visível dos 11 s em diante; no reenquadramento final o projetor quase sai do quadro.
-- Final (textura + textos): https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/5d7ac726-6c70-46f4-b3aa-e94a8b3a3e48.mp4
+- **Final sem filtro, só textos (entrega principal, pedido do Kenui: textura só pelo prompt):** https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/013f9ccc-d490-420e-8940-757fe3fa824c.mp4
+- Versão com o filtro celularizar (só referência): https://d2ol7oe51mr4n9.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/5d7ac726-6c70-46f4-b3aa-e94a8b3a3e48.mp4
 - Bruto: https://d8j0ntlcm91z4.cloudfront.net/user_3LK6s47BLuXCkFvw3IIFOVnZEvT/hf_20261124_160641_ff86b937-4d4a-428b-b054-74950047527c.mp4
 - Custo conferido no extrato: **35 créditos**. Total da v5 (a + b): 76,5. Saldo: 0,76.
 
