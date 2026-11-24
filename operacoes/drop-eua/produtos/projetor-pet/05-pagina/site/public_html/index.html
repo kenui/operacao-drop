@@ -152,6 +152,7 @@ window.buildGal=function(){
       <p class="sub" id="sub"></p>
       <div class="price-line"><b data-f="priceOne"></b><span>Full Kit · Free Shipping</span></div>
       <div class="ship-line"><svg><use href="#i-truck"/></svg><span data-f="deliveryLong"></span></div>
+      <div class="ship-line" data-f-show-bonus><svg><use href="#i-book"/></svg><span><b data-pet-only="dog">+ 2 free bonus guides</b><b data-pet-only="cat">+ a free bonus guide</b> by email</span></div>
       <a class="btn" href="#kits" data-cta="hero">Get the Kit <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <div class="trustrow">
         <div><svg><use href="#i-truck"/></svg>Free US<br>Shipping</div>
@@ -257,7 +258,13 @@ window.buildGal=function(){
     <div class="eyebrow">Choose your kit</div>
     <h2>Pick Your Hunt &amp; Catch Kit</h2>
     <p>Each kit: the floor projector, <span data-f="plush"></span> and a gift box. Free shipping.</p>
-    <div class="bonus" data-f-show-bonus><svg><use href="#i-book"/></svg><span><b>Free With Every Order:</b> the First Hunt Guide (PDF, by email). Setting up the first night, what to do if your pet ignores it, and how to end every session with a real catch.</span></div>
+    <div class="bonuses" data-f-show-bonus data-bloco="bonus">
+      <img data-pet-only="dog" src="assets/img/bonus-stack.webp" alt="Covers of the two free bonus guides" width="900" height="720" loading="lazy">
+      <div class="bhead"><span class="bflag">Free With Every Order</span><b data-pet-only="dog">2 Bonus Guides, Sent the Minute You Order</b><b data-pet-only="cat">A Bonus Guide, Sent the Minute You Order</b></div>
+      <div class="bitem"><img src="assets/img/bonus-guide-sm.webp" alt=""><div><b>Bonus 1: The First Hunt Guide</b><span>The first night step by step, what to do if your pet ignores it or barks at it, and how to end every session with a real catch.</span></div></div>
+      <div class="bitem" data-pet-only="dog"><img src="assets/img/bonus-rain-sm.webp" alt=""><div><b>Bonus 2: The Rainy Day Play Plan</b><span>12 indoor games with things you already have, plus a simple week to rotate them, so the projector and the toys stay new.</span></div></div>
+      <p class="src" style="margin:8px 0 0">PDFs, yours to keep. Download links on the thank-you page and in your receipt email.</p>
+    </div>
     <div class="kits" role="radiogroup" aria-label="Kits">
       <label class="kit on" data-kit="one">
         <input type="radio" name="kit" value="one" checked>
@@ -284,7 +291,8 @@ window.buildGal=function(){
     <div class="co" id="checkout" data-bloco="checkout">
       <div class="line"><img data-img="kit" src="assets/img/kit-cat-sm.webp" alt=""><div class="t"><span id="sumKit"></span><small>Projector, plush and gift box</small></div><div class="v" id="sumKitP"></div></div>
       <div class="line" id="sumBumpRow" hidden><img data-img="bump" src="assets/img/bump-cat-sm.webp" alt=""><div class="t"><span id="sumBumpName"></span><small>Same box</small></div><div class="v" data-f="priceBump"></div></div>
-      <div class="line" data-f-show-bonus><span class="lic"><svg><use href="#i-book"/></svg></span><div class="t">First Hunt Guide<small>PDF by email</small></div><div class="v free">Free</div></div>
+      <div class="line" data-f-show-bonus><img src="assets/img/bonus-guide-sm.webp" alt=""><div class="t">Bonus: First Hunt Guide<small>PDF by email</small></div><div class="v free">Free</div></div>
+      <div class="line" data-f-show-bonus data-pet-only="dog"><img src="assets/img/bonus-rain-sm.webp" alt=""><div class="t">Bonus: Rainy Day Play Plan<small>PDF by email</small></div><div class="v free">Free</div></div>
       <div class="line"><span class="lic"><svg><use href="#i-truck"/></svg></span><div class="t">Shipping<small data-f="deliveryShort"></small></div><div class="v free">Free</div></div>
       <div class="sum total"><span>Total</span><span id="sumTotal"></span></div>
 
