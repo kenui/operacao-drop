@@ -54,5 +54,8 @@ Referência modelada: sem referência nova nesta versão; a estrutura continua a
 
 Pontos fracos que ficam: a parte da dor ainda usa o quadro de 1K sem as fichas, então o rosto dela nos primeiros 9 s é o da v1; se ainda parecer pouco real, refazer o quadro da dor em 4K (1,4 crédito) e o clipe (1 teste grátis).
 
+## Áudio (24/11, depois do pedido do Kenui: "parece muito de IA")
+Montagem refeita com a mixagem de celular ([audio-realista.md](../../../../../conhecimento/video-ia/audio-realista.md), camada 1): piso de sala contínuo, curva de microfone, reflexo curto igual em todos os trechos, ganho linear, música a 22%. Custo zero. A versão anterior ficou guardada como `*-audio-antes.mp4` para comparar. A voz em si continua a gerada pelo T1; trocar a voz é a camada 3 e pede aval.
+
 ## Resultado
 Versão 2 aprovada pelo Kenui em 24/11: "O vídeo ficou muito bom, parabéns".
