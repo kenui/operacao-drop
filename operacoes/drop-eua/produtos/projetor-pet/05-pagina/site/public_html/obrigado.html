@@ -43,7 +43,7 @@
     if(d.bump)L.push(["Spare plush pack",Math.round((d.bumpPrice||C.bump.price)*100)]);
     if(d.upsell)L.push(["Second kit ("+d.upsell+"), same box",Math.round(C.upsell.price*100)]);
     if(d.downsell)L.push([C.downsell.kind==="guide"?"The Indoor Hunt Playbook (PDF)":"Spare plush pack",Math.round(C.downsell.price*100)]);
-    var dls=C.bonus&&C.bonus.on?[["First Hunt Guide (PDF) [demo: o link real vai assinado por e-mail]","#"]]:[];
+    var dls=C.bonus&&C.bonus.on?[["First Hunt Guide (PDF) [demo]","#"]].concat((d.pet||"dog")==="dog"?[["Rainy Day Play Plan (PDF) [demo]","#"]]:[]):[];
     show({linhas:L,total:L.reduce(function(a,l){return a+l[1]},0),event_id:"purchase.demo",downloads:dls});
     return;
   }
