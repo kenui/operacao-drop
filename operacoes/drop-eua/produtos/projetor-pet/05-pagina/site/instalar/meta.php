@@ -18,11 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } elseif ($cfg === '' || !preg_match("/'meta_capi_token'\s*=>\s*''/", $cfg)) {
     $msg = 'O token já foi salvo antes ou o config.php não foi encontrado. Nada foi salvo.';
   } else {
-    $ch = curl_init("https://graph.facebook.com/v21.0/$pixel?fields=id,name&access_token=" . urlencode($tk));
-    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 20]);
+    // O token do Gerenciador de Eventos só tem permissão para ENVIAR eventos (não para ler o pixel).
+    // Teste: um evento marcado com código de teste, que só aparece na aba "Testar eventos" e não conta em campanha.
+    $ev = json_encode([['event_name' => 'PageView', 'event_time' => time(), 'action_source' => 'website', 'event_source_url' => 'https://littlecatchco.com/',
+      'user_data' => ['client_ip_address' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1', 'client_user_agent' => substr($_SERVER['HTTP_USER_AGENT'] ?? 'install', 0, 200)]]]);
+    $ch = curl_init("https://graph.facebook.com/v21.0/$pixel/events");
+    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 20, CURLOPT_POST => true,
+      CURLOPT_POSTFIELDS => http_build_query(['data' => $ev, 'test_event_code' => 'TEST' . random_int(10000, 99999), 'access_token' => $tk])]);
     $r = curl_exec($ch); $code = curl_getinfo($ch, CURLINFO_HTTP_CODE); curl_close($ch);
     $j = json_decode((string)$r, true) ?: [];
-    if ($code !== 200 || ($j['id'] ?? '') !== $pixel) {
+    if ($code !== 200 || (int)($j['events_received'] ?? 0) < 1) {
       $msg = 'O Meta recusou o token para o pixel ' . $pixel . ' (' . htmlspecialchars((string)($j['error']['message'] ?? "HTTP $code")) . '). Confira se o token foi gerado nesse pixel (Gerenciador de Eventos, Configurações, API de Conversões, Gerar token de acesso). Nada foi salvo.';
     } else {
       $novo = preg_replace("/'meta_pixel_id'\s*=>\s*'[^']*'/", "'meta_pixel_id'   => '$pixel'", $cfg, 1);
@@ -31,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = 'Não consegui gravar o config.php. Avise o Claude.';
       } else {
         @chmod($cfgf, 0600);
-        file_put_contents($raiz . '/instalacao.log', gmdate('c') . " meta ok pixel=$pixel nome=" . preg_replace('/[^\w \-.]/u', '', (string)($j['name'] ?? '')) . "\n", FILE_APPEND);
+        file_put_contents($raiz . '/instalacao.log', gmdate('c') . " meta ok pixel=$pixel teste=" . (int)($j['events_received'] ?? 0) . "\n", FILE_APPEND);
         @unlink(__FILE__);
         $ok = true;
         $msg = 'Pronto. Token conferido no Meta e salvo fora da pasta pública. Esta página já se apagou. Pode avisar o Claude.';
