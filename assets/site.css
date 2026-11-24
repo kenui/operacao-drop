@@ -236,3 +236,15 @@ footer .src{color:#a9a5c4}
 .btn svg{flex:none}
 .pname{text-transform:uppercase}
 .bump .bp{display:block;font-size:16px;margin-top:2px}
+
+/* bônus (v3.1): capa feita por código, sem crédito */
+.bonuses{background:#fff;border:2px solid var(--mint);border-radius:var(--r);padding:0 0 14px;margin:14px 0;overflow:hidden}
+.bonuses>img{width:100%;height:auto;background:var(--bg)}
+.bonuses .bhead{padding:12px 14px 4px}
+.bonuses .bflag{display:inline-block;background:var(--mint-d);color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:6px}
+.bonuses .bhead b{display:block;font-family:var(--display);font-weight:600;font-size:20px;line-height:1.2}
+.bitem{display:flex;gap:12px;align-items:flex-start;padding:10px 14px 0}
+.bitem img{width:64px;height:64px;border-radius:10px;flex:none;object-fit:cover}
+.bitem b{display:block;font-size:16px;line-height:1.25}
+.bitem span{display:block;font-size:14px;color:var(--ink2);line-height:1.4;margin-top:2px}
+.bonuses .src{padding:0 14px}

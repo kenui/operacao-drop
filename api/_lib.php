@@ -126,14 +126,20 @@ function finalizar(array $p): bool {
 function digitais(array $p): array {
   $c = cfg(); $pet = $p['pet'] === 'dog' ? 'dog' : 'cat'; $d = [];
   if (!empty($c['bonus_on'])) $d['first-hunt'] = ['First Hunt Guide (PDF)', "first-hunt-guide-$pet.pdf"];
+  if (!empty($c['bonus_on'])) $d['rainy-day'] = ['Rainy Day Play Plan (PDF)', "rainy-day-play-plan-$pet.pdf"];   // só oferece se o arquivo existir (cachorro por enquanto)
   if ($p['downsell'] === 'aceito-guide') $d['playbook'] = ['The Indoor Hunt Playbook (PDF)', "indoor-hunt-playbook-$pet.pdf"];
   return $d;
+}
+// PDFs: fora da pasta pública (../digital, da instalação) ou em public_html/_digital (vem pelo Git, acesso web negado).
+function arquivo_digital(string $arq): string {
+  foreach ([dirname(__DIR__, 2) . '/digital/', dirname(__DIR__) . '/_digital/'] as $d) if (is_file($d . $arq)) return $d . $arq;
+  return '';
 }
 function assinatura(string $tok, string $f): string { return substr(hash_hmac('sha256', "$tok|$f", cfg()['stripe_webhook'] ?? 'x'), 0, 20); }
 function links_download(array $p): array {
   $base = rtrim(cfg()['site_url'] ?? '', '/'); $out = [];
   foreach (digitais($p) as $id => [$nome, $arq]) {
-    if (!is_file(dirname(__DIR__, 2) . '/digital/' . $arq)) continue;        // só oferece o que existe
+    if (!arquivo_digital($arq)) continue;        // só oferece o que existe
     $out[] = [$nome, $base . '/api/download.php?o=' . $p['token'] . '&f=' . $id . '&s=' . assinatura($p['token'], $id)];
   }
   return $out;
