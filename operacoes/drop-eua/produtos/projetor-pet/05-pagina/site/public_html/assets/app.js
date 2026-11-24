@@ -32,12 +32,14 @@
     var F=fields(),P=COPY[S.pet],A=P.angles[S.angle];
     $$("[data-f]").forEach(function(el){var v=F[el.dataset.f]; if(v!==undefined&&v!==null) el.innerHTML=v;});
     $$("[data-f-show]").forEach(function(el){el.hidden=!C[el.dataset.fShow]});
+    $$("[data-f-show-bonus]").forEach(function(el){el.hidden=!(C.bonus&&C.bonus.on)});
+    if(C.kits.two.highlight){$('[data-kit="two"]').classList.add("hl");$("#hlTag").hidden=false;}
     $$("[data-pet-only]").forEach(function(el){el.hidden=el.dataset.petOnly!==S.pet});
     $$(".pets button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.pet===S.pet)});
     $("#h1").textContent=A.h1; $("#sub").textContent=A.sub;
     $("#prob").innerHTML=A.prob.map(function(t){return "<p>"+t+"</p>"}).join("");
     $("#mech").innerHTML=P.mech.map(function(t){return "<p>"+t+"</p>"}).join("");
-    $("#bumpT").textContent=P.bumpT; $("#bumpD").textContent=P.bumpD;
+    $("#bumpT").textContent=P.bumpT.replace("{bump}",money(C.bump.price)); $("#bumpD").textContent=P.bumpD;
     $("#finalH").textContent=S.pet==="cat"?"Give the hunt an ending tonight.":"Give the chase an ending tonight.";
     media(); summary();
   }
@@ -137,6 +139,8 @@
     }
     post("api/checkout.php",payload()).then(function(j){
       order=j.order; started=true;
+      // o servidor sorteia a versão pelo mesmo visitante; se o total divergir, avisa em vez de cobrar escondido
+      if(Math.round(total()*100)!==j.amount){ err("Price updated: your total is $"+(j.amount/100).toFixed(2)+"."); }
       loadStripe(function(){
         stripe=Stripe(C.stripePk);
         elements=stripe.elements({clientSecret:j.clientSecret,appearance:{theme:"stripe",variables:{colorPrimary:"#e8590c",borderRadius:"10px",fontSizeBase:"16px"}}});
@@ -152,7 +156,7 @@
     var btn=this; err("");
     track("add_payment_info",{kit:S.kit,bump:S.bump},{metaData:{value:total(),currency:"USD"}});
     if(order==="demo"){
-      try{sessionStorage.setItem("demo_order",JSON.stringify({kit:S.kit,mix:S.mix,pet:S.pet,bump:S.bump,total:total()}))}catch(e){}
+      try{sessionStorage.setItem("demo_order",JSON.stringify({kit:S.kit,mix:S.mix,pet:S.pet,bump:S.bump,total:total(),front:(S.kit==="two"?C.kits.two.price:C.kits.one.price),bumpPrice:C.bump.price}))}catch(e){}
       location.href="upsell.html?o=demo"; return;
     }
     btn.disabled=true;

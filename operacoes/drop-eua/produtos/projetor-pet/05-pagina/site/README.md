@@ -4,7 +4,8 @@
 site/
   config.exemplo.php   -> copiar para config.php (FORA da pasta pública), chaves e preços em centavos
   schema.sql           -> tabelas (criadas sozinhas na primeira chamada)
-  cron-finalizar.php   -> cron a cada 5 min: fecha funis parados há 15 min e manda o Purchase
+  cron-finalizar.php   -> cron a cada 5 min: fecha funis parados há 15 min, manda o Purchase e o e-mail
+  digital/             -> PDFs entregues por link assinado (FORA da pasta pública). fonte/gerar_guias.py refaz os PDFs
   public_html/
     config.js          -> TUDO que é trocável na página: preços, prazo, origem, tamanho, energia, chaves públicas
     index.html         -> landing (copy no objeto COPY), ?pet=cat|dog e ?a=<ângulo>
@@ -24,9 +25,15 @@ site/
 7. `preview: false` no `config.js` (some a faixa amarela). Nenhum campo amarelo pode sobrar.
 8. Chaves reais (`sk_live`/`pk_live`) só com o aval do Kenui, depois da compra de teste completa (ver `../qa.md`).
 
+## Teste A/B
+Um teste por vez: `tests.active` em `config.js` e, se mexe na cobrança, `testes.active` em `config.php` (mesmo id). Conferir com `?v=A` e `?v=B`. Plano e régua: `../../testes/fila.md`.
+
+## E-mail de confirmação
+`email_from` no `config.php` (criar a caixa no hPanel). Sai uma vez, quando o funil fecha: cada cobrança numa linha, prazo, link do First Hunt Guide e como pedir reembolso.
+
 ## Publicar na Hostinger (plano compartilhado)
 - Banco MySQL no hPanel; DSN `mysql:host=127.0.0.1;dbname=...`.
-- Subir `public_html/` para a pasta do domínio, e `config.php`, `schema.sql`, `cron-finalizar.php` um nível acima.
+- Subir `public_html/` para a pasta do domínio, e `config.php`, `schema.sql`, `cron-finalizar.php` e a pasta `digital/` (só os PDFs) um nível acima.
 - Cron: `php /home/USUARIO/domains/DOMINIO/cron-finalizar.php` a cada 5 minutos.
 - PHP 8.1+ com cURL e PDO (padrão da Hostinger). Não usa Composer.
 

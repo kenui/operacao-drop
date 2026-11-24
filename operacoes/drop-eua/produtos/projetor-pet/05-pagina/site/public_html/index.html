@@ -48,7 +48,7 @@ window.COPY = {
       "Many vets and cat behaviorists suggest ending light play with a toy your cat can catch. We put that toy in the box, so you don't have to remember to buy one."
     ],
     step3: "When the chase winds down, switch it off and toss the catnip mouse. That's the catch.",
-    bumpT: "Add 3 spare catnip mice, $7.99",
+    bumpT: "Add 3 spare catnip mice, {bump}",
     bumpD: "They end up under the couch faster than you'd think."
   },
   dog: {
@@ -79,7 +79,7 @@ window.COPY = {
       "The squeaky plush gives the game an ending: lights off, toy down, a few good shakes."
     ],
     step3: "When he slows down, switch it off and drop the squeaky squirrel. Let him have the win.",
-    bumpT: "Add 2 spare squeaky squirrels, $7.99",
+    bumpT: "Add 2 spare squeaky squirrels, {bump}",
     bumpD: "For when the first one loses its squeak."
   }
 };
@@ -174,6 +174,7 @@ window.COPY = {
     <div class="eyebrow">Choose your kit</div>
     <h2>The full hunt kit</h2>
     <p>Each kit: the floor projector, <span data-f="plush"></span>, and a gift box. Free shipping.</p>
+    <p class="bonus" data-f-show-bonus><b>Free with every order:</b> the First Hunt Guide (PDF, by email). How to set up the first night, what to do if your pet ignores it, and how to end every session with a real catch.</p>
     <div class="kits" role="radiogroup">
       <label class="kit on" data-kit="one">
         <input type="radio" name="kit" value="one" checked>
@@ -184,7 +185,7 @@ window.COPY = {
         <input type="radio" name="kit" value="two">
         <div class="row"><div class="name">2 kits</div><div><div class="p" data-f="priceTwo"></div><div class="each" data-f="eachTwo"></div></div></div>
         <div class="inc">One to keep, one to give. Mix cat and dog if you like.</div>
-        <span class="tag" data-f="saveTwo"></span>
+        <span class="tag" data-f="saveTwo"></span> <span class="tag" id="hlTag" hidden>Mix cat + dog · good for gifts</span>
         <div class="mix">
           <label>Kit 1<select data-mix="0"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
           <label>Kit 2<select data-mix="1"><option value="cat">Cat</option><option value="dog">Dog</option></select></label>
@@ -200,6 +201,7 @@ window.COPY = {
     <div class="co">
       <div class="sum"><span id="sumKit"></span><span id="sumKitP"></span></div>
       <div class="sum" id="sumBumpRow" hidden><span>Spare plush pack</span><span data-f="priceBump"></span></div>
+      <div class="sum" data-f-show-bonus><span>First Hunt Guide (PDF)</span><span>Free</span></div>
       <div class="sum"><span>Shipping</span><span>Free</span></div>
       <div class="sum total"><span>Total</span><span id="sumTotal"></span></div>
 

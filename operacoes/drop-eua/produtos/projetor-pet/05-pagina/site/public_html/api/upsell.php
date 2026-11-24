@@ -14,7 +14,7 @@ if ($p['status'] === 'aberto') {
 }
 if ($p['status'] !== 'pago') out(['error' => 'Payment not confirmed yet. Please wait a moment and try again.'], 409);
 if (!empty($p[$etapa]) && $p[$etapa] !== 'pendente') out(['ok' => true, 'ja' => $p[$etapa], 'next' => proximo($p, $etapa, $p[$etapa])]);
-if ($etapa === 'downsell' && empty($c['downsell_on'])) out(['ok' => true, 'next' => 'obrigado']);
+if ($etapa === 'downsell' && !mostra_downsell($p)) out(['ok' => true, 'next' => 'obrigado']);
 
 // depois da autenticação feita na página: confere na Stripe e registra
 if (($b['acao'] ?? '') === 'confirmado') {
@@ -31,12 +31,13 @@ if (($b['acao'] ?? '') !== 'aceitar') {
   out(['ok' => true, 'next' => proximo($p, $etapa, 'recusado')]);
 }
 
-$preco = $c['precos'][$etapa];
+$pr = precos((string)$p['variante']); $preco = $pr[$etapa];
 $upet = limpa_pet($b['pet'] ?? $p['pet']);
 $pi = stripe('POST', 'payment_intents', [
   'amount' => $preco, 'currency' => 'usd', 'customer' => $p['customer'], 'payment_method' => $p['payment_method'],
   'off_session' => 'true', 'confirm' => 'true',
-  'description' => $etapa === 'upsell' ? "Second hunt kit ($upet), ships in the same box" : 'The 10-Minute Hunt (PDF guide)',
+  'description' => $etapa === 'upsell' ? "Second hunt kit ($upet), ships in the same box" : ($pr['downsell_kind'] === 'guide' ? 'The Indoor Hunt Playbook (PDF)' : 'Spare plush pack'),
+  'metadata[tipo]' => $etapa === 'downsell' ? $pr['downsell_kind'] : 'kit',
   'receipt_email' => $p['email'] ?: null,
   'metadata[pedido]' => $p['token'], 'metadata[etapa]' => $etapa, 'metadata[pet]' => $upet,
 ], $etapa . '-' . $p['token']);
@@ -55,12 +56,18 @@ if ($sec && in_array($status, ['requires_action', 'requires_payment_method', 're
 db()->prepare("UPDATE pedidos SET $etapa = 'falhou' WHERE token = ?")->execute([$p['token']]);
 out(['ok' => false, 'error' => 'Your bank declined this add-on. Your original order is fine.', 'next' => proximo($p, $etapa, 'falhou')]);
 
+// downsell só para quem recusou o upsell; o de pelúcias não aparece para quem já pegou o bump
+function mostra_downsell(array $p): bool {
+  if (empty(cfg()['downsell_on'])) return false;
+  $k = precos((string)$p['variante'])['downsell_kind'];
+  return !($k === 'plush' && (int)$p['bump'] === 1);
+}
 function proximo(array $p, string $etapa, string $res): string {
-  if ($etapa === 'upsell' && $res !== 'aceito' && !empty(cfg()['downsell_on'])) return 'downsell';
+  if ($etapa === 'upsell' && $res !== 'aceito' && mostra_downsell($p)) return 'downsell';
   return 'obrigado';
 }
 function marcar_pago(array $p, array $pi): void { require_once __DIR__ . '/_pago.php'; registrar_pago($pi); }
 function gravar_aceite(array $p, string $etapa, array $pi, array $c): void {
   if ($etapa === 'upsell') db()->prepare("UPDATE pedidos SET upsell='aceito', pi_upsell=?, upsell_pet=?, valor_upsell=?, custo_upsell=? WHERE token=?")->execute([$pi['id'], $pi['metadata']['pet'] ?? $p['pet'], (int)$pi['amount'], $c['custos']['kit'], $p['token']]);
-  else db()->prepare("UPDATE pedidos SET downsell='aceito', pi_downsell=?, valor_downsell=? WHERE token=?")->execute([$pi['id'], (int)$pi['amount'], $p['token']]);
+  else { $k = $pi['metadata']['tipo'] ?? 'plush'; db()->prepare("UPDATE pedidos SET downsell=?, pi_downsell=?, valor_downsell=?, custo_downsell=? WHERE token=?")->execute([$k === 'guide' ? 'aceito-guide' : 'aceito-plush', $pi['id'], (int)$pi['amount'], $c['custos']['downsell_' . ($k === 'guide' ? 'guide' : 'plush')] ?? 0, $p['token']]); }
 }

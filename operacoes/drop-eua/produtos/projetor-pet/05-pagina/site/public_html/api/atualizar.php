@@ -8,7 +8,7 @@ $kit = ($b['kit'] ?? '') === 'two' ? 'two' : 'one';
 $pet = limpa_pet($b['pet'] ?? $p['pet']);
 $mix = $kit === 'two' ? implode('+', array_map('limpa_pet', array_slice((array)($b['mix'] ?? [$pet, $pet]), 0, 2))) : $pet;
 $bump = !empty($b['bump']);
-$valor = valor_front($kit, $bump);
+$valor = valor_front($kit, $bump, (string)$p['variante']);
 $params = ['amount' => $valor, 'description' => "Hunt kit ($kit, $mix)" . ($bump ? ' + spare plush' : ''),
   'metadata[pet]' => $pet, 'metadata[kit]' => $kit, 'metadata[mix]' => $mix, 'metadata[bump]' => $bump ? '1' : '0'];
 $email = filter_var((string)($b['email'] ?? ''), FILTER_VALIDATE_EMAIL) ?: null;
