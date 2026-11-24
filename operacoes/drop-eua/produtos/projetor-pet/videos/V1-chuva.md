@@ -55,4 +55,4 @@ Referência modelada: sem referência nova nesta versão; a estrutura continua a
 Pontos fracos que ficam: a parte da dor ainda usa o quadro de 1K sem as fichas, então o rosto dela nos primeiros 9 s é o da v1; se ainda parecer pouco real, refazer o quadro da dor em 4K (1,4 crédito) e o clipe (1 teste grátis).
 
 ## Resultado
-Versão 2 aguardando avaliação do Kenui.
+Versão 2 aprovada pelo Kenui em 24/11: "O vídeo ficou muito bom, parabéns".
