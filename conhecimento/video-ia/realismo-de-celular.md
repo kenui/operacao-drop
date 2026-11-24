@@ -5,13 +5,16 @@ Histórico:
 - **v2** (esta versão) corrige isso com as palavras dele: "Não é qualidade o problema, é textura"; "precisa ter voz, precisa ter conversa, precisa aparecer o GC [o criador UGC]"; "o cachorro não tá olhando pro peixinho"; "emerge como o produto tem que ser"; "usando muito prompt".
 
 ## Os quatro erros que não voltam
-1. **Degradar a imagem não é realismo.** Baixa resolução e compressão pesada deixam o vídeo pior, não mais real. O realismo vem da textura e dos detalhes que o modelo gera. A ferramenta `celularizar` agora usa por padrão o nível `textura` (mantém a resolução e a voz limpa, só tira o brilho perfeito de IA). Os níveis `leve` e `medio` ficam só para teste.
+1. **Degradar a imagem não é realismo, e textura não é filtro.** Baixa resolução e compressão pesada deixam o vídeo pior, não mais real. A textura vem **de dentro do prompt** do Seedance ou do Kling (seção 1 e blocos SETTING & TEXTURE, CHARACTER e ANIMAL do modelo). Regra do Kenui (24/11): a ferramenta `celularizar` não é mais etapa padrão. Ela fica só como recurso de teste, nunca no lugar de um prompt bem escrito.
 2. **Vídeo UGC sem voz não é UGC.** Precisa de uma pessoa real na tela (o criador), falando e conversando. O problema a resolver é a voz soar natural, não eliminar a voz.
 3. **O animal precisa olhar para a presa.** A cabeça, os olhos e as orelhas seguem a luz o tempo todo. Bicho que olha para o nada denuncia a IA na hora.
 4. **Prompt curto deixa o modelo inventar.** O prompt é longo, em blocos com travas (modelo do Riley), e descreve o produto exatamente como ele é.
 
-## 1. Textura (o que faz parecer real)
-Escreva no prompt e confira no resultado:
+## 0. Quem escreve o prompt
+Regra do Kenui (24/11): os prompts de vídeo e de quadro inicial são escritos pelo modelo mais inteligente disponível, hoje o Fable 5.2 (`claude-fable-5-2`). A conversa que gera o vídeo troca de modelo para essa etapa, ou entrega a escrita do prompt a um subagente com esse modelo. Ele recebe a ficha do produto, a tabela de verdade, a DECISÃO CRIATIVA e este guia. Depois, a mesma conversa confere o prompt com a lista da seção 6 antes de gastar crédito.
+
+## 1. Textura (o que faz parecer real), sempre dentro do prompt
+Escreva no prompt e confira no resultado. Não corrija depois com filtro:
 - **Pele:** bloco do Riley inteiro (variação de cor, brilho na testa e no nariz, linhas sob os olhos, textura nos lábios, fios soltos). Maquiagem e roupa com cara de usadas: bolinha no moletom, gola larga.
 - **Pelo do animal:** fios separados, tufos desalinhados, um pouco de baba ou focinho úmido, unhas que aparecem quando ele pisa.
 - **Casa vivida:** marcas e riscos no piso, poeira visível na luz, um fio de carregador no chão, almofada amassada, brinquedo velho num canto, rodapé lascado. Nada de cenário de catálogo.
@@ -118,7 +121,8 @@ Quadro inicial de cada clipe (imagem barata) com tudo já no lugar: criador, pro
 - [ ] O produto tem a forma real e não gira nem duplica?
 - [ ] Tem textura (pele, pelo, casa vivida) sem degradar a imagem?
 - [ ] O produto termina como protagonista e a pelúcia, se aparece, é rápida?
-- [ ] Rodou `ver-video` e `celularizar` no nível textura?
+- [ ] A textura veio do prompt, sem filtro depois? Rodou `ver-video` para conferir?
+- [ ] O prompt foi escrito pelo Fable 5.2 (ou modelo mais inteligente disponível)?
 
 ## Economia de crédito
 Rascunho em 480p conferido antes do final. Quadro inicial testado antes do vídeo. Reaproveitar o que já foi aprovado. Orçar e pedir o aval do Kenui.
