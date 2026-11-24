@@ -1,84 +1,72 @@
-# Projetor pet: oferta e funil (v1, 24/11/2026)
+# Projetor pet: oferta e funil (v2, 24/11/2026)
 
-Feito pelo agente Funil e oferta (prompt v1), a partir do [dossiê](02-dossie.md), dos [ângulos](04-angulos.md) e do [manual de funil](../../../../conhecimento/funil/manual-funil.md).
+Feito pelo agente Funil e oferta (prompt v2), a partir do [dossiê](02-dossie.md), da [persona](03-persona.md), dos [ângulos](04-angulos.md) e do [manual de funil](../../../../conhecimento/funil/manual-funil.md) (Partes 7 e 8 novas).
 
-**Fase 0, conferência honesta:** o produto **ainda não passou na trava** (itens 1, 2 e 7 aguardam a CJ: pedidos CJSPU961146136 e CJSPU961146540). Este funil foi adiantado a pedido do Kenui. Todo número de custo e prazo está marcado `[HIPÓTESE]` e mora num só lugar trocável: `05-pagina/site/public_html/config.js` (página) e `05-pagina/site/config.php` (servidor). Quando a cotação chegar, troca-se ali e refaz-se a conta da seção 3.
+**Regra do Kenui para esta versão (24/11):** oferta irresistível, funil de especialista com régua de lucro, teste A/B de tudo (um por vez, inclusive preço), e **produto digital só onde a persona mostra valor percebido maior**: "a gente não faz nada porque acha". Cada peça abaixo tem o motivo e a evidência; o que não tem evidência entra como **teste**, nunca como padrão.
 
-Taxa usada: Stripe BR = 0,06 × P + 0,10 por cobrança, mais câmbio a medir (manual, Parte 5) `[HIPÓTESE até a primeira venda]`.
+**Fase 0:** o produto ainda **não passou na trava** (CJ: CJSPU961146136 e CJSPU961146540). Custo e prazo são `[HIPÓTESE]` e moram em `05-pagina/site/public_html/config.js` e `05-pagina/site/config.php`.
 
 ---
 
-## 1. Oferta de frente
+## 1. A oferta (equação de valor de Hormozi, sem número inventado)
 
-| Kit | O que vai na caixa | Preço | Custo entregue | Margem* | Quem compra e por quê |
-|---|---|---|---|---|---|
-| **1 kit** | projetor + 1 pelúcia do pet (ratinho com catnip ou esquilo que apita) + caixa de presente | **US$34,99** | ≤ US$10,50 `[HIPÓTESE: teto da trava]` | US$20,54 | P1, P2, P4: "I feel bad that she can't catch it" (dossiê #2) |
-| **2 kits** | dois kits completos, **pode misturar gato e cachorro** | **US$59,99** (US$30 cada, "save US$10") | ≤ US$21,00 `[HIPÓTESE]` (caixa única deve sair mais barato) | US$32,29 | P3 presente e casas com gato e cachorro. Dezembro. |
-
-*Margem = preço − custo − taxa Stripe − 5% de reserva de reembolso.
-
-- **Por que 2 níveis e não 3:** com custo não confirmado, um kit de 3 a US$79,99 pode não fechar, e a casa com 3 pets é minoria. 3 kits é convenção, não lei (manual, Parte 1, Scheibehenne 2010). Entra na fila de testes se o kit 2 passar de 25% dos pedidos.
-- **Misturar gato e cachorro no kit 2** é a vantagem que só nós temos (a Pouncy vende só gato). Responde à casa com os dois bichos sem criar outro produto.
-- **Preço:** US$34,99 termina em 9 (Anderson e Simester 2003) e fica acima da mediana dos concorrentes (US$29,99) porque o kit tem a pelúcia e a caixa de presente. Sem preço riscado: não existe preço anterior real.
-- **Frete:** grátis, embutido (manual, Parte 4; Baymard: 40% abandonam por custo extra).
-- **Prazo:** campo `delivery` no config. **Não publicar sem o prazo da CJ.** Se o prazo passar de 12 dias úteis, a página diz o número real e o FAQ explica por quê (regra da FTC 16 CFR 435).
-- **Garantia:** 30 dias, dinheiro de volta, "inclusive se o seu pet só olhar para ele" (limite honesto do dossiê). Devolução do produto: não exigida abaixo de um valor que a operação define (devolver da China custa mais que o kit) `[DECISÃO DO KENUI: recomendo reembolso sem devolução no primeiro pedido de cada cliente]`.
-- **Brinde:** a própria pelúcia é o "fim da caça"; não é brinde, é o kit. Nada além disso.
-
-## 2. Ofertas extras
-
-| Oferta | Persona e frase | Etapa | Preço | Custo | Margem | Risco |
-|---|---|---|---|---|---|---|
-| **Pacote de pelúcias extras** (3 ratinhos com catnip ou 2 esquilos que apitam) | P1/P4: pelúcia some embaixo do sofá e cachorro destrói apito em dias; "needs to 'kill' something when it's over" (#3) | **Bump** | **US$7,99** | ~US$2,00 `[HIPÓTESE, CJ]` | ~US$5,40 | baixo, mesma caixa |
-| **Mais um kit para dar de presente, 30% menos** | P3 e dezembro: "Pouncy vende kit de 2 e 3 para dar a um amigo" | **Upsell 1** | **US$24,99** | ≤ US$10,50 | ~US$11,90 | baixo; mesma caixa; cobrança separada no e-mail |
-| **Guia "The 10-Minute Hunt"** (PDF, plano de brincadeira dentro de casa para gato e cachorro) | P1: "It's 3 a.m., and something is thundering down the hallway" (#11); P2: "I always end TV time with the wand and a treat" (#8) | **Downsell** | **US$7,00** | 0 | ~US$6,50 | baixo; nada de saúde |
-| Embrulho para presente | P3 | descartado agora | — | — | — | o kit já vem em caixa de presente; vender embrulho seria cobrar duas vezes |
-| Processamento prioritário | — | proibido | — | — | — | não muda o prazo real do fornecedor |
-| Proteção de pacote | todos | depois | US$2,99 | 0 | — | só quando houver processo real de reenvio |
-
-**Escolhas:** bump = pelúcias extras; upsell = segundo kit 30% menos; downsell = guia digital.
-- `[JUSTIFICATIVA bump]` manual Parte 2, item 2 (acessório que completa o uso). 23% do preço do front, decisão de 2 segundos, mesmo pet do kit.
-- `[JUSTIFICATIVA upsell]` manual Parte 2, item 1 (mais uma unidade com desconto) + Parte 4 (Q4, ângulo gift). Mesma caixa: o pedido à CJ só sai quando o funil termina.
-- `[JUSTIFICATIVA downsell]` manual Parte 3. Teste "pagaria sozinho?": sim para P1, que hoje procura "how to tire out an indoor cat" (dúvida real nos fóruns do dossiê). **Precisa ser escrito antes de ligar o downsell.** Sem ele pronto, a página de downsell fica desligada (`DOWNSELL_ON = false` no config).
-
-### Sumário do guia "The 10-Minute Hunt" (a produzir, ~12 páginas)
-1. Why your pet goes nuts at 9 pm (o ciclo caçar, pegar, comer, dormir; fonte: guias de comportamento VCA e HumanePro já citados no dossiê).
-2. The 10-minute session: luz baixa, 5 a 8 min de luz, captura com a pelúcia, petisco, fim.
-3. Cat vs dog: o que muda (play bow, latido, quando parar).
-4. When your pet ignores it: 5 coisas para tentar (posição, escuro, chão liso, horário, cheiro de catnip).
-5. Rainy-day plan for dogs: 4 brincadeiras sem sair de casa.
-6. Safety notes: não deixar ligado sozinho, fio longe da boca, pausas.
-Proibido no guia: promessa de saúde, de peso ou de comportamento garantido.
-
-## 3. A conta (manual, Parte 5)
-
-Hipóteses: 80% kit 1, 20% kit 2; bump 10%; upsell 5%; downsell 3% de quem recusou; reembolso 5%; contestação 0,5% (venda + US$15).
-
-| Item | Base | Pessimista (taxas 30% piores) |
+| Alavanca | O que a persona diz | O que a oferta faz |
 |---|---|---|
-| Ticket bruto por comprador | US$42,24 | US$41,72 |
-| Custo do produto | US$13,33 | US$13,16 |
-| Taxas Stripe | US$2,64 | US$2,61 |
-| Reserva de reembolso | US$2,11 | US$2,71 |
-| Contestação esperada | US$0,29 | US$0,37 |
-| **CPA de empate** | **US$23,87** | **US$22,87** |
+| Resultado sonhado | "ela no sofá com a caneca, o pet brincando, depois cansado" (persona §2) | o título promete a caça **e** a captura; o kit traz o fim da caça |
+| Probabilidade percebida | objeção nº 1 "Is this legit?", nº 2 "my dog will ignore it" (persona §6) | limites ditos antes do preço; reembolso de 30 dias "even if your pet just stares at it"; guia grátis com o que fazer se o pet ignorar; FAQ do golpe com fatos |
+| Tempo até o resultado | prazo da China é objeção nº 6 | prazo real escrito perto do botão (campo da CJ) |
+| Esforço | dono cansado, "play independently while I get stuff done" (F16) | um toque; 10 minutos; sem varinha |
 
-**Lucro por visitante** = conversão × 23,87 − custo por visitante:
-| Conversão da página | CPC US$0,50 | CPC US$0,80 |
-|---|---|---|
-| 1,5% | −US$0,14 | −US$0,44 |
-| 2,5% | +US$0,10 | −US$0,20 |
-| 3,5% | +US$0,34 | +US$0,04 |
+**A pilha da oferta (o que vai na caixa e no e-mail):**
+1. Projetor de chão.
+2. A pelúcia que termina a caça (ratinho com catnip ou esquilo que apita). **Só nosso.**
+3. Caixa de presente.
+4. **First Hunt Guide** (PDF grátis por e-mail, gato ou cachorro). Ver decisão D1.
+5. Frete grátis e reembolso de 30 dias sem precisar devolver.
 
-Leitura: a operação precisa de conversão perto de 2,5% com clique a US$0,50, ou 3,5% com clique a US$0,80. A alavanca que mais mexe no CPA de empate é o **custo do produto** (cada US$1 a menos na CJ = +US$1 no CPA de empate, mais que bump e upsell juntos, que somam ~US$1,10). A segunda é o **kit 2**: cada 10 pontos a mais de participação somam ~US$1,20.
+Sem "valor de US$X" para o guia e sem preço riscado: não existe preço anterior real (FTC).
 
-## 4. Textos do funil
-Ficam em [05-pagina/copy.md](05-pagina/copy.md) (bump, upsell, downsell, obrigado, consentimento do cartão, e-mails) e já montados nas páginas do site.
+## 2. Decisões, uma por peça, com o porquê
 
-## 5. Medição
-Cada etapa dispara os eventos do [plano de medição](../../../../conhecimento/metricas/plano-de-medicao.md): `page_view`, `view_content`, `block_view`, `scroll_*`, `pet_select`, `kit_select`, `cta_click`, `initiate_checkout`, `bump_toggle`, `add_payment_info`, `payment_failed`, `purchase_front` (webhook), `upsell_view/accept/decline`, `downsell_*`, `funnel_complete` → **Purchase** no Meta uma vez só, com o valor total e `event_id` = id do pedido, no pixel e na API de Conversões. Todo evento leva `pet` e `angulo`.
+| # | Peça | Decisão | Evidência (persona/dossiê) | Status |
+|---|---|---|---|---|
+| D1 | **Bônus digital grátis: First Hunt Guide** | **Entra** | Responde às objeções nº 2 ("will ignore it / lose interest", F26, F30) e nº 4 ("frustrated / bark at it", F4, F7), as duas que viram reembolso. Custo zero. Não é vendido: não precisa passar no teste "pagaria sozinho?". Mede-se pelo reembolso (guarda-corpo) e pelo download. | **Pronto**: `05-pagina/site/digital/first-hunt-guide-cat.pdf` e `-dog.pdf` (3 páginas cada) |
+| D2 | Kit 1 a US$34,99 | Entra (controle) | Acima da mediana US$29,99 porque o kit tem a pelúcia e a caixa; 61% compram brinquedo todo mês, 31% compram brinquedo caro (Insurify, persona §4). | controle do T3 |
+| D3 | Kit 2 a US$59,99, misturando gato e cachorro | Entra | "gift for someone who loves their dog" em dezembro (persona §6); casas com os dois pets; Pouncy vende kit de 2 e 3. | T2 testa o destaque |
+| D4 | **Bump: pelúcias extras** (3 ratinhos ou 2 esquilos), US$7,99 | Entra (físico, não digital) | Compra de brinquedo é mensal e por impulso (persona §4); "went absolutely mad for this for about ten minutes" (F26): pelúcia nova renova o interesse; esquilo perde o apito. Bump digital **não**: a informação de "como cansar o pet" é gratuita em páginas da AAHA, PetMD, AARP (persona §4, "pesquisas solitárias"), então o valor percebido de um PDF pago no checkout é baixo. | T4 testa o preço |
+| D5 | Upsell: 2º kit por US$24,99, na mesma caixa | Entra | Presente de dezembro; "buy one for my sister's dog too" (fraca); 37% cuidam do pet dos filhos (Talker). | T5 testa o preço |
+| D6 | **Downsell: pelúcias extras por US$7,99**, só para quem recusou o upsell **e não pegou o bump** | Entra (físico) | Mesma evidência de D4. Quem já pegou o bump não vê nada (não repetir oferta). | controle do T6 |
+| D7 | Downsell digital pago (**Indoor Hunt Playbook**, US$9) | **Não entra como padrão.** Vira o braço B do T6 | Valor percebido **não comprovado**: há interesse em "how to tire out dog indoors" mas há conteúdo grátis de sobra. A dúvida só se resolve com teste. O PDF só é escrito quando o T6 chegar na fila (não gastar antes). | sumário pronto, PDF não |
+| D8 | Embrulho, processamento prioritário, proteção de pacote | Fora | Kit já vem em caixa de presente; prioridade não muda o prazo do fornecedor; proteção só quando houver reenvio real. | — |
 
-Fila dos 5 primeiros testes: [testes/fila.md](testes/fila.md).
+## 3. Funil (como roda)
+```
+Anúncio (ângulo, pet) → página ?pet=&a= → kits 1/2 → checkout na página (+ bump pelúcias, desmarcado)
+  → Upsell: 2º kit US$24,99 (um clique, cartão salvo com consentimento)
+      ├ sim → Obrigado
+      └ não → Downsell: pelúcias US$7,99 (só se não pegou o bump) → Obrigado
+  → E-mail de confirmação: cada cobrança numa linha + link assinado do First Hunt Guide
+  → Purchase no Meta uma vez, com o total (pixel + API, mesmo event_id)
+```
+
+## 4. A conta (manual, Parte 5)
+Hipóteses: 80% kit 1, 20% kit 2; bump 10%; upsell 5%; downsell 3% de quem o vê; reembolso 5%; contestação 0,5%.
+
+| Item | Base | Pessimista (−30%) | Preço B do T3 (US$39,99 / 69,99) |
+|---|---|---|---|
+| Ticket bruto por comprador | US$42,24 | US$41,73 | US$48,24 |
+| **CPA de empate** | **US$23,83** | **US$22,84** | **US$29,14** |
+
+- Lucro por visitante = conversão × CPA de empate − custo por visitante. Precisa de ~2,5% de conversão com clique a US$0,50.
+- **Preço B (US$39,99) empata no lucro mesmo se a conversão cair até 82% da do A** (queda de 18%). É por isso que o teste de preço vale a pena.
+- Alavancas, da maior para a menor: custo na CJ (US$1 = US$1 no CPA de empate) → preço do kit 1 → participação do kit 2 → bump/upsell/downsell juntos (~US$1,20).
+
+## 5. Testes
+A ordem, a hipótese, a métrica e a régua de cada um ficam em [testes/fila.md](testes/fila.md). O motor está pronto: um teste ativo por vez em `config.js` e `config.php` (`tests.active`), sorteio fixo por visitante, a versão vai em todo evento e em cada pedido.
+
+## 6. Textos
+Em [05-pagina/copy.md](05-pagina/copy.md).
 
 ## Histórico
-- v1 (2026-11-24): primeira versão, antes da cotação da CJ.
+- v1 (24/11, 05:00): primeira versão, downsell = guia PDF pago.
+- v2 (24/11): pedido do Kenui. Decisões D1 a D8 pela persona; guia grátis como bônus (pronto); downsell físico; digital pago só como teste T6; motor de A/B com preço; conta refeita.

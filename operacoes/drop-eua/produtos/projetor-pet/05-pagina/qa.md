@@ -16,6 +16,17 @@ Rodado localmente (servidor PHP embutido + Playwright, 390 px). Prints em `print
 | Reembolso pelo webhook grava o valor | ok |
 | Arquivos `_lib.php` e `_pago.php` bloqueados na web | `.htaccess` (Apache/LiteSpeed da Hostinger) |
 
+## v2 (24/11)
+| Item | Resultado |
+|---|---|
+| Sorteio A/B igual na página e no servidor (FNV-1a) | ok, mesmos resultados para os mesmos visitantes |
+| T3 versão B: página mostra US$39,99 e servidor cobra US$69,99 + bump = US$77,98 | ok |
+| T2 versão B: kit 2 destacado | ok |
+| Recusa do upsell sem bump → downsell de pelúcias → aceito → obrigado | ok (navegador e servidor) |
+| Quem pegou o bump não vê o downsell de pelúcias | ok |
+| Link de download assinado: certo baixa o PDF, assinatura errada dá 403 | ok |
+| First Hunt Guide gato e cachorro | 3 páginas cada, ~100 KB |
+
 ## Falta (precisa de chave de teste da Stripe e do domínio)
 - Compra de teste real no modo de teste: cartão 4242, cartão recusado (4000 0000 0000 0002), cartão com autenticação (4000 0025 0000 3155) no front e no upsell.
 - Apple Pay (exige domínio registrado na Stripe).

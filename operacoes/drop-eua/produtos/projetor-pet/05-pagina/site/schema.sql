@@ -3,10 +3,10 @@ CREATE TABLE IF NOT EXISTS pedidos (
   criado VARCHAR(20), pago_em VARCHAR(20), funil_fim VARCHAR(20),
   status VARCHAR(20),
   pi_front VARCHAR(64), customer VARCHAR(64), payment_method VARCHAR(64),
-  pet VARCHAR(10), kit VARCHAR(10), mix VARCHAR(20), bump INTEGER DEFAULT 0, angulo VARCHAR(20),
+  pet VARCHAR(10), kit VARCHAR(10), mix VARCHAR(20), bump INTEGER DEFAULT 0, angulo VARCHAR(20), variante VARCHAR(40), email_enviado INTEGER DEFAULT 0,
   valor_front INTEGER DEFAULT 0, custo_front INTEGER DEFAULT 0,
   upsell VARCHAR(20), pi_upsell VARCHAR(64), upsell_pet VARCHAR(10), valor_upsell INTEGER DEFAULT 0, custo_upsell INTEGER DEFAULT 0,
-  downsell VARCHAR(20), pi_downsell VARCHAR(64), valor_downsell INTEGER DEFAULT 0,
+  downsell VARCHAR(20), pi_downsell VARCHAR(64), valor_downsell INTEGER DEFAULT 0, custo_downsell INTEGER DEFAULT 0,
   reembolsado INTEGER DEFAULT 0, contestado INTEGER DEFAULT 0,
   email VARCHAR(190), nome VARCHAR(190), cep VARCHAR(20), cidade VARCHAR(80), estado VARCHAR(10), endereco TEXT,
   ip VARCHAR(45), ua VARCHAR(255), ctx TEXT
