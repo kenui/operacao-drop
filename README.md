@@ -13,3 +13,5 @@ Imagens e vídeos ficam no Google Drive, com a mesma árvore de pastas.
 Desenho completo: Claude Doc "Operação de dropshipping com IA: desenho v1".
 
 **Regra de commits:** memória vai direto para o `main`; código e mudanças grandes vão por pull request.
+
+- `ferramentas/`: utilitários (ex.: `ver-video`, que vê e ouve vídeos).
