@@ -39,7 +39,20 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
 
-**Rascunho na conta (24/11, PAUSADO, sem anúncios):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+**Na conta (24/11, tudo PAUSADO):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+
+Anúncios criados em 24/11 (pausados, em revisão do Meta), Página Little Catch Co., UTM por ID em `url_tags`, domínio de conversão littlecatchco.com:
+
+| Anúncio | ID do anúncio | Criativo | Vídeo na biblioteca |
+|---|---|---|---|
+| chuva-donac-ugc-v1 | 120250938575320381 | 932435983167079 | 1144294901425680 |
+| chuva-donac-ugc-v1-musica | 120250938576070381 | 1491709979581016 | 1481621200558764 |
+| fake-cetica-demo-v1 | 120250938576430381 | 1122867140742983 | 4678334099102253 |
+| fake-cetica-demo-v1-musica | 120250938577520381 | 1828117665123830 | 1142239911872619 |
+| aprovado-controle-v1 | 120250938578390381 | 1777757563686595 | 1612303223984909 |
+| aprovado-controle-v1-musica | 120250938579440381 | 1116543557885881 | 1714682023401935 |
+
+Com e sem música dentro do mesmo conjunto: a régua julga cada versão; se uma das duas perder com folga depois do dia 3, pausar a pior e anotar em `aprendizados.md` (teste de música, H-T música).
 
 ## 3. Criativos
 Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
@@ -59,6 +72,17 @@ Só cachorro (persona C), porque só a versão cachorro tem fornecedor.
 Antes do lançamento: buscar na Biblioteca (EUA, "pet projector", "dog projector toy", "interactive projector") e no TikTok os anúncios com 14+ dias e várias versões e os vídeos orgânicos com mais views. Guardar as fichas em `estudo/referencias-anuncios.md`. Se aparecer uma referência mais forte que V1 ou V4, ela entra no lugar. Nome dos anúncios com `ref<id>`.
 
 V3 (brinquedo de 10 minutos) entra quando tiver foto real da pelúcia. Todo vídeo precisa mostrar a projeção da versão que a CJ entrega (esquilo), com o aparelho sendo ligado antes de qualquer efeito (regra do Kenui).
+
+### 3b. Textos dos anúncios (prontos para subir; 24/11)
+Vídeos com esquilo em `videos/` (thread de vídeos, 24/11). Sobem as versões sem e com música como anúncios separados, até o Kenui escolher. Todos levam o rótulo de IA do Meta (pessoa gerada por IA). Título comum: **"The Hunt Ends With a Real Catch"**. Botão: **Shop Now**.
+
+| Anúncio | Vídeo | Texto principal | Destino `?a=` |
+|---|---|---|---|
+| `chuva-donac-ugc-v1` | v1-chuva/V1-chuva-*.mp4 | No walk today and he's been staring at me since 4. This little projector puts critters on the floor for him to chase, and the kit comes with a squeaky plush so the hunt ends with something he can actually catch. Works best with the lights low. Free shipping, 30-day refund. | `sozinho` |
+| `fake-cetica-demo-v1` | v4-fake/V4-fake-*.mp4 | I thought these videos were fake too. So here it is in a normal living room: off, click, on. If your dog just stares at it, email us within 30 days of delivery for a full refund. | `sozinho` |
+| `aprovado-controle-v1` | prova-esquilo/Controle-esquilo-*.mp4 | If your dog gets bored inside, watch this. Projector + squeaky plush + gift box. Free shipping, 30-day refund. | `pega` |
+
+Conferido com a página em 24/11 (a página diz que "usually" não precisa devolver, então o anúncio não promete "no return needed"): "30-day money-back", "no reason needed", "free shipping" e "works best with the lights low" estão lá. Não prometemos prazo de Natal no anúncio (a página mostra o prazo real). Se a política de reembolso mudar, os textos mudam junto.
 
 ## 4. Régua com os números deste produto (E = US$26,64; A = US$18)
 | Situação | Regra | Ação |

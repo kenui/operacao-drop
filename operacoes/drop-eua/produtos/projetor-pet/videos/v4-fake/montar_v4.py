@@ -5,19 +5,19 @@ do interruptor (o abajur também apaga) e não bate com a prova.
 Duas versões: sem música e com música por IA baixa, mixada em dois passos."""
 import subprocess, os
 V="/mnt/project-files/operacoes/drop-eua/produtos/projetor-pet/videos"
-A=f"{V}/v4-fake/clipe-v4-a.mp4"; PROVA=f"{V}/v1-chuva/clipe-prova-b.mp4"
+A=f"{V}/v4-fake/clipe-v4-a.mp4"; PROVA=f"{V}/prova-esquilo/clipe-prova-esquilo.mp4"  # esquilo (versão que a CJ entrega)
 MUS=f"{V}/v1-chuva/musica-ia-d-v1.mp3"; OUT=f"{V}/v4-fake"
 TMP=os.path.dirname(os.path.abspath(__file__))+"/txt"; os.makedirs(TMP,exist_ok=True)
 FONT="/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
 # (entrada, início, fim): objeção, aparelho no chão + interruptor, prova e recompensa contínuas
-CORTES=[(0,1.2,3.5),(0,4.7,9.9),(1,5.8,15.0)]
+CORTES=[(0,1.2,3.5),(0,4.7,9.9),(1,7.3,15.0)]
 FALA3=(10.6,12.45)      # trecho do clipe novo com a terceira fala
 FALA3_EM=7.7            # onde ela entra na montagem (começo da prova)
 TEXTOS=[(0,2.3,250,"ok I thought"),(0,2.3,322,"these videos were fake."),
         (2.3,7.5,250,"nothing on the floor yet"),
-        (7.5,13.4,250,"works best with the lights low"),
-        (13.4,15.2,250,"30-day refund"),(13.4,15.2,322,"if he just stares at it"),
-        (15.2,17,250,"tap to see the kit")]
+        (7.5,11.3,250,"works best with the lights low"),
+        (11.3,13.6,250,"30-day refund"),(11.3,13.6,322,"if he just stares at it"),
+        (13.6,16,250,"tap to see the kit")]
 fc=[]; lab=""
 for i,(src,a,b) in enumerate(CORTES):
     fc.append(f"[{src}:v]trim={a}:{b},setpts=PTS-STARTPTS,fps=24,scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1[v{i}];"

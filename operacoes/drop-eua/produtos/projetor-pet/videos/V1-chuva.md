@@ -57,5 +57,8 @@ Pontos fracos que ficam: a parte da dor ainda usa o quadro de 1K sem as fichas, 
 ## Áudio (24/11, depois do pedido do Kenui: "parece muito de IA")
 Montagem refeita com a mixagem de celular ([audio-realista.md](../../../../../conhecimento/video-ia/audio-realista.md), camada 1): piso de sala contínuo, curva de microfone, reflexo curto igual em todos os trechos, ganho linear, música a 22%. Custo zero. A versão anterior ficou guardada como `*-audio-antes.mp4` para comparar. A voz em si continua a gerada pelo T1; trocar a voz é a camada 3 e pede aval.
 
+## Esquilo (24/11)
+Remontado com a prova nova, que mostra o esquilo da versão da CJ e usa o bloco novo de voz: [prova-esquilo.md](prova-esquilo.md). Duração agora: 21,5 s. A parte anterior à prova não mudou.
+
 ## Resultado
-Versão 2 aprovada pelo Kenui em 24/11: "O vídeo ficou muito bom, parabéns".
+Versão 2 aprovada pelo Kenui em 24/11: "O vídeo ficou muito bom, parabéns". Versão com esquilo aprovada no mesmo dia: "Ok, ficou muito bom".
