@@ -10,7 +10,7 @@ if (empty($e['evento']) || !preg_match('/^[a-z0-9_]{2,40}$/', (string)$e['evento
 $ud = is_array($e['ud'] ?? null) ? $e['ud'] : []; unset($e['ud']);
 // Robôs (rastreador do Meta, prévia de link, navegador sem tela, ferramentas de teste): ficam no log marcados, fora do painel e fora do Meta.
 $ua = (string)($_SERVER['HTTP_USER_AGENT'] ?? '');
-$bot = $ua === '' || preg_match('/bot|crawl|spider|slurp|facebookexternalhit|facebookcatalog|meta-externalagent|meta-externalfetcher|Facebot|preview|HeadlessChrome|Lighthouse|PageSpeed|GTmetrix|Pingdom|curl|python|wget|axios|node-fetch|Playwright|Puppeteer|phantom|monitor|checar-real/i', $ua);
+$bot = $ua === '' || preg_match('/bot|crawl|spider|slurp|facebookexternalhit|facebookcatalog|meta-externalagent|meta-externalfetcher|Facebot|preview|HeadlessChrome|Lighthouse|PageSpeed|GTmetrix|Pingdom|curl|python|wget|axios|node-fetch|Playwright|Puppeteer|phantom|monitor|checar-real|HostingerSelfie|Hostinger/i', $ua);
 $e['dados'] = (is_array($e['dados'] ?? null) ? $e['dados'] : []) + ['ua' => substr($ua, 0, 160)] + ($bot ? ['bot' => 1] : []);
 log_evento($e);
 if ($bot) out(['ok' => true]);
