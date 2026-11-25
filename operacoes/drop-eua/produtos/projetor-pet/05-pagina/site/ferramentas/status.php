@@ -23,6 +23,16 @@ if ($o['config']) {
     $o['pedidos'] = $d->query("SELECT criado,pago_em,funil_fim,status,pet,kit,mix,bump,variante,valor_front,upsell,valor_upsell,downsell,valor_downsell,extra,valor_extra,variante_pos,reembolsado,contestado,email_enviado,substr(pi_front,1,12) pi FROM pedidos ORDER BY criado DESC LIMIT 15")->fetchAll();
     $o['eventos'] = $d->query("SELECT evento, COUNT(*) n FROM eventos GROUP BY evento ORDER BY n DESC")->fetchAll();
     $o['webhooks'] = $d->query("SELECT id, criado FROM webhooks ORDER BY criado DESC LIMIT 10")->fetchAll();
+    // quem está no site: últimos 30 min, por visitante (id cortado, sem dado pessoal)
+    $q = $d->prepare("SELECT criado, visitante_id, evento, pagina, disp, angulo, utm, dados FROM eventos WHERE criado >= ? ORDER BY criado");
+    $q->execute([gmdate('Y-m-d H:i:s', time() - 1800)]); $vs = [];
+    foreach ($q->fetchAll() as $r) {
+      $k = substr((string)$r['visitante_id'], 0, 8); $u = json_decode((string)$r['utm'], true) ?: []; $dd = json_decode((string)$r['dados'], true) ?: [];
+      $v = $vs[$k] ?? ['de' => substr($r['criado'], 11, 5), 'n' => 0, 'ev' => [], 'disp' => $r['disp'], 'fonte' => ($u['utm_source'] ?? '') . (!empty($u['fbclid']) ? '+fbclid' : ''), 'ad' => $u['utm_content'] ?? '', 'a' => $r['angulo'], 'ua' => $dd['ua'] ?? null, 'bot' => $dd['bot'] ?? 0];
+      $v['ate'] = substr($r['criado'], 11, 5); $v['n']++; $v['ev'][$r['evento']] = 1; $vs[$k] = $v;
+    }
+    foreach ($vs as $k => $v) $vs[$k]['ev'] = implode(',', array_keys($v['ev']));
+    $o['ultimos_30min'] = ['visitantes' => count($vs), 'lista' => $vs];
   } catch (Throwable $e) { $o['erro_banco'] = $e->getMessage(); }
   // Stripe (só leitura): conta, webhook, domínios de pagamento e últimos eventos com entregas pendentes
   try {

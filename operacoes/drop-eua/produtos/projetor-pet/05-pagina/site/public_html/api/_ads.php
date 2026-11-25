@@ -41,7 +41,7 @@ function ads_cambio(string $moeda, string $cache): float {
  * Volta ['ligado'=>bool, 'erro'=>?string, 'moeda'=>, 'total'=>centavos USD, 'dia'=>[Y-m-d=>c], 'id'=>[campaign_id=>c], 'nome'=>[campaign_name=>c], 'ids'=>[id=>nome]]
  */
 function gasto_ads(string $desde, bool $tudo = false): array {
-  $vazio = ['ligado' => false, 'erro' => null, 'moeda' => null, 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => []];
+  $vazio = ['ligado' => false, 'erro' => null, 'moeda' => null, 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => [], 'conj' => [], 'conj_nomes' => [], 'conj_camp' => [], 'ad' => [], 'ad_nomes' => [], 'ad_camp' => []];
   $cr = ads_cred();
   if (!$cr) return gasto_ads_arquivo($desde, $tudo, $vazio);
   $cache = dirname(__DIR__, 2) . '/_cache';
@@ -51,15 +51,16 @@ function gasto_ads(string $desde, bool $tudo = false): array {
   $chave = "$cache/ads-" . md5($cr['conta'] . ($tudo ? 'max' : $ini) . $fim) . '.json';
   if (is_file($chave) && time() - filemtime($chave) < 900) return json_decode((string)file_get_contents($chave), true);
   try {
-    $q = ['level' => 'campaign', 'time_increment' => 1, 'limit' => 500, 'fields' => 'campaign_id,campaign_name,spend,account_currency', 'access_token' => $cr['token']];
+    $q = ['level' => 'ad', 'time_increment' => 1, 'limit' => 500, 'fields' => 'campaign_id,campaign_name,adset_id,adset_name,ad_id,ad_name,spend,account_currency', 'access_token' => $cr['token']];
     if ($tudo) $q['date_preset'] = 'maximum'; else $q['time_range'] = json_encode(['since' => $ini, 'until' => $fim]);
     $url = 'https://graph.facebook.com/v21.0/' . rawurlencode($cr['conta']) . '/insights?' . http_build_query($q);
     $linhas = [];
     for ($i = 0; $url && $i < 20; $i++) { $j = ads_get($url); $linhas = array_merge($linhas, $j['data'] ?? []); $url = $j['paging']['next'] ?? ''; }
     $moeda = (string)($linhas[0]['account_currency'] ?? 'USD');
     $fx = ads_cambio($moeda, $cache) * (1 + (float)($cr['acrescimo'] ?? 0));
-    $r = ['ligado' => true, 'erro' => null, 'moeda' => $moeda, 'acrescimo' => (float)($cr['acrescimo'] ?? 0), 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => []];
+    $r = ['ligado' => true, 'erro' => null, 'moeda' => $moeda, 'acrescimo' => (float)($cr['acrescimo'] ?? 0)] + $vazio;
     foreach ($linhas as $l) {
+      ads_nivel($r, $l, (int)round((float)$l['spend'] * $fx * 100));
       $c = (int)round((float)$l['spend'] * $fx * 100);
       $d = (string)($l['date_start'] ?? ''); $id = (string)($l['campaign_id'] ?? ''); $nm = (string)($l['campaign_name'] ?? $id);
       $r['total'] += $c; $r['dia'][$d] = ($r['dia'][$d] ?? 0) + $c;
@@ -76,6 +77,8 @@ function gasto_ads(string $desde, bool $tudo = false): array {
 // no ramo deploy em _dados/ads-gasto.json (pasta bloqueada por .htaccess). Formato:
 // {"atualizado":"2026-11-25T10:00:00Z","fonte":"conector","moeda":"BRL","acrescimo":0.1383,
 //  "linhas":[{"campaign_id":"120...","campaign_name":"...","date":"2026-11-24","spend":12.34}]}
+// Melhor: uma linha por ANÚNCIO e dia, com "adset_id","adset_name","ad_id","ad_name" (o painel mostra gasto, ROAS e lucro por anúncio e conjunto).
+// Não misture no mesmo arquivo linhas por campanha e por anúncio do mesmo dia (somaria duas vezes).
 // Opcional: "usd_por_unidade": 0.19 (senão o servidor busca o câmbio do dia). spend na moeda da conta, date no fuso da conta, uma linha por campanha e dia (a última repetida vale).
 function gasto_ads_arquivo(string $desde, bool $tudo, array $vazio): array {
   $f = dirname(__DIR__) . '/_dados/ads-gasto.json';
@@ -93,14 +96,21 @@ function gasto_ads_arquivo(string $desde, bool $tudo, array $vazio): array {
   foreach ($j['linhas'] as $l) {
     $d = (string)($l['date'] ?? ''); $id = (string)($l['campaign_id'] ?? '');
     if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $d) || $id === '' || (!$tudo && $d < $ini)) continue;
-    $u["$id|$d"] = $l;
+    $u["$id|" . ($l['adset_id'] ?? '') . '|' . ($l['ad_id'] ?? '') . "|$d"] = $l;
   }
-  $r = ['ligado' => true, 'erro' => null, 'moeda' => $moeda, 'acrescimo' => $acr, 'fonte' => (string)($j['fonte'] ?? 'arquivo'), 'atualizado' => (string)($j['atualizado'] ?? ''), 'total' => 0, 'dia' => [], 'id' => [], 'nome' => [], 'ids' => []];
+  $r = ['ligado' => true, 'erro' => null, 'moeda' => $moeda, 'acrescimo' => $acr, 'fonte' => (string)($j['fonte'] ?? 'arquivo'), 'atualizado' => (string)($j['atualizado'] ?? '')] + $vazio; $r['ligado'] = true;
   foreach ($u as $l) {
-    $c = (int)round((float)($l['spend'] ?? 0) * $fx * 100);
+    $c = (int)round((float)($l['spend'] ?? 0) * $fx * 100); ads_nivel($r, $l, $c);
     $d = (string)$l['date']; $id = (string)$l['campaign_id']; $nm = (string)($l['campaign_name'] ?? $id);
     $r['total'] += $c; $r['dia'][$d] = ($r['dia'][$d] ?? 0) + $c;
     $r['id'][$id] = ($r['id'][$id] ?? 0) + $c; $r['nome'][$nm] = ($r['nome'][$nm] ?? 0) + $c; $r['ids'][$id] = $nm;
   }
   return $r;
+}
+
+// soma o gasto por conjunto e por anúncio quando a linha traz esses IDs
+function ads_nivel(array &$r, array $l, int $c): void {
+  $cp = (string)($l['campaign_id'] ?? '');
+  if (!empty($l['adset_id'])) { $k = (string)$l['adset_id']; $r['conj'][$k] = ($r['conj'][$k] ?? 0) + $c; $r['conj_nomes'][$k] = (string)($l['adset_name'] ?? $k); $r['conj_camp'][$k] = $cp; }
+  if (!empty($l['ad_id'])) { $k = (string)$l['ad_id']; $r['ad'][$k] = ($r['ad'][$k] ?? 0) + $c; $r['ad_nomes'][$k] = (string)($l['ad_name'] ?? $k); $r['ad_camp'][$k] = $cp; }
 }
