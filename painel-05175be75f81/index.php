@@ -54,6 +54,16 @@ if (isset($_GET['api'])) {
   if ($dias === 0) { $loc = new DateTime('now', new DateTimeZone('America/New_York')); $loc->setTime(0, 0); $loc->setTimezone(new DateTimeZone('UTC')); $desde = $loc->format('Y-m-d H:i:s'); }
   $camp = (string)($_GET['c'] ?? '');
 
+  // origem: fonte, campanha, conjunto, anúncio e ângulo (link do Meta: utm_campaign={{campaign.id}}, utm_term={{adset.id}}, utm_content={{ad.id}}, a=ângulo)
+  $orig = function (array $u): array {
+    $src = strtolower((string)($u['utm_source'] ?? ''));
+    $meta = in_array($src, ['meta', 'facebook', 'fb', 'ig', 'instagram'], true) || !empty($u['fbclid']);
+    $f = $meta ? (!empty($u['utm_content']) ? 'Anúncio do Meta' : 'Meta sem ID do anúncio') : ($src !== '' ? $src : 'Direto ou sem rastreio');
+    return ['fonte' => $f, 'camp' => (string)($u['utm_campaign'] ?? '(sem campanha)'), 'conj' => (string)($u['utm_term'] ?? '(sem conjunto)'),
+            'ad' => (string)($u['utm_content'] ?? '(sem anúncio)'), 'ang' => (string)(($u['a'] ?? '') ?: '(sem ângulo)'), 'volta' => !empty($u['retorno'])];
+  };
+  $NIV = ['fonte', 'camp', 'conj', 'ad', 'ang']; $nv = array_fill_keys($NIV, []); $evN = array_fill_keys($NIV, []); $voltou = [];
+  $linha = fn() => ['vis' => 0, 'vc' => 0, 'ks' => 0, 'ic' => 0, 'ap' => 0, 'n' => 0, 'up' => 0, 'r' => 0, 'l' => 0, 'g' => 0];
   // eventos: visitantes distintos por etapa
   $ev = $d->prepare("SELECT evento, visitante_id, utm, variante, pagina FROM eventos WHERE criado >= ? AND dados NOT LIKE '%\"bot\":1%'");
   $ev->execute([$desde]);
@@ -64,6 +74,10 @@ if (isset($_GET['api'])) {
     $campanhas[$cp] = 1;
     if ($camp !== '' && $cp !== $camp) continue;
     $por[$r['evento']][$r['visitante_id']] = 1;
+    if (in_array($r['evento'], ['page_view', 'view_content', 'kit_select', 'initiate_checkout', 'add_payment_info'], true)) {
+      $o = $orig($u); foreach ($NIV as $lv) $evN[$lv][$o[$lv]][$r['evento']][$r['visitante_id']] = 1;
+      if ($o['volta'] && $r['evento'] === 'page_view') $voltou[$r['visitante_id']] = 1;
+    }
   }
   $vv = $d->prepare("SELECT COUNT(DISTINCT visitante_id) FROM eventos WHERE criado >= ? AND dados NOT LIKE '%\"bot\":1%'"); $vv->execute([$agora]);
   $n = fn($e) => count($por[$e] ?? []);
@@ -89,7 +103,10 @@ if (isset($_GET['api'])) {
     $luc = $rec - $cus - $tax - (int)$p['reembolsado'];
     $dia = substr((string)$p['pago_em'], 0, 10);
     $porDia[$dia] = ['r' => ($porDia[$dia]['r'] ?? 0) + $rec, 'l' => ($porDia[$dia]['l'] ?? 0) + $luc, 'n' => ($porDia[$dia]['n'] ?? 0) + 1];
-    $porCamp[$p['_camp']] = ['n' => ($porCamp[$p['_camp']]['n'] ?? 0) + 1, 'r' => ($porCamp[$p['_camp']]['r'] ?? 0) + $rec, 'l' => ($porCamp[$p['_camp']]['l'] ?? 0) + $luc];
+    $o = $orig((array)((json_decode((string)$p['ctx'], true) ?: [])['utm'] ?? []));
+    foreach ($NIV as $lv) { $k = $o[$lv]; $nv[$lv][$k] = $nv[$lv][$k] ?? $linha(); $nv[$lv][$k]['n']++; $nv[$lv][$k]['up'] += $p['upsell'] === 'aceito' ? 1 : 0; $nv[$lv][$k]['r'] += $rec; $nv[$lv][$k]['l'] += $luc; }
+    $porCamp[$p['_camp']] = ['n'
+ => ($porCamp[$p['_camp']]['n'] ?? 0) + 1, 'r' => ($porCamp[$p['_camp']]['r'] ?? 0) + $rec, 'l' => ($porCamp[$p['_camp']]['l'] ?? 0) + $luc];
     $v = $p['variante'] ?: '(sem teste)';
     $porVar[$v] = ['n' => ($porVar[$v]['n'] ?? 0) + 1, 'r' => ($porVar[$v]['r'] ?? 0) + $rec, 'l' => ($porVar[$v]['l'] ?? 0) + $luc];
     // teste do pós-compra: só o que vem depois do pagamento (upsell + downsell + extra), por comprador
@@ -97,7 +114,7 @@ if (isset($_GET['api'])) {
     $rp = (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
     $lp = $rp - ((int)$p['custo_upsell'] + (int)$p['custo_downsell'] + (int)($p['custo_extra'] ?? 0)) - (int)round($rp * 0.06) - 10 * ($cob - 1);
     $porPos[$vp] = ['n' => ($porPos[$vp]['n'] ?? 0) + 1, 'r' => ($porPos[$vp]['r'] ?? 0) + $rp, 'l' => ($porPos[$vp]['l'] ?? 0) + $lp];
-    if (count($lista) < 20) $lista[] = ['quando' => $p['pago_em'], 'pet' => $p['pet'], 'kit' => $p['kit'], 'bump' => (int)$p['bump'], 'upsell' => $p['upsell'] ?: '-', 'downsell' => $p['downsell'] ?: '-', 'extra' => ($p['extra'] ?? '') ?: '-', 'total' => $rec, 'lucro' => $luc, 'reemb' => (int)$p['reembolsado'], 'contest' => (int)$p['contestado'], 'camp' => $p['_camp'], 'estado' => $p['estado'] ?: ''];
+    if (count($lista) < 20) $lista[] = ['quando' => $p['pago_em'], 'pet' => $p['pet'], 'kit' => $p['kit'], 'bump' => (int)$p['bump'], 'upsell' => $p['upsell'] ?: '-', 'downsell' => $p['downsell'] ?: '-', 'extra' => ($p['extra'] ?? '') ?: '-', 'total' => $rec, 'lucro' => $luc, 'reemb' => (int)$p['reembolsado'], 'contest' => (int)$p['contestado'], 'camp' => $p['_camp'], 'ad' => (string)(((json_decode((string)$p['ctx'], true) ?: [])['utm']['utm_content'] ?? '')), 'estado' => $p['estado'] ?: ''];
   }
   // visitantes por campanha (para lucro por visitante da campanha)
   $visCamp = [];
@@ -110,6 +127,17 @@ if (isset($_GET['api'])) {
   $nomeCamp = fn(string $k) => $ads['ids'][$k] ?? '';
   foreach ($ads['ids'] as $id => $nm) { $campanhas[$id] = 1; if (!isset($porCamp[$id]) && ($camp === '' || $camp === $id)) $porCamp[$id] = ['n' => 0, 'r' => 0, 'l' => 0, 'vis' => count($visCamp[$id] ?? [])]; }
   foreach ($porCamp as $k => $v) { $g = $gCamp((string)$k); $porCamp[$k]['g'] = $g; $porCamp[$k]['la'] = $v['l'] - $g; $porCamp[$k]['nome'] = $nomeCamp((string)$k); }
+  // junta visitas, etapas e gasto em cada nível
+  $mapa = ['page_view' => 'vis', 'view_content' => 'vc', 'kit_select' => 'ks', 'initiate_checkout' => 'ic', 'add_payment_info' => 'ap'];
+  foreach ($NIV as $lv) foreach ($evN[$lv] as $k => $evs) { $nv[$lv][$k] = $nv[$lv][$k] ?? $linha(); foreach ($mapa as $e => $col) $nv[$lv][$k][$col] = count($evs[$e] ?? []); }
+  $gastoNiv = ['camp' => [$ads['id'], $ads['ids'], []], 'conj' => [$ads['conj'] ?? [], $ads['conj_nomes'] ?? [], $ads['conj_camp'] ?? []], 'ad' => [$ads['ad'] ?? [], $ads['ad_nomes'] ?? [], $ads['ad_camp'] ?? []]];
+  foreach ($gastoNiv as $lv => [$gs, $nomes, $dono]) {
+    foreach ($gs as $k => $g) { $k = (string)$k; if ($camp !== '' && ($lv === 'camp' ? $k : (string)($dono[$k] ?? $camp)) !== $camp) continue; $nv[$lv][$k] = $nv[$lv][$k] ?? $linha(); $nv[$lv][$k]['g'] = $g; }
+    foreach ($nv[$lv] as $k => $v) $nv[$lv][$k]['nome'] = (string)($nomes[$k] ?? '');
+  }
+  $gMeta = 0; foreach ($nv['camp'] as $v) $gMeta += $v['g'];
+  if (isset($nv['fonte']['Anúncio do Meta']) || $gMeta) { $nv['fonte']['Anúncio do Meta'] = $nv['fonte']['Anúncio do Meta'] ?? $linha(); $nv['fonte']['Anúncio do Meta']['g'] = $gMeta; }
+  foreach ($NIV as $lv) { foreach ($nv[$lv] as $k => $v) $nv[$lv][$k]['la'] = $v['l'] - $v['g']; uasort($nv[$lv], fn($x, $y) => [$y['g'], $y['vis']] <=> [$x['g'], $x['vis']]); }
   $gasto = $camp === '' ? $ads['total'] : $gCamp($camp);
   if ($camp === '') foreach ($ads['dia'] as $dd => $g) { $porDia[$dd] = ($porDia[$dd] ?? ['r' => 0, 'l' => 0, 'n' => 0]) + ['g' => 0]; $porDia[$dd]['g'] = $g; }
   ksort($porDia);
@@ -127,6 +155,7 @@ if (isset($_GET['api'])) {
       ['Abriu o checkout', $n('initiate_checkout')], ['Clicou em pagar', $n('add_payment_info')], ['Pagou', max($n('purchase_front'), count($ped))],
       ['Viu o upsell', $n('upsell_view')], ['Aceitou o upsell', $n('upsell_accept')], ['Viu o downsell', $n('downsell_view')], ['Aceitou o downsell', $n('downsell_accept')], ['Viu a oferta extra', $n('extra_view')], ['Aceitou a oferta extra', $n('extra_accept')],
     ],
+    'niv' => $nv, 'voltou' => count($voltou), 'ads_nivel' => !empty($ads['ad']),
     'dia' => $porDia, 'camp' => $porCamp, 'var' => $porVar, 'pos' => $porPos, 'lista' => $lista,
   ]);
   exit;
@@ -164,6 +193,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:7px 6px;b
 .pg{cursor:zoom-in}.pg img{width:100%;height:260px;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line);background:#fff}.pg b{display:block;font-size:13px;margin-top:6px}.pg span{font-size:12px;color:var(--ink2)}
 #lb{position:fixed;inset:0;background:rgba(20,18,40,.85);display:none;overflow:auto;z-index:9;padding:20px;text-align:center}#lb img{max-width:420px;width:100%;border-radius:12px}
 .note{font-size:12px;color:var(--ink2);margin-top:8px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.tabs button{background:#eeeaf6;color:var(--ink);font-size:13px;padding:6px 12px}.tabs button.on{background:var(--ink);color:#fff}
+td small{display:block;color:var(--ink2);font-size:11px}
 </style></head><body>
 <header><b>🐾 Little Catch Co. · Painel</b>
 <div class="r"><span class="live"><i></i><span id="agora">-</span> agora no site</span><span class="badge" id="modo" hidden>MODO TESTE</span>
@@ -182,8 +213,10 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:7px 6px;b
   <div class="pg" data-full="prints/downsell.jpg"><img src="prints/downsell.jpg" alt=""><b>Downsell</b><span>só se recusou o upsell</span></div><div class="pg" data-full="prints/extra.jpg"><img src="prints/extra.jpg" alt=""><b>Oferta extra</b><span>só se aceitou o upsell</span></div>
   <div class="pg" data-full="prints/obrigado.jpg"><img src="prints/obrigado.jpg" alt=""><b>Obrigado</b><span>recibo e downloads</span></div>
 </div><p class="note">Fotos da última versão publicada (atualizadas a cada mudança de página). Clique para ver inteira.</p></div>
-<div class="grid two" style="margin-top:14px">
-  <div class="card"><h2>Por campanha (UTM)</h2><div class="tw" id="camp"></div></div>
+<div class="card" style="margin-top:14px"><h2>De onde vêm as vendas</h2>
+  <div class="tabs" id="tabs"><button data-n="ad" class="on">Anúncio</button><button data-n="conj">Conjunto</button><button data-n="camp">Campanha</button><button data-n="ang">Ângulo</button><button data-n="fonte">Origem</button></div>
+  <div class="tw" id="niv"></div><p class="note" id="nivnota"></p></div>
+<div class="grid" style="margin-top:14px">
   <div class="card"><h2>Por versão de teste A/B</h2><h3 class="note" style="margin:0 0 6px">Teste da página (sorteio por visitante)</h3><div class="tw" id="var"></div><h3 class="note" style="margin:14px 0 6px">Teste do pós-compra (sorteio por pedido; decide o lucro por comprador)</h3><div class="tw" id="pos"></div></div>
 </div>
 <div class="card" style="margin-top:14px"><h2>Últimos pedidos (sem dados pessoais)</h2><div class="tw" id="lista"></div></div>
@@ -196,7 +229,20 @@ function m(c){return (c<0?"−$":"$")+(Math.abs(c)/100).toLocaleString("en-US",{
 function pc(a,b){return b?(100*a/b).toFixed(1)+"%":"–"}
 function cls(v){return v>=0?"pos":"neg"}
 document.querySelectorAll(".pg").forEach(function(p){p.onclick=function(){$("#lb img").src=p.dataset.full;$("#lb").style.display="block";$("#lb").scrollTop=0}});
-function load(){
+var J=null,NV="ad";
+function esc(x){return String(x).replace(/[<>&"]/g,"")}
+function adn(ad,camp){if(!J)return "";var v=J.niv.ad[ad];return ad?esc((v&&v.nome)||ad):"<small>sem anúncio ("+esc(camp)+")</small>"}
+document.querySelectorAll("#tabs button").forEach(function(b){b.onclick=function(){NV=b.dataset.n;document.querySelectorAll("#tabs button").forEach(function(x){x.classList.toggle("on",x===b)});niv()}});
+function niv(){if(!J)return;var o=J.niv[NV]||{},ks=Object.keys(o),A=J.ads,G=A.ligado&&!A.erro;
+  var T={ad:"Anúncio",conj:"Conjunto",camp:"Campanha",ang:"Ângulo",fonte:"Origem"}[NV];
+  if(!ks.length){$("#niv").innerHTML='<p class="note">Sem visitas no período.</p>';return}
+  $("#niv").innerHTML='<table><tr><th>'+T+'</th>'+(G?'<th>Gasto</th><th>Custo/visit.</th>':'')+'<th>Visitantes</th><th>Viu produto</th><th>Checkout</th><th>Compras</th><th>Conversão</th><th>Upsell</th><th>Receita</th>'+(G?'<th>ROAS</th><th>Custo/compra</th>':'')+'<th>Lucro'+(G?' após anúncios':'')+'</th><th>Lucro/visit.</th></tr>'+
+    ks.map(function(k){var v=o[k],L=G?v.la:v.l,id=k.charAt(0)!=="("&&NV!=="fonte"&&NV!=="ang";
+      return '<tr><td>'+esc(v.nome||k)+(id&&v.nome?'<small>'+esc(k)+'</small>':'')+'</td>'+(G?'<td>'+m(v.g)+'</td><td>'+(v.vis&&v.g?m(v.g/v.vis):"–")+'</td>':'')+
+      '<td>'+v.vis+'</td><td>'+pc(v.vc,v.vis)+'</td><td>'+v.ic+'</td><td><b>'+v.n+'</b></td><td>'+pc(v.n,v.vis)+'</td><td>'+pc(v.up,v.n)+'</td><td>'+m(v.r)+'</td>'+
+      (G?'<td>'+(v.g?(v.r/v.g).toFixed(2):"–")+'</td><td>'+(v.n&&v.g?m(v.g/v.n):"–")+'</td>':'')+'<td class="'+cls(L)+'">'+m(L)+'</td><td>'+(v.vis?m(L/v.vis):"–")+'</td></tr>'}).join("")+'</table>';
+  $("#nivnota").textContent=(NV==="ad"||NV==="conj")&&G&&!J.ads_nivel?"O gasto do Meta ainda chega só por campanha; por anúncio e conjunto aparece quando o envio do gasto vier detalhado.":(J.voltou?J.voltou+" visitante(s) voltaram ao site sem o link do anúncio e continuam contados no anúncio de origem (até 7 dias, como o Meta).":"Robôs (rastreador do Meta, prévias de link, testes automáticos) ficam fora de todos os números.")}
+function load(){if(document.hidden)return;
   fetch("?api=1&p="+$("#p").value+"&c="+encodeURIComponent($("#c").value),{cache:"no-store"}).then(function(r){if(r.status!==200)location.reload();return r.json()}).then(function(j){
     var t=j.tot,A=j.ads,L=A.ligado&&!A.erro?t.lucro_ads:t.lucro,lpv=t.visitantes?L/t.visitantes:0,nm=function(c){c=String(c);return (A.nomes[c]||c).replace(/</g,"")};
     $("#modo").hidden=j.modo!=="teste"; $("#agora").textContent=j.agora;
@@ -220,12 +266,12 @@ function load(){
     function tab(o,nome){var ks=Object.keys(o);if(!ks.length)return '<p class="note">Sem vendas no período.</p>';
       var C=nome==="Campanha";
       return '<table><tr><th>'+nome+'</th><th>Pedidos</th><th>Receita</th>'+(C?'<th>Anúncios</th><th>ROAS</th>':'')+'<th>Lucro'+(C?' (após anúncios)':'')+'</th>'+(C?'<th>Visit.</th><th>Lucro/visit.</th>':'')+'</tr>'+ks.map(function(k){var v=o[k],lc=C?v.la:v.l;return '<tr><td>'+(C?nm(k):k.replace(/</g,""))+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td>'+(C?'<td>'+m(v.g)+'</td><td>'+(v.g?(v.r/v.g).toFixed(2):"–")+'</td>':'')+'<td class="'+cls(lc)+'">'+m(lc)+'</td>'+(C?'<td>'+v.vis+'</td><td>'+(v.vis?m(lc/v.vis):"–")+'</td>':'')+'</tr>'}).join("")+'</table>'}
-    $("#camp").innerHTML=tab(j.camp,"Campanha"); $("#var").innerHTML=tab(j.var,"Versão");
+    J=j; niv(); $("#var").innerHTML=tab(j.var,"Versão");
     var P=Object.keys(j.pos);$("#pos").innerHTML=P.length?'<table><tr><th>Versão</th><th>Compradores</th><th>Receita pós-compra</th><th>Lucro pós-compra</th><th>Lucro por comprador</th></tr>'+P.map(function(k){var v=j.pos[k];return '<tr><td>'+k.replace(/</g,"")+'</td><td>'+v.n+'</td><td>'+m(v.r)+'</td><td class="'+cls(v.l)+'">'+m(v.l)+'</td><td><b>'+m(v.l/v.n)+'</b></td></tr>'}).join("")+'</table>':'<p class="note">Sem vendas no período.</p>';
-    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Extra</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Campanha</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+p.extra+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+nm(p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
-    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 30 s · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta ("+(A.atualizado?"gasto atualizado em "+new Date(A.atualizado).toLocaleString("pt-BR"):"atualiza a cada 15 min")+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando chegar o primeiro envio do Meta)")+".";
+    $("#lista").innerHTML=j.lista.length?'<table><tr><th>Quando (UTC)</th><th>Pet</th><th>Kit</th><th>Bump</th><th>Upsell</th><th>Downsell</th><th>Extra</th><th>Total</th><th>Lucro</th><th>Estado</th><th>Anúncio</th></tr>'+j.lista.map(function(p){return '<tr><td>'+p.quando+'</td><td>'+p.pet+'</td><td>'+(p.kit==="two"?"2":"1")+'</td><td>'+(p.bump?"✓":"")+'</td><td>'+p.upsell+'</td><td>'+p.downsell+'</td><td>'+p.extra+'</td><td>'+m(p.total)+(p.reemb?' <span class="neg">−'+m(p.reemb)+'</span>':'')+(p.contest?' ⚠️':'')+'</td><td class="'+cls(p.lucro)+'">'+m(p.lucro)+'</td><td>'+p.estado+'</td><td>'+adn(p.ad,p.camp)+'</td></tr>'}).join("")+'</table>':'<p class="note">Sem pedidos no período.</p>';
+    $("#rod").textContent="Atualizado "+new Date(j.gerado).toLocaleTimeString("pt-BR")+" · atualiza sozinho a cada 10 s com a aba aberta · "+(A.ligado&&!A.erro?"lucro já descontado o gasto do Meta ("+(A.atualizado?"gasto atualizado em "+new Date(A.atualizado).toLocaleString("pt-BR"):"atualiza a cada 15 min")+(A.acrescimo?", com "+(100*A.acrescimo).toFixed(2)+"% de imposto":"")+")":"lucro ainda sem o gasto com anúncios (entra quando chegar o primeiro envio do Meta)")+".";
   });
 }
-$("#p").onchange=load; $("#c").onchange=load; load(); setInterval(load,30000);
+$("#p").onchange=load; $("#c").onchange=load; load(); setInterval(load,10000); document.addEventListener("visibilitychange",load);
 </script>
 </body></html>
