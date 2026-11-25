@@ -20,6 +20,10 @@
   var keep=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","a","pet"];
   var ctx={}; try{ctx=JSON.parse(ss("ctx")||"{}")}catch(e){}
   keep.forEach(function(k){if(q.get(k))ctx[k]=q.get(k)});
+  // Último clique pago fica 7 dias neste navegador (janela de clique do Meta). Quem volta sem o link continua no anúncio de origem, marcado "retorno".
+  var ORIG=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","a"];
+  if(q.get("utm_source")||q.get("fbclid")){var t={};ORIG.forEach(function(k){if(ctx[k])t[k]=ctx[k]});ls("toque",JSON.stringify({t:Date.now(),c:t}));delete ctx.retorno}
+  else if(!ctx.utm_source&&!ctx.fbclid){try{var tq=JSON.parse(ls("toque")||"null");if(tq&&tq.c&&Date.now()-tq.t<7*864e5){ORIG.forEach(function(k){if(tq.c[k]&&!ctx[k])ctx[k]=tq.c[k]});ctx.retorno="1"}}catch(e){}}
   ss("ctx",JSON.stringify(ctx));
   // _fbc: grava/atualiza sempre que chega um fbclid novo (clique novo = fbc novo)
   if(ctx.fbclid){ var old=ck("_fbc"); if(!old||old.split(".").pop()!==ctx.fbclid) setck("_fbc","fb.1."+Date.now()+"."+ctx.fbclid,90); }
