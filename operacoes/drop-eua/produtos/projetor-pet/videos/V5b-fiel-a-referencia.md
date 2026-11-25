@@ -80,5 +80,13 @@ Conferência:
 
 Lição: bloco de luz no topo do prompt segura a exposição no T1; pedir número exato de anéis não segura.
 
+## Final e montagem (25/11, escolha do Kenui: "Aprovar e fazer o final")
+- Quadro do final `v5-modelado/v5b-quadro-final-4k.png` (img_15), feito com o último quadro do clipe A2 enviado ao canvas (img_14) como referência da sala, do aparelho e dos anéis, mais a ficha da mulher. Custo 1,4.
+- Clipe `v5-modelado/v5b-clipe-final.mp4` (vid_10), T1, 4 s, prompt curto com uma ação só (método de [controle de cena](../../../../../conhecimento/video-ia/controle-de-cena.md), camadas 0 e 6). Custo 4. Saldo 56,54.
+- Conferência: ela de costas no sofá, toma um gole, não vira o rosto; cachorro brinca sozinho nos anéis; aparelho parado; mesma sala e mesma luz do clipe A2.
+- Montagem `v5-modelado/montar_v5b.py`: clipe A2 inteiro (0,15 a 11 s) + final (0,1 a 4 s). Total 14,7 s. Arquivos `V5b-{sem,com}-musica.mp4`. Textos: `dog moms, do NOT open this / in front of him..`, `works best with the lights low`, `comment "CATCH" / if your dog needs this`.
+- Custo total do V5b: 29,6 créditos (0,8 rascunho + 12,4 primeira geração + 11 refação + 5,4 final).
+- Fica para a próxima versão, pelo método de controle de cena: anéis e esquilo desenhados na pós, presos ao piso, com número exato.
+
 ## Resultado
 (preencher)
