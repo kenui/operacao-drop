@@ -5,8 +5,10 @@
 if (PHP_SAPI !== 'cli') { http_response_code(403); exit; }
 $raiz = dirname(__DIR__, 2); $feito = $raiz . '/robos-revisao.feito';
 if (is_file($feito)) { echo "ja feito\n"; exit; }
-$_SERVER['REQUEST_METHOD'] = 'CLI';
-ob_start(); require $raiz . '/public_html/api/_lib.php'; ob_end_clean();
+$_SERVER['REQUEST_METHOD'] = 'CLI'; echo "inicio\n";
+set_exception_handler(function($e){ echo 'erro: ', $e->getMessage(), "\n"; });
+register_shutdown_function(function(){ $e = error_get_last(); if ($e) echo 'fatal: ', $e['message'], "\n"; });
+ob_start(); require $raiz . '/public_html/api/_lib.php'; ob_end_clean(); echo "lib ok\n";
 $w = "criado >= '2026-11-25 01:23:00' AND criado < '2026-11-25 01:38:00' AND utm LIKE '%fbclid%' AND dados NOT LIKE '%\"bot\":1%'";
 $v = (int)db()->query("SELECT COUNT(DISTINCT visitante_id) FROM eventos WHERE $w")->fetchColumn();
 $n = db()->exec("UPDATE eventos SET dados = IF(dados IN ('', '[]', '{}') OR dados IS NULL, '{\"bot\":1,\"motivo\":\"revisao-meta\"}', CONCAT(LEFT(dados, CHAR_LENGTH(dados) - 1), ',\"bot\":1,\"motivo\":\"revisao-meta\"}')) WHERE $w");
