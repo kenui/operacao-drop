@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-25T13:05:00Z",
+ "atualizado": "2026-11-25T21:16:45Z",
  "fonte": "conector",
  "moeda": "BRL",
  "acrescimo": 0.1383,
@@ -29,20 +29,10 @@
    "campaign_name": "projetor_lanc_vendas_20261124",
    "adset_id": "120250941881970381",
    "adset_name": "broad_us_adv",
-   "ad_id": "120250941883410381",
-   "ad_name": "fake-cetica-demo-v1-musica",
-   "date": "2026-11-24",
-   "spend": 3.86
-  },
-  {
-   "campaign_id": "120250938066740381",
-   "campaign_name": "projetor_lanc_vendas_20261124",
-   "adset_id": "120250941881970381",
-   "adset_name": "broad_us_adv",
    "ad_id": "120250941883670381",
    "ad_name": "aprovado-controle-v1",
    "date": "2026-11-24",
-   "spend": 63.42
+   "spend": 63.69
   },
   {
    "campaign_id": "120250938066740381",
@@ -62,7 +52,17 @@
    "ad_id": "120250941882860381",
    "ad_name": "chuva-donac-ugc-v1",
    "date": "2026-11-25",
-   "spend": 2.86
+   "spend": 34.16
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883410381",
+   "ad_name": "fake-cetica-demo-v1-musica",
+   "date": "2026-11-25",
+   "spend": 4.05
   },
   {
    "campaign_id": "120250938066740381",
@@ -72,7 +72,27 @@
    "ad_id": "120250941883670381",
    "ad_name": "aprovado-controle-v1",
    "date": "2026-11-25",
-   "spend": 1.23
+   "spend": 28.78
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883880381",
+   "ad_name": "aprovado-controle-v1-musica",
+   "date": "2026-11-25",
+   "spend": 51.39
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250955918220381",
+   "ad_name": "dog-lover-v6",
+   "date": "2026-11-25",
+   "spend": 1.0
   }
  ]
 }
