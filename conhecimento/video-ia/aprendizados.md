@@ -45,3 +45,10 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - Regra: mostrar ao Kenui o quadro de partida e o prompt antes da geração cheia.
 - Custo: o quadro 1K pela ferramenta de edição do canvas cobrou 0,8 crédito; a cota grátis de imagem não entrou. Conferir saldo antes e depois de qualquer rascunho.
 - T1, ponto de vista (V5b, 25/11): o primeiro clipe escureceu a sala sozinho depois do clique. Um bloco LIGHT LOCK no topo do prompt ("exatamente tão clara no fim quanto no primeiro quadro, o cachorro nunca vira silhueta") resolveu na segunda geração. Pedir "exatamente cinco anéis" não segurou o número (saíram 3 e depois 4). Ponto de vista com as duas mãos livres funciona melhor descrito como "celular preso no peito".
+
+## V5b reprovado (25/11/2026): dois defeitos novos e custo
+- Kenui: "o cachorro parou de olhar para o esquilo e no unboxing o plastico teve bug ali ele atravesou o produto. Tambem gastou credito demais pra ficar ruim assim". Lembrou que o avatar não precisa ser refeito: usar as fichas 4K que já existem.
+- **Plástico atravessando o produto:** saco plástico transparente, fita e qualquer material mole e translúcido em contato com o produto deformam no T1. Regra: o quadro inicial já mostra o produto fora da embalagem (ou a caixa aberta sem saco). Nada mole encosta no produto durante a tomada.
+- **Olhar do cachorro:** numa tomada de 11 s ele segurou o olhar por uns 3 s. O GAZE LOCK só vale em tomada curta (até 5 s) com um alvo único e simples, de preferência um ponto de luz, e a minha conferência tem de olhar a direção do focinho quadro a quadro, não só "está nos anéis". Eu não apontei esse defeito antes de mostrar.
+- **Custo:** 29,6 créditos em 4 gerações para um vídeo reprovado. Regra: antes de qualquer clipe acima de 5 créditos, teste de uma tomada curta com o método de controle de cena (quadro inicial e final, efeito na pós) e ok dele nesse teste.
+- O V5b usou só um pedaço do método de controle de cena (prompt curto no clipe final e bloco de luz). A tomada principal continuou longa, com quatro mudanças de estado.

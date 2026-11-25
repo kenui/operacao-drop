@@ -89,4 +89,6 @@ Lição: bloco de luz no topo do prompt segura a exposição no T1; pedir númer
 - Fica para a próxima versão, pelo método de controle de cena: anéis e esquilo desenhados na pós, presos ao piso, com número exato.
 
 ## Resultado
-(preencher)
+Reprovado pelo Kenui em 25/11: "Nao gostei, deixa assim, o cachorro parou de olhar para o esquilo e no unboxing o plastico teve bug ali ele atravesou o produto. Tambem gastou credito demais pra ficar ruim assim". Não vai para a campanha e não recebe mais gasto.
+
+O que do método de controle de cena entrou no V5b: só o prompt curto de uma ação no clipe final e o bloco de luz. Não entraram: cena 3D, tomadas curtas na parte principal (foi uma tomada de 11 s com quatro mudanças de estado), quadro final por tomada, anéis na pós.
