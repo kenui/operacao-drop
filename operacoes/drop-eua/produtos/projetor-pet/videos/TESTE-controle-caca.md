@@ -36,3 +36,20 @@ Custo real: 7,80 créditos (saldo 56,54 para 48,74).
 Quatro tomadas de 3 a 5 s, com o quadro final de uma servindo de quadro inicial da seguinte: abertura com o produto já fora do saco (4 s), clique e anéis acendendo (4 s), caça (5 s, esta), final no sofá (4 s). Quadros em 1K (0,8 cada, o vídeo sai em 720p) e 1 crédito por segundo: cerca de 14 a 16 créditos para completar, cada tomada aprovada antes da seguinte. As tomadas aprovadas se recombinam em variações de gancho sem novo custo.
 
 Arquivos: `/mnt/project-files/operacoes/drop-eua/produtos/projetor-pet/videos/teste-controle/`.
+
+## Segunda rodada: 3D como referência antes do prompt (25/11/2026)
+
+A primeira rodada foi reprovada pelo Kenui: anel desenhado na pós passou por cima do cachorro, e o 3D que ele pediu é o que vem antes do prompt. Refeito assim:
+
+| Passo | Como | Custo |
+|---|---|---|
+| Referência 3D | `ferramentas/cena-3d/referencia_caca_sofa.json`: câmera do sofá a 1 m, produto ao fundo, 5 anéis medidos, presa no anel do meio, cachorro no início e no fim | 0 |
+| Quadro inicial 1K | Nano Banana Pro com três referências, cada uma com um papel: LAYOUT (3D), ROOM AND LOOK (quadro da sala), DOG (ficha) | 0,8 |
+| Quadro final 1K | edição do quadro inicial mudando só o cachorro; anéis "hidden behind him, never drawn on top of his fur" | 0,8 |
+| Clipe T1 5 s | quadro inicial e final + blocos LIGHT LOCK e PROJECTION LOCK | 5 |
+
+Custo real: 6,60 créditos (saldo 48,74 para 42,14). Arquivos `caca3d-*` em `videos/teste-controle/`.
+
+**Conferência (12 quadros + 4 ampliados):** 5 anéis no lugar do início ao fim, esquilo nítido no anel do meio, cachorro sempre na frente dos anéis, olhar no esquilo, luz com variação de 1,2%, produto parado. **Fracos:** por volta de 3 s o anel da frente à esquerda some inteiro atrás do cachorro e volta em parte logo depois, inclusive num trecho de piso que deveria mostrá-lo; o cachorro quase não se mexe nos 2 primeiros segundos; no fim a cabeça dele tampa quase todo o esquilo.
+
+**Lição:** dar ao gerador de imagem o 3D como LAYOUT e pedir para contar os anéis segurou posição e quantidade de primeira. Com os anéis iguais nos dois quadros, o T1 manteve o padrão.
