@@ -15,9 +15,9 @@ $linhas = [['Hunt kit (' . ($p['kit'] === 'two' ? '2 kits, ' . $p['mix'] : '1 ki
 if ($p['bump']) $linhas[] = ['Spare plush pack', $pr['bump']];
 if ($p['upsell'] === 'aceito') $linhas[] = ['Second kit (' . $p['upsell_pet'] . '), same box', (int)$p['valor_upsell']];
 if (str_starts_with((string)$p['downsell'], 'aceito')) $linhas[] = [nome_extra('downsell', (string)$p['downsell'], (string)$p['upsell_pet']), (int)$p['valor_downsell']];
-if (($p['extra'] ?? '') === 'aceito') $linhas[] = [nome_extra('extra', 'aceito', ''), (int)$p['valor_extra']];
+if (($p['extra'] ?? '') === 'aceito') $linhas[] = [nome_extra('extra', 'aceito', (string)$p['upsell_pet'], (int)$p['custo_extra']), (int)$p['valor_extra']];
 $downloads = $p['status'] === 'pago' ? links_download($p) : [];
 out(['downloads' => $downloads, 'status' => $p['status'], 'pet' => $p['pet'], 'email' => $p['email'], 'linhas' => $linhas,
   'total' => array_sum(array_column($linhas, 1)), 'upsell' => $p['upsell'], 'downsell' => $p['downsell'], 'extra' => $p['extra'] ?? null, 'upsell_pet' => $p['upsell_pet'], 'bump' => (int)$p['bump'],
   // o que as páginas pós-compra mostram (o servidor decide preço e tipo; a página só exibe)
-  'oferta' => ['upsell' => $pr['upsell'], 'downsell' => $pr['downsell'], 'downsell_kind' => $pr['downsell_kind'], 'extra' => $pr['extra'] ?? 0, 'regular' => $pr['one']], 'event_id' => 'purchase.' . $p['token']]);
+  'oferta' => ['upsell' => $pr['upsell'], 'downsell' => $pr['downsell'], 'downsell_kind' => $pr['downsell_kind'], 'extra' => $pr['extra'] ?? 0, 'extra_kind' => $pr['extra_kind'] ?? 'plush', 'regular' => $pr['one']], 'event_id' => 'purchase.' . $p['token']]);

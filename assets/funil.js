@@ -9,7 +9,7 @@
   function show(o,info){ if(typeof window.onOferta==="function") window.onOferta(o,info||{}); [].forEach.call(document.querySelectorAll("[data-o]"),function(el){var v=o[el.dataset.o]; if(typeof v==="number") el.textContent=money(v)}) }
   var dd={}; try{dd=JSON.parse(sessionStorage.getItem("demo_order")||"{}")}catch(e){}
   var ds=q.get("ds")==="kit";
-  var demoOferta={upsell:Math.round(C.upsell.price*100),downsell:ds?2999:Math.round(C.downsell.price*100),downsell_kind:ds?"kit":(C.downsell.kind||"plush"),extra:Math.round(((C.extra||{}).price||7.99)*100),regular:Math.round(C.kits.one.price*100)};
+  var demoOferta={upsell:Math.round(C.upsell.price*100),downsell:ds?2999:Math.round(C.downsell.price*100),downsell_kind:ds?"kit":(C.downsell.kind||"plush"),extra:Math.round(((C.extra||{}).price||7.99)*100),extra_kind:(C.extra||{}).kind||"plush",regular:Math.round(C.kits.one.price*100)};
   var petS=""; try{petS=sessionStorage.getItem("pet")||""}catch(e){}
   if(demo||etapa!=="downsell") show(demoOferta,{pet:dd.pet||petS||"dog",bump:dd.bump?1:0}); // downsell espera o servidor (o tipo muda no T7)
   if(!demo&&order) fetch("api/pedido.php?o="+encodeURIComponent(order)).then(function(r){return r.json()}).then(function(j){if(j.oferta) show(j.oferta,j)}).catch(function(){});

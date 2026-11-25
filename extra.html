@@ -10,6 +10,25 @@
 <main class="page"><div class="wrap">
   <div class="progress" aria-label="Step 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></div>
   <div class="okline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m7 12.5 3.2 3L17 9"/></svg>Second kit added. One last thing.</div>
+  <section data-kind="kit">
+  <h1>Gift List Longer Than Two?</h1>
+  <p>Add a third kit for one more dog you love. Same kit, 40% off, packed in the same box as the other two.</p>
+  <div class="offer">
+    <img id="x3Img" src="assets/img/kit-dog.webp" alt="The paw-shaped projector with its plush toy and gift box" width="800" height="800">
+    <div class="ob">
+      <div class="eyebrow" style="margin:0">One-Time Add-On</div>
+      <h2 style="font-size:24px;margin:4px 0 0">A Third Hunt &amp; Catch Kit</h2>
+      <div class="price"><b data-o="extra"></b><s data-o="regular"></s><em id="x3Save"></em></div>
+      <ul class="ticks">
+        <li>Projector, the plush for the catch and its own gift box</li>
+        <li>Same box as your order, no extra shipping</li>
+        <li>Charged to the card you just used, nothing to type</li>
+        <li>Covered by the same 30-day refund</li>
+      </ul>
+    </div>
+  </div>
+  </section>
+  <section data-kind="plush" hidden>
   <h1 id="exH">Spares for the Second Kit Too?</h1>
   <p id="exP">Each kit comes with one plush for the catch. A spare means the hunt still ends with a catch the day the first one goes missing or loses its squeak.</p>
   <div class="offer">
@@ -23,17 +42,21 @@
         <li>Charged to the card you just used, nothing to type</li>
         <li>Covered by the same 30-day refund</li>
       </ul>
-      <div class="err" id="err" role="alert"></div>
-      <button class="btn" id="yes" type="button">Yes, Add the Spares · <span data-o="extra"></span></button>
-      <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
     </div>
   </div>
+  </section>
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn" id="yes" type="button"><span id="yesT">Yes, Add the Third Kit</span> · <span data-o="extra"></span></button>
+  <button class="linkbtn" id="no" type="button">No thanks, finish my order</button>
   <p class="src center">One-time charge. No subscription.</p>
 </div></main>
 <script src="assets/track.js"></script><script src="assets/pages.js"></script>
 <script>
 window.onOferta=function(o,info){
-  var pet=info.upsell_pet||info.pet||"dog", dog=pet!=="cat";
+  var pet=info.upsell_pet||info.pet||"dog", dog=pet!=="cat", k=o.extra_kind||"plush";
+  [].forEach.call(document.querySelectorAll("[data-kind]"),function(s){s.hidden=s.dataset.kind!==k});
+  document.getElementById("yesT").textContent=k==="kit"?"Yes, Add the Third Kit":"Yes, Add the Spares";
+  if(k==="kit"){document.getElementById("x3Img").src="assets/img/kit-"+(dog?"dog":"cat")+".webp";document.getElementById("x3Save").textContent=o.regular>o.extra?"You Save $"+((o.regular-o.extra)/100).toFixed(2):"";return}
   document.getElementById("exImg").src="assets/img/bump-"+(dog?"dog":"cat")+".webp";
   document.getElementById("exTitle").textContent=dog?"2 Spare Squeaky Squirrels":"3 Spare Catnip Mice";
   if(info.bump){ // já pegou pelúcias no checkout: estas são para o 2º kit (não é a mesma oferta repetida)
