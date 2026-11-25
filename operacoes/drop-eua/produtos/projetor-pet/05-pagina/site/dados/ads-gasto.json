@@ -1,0 +1,78 @@
+{
+ "atualizado": "2026-11-25T13:05:00Z",
+ "fonte": "conector",
+ "moeda": "BRL",
+ "acrescimo": 0.1383,
+ "linhas": [
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941882910381",
+   "ad_name": "chuva-donac-ugc-v1-musica",
+   "date": "2026-11-24",
+   "spend": 4.72
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883300381",
+   "ad_name": "fake-cetica-demo-v1",
+   "date": "2026-11-24",
+   "spend": 0.42
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883410381",
+   "ad_name": "fake-cetica-demo-v1-musica",
+   "date": "2026-11-24",
+   "spend": 3.86
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883670381",
+   "ad_name": "aprovado-controle-v1",
+   "date": "2026-11-24",
+   "spend": 63.42
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883880381",
+   "ad_name": "aprovado-controle-v1-musica",
+   "date": "2026-11-24",
+   "spend": 4.42
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941882860381",
+   "ad_name": "chuva-donac-ugc-v1",
+   "date": "2026-11-25",
+   "spend": 2.86
+  },
+  {
+   "campaign_id": "120250938066740381",
+   "campaign_name": "projetor_lanc_vendas_20261124",
+   "adset_id": "120250941881970381",
+   "adset_name": "broad_us_adv",
+   "ad_id": "120250941883670381",
+   "ad_name": "aprovado-controle-v1",
+   "date": "2026-11-25",
+   "spend": 1.23
+  }
+ ]
+}
