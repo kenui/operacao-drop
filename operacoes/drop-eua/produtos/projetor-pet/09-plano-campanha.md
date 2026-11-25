@@ -39,18 +39,20 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
 
-**NO AR desde 25/11/2026 01h23 UTC (17h23 em Los Angeles)** como `projetor_lanc_vendas_20261124`. A regra automática de corte duro `3287020294806426` pausa o anúncio que gastar mais de R$216 (≈US$40) sem compra, checada a cada 30 min. Antes de ligar: campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+**NO AR desde 25/11/2026 01h23 UTC (17h23 em Los Angeles)** como `projetor_lanc_vendas_20261124`. A regra automática de corte duro `3287020294806426` pausa o anúncio que gastar mais de R$216 (≈US$40) sem compra, checada a cada 30 min. Antes de ligar: campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250941881970381` `broad_us_adv`. O conjunto original `120250938076520381` `broad_us` (atribuição só de clique em 7 dias, que o Meta não deixa mudar depois de criado) foi pausado sem gasto em 25/11.
+
+**Inteligência do Meta em uso (as 3 alavancas Advantage+ ligadas, então o Meta trata como campanha de vendas Advantage+):** orçamento da campanha (Advantage+ campaign budget) distribuindo entre os 6 anúncios; público Advantage+ (EUA 18+, sem interesses); posicionamentos Advantage+ (automáticos); otimização por Purchase com Pixel e API de Conversões; atribuição padrão do Meta (7 dias clique + 1 dia visualização). **Fora de propósito:** os aprimoramentos automáticos de criativo (o Meta gerar texto, imagem, música ou corte novos), porque podem mostrar ou prometer o que o produto não faz (regra do Kenui, FTC). Testar só os aprimoramentos que não mudam o conteúdo, como anúncio novo, depois do dia 7. Renomear com a data no dia de ligar.
 
 Anúncios criados em 24/11 (pausados, em revisão do Meta), Página Little Catch Co., UTM por ID em `url_tags`, domínio de conversão littlecatchco.com:
 
 | Anúncio | ID do anúncio | Criativo | Vídeo na biblioteca |
 |---|---|---|---|
-| chuva-donac-ugc-v1 | 120250938575320381 | 932435983167079 | 1144294901425680 |
-| chuva-donac-ugc-v1-musica | 120250938576070381 | 1491709979581016 | 1481621200558764 |
-| fake-cetica-demo-v1 | 120250938576430381 | 1122867140742983 | 4678334099102253 |
-| fake-cetica-demo-v1-musica | 120250938577520381 | 1828117665123830 | 1142239911872619 |
-| aprovado-controle-v1 | 120250938578390381 | 1777757563686595 | 1612303223984909 |
-| aprovado-controle-v1-musica | 120250938579440381 | 1116543557885881 | 1714682023401935 |
+| chuva-donac-ugc-v1 | 120250941882860381 | 932435983167079 | 1144294901425680 |
+| chuva-donac-ugc-v1-musica | 120250941882910381 | 1491709979581016 | 1481621200558764 |
+| fake-cetica-demo-v1 | 120250941883300381 | 1122867140742983 | 4678334099102253 |
+| fake-cetica-demo-v1-musica | 120250941883410381 | 1828117665123830 | 1142239911872619 |
+| aprovado-controle-v1 | 120250941883670381 | 1777757563686595 | 1612303223984909 |
+| aprovado-controle-v1-musica | 120250941883880381 | 1116543557885881 | 1714682023401935 |
 
 Com e sem música dentro do mesmo conjunto: a régua julga cada versão; se uma das duas perder com folga depois do dia 3, pausar a pior e anotar em `aprendizados.md` (teste de música, H-T música).
 
