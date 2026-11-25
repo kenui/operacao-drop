@@ -165,6 +165,7 @@ DECISÃO CRIATIVA V5
 - Hipótese: a estrutura que o mercado já pagou para validar dá custo por compra menor que os ângulos de persona no público frio.
 - Teste: V5 x V1 x Controle, mesmo público; métrica: custo por compra, depois retenção aos 3 s.
 - Cuidados: o cachorro da referência também é um buldogue cinza de coleira vermelha, então sala, roupa e enquadramento precisam ser claramente outros. Nada de luz no chão antes do clique. Sala em penumbra honesta, não de dia como na referência. Caixa sem marca inventada.
+- Produção real (25/11): 16,86 créditos; a abertura saiu filmada de frente, não em ponto de vista. Ver [videos/V5-modelado.md](videos/V5-modelado.md).
 - Resultado: (preencher)
 ```
 

@@ -24,6 +24,7 @@ Trava: [../../garimpo/2026-11-24/trava-projetor-pet.md](../../garimpo/2026-11-24
 | [videos/V1-chuva.md](videos/V1-chuva.md) | V1 montado (dor da chuva + prova nova com o cachorro brincando), versões 1 e 2, com e sem música, custo real, script de montagem |
 | [videos/V4-fake.md](videos/V4-fake.md) | V4 montado ("achei que era fake": aparelho desligado, piso vazio, prova em tomada contínua), com e sem música, custo real, script |
 | [videos/prova-esquilo.md](videos/prova-esquilo.md) | prova com esquilo (versão da CJ) e voz nova; vídeo de controle; V1 e V4 remontados com esquilo; custo real |
+| [videos/V5-modelado.md](videos/V5-modelado.md) | V5 modelado na referência escalada (unboxing com o cachorro, clique, prova, dona descansando, CTA de comentário), com e sem música, custo real, script |
 | [fichas/README.md](fichas/README.md) | fichas 4K da mulher e do cachorro, blocos de identidade e quadros de partida feitos com elas |
 | [videos/D-v6-topview.md](videos/D-v6-topview.md) | primeiro vídeo no Topview T1 (aprovado pelo Kenui em 24/11), custo zero, conferência |
 | [videos/D-v1.md](videos/D-v1.md) | primeiro vídeo (D, cachorro): prompts, links do bruto, da música por IA e das duas montagens, revisão honesta |
