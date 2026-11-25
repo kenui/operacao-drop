@@ -55,7 +55,7 @@ if (isset($_GET['api'])) {
   $camp = (string)($_GET['c'] ?? '');
 
   // eventos: visitantes distintos por etapa
-  $ev = $d->prepare('SELECT evento, visitante_id, utm, variante, pagina FROM eventos WHERE criado >= ?');
+  $ev = $d->prepare("SELECT evento, visitante_id, utm, variante, pagina FROM eventos WHERE criado >= ? AND dados NOT LIKE '%\"bot\":1%'");
   $ev->execute([$desde]);
   $por = []; $campanhas = []; $vivos = []; $agora = gmdate('Y-m-d H:i:s', time() - 300);
   foreach ($ev->fetchAll() as $r) {
@@ -65,7 +65,7 @@ if (isset($_GET['api'])) {
     if ($camp !== '' && $cp !== $camp) continue;
     $por[$r['evento']][$r['visitante_id']] = 1;
   }
-  $vv = $d->prepare('SELECT COUNT(DISTINCT visitante_id) FROM eventos WHERE criado >= ?'); $vv->execute([$agora]);
+  $vv = $d->prepare("SELECT COUNT(DISTINCT visitante_id) FROM eventos WHERE criado >= ? AND dados NOT LIKE '%\"bot\":1%'"); $vv->execute([$agora]);
   $n = fn($e) => count($por[$e] ?? []);
 
   // pedidos
