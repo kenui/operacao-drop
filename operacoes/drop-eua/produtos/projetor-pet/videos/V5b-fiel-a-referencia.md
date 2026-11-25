@@ -58,5 +58,14 @@ Quadro de partida editado a partir do último quadro do clipe A, para manter sal
 
 Saldo atual: 85,34. Ordem: clipe A primeiro, conferência, e só então o B.
 
+## Clipe A gerado (25/11)
+`v5-modelado/v5b-clipe-a.mp4` (vid_8), a partir do quadro 4K `v5b-quadro-pov-4k.png` (img_13). Custo real: 12,4 créditos (1,4 do quadro + 11 do clipe). Saldo 72,94.
+
+Conferência (2 quadros por segundo + transcrição):
+- Ponto de vista do sofá do começo ao fim, uma tomada. Ela tira o aparelho da caixa com o cachorro cheirando (0 a 2,5 s), põe no chão (3 a 4,5 s), aperta o botão (4,5 a 5 s). Nenhuma luz no chão antes do aperto.
+- Depois do clique aparecem 3 anéis com esquilo de luz, planos no piso; nos últimos 3 s o cachorro pula em cima dos anéis. Boca vazia.
+- Falas: "Hey, hey, wait." (1,1 s) e "Oh my god." (6,9 s).
+- Pontos fracos: a sala escurece sozinha logo depois do clique (ninguém apaga luz); os anéis viram 2 no fim e o esquilo some de dentro deles; o aparelho parece menor no chão do que na mão.
+
 ## Resultado
 (preencher)
