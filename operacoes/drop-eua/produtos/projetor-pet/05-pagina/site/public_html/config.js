@@ -19,8 +19,8 @@ window.CONFIG = {
   },
   bump:     { price: 9.99 },
   upsell:   { price: 39.99, regular: 49.99 },  // regular = preço real de 1 kit
-  downsell: { price: 7.99, on: true, kind: "plush" },  // control: pelúcias extras só para quem não pegou o bump
-  extra:    { price: 7.99, on: true },  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
+  downsell: { price: 29.99, on: true, kind: "kit" },  // 25/11 (D16): o 2º kit com desconto maior para quem recusou o upsell. Preço real vem do servidor (T13).
+  extra:    { price: 29.99, on: true, kind: "kit" },  // 25/11 (D16): 3º kit para quem aceitou o upsell.  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
   /* Testes do pós-compra (T7, T8) rodam no servidor, sorteados pelo pedido: ver api/_precos.php -> testes_pos. */
   blocos: { porque: true },  // false esconde o bloco. "porque" = "Everything a Bare Projector Leaves Out" (24/11, objeções; teste T11)
   bonus: { on: true, name: "First Hunt Guide" },        // PDF grátis por e-mail (objeções 2 e 4 da persona)

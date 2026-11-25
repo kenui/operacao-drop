@@ -26,6 +26,7 @@ Regra do Kenui: **teste A/B de tudo, um por vez, inclusive preço**; decide o lu
 | T5 | `T5-upsell-preco` | upsell US$24,99 → US$19,99 | dobra o aceite e compensa a margem menor | lucro do upsell por comprador | longo | idem |
 | T6 | `T6-downsell-digital` | downsell pelúcias (físico) → **Indoor Hunt Playbook** (PDF, US$9) | **a dúvida do Kenui**: digital tem valor percebido maior para esta persona? Hoje a evidência diz que não (conteúdo grátis abundante), então o padrão é físico; o teste decide | lucro do downsell por quem o vê | longo | só depois de escrever o PDF; não escrever antes de chegar aqui |
 | T11 | `T11-porque-aqui` | bloco "por que comprar aqui" antes dos kits: A com (padrão) × B sem | responder as objeções 1, 2, 5 e 6 perto do preço sobe a conversão sem baixar o ticket (pedido do Kenui, 24/11) | **lucro por visitante**; topo: início de checkout por visitante | ~700 por versão para o topo | **ativo desde 24/11** (teste de página; roda junto com o T7 do pós-compra) |
+| T12 | `T12-bonus-destaque` | bônus maior ("30-Day Tired Dog Plan") com destaque na primeira tela × bônus de hoje | o bônus é o que a cópia barata não tem; vindo da busca nº 1 da persona vira motivo de comprar aqui (ideia do Kenui, 25/11; manual-bonus §2b) | **lucro por visitante**; guarda-corpo: reembolso | ~700 por versão para o topo | depois do T11 (escrever o plano antes) |
 | T9 | (a criar) | primeira tela: vídeo do fornecedor × foto parada | vídeo do efeito real faz entender em 2 s (persona §5: o pet reagindo) | clique no botão | ~690 por versão | quando chegar o vídeo da CJ |
 | T10 | (a criar) | prova antes ou depois da oferta | — | clique no botão | ~690 | quando houver prova real |
 
@@ -36,7 +37,9 @@ Régua: 200 compradores por braço ou 30 dias, decisão bayesiana ≥ 90%; guard
 
 | # | id | O que muda | Hipótese | Status |
 |---|---|---|---|---|
-| T7 | `T7-downsell-kit` | downsell: A pelúcias US$7,99 (só sem bump) × B **o 2º kit por US$29,99** (todos que recusaram o upsell) | B vence se o aceite passar de ~31% do aceite das pelúcias (margem US$9,32 × US$2,91) e ainda alcança quem pegou o bump | **ativo desde 24/11** |
+| T7 | `T7-downsell-kit` (encerrado 25/11 sem dados, virou D16) | downsell: A pelúcias US$7,99 (só sem bump) × B **o 2º kit por US$29,99** (todos que recusaram o upsell) | B vence se o aceite passar de ~31% do aceite das pelúcias (margem US$9,32 × US$2,91) e ainda alcança quem pegou o bump | **ativo desde 24/11** |
+| T13 | `T13-downsell-desconto` | downsell (2º kit para quem recusou US$39,99): A **US$29,99** × B **US$24,99** | desconto maior compensa a margem menor só se dobrar o aceite (pedido do Kenui por oferta "mais irresistível", D16) | **ativo desde 25/11** (substitui o T7; pelúcias saíram do pós-compra) |
+| T14 | `T14-extra-preco` | 3º kit para quem aceitou o upsell: US$29,99 × US$34,99 | quem já levou 2 é pouco sensível a US$5 | depois do T13 |
 | T8 | `T8-extra-preco` | oferta extra (pelúcias do 2º kit) US$7,99 × US$9,99 | comprador que acabou de aceitar o upsell é pouco sensível a US$2 | depois do T7 |
 
 **Por que preço não é o primeiro:** com R$500 de verba, ver 18% de diferença em conversão exige centenas de compras. Testes de página (T2, T9) decidem com métrica de topo em ~700 visitantes por versão. O preço espera o volume, mas o motor já está pronto.
