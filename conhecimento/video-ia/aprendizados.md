@@ -30,3 +30,9 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - O quadro inicial manda no comportamento: cachorro deitado no quadro inicial ficou deitado 10 s mesmo com o GAZE LOCK. Começar com o animal já de pé e em movimento.
 - Confirmado na v5b (24/11): com uma tomada, prompt de cerca de 2 mil caracteres e 3 falas marcadas com tempo, quem fala e tom, o Kling falou as 3 exatamente. Usar quadro de um clipe anterior como quadro inicial funciona e custa zero.
 - Kenui (24/11, sobre a v5): a textura deve vir do prompt de geração, não de filtro na montagem. `celularizar` sai do fluxo de entrega. Os prompts de vídeo passam a ser escritos com o Fable 5.2 (subagente), com revisão antes de gerar.
+
+## Referência escolhida vira o primeiro criativo (25/11/2026)
+- Erro: o Kenui escolheu o anúncio da Enjoyaitlife como referência em 24/11 e o estudo ficou pronto, mas os três vídeos que foram para a campanha saíram dos ângulos de persona. Só o formato da prova veio da referência. Ele perguntou por que o criativo modelado não tinha sido feito.
+- Causa: a regra de modelagem chegou com a produção em andamento e eu registrei "sem referência" em vez de voltar; e tratei o estudo como inspiração, não como roteiro.
+- Regra: referência escalada escolhida por ele = primeiro criativo com a estrutura inteira dela; persona entra como variação ao lado. Ver [video-que-vende.md](video-que-vende.md) §6, itens 6 e 7.
+- Achado útil: as ferramentas de dados do TikTok Shop no Topview acham vídeos orgânicos do mesmo produto com plays, vendas e conversão, de graça. Usar no garimpo de referência.

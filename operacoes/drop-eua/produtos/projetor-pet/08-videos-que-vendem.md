@@ -138,6 +138,36 @@ DECISÃO CRIATIVA V4
 - Resultado: (preencher)
 ```
 
+### V5. Modelado na referência escalada (unboxing com o cachorro)
+Pedido do Kenui em 25/11: subir um criativo que siga a estrutura inteira do anúncio da Enjoyaitlife, que ele escolheu como referência em 24/11 ([estudo/referencia-estilo.md](estudo/referencia-estilo.md)). Copiamos a ordem das funções e o tempo de cada uma. Não copiamos sala, texto, música, roupa nem rosto.
+
+**Texto no quadro 1:** `dog moms, do NOT open this in front of him..`
+| Tempo | Função (igual à referência) | Imagem (nossa) | Som | Texto |
+|---|---|---|---|---|
+| 0 a 3 s | Unboxing em ponto de vista, com o pet junto | Ponto de vista dela sentada no chão, encostada no sofá da nossa sala (a mesma dos outros vídeos, abajur aceso, fim de tarde). Caixa de papelão pardo simples no colo (leggings pretas, mangas do moletom creme). O buldogue enfia o focinho na caixa. Ela tira o aparelho em forma de pata, desligado. | papelão, focinho farejando, risada curta: "Hey, hey, wait." | gancho |
+| 3 a 5 s | Põe no chão e liga | A mão coloca a pata de pé no piso, perto da parede, e aperta o botão. Clique, luz azul acende. Só depois do clique aparece luz no chão. Corte no clique. | clique | gancho |
+| 5 a 10,5 s | Efeito e cachorro brincando | Trecho aprovado do clipe do esquilo: anéis de luz planos no piso, esquilo de luz, ele persegue e bate a pata. | unhas no piso, "Oh my god, look at him." | `lights low. that's it.` |
+| 10,5 a 14 s | Dona descansando | Por trás do ombro dela, agora no sofá, com uma caneca na mão, vendo ele brincar sozinho ao fundo. | ela ri baixo | `comment "CATCH" if your dog needs this` |
+
+Som: natural o tempo todo e música por IA baixa (a referência é música mais texto, sem fala longa). Duas versões, com e sem música.
+
+Produção: 2 clipes novos e curtos no T1 (abertura de 8 s e final de 6 s, cerca de 14 créditos) mais 2 quadros de partida em 4K (2,8 créditos), editados a partir do quadro aprovado do esquilo para manter sala, mulher e cachorro. O miolo reaproveita o clipe do esquilo, custo zero. Total cotado: cerca de 17 créditos.
+
+```
+DECISÃO CRIATIVA V5
+- Persona e nível de consciência: dona de cachorro que já viu ou está perto de ver o produto (mercado com ~140 anúncios); o gancho de identidade também pega quem só sabe da dor.
+- Ângulo: curiosidade e identidade ("dog moms"), com a dor do esforço resolvida no fim sem falar dela.
+- Tipo de anúncio: unboxing em ponto de vista, demonstração em uma sequência só.
+- Quem fala e como: ninguém apresenta; ela reage em duas falas curtas.
+- Força do CTA: leve, de comentário (comentário baixa o custo de entrega; a thread de campanhas responde com o link).
+- Referência modelada: https://www.facebook.com/ads/library/?id=1814586786477559 (Enjoyaitlife, loja que mais anuncia o produto, 6 anúncios com este criativo, ativo desde 19/11). Copiado: unboxing com o pet nos 3 primeiros segundos, gancho de identidade com proibição, efeito aos 5 s, dona descansando no fim, CTA de comentário, música animada. Reforço: os orgânicos do TikTok Shop do mesmo produto usam o mesmo tipo de gancho ("Do NOT show this to a Cat Mom", 106 mil plays e 318 vendas em um vídeo sem anúncio, 21/11).
+- O que é nosso: frase do gancho, sala, caixa, enquadramento sentado no chão, esquilo que a CJ entrega, aviso de luz baixa, palavra do comentário.
+- Hipótese: a estrutura que o mercado já pagou para validar dá custo por compra menor que os ângulos de persona no público frio.
+- Teste: V5 x V1 x Controle, mesmo público; métrica: custo por compra, depois retenção aos 3 s.
+- Cuidados: o cachorro da referência também é um buldogue cinza de coleira vermelha, então sala, roupa e enquadramento precisam ser claramente outros. Nada de luz no chão antes do clique. Sala em penumbra honesta, não de dia como na referência. Caixa sem marca inventada.
+- Resultado: (preencher)
+```
+
 ## 5. Som e música
 | Vídeo | Som | Por quê |
 |---|---|---|
