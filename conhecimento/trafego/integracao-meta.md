@@ -52,9 +52,10 @@ O Meta bloqueou a criação do app (dispositivo não confiável). Por enquanto a
 **Gasto no painel sem Token B** (combinado com a thread do painel): na rotina diária a IA lê o gasto por campanha e por dia pelo conector e grava `_dados/ads-gasto.json` no ramo `deploy-littlecatchco` (pasta bloqueada por .htaccess). Uma cópia vai para o histórico em `operacoes/drop-eua/produtos/projetor-pet/05-pagina/site/dados/ads-gasto.json` no main. Formato:
 ```json
 {"atualizado":"2026-11-25T10:00:00Z","fonte":"conector","moeda":"BRL","acrescimo":0.1383,
- "linhas":[{"campaign_id":"120...","campaign_name":"...","date":"2026-11-24","spend":12.34}]}
+ "linhas":[{"campaign_id":"120...","campaign_name":"...","adset_id":"120...","adset_name":"...",
+            "ad_id":"120...","ad_name":"...","date":"2026-11-24","spend":12.34}]}
 ```
-`spend` vai na moeda da conta e `date` no fuso da conta. Pode mandar o arquivo inteiro a cada vez: vale a última linha de cada campanha e dia. Nunca vai token nem dado pessoal. Se o Token B existir, ele tem prioridade. Gravar no ramo de deploy pede a autorização do Kenui uma vez, antes da primeira gravação.
+**Uma linha por anúncio e dia** (desde 25/11: o painel mostra gasto e ROAS por anúncio, conjunto, campanha e ângulo). Nunca misturar linhas por campanha e por anúncio no mesmo dia, porque o painel somaria duas vezes. Referência do formato: comentário em `public_html/api/_ads.php` no ramo de deploy. Commitar o arquivo no ramo `deploy-littlecatchco`, porque cada publicação apaga do servidor o que não está no Git. `spend` vai na moeda da conta e `date` no fuso da conta. Pode mandar o arquivo inteiro a cada vez: vale a última linha de cada campanha e dia. Nunca vai token nem dado pessoal. Se o Token B existir, ele tem prioridade. Gravar no ramo de deploy pede a autorização do Kenui uma vez, antes da primeira gravação.
 
 ## Histórico
 - v1 (24/11/2026): caminho direto escolhido pelo Kenui; dois tokens; rotina.
