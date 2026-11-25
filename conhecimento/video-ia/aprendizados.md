@@ -44,3 +44,4 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - Regra: sala nova para criativo modelado; só personagens e produto vêm das fichas.
 - Regra: mostrar ao Kenui o quadro de partida e o prompt antes da geração cheia.
 - Custo: o quadro 1K pela ferramenta de edição do canvas cobrou 0,8 crédito; a cota grátis de imagem não entrou. Conferir saldo antes e depois de qualquer rascunho.
+- T1, ponto de vista (V5b, 25/11): o primeiro clipe escureceu a sala sozinho depois do clique. Um bloco LIGHT LOCK no topo do prompt ("exatamente tão clara no fim quanto no primeiro quadro, o cachorro nunca vira silhueta") resolveu na segunda geração. Pedir "exatamente cinco anéis" não segurou o número (saíram 3 e depois 4). Ponto de vista com as duas mãos livres funciona melhor descrito como "celular preso no peito".
