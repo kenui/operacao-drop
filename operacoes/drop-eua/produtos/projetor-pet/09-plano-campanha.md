@@ -53,6 +53,9 @@ Anúncios criados em 24/11 (pausados, em revisão do Meta), Página Little Catch
 | fake-cetica-demo-v1-musica | 120250941883410381 | 1828117665123830 | 1142239911872619 |
 | aprovado-controle-v1 | 120250941883670381 | 1777757563686595 | 1612303223984909 |
 | aprovado-controle-v1-musica | 120250941883880381 | 1116543557885881 | 1714682023401935 |
+| dog-lover-v6 (enviado pelo Kenui em 25/11, ativo) | 120250955918220381 | 1807447983699731 | 1779212459820421 |
+
+Em 25/11, 15h de Cuiabá, ficaram pausados por dados (0 clique cada): chuva-donac-ugc-v1, chuva-donac-ugc-v1-musica, fake-cetica-demo-v1 e fake-cetica-demo-v1-musica. Ativos: aprovado-controle-v1, aprovado-controle-v1-musica e dog-lover-v6.
 
 Com e sem música dentro do mesmo conjunto: a régua julga cada versão; se uma das duas perder com folga depois do dia 3, pausar a pior e anotar em `aprendizados.md` (teste de música, H-T música).
 
