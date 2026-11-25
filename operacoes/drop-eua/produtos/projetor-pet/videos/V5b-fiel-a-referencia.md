@@ -67,5 +67,18 @@ Conferência (2 quadros por segundo + transcrição):
 - Falas: "Hey, hey, wait." (1,1 s) e "Oh my god." (6,9 s).
 - Pontos fracos: a sala escurece sozinha logo depois do clique (ninguém apaga luz); os anéis viram 2 no fim e o esquilo some de dentro deles; o aparelho parece menor no chão do que na mão.
 
+## Clipe A refeito (25/11, escolha do Kenui: "Refazer o clipe")
+`v5-modelado/v5b-clipe-a2.mp4` (vid_9), mesmo quadro inicial. Custo real: 11 créditos. Saldo 61,94.
+
+O que mudou no prompt: bloco LIGHT LOCK no topo (brilho igual do primeiro ao último quadro, cachorro nunca em silhueta), bloco PROJECTION LOCK (número de anéis fixo, um esquilo sempre visível que troca de anel a cada 2 s), tamanho do aparelho comparado a uma caneca alta, aparelho a 60 cm dos pés.
+
+Conferência:
+- Sala com a mesma luz do começo ao fim. Corrigido.
+- Luz no chão só depois do dedo no botão (5 s). Esquilo sempre visível, trocando de anel; cachorro persegue e pula nos anéis de 7,5 s até o fim, boca vazia.
+- Falas: "Hey, hey, wait." (1,3 s) e "Oh my God." (7,9 s).
+- Pontos fracos: saíram 3 anéis que viram 4, não os 5 pedidos; o aparelho ainda parece menor no chão do que na mão; com a sala clara, os anéis aparecem mais vivos do que o aparelho real deve entregar com luz acesa (o texto "lights low" na montagem precisa compensar, ou a página recebe reclamação).
+
+Lição: bloco de luz no topo do prompt segura a exposição no T1; pedir número exato de anéis não segura.
+
 ## Resultado
 (preencher)
