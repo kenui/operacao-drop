@@ -16,7 +16,7 @@ function st(string $sk, string $m, string $path, array $p = []): array {
   $r = curl_exec($ch); $code = curl_getinfo($ch, CURLINFO_HTTP_CODE); curl_close($ch);
   return [$code, json_decode((string)$r, true) ?: []];
 }
-$msg = ''; $ok = false;
+$msg = ''; $ok = false; $confirmar = null;
 $cfg = is_file($cfgf) ? (string)file_get_contents($cfgf) : '';
 if ($cfg !== '' && preg_match("/'modo'\s*=>\s*'real'/", $cfg)) { $msg = 'A cobrança real já está ligada. Nada a fazer aqui.'; $ok = true; @unlink(__FILE__); }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,9 +27,16 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!preg_match('/^pk_live_[A-Za-z0-9]{20,}$/', $pk)) throw new RuntimeException('a chave publicável precisa começar com pk_live_');
     [$c1, $acc] = st($sk, 'GET', 'account');
     if ($c1 !== 200) throw new RuntimeException('a Stripe recusou a chave: ' . ($acc['error']['message'] ?? "HTTP $c1"));
-    [, $accT] = st((string)($c['stripe_secret'] ?? ''), 'GET', 'account');
-    if (!empty($accT['id']) && $accT['id'] !== ($acc['id'] ?? '')) throw new RuntimeException('essa chave é de outra conta da Stripe, não da mesma conta usada nos testes');
+    // As chaves de teste podem vir de uma "sandbox", que na Stripe tem outro número de conta. Por isso não exige o mesmo id:
+    // mostra a conta live (nome e país) e pede confirmação. Conta de fora do Brasil é recusada.
+    if (strtoupper((string)($acc['country'] ?? '')) !== 'BR') throw new RuntimeException('essa chave é de uma conta da Stripe de fora do Brasil (' . (string)($acc['country'] ?? '?') . '). Use as chaves da conta brasileira, a do seu CNPJ');
+    if (strpos($pk, substr((string)($acc['id'] ?? ''), 6)) === false) throw new RuntimeException('a chave publicável (pk_live) e a secreta (sk_live) são de contas diferentes. Copie as duas da mesma tela da Stripe');
     if (empty($acc['charges_enabled'])) throw new RuntimeException('a conta ainda não está liberada para cobrar (Stripe, Ativar pagamentos: termine o cadastro e a conta bancária)');
+    if (empty($_POST['confirmo'])) {
+      $nomeConta = (string)($acc['business_profile']['name'] ?? $acc['settings']['dashboard']['display_name'] ?? $acc['company']['name'] ?? '(sem nome)');
+      $confirmar = ['nome' => $nomeConta, 'pais' => (string)$acc['country'], 'id' => substr((string)$acc['id'], 0, 10) . '…', 'sk' => $sk, 'pk' => $pk];
+      throw new RuntimeException('__confirmar__');
+    }
     $p = ['url' => "https://$dom/api/webhook.php", 'description' => 'Little Catch Co. (site, real)', 'api_version' => '2024-06-20'];
     foreach ($eventos as $i => $e) $p["enabled_events[$i]"] = $e;
     [$c2, $wh] = st($sk, 'POST', 'webhook_endpoints', $p);
@@ -46,7 +53,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     file_put_contents($raiz . '/instalacao.log', gmdate('c') . " stripe REAL conta=" . ($acc['id'] ?? '?') . " webhook=" . ($wh['id'] ?? '?') . " applepay=" . ($c3 === 200 ? 'ok' : 'falhou') . "\n", FILE_APPEND);
     @unlink(__FILE__);
     $ok = true; $msg = 'Pronto. Chave live conferida, webhook real criado e servidor em modo real. Esta página já se apagou. Avise o Claude: ele troca a chave pública na página e faz a compra de teste com reembolso.';
-  } catch (Throwable $e) { $msg = 'Nada foi salvo: ' . htmlspecialchars($e->getMessage()) . '.'; }
+  } catch (Throwable $e) { if ($e->getMessage() !== '__confirmar__') { $msg = 'Nada foi salvo: ' . htmlspecialchars($e->getMessage()) . '.'; $confirmar = null; } }
 }
 ?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Ligar cobrança real</title>
@@ -55,9 +62,16 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if ($msg): ?><p class="m<?= $ok ? ' ok' : '' ?>"><?= $msg ?></p><?php endif; ?>
 <?php if (!$ok): ?>
 <p>Na Stripe, desligue o "modo de teste", vá em <b>Desenvolvedores, Chaves de API</b> e copie as duas chaves. Elas vão direto para o servidor, não passam pela conversa, e esta página se apaga depois de salvar.</p>
+<?php if ($confirmar): ?>
+<p class="m">Chave aceita. Confira se esta é a conta da sua empresa:<br><b><?= htmlspecialchars($confirmar['nome']) ?></b> · país <?= htmlspecialchars($confirmar['pais']) ?> · <?= htmlspecialchars($confirmar['id']) ?></p>
+<form method="post" autocomplete="off"><input type="hidden" name="pk" value="<?= htmlspecialchars($confirmar['pk']) ?>"><input type="hidden" name="sk" value="<?= htmlspecialchars($confirmar['sk']) ?>"><input type="hidden" name="confirmo" value="1">
+<button type="submit">Sim, é a minha conta: ligar a cobrança real</button></form>
+<p><a href="">Não é essa conta, voltar</a></p>
+<?php else: ?>
 <form method="post" autocomplete="off">
 <input type="text" name="pk" placeholder="Chave publicável: pk_live_..." required>
 <input type="password" name="sk" placeholder="Chave secreta: sk_live_..." required>
-<button type="submit">Conferir e ligar</button></form>
+<button type="submit">Conferir</button></form>
+<?php endif; ?>
 <?php endif; ?>
 </body></html>

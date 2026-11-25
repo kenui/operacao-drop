@@ -36,8 +36,9 @@ if (($b['acao'] ?? '') !== 'aceitar') {
 
 $pr = precos_p($p); $preco = (int)$pr[$etapa];
 $upet = limpa_pet($b['pet'] ?? $p['pet']);
-$tipo = match ($etapa) { 'upsell' => 'kit', 'extra' => 'plush', default => $pr['downsell_kind'] };
+$tipo = match ($etapa) { 'upsell' => 'kit', 'extra' => $pr['extra_kind'] ?? 'plush', default => $pr['downsell_kind'] };
 $desc = match (true) {
+  $etapa === 'extra' && $tipo === 'kit' => "Third hunt kit ($upet), ships in the same box",
   $etapa === 'upsell', $tipo === 'kit' => "Second hunt kit ($upet), ships in the same box",
   $etapa === 'extra' => 'Spare plush pack for the second kit, same box',
   $tipo === 'guide' => 'The Indoor Hunt Playbook (PDF)',
@@ -80,7 +81,7 @@ function marcar_pago(array $p, array $pi): void { require_once __DIR__ . '/_pago
 function gravar_aceite(array $p, string $etapa, array $pi, array $c): void {
   $k = $pi['metadata']['tipo'] ?? 'plush'; $pet = $pi['metadata']['pet'] ?? $p['pet'];
   if ($etapa === 'upsell') db()->prepare("UPDATE pedidos SET upsell='aceito', pi_upsell=?, upsell_pet=?, valor_upsell=?, custo_upsell=? WHERE token=?")->execute([$pi['id'], $pet, (int)$pi['amount'], $c['custos']['kit'], $p['token']]);
-  elseif ($etapa === 'extra') db()->prepare("UPDATE pedidos SET extra='aceito', pi_extra=?, valor_extra=?, custo_extra=? WHERE token=?")->execute([$pi['id'], (int)$pi['amount'], $c['custos']['extra'] ?? 450, $p['token']]);
+  elseif ($etapa === 'extra') db()->prepare("UPDATE pedidos SET extra='aceito', pi_extra=?, valor_extra=?, custo_extra=? WHERE token=?")->execute([$pi['id'], (int)$pi['amount'], $k === 'kit' ? ($c['custos']['extra_kit'] ?? $c['custos']['kit']) : ($c['custos']['extra'] ?? 450), $p['token']]);
   elseif ($k === 'kit') db()->prepare("UPDATE pedidos SET downsell='aceito-kit', pi_downsell=?, upsell_pet=?, valor_downsell=?, custo_downsell=? WHERE token=?")->execute([$pi['id'], $pet, (int)$pi['amount'], $c['custos']['downsell_kit'] ?? $c['custos']['kit'], $p['token']]);
   else db()->prepare("UPDATE pedidos SET downsell=?, pi_downsell=?, valor_downsell=?, custo_downsell=? WHERE token=?")->execute([$k === 'guide' ? 'aceito-guide' : 'aceito-plush', $pi['id'], (int)$pi['amount'], $c['custos']['downsell_' . ($k === 'guide' ? 'guide' : 'plush')] ?? 0, $p['token']]);
 }

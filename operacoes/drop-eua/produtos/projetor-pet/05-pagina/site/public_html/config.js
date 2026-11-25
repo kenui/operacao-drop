@@ -6,7 +6,7 @@
    é quem cobra; este arquivo só mostra).
    ============================================================ */
 window.CONFIG = {
-  preview: true,                 // true = faixa amarela e campos pendentes destacados. false só para publicar.
+  preview: false,                // 24/11: no ar com cobrança real ("pode ligar" do Kenui). Campos pendentes somem da página (não aparecem em amarelo).
   brand: "Little Catch Co.",     // decidido 24/11 (a IA decide; Kenui): domínio littlecatchco.com livre na checagem, a comprar com o aval dele
   supportEmail: "help@littlecatchco.com", // funciona depois de comprar o domínio e criar a caixa na Hostinger
   legalName: "52.594.756 KENUI SILVEIRA ALVES DE OLIVEIRA CABRAL", // nome empresarial do MEI (CCMEI, 24/11)
@@ -19,8 +19,8 @@ window.CONFIG = {
   },
   bump:     { price: 9.99 },
   upsell:   { price: 39.99, regular: 49.99 },  // regular = preço real de 1 kit
-  downsell: { price: 7.99, on: true, kind: "plush" },  // control: pelúcias extras só para quem não pegou o bump
-  extra:    { price: 7.99, on: true },  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
+  downsell: { price: 29.99, on: true, kind: "kit" },  // 25/11 (D16): o 2º kit com desconto maior para quem recusou o upsell. Preço real vem do servidor (T13).
+  extra:    { price: 29.99, on: true, kind: "kit" },  // 25/11 (D16): 3º kit para quem aceitou o upsell.  // 24/11: quem ACEITA o upsell vê pelúcias para o 2º kit. Preço real vem do servidor (api/_precos.php, teste T8).
   /* Testes do pós-compra (T7, T8) rodam no servidor, sorteados pelo pedido: ver api/_precos.php -> testes_pos. */
   blocos: { porque: true },  // false esconde o bloco. "porque" = "Everything a Bare Projector Leaves Out" (24/11, objeções; teste T11)
   bonus: { on: true, name: "First Hunt Guide" },        // PDF grátis por e-mail (objeções 2 e 4 da persona)
@@ -35,7 +35,7 @@ window.CONFIG = {
   },
 
   heroVideo: "",       // caminho do vídeo real do fornecedor (mp4/webm). Vazio = ilustração.
-  stripePk: "pk_test_51UefZS9fGfTx7kShypVC0uVAM4MfKRZo7eVHwDuMLJssfF90tIY5OdUJnFZdz3PYSQUH2zFhYMmE15bMZhpK55zI00bIwNKQXd", // TESTE conta Brasil (Kenui, 24/11). Chave pública: pode ficar no Git.
+  stripePk: "pk_live_51UfIRn5LJTgOWV2KA1Dj82PnzgRO5GUxeQ3lvq9msmKzqUteOROoBjGXtuk2iVY8k2OJU8Hf0zgRWVV07kcDbUST00cXPXrp0J", // REAL conta Brasil (Kenui ligou em 24/11 pela página de uso único). Chave pública: pode ficar no Git.
   metaPixelId: "545543757913721", // pixel do Meta (Kenui, 24/11). ID público.
   clarityId: "",       // vazio = Clarity desligado
   pets: ["dog"],       // só a versão cachorro (esquilo) tem fornecedor (CJ 24/11). Gato volta quando houver.
