@@ -11,6 +11,6 @@ register_shutdown_function(function(){ $e = error_get_last(); if ($e) echo 'fata
 ob_start(); require $raiz . '/public_html/api/_lib.php'; ob_end_clean(); echo "lib ok\n";
 $w = "criado >= '2026-11-25 01:23:00' AND criado < '2026-11-25 01:38:00' AND utm LIKE '%fbclid%' AND dados NOT LIKE '%\"bot\":1%'";
 $v = (int)db()->query("SELECT COUNT(DISTINCT visitante_id) FROM eventos WHERE $w")->fetchColumn();
-$n = db()->exec("UPDATE eventos SET dados = IF(dados IN ('', '[]', '{}') OR dados IS NULL, '{\"bot\":1,\"motivo\":\"revisao-meta\"}', CONCAT(LEFT(dados, CHAR_LENGTH(dados) - 1), ',\"bot\":1,\"motivo\":\"revisao-meta\"}')) WHERE $w");
+$n = db()->exec("UPDATE eventos SET dados = CASE WHEN dados IS NULL OR dados IN ('', '[]', '{}') THEN '{\"bot\":1,\"motivo\":\"revisao-meta\"}' ELSE substr(dados, 1, length(dados) - 1) || ',\"bot\":1,\"motivo\":\"revisao-meta\"}' END WHERE $w");
 file_put_contents($feito, gmdate('c'));
 echo json_encode(['eventos' => $n, 'visitantes' => $v]), "\n";
