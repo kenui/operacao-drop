@@ -15,7 +15,11 @@ Toda escolha de técnica entra no bloco DECISÃO CRIATIVA (`realismo-de-celular.
 | Efeito some ou aparece fora de hora | **Quadro inicial no estado certo** (imagem) + clipe por estado | O modelo anima o que já está no quadro; não precisa "criar" o efeito | 2 a 4 por quadro | guia de imagem + `realismo-de-celular.md` |
 | Voz falsa, boca fora de sincronia | **Áudio nativo com conversa** ou **voz gravada nossa + lip sync** | Fala natural com pausas e ambiente; voz real quando a nativa falhar | lip sync: orçar na hora | `realismo-de-celular.md` seção 2 |
 | Cena simples, sem produto complicado | **Prompt direto** (longo, em blocos) | Mais barato e rápido quando não há risco de erro de produto | só o vídeo | `realismo-de-celular.md` seção 5 |
+| Contagem ou forma do efeito muda (anéis, bicho de luz) | **Efeito desenhado por código e preso ao piso na pós** | O modelo não conta nem segura forma gráfica; o padrão real fica exato e a luz cai sobre o animal | 0 | `pos-controle/projetar_no_chao.py` |
+| Sala escurece ou clareia sozinha, avatar ou escala derivam numa tomada longa | **Tomadas de 3 a 6 s com quadro inicial e final** + medição e correção da luz | Com início e fim fixos o modelo só interpola; a correção salva o clipe sem regerar | quadros 1 a 4 cada; correção 0 | `controle-de-cena.md` + `pos-controle/luz_clipe.py` |
 | Não sabemos se funciona antes de gastar | **Rascunho 480p + ver-video** | Pega erro antes do final | ~30-40% do final | `ver-video` |
+
+Método completo de precisão, com as seis camadas e a receita: [controle-de-cena.md](controle-de-cena.md).
 
 ## Como misturar (receita padrão, do mais barato ao mais caro)
 1. **Pesquisa:** `ver-video` nos anúncios e virais do nicho; tabela de verdade do produto (`cenas-de-referencia.md`).

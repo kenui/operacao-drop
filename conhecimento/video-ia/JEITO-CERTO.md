@@ -65,6 +65,9 @@ Realismo é textura e detalhe (pele, pelo, casa vivida, luz de casa), escrito de
 ## Arsenal de técnicas e imagem (desde 24/11, pedido do Kenui)
 Antes de planejar um vídeo, consultar a matriz problema, técnica, por quê e custo em [arsenal.md](arsenal.md): refazer viral (só estrutura e ritmo), cena 3D por código como guia de movimento e quadro inicial (custo zero de crédito), fichas de personagem, voz e lip sync. Toda imagem base, quadro inicial e ficha de personagem segue o [guia de imagem realista](../imagem-ia/guia-imagem-realista.md).
 
+## Controle de cena (desde 25/11, pedido do Kenui)
+Todo criativo que vai para o ar segue [controle-de-cena.md](controle-de-cena.md): tomadas curtas com uma mudança de estado, cena 3D com medida real, quadro inicial e final, efeito exato na pós e conferência automática da luz.
+
 ## Etapa obrigatória antes do prompt: ficha de uso do produto (desde 23/11, pedido do Kenui)
 Nenhum prompt de vídeo é escrito sem a ficha `operacoes/<op>/produtos/<produto>/uso-no-video.md`, feita a partir do modelo `conhecimento/video-ia/modelo-ficha-uso-produto.md`.
 Regras de conversão da ficha para o prompt:
