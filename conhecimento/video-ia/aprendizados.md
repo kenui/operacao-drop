@@ -52,3 +52,13 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - **Olhar do cachorro:** numa tomada de 11 s ele segurou o olhar por uns 3 s. O GAZE LOCK só vale em tomada curta (até 5 s) com um alvo único e simples, de preferência um ponto de luz, e a minha conferência tem de olhar a direção do focinho quadro a quadro, não só "está nos anéis". Eu não apontei esse defeito antes de mostrar.
 - **Custo:** 29,6 créditos em 4 gerações para um vídeo reprovado. Regra: antes de qualquer clipe acima de 5 créditos, teste de uma tomada curta com o método de controle de cena (quadro inicial e final, efeito na pós) e ok dele nesse teste.
 - O V5b usou só um pedaço do método de controle de cena (prompt curto no clipe final e bloco de luz). A tomada principal continuou longa, com quatro mudanças de estado.
+
+## 3D é referência antes do prompt, não desenho em cima do vídeo (25/11/2026)
+
+O teste da caça saiu com os anéis e o esquilo desenhados na pós por cima do clipe. O Kenui reprovou: "Ficou bem ruim, o círculo sobrepôs o cachorro" e "A modelagem 3D que eu tinha falado antes era a que vem antes do prompt para orientar como referência, não no vídeo pronto, isso é muito ruim".
+
+**Regra:** a cena 3D serve para montar a composição exata (câmera, produto, quantos anéis e onde, posição do animal no início e no fim) e entra como imagem de referência na criação do quadro inicial e do quadro final. O efeito do produto nasce dentro dos quadros e do clipe gerado. Nada de anel, presa ou efeito desenhado depois sobre o vídeo pronto; `projetar_no_chao.py` não vai para entrega.
+
+**Erro meu no teste:** renderizei a cena 3D mas não a usei como referência dos quadros; eles saíram de um quadro antigo. E entreguei sabendo que o anel passava por cima do cachorro.
+
+**Detalhe da ferramenta cena-3d:** com `liga_em_s` igual a 0 os anéis não aparecem e o animal parte da origem; usar 0,3 e pegar os quadros a partir do 9. Cena do teste: `ferramentas/cena-3d/referencia_caca_sofa.json`.
