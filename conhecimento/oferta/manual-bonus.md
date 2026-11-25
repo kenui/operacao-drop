@@ -24,6 +24,14 @@ Não entra quando:
 7. Registrar a decisão na tabela de funil do produto (`07-funil.md`), com a objeção que cada bônus responde.
 8. Virar teste: braço A com os bônus, braço B sem ou com um só. Métrica principal: lucro por visitante. Guarda-corpo: taxa de reembolso.
 
+## 2b. Bônus como motivo de comprar AQUI (ideia do Kenui, 25/11)
+Palavras dele: "a possibilidade de o bônus estar na landing page [...] um bônus que tem maior valor. Por meio de uma pesquisa [...] o que as pessoas mais procuram. Talvez isso vai ser um grande motivo para a pessoa comprar ali".
+Avaliação: faz sentido. O bônus é a única coisa da oferta que a cópia da Amazon não tem, então ele responde de frente às objeções "is this legit?" e "$14 on Amazon" sem citar concorrente.
+- O bônus de maior valor sai da **busca solitária nº 1 da persona**, não do produto. No projetor, "how to tire out dog indoors" e "rainy day dog activities" (persona §4) apontam para um programa completo, não um PDF de dicas: ex. "The 30-Day Tired Dog Plan" (um plano por dia, 10 a 15 min, com o projetor e com coisas da casa).
+- Destaque: aparece já na primeira tela (selo perto do preço e no botão: "Kit + 30-Day Plan, free"), e o bloco grande antes dos kits mostra capa, páginas de dentro e o que resolve.
+- Valor percebido vem do conteúdo concreto (30 dias, nº de jogos, páginas reais na imagem), nunca de "valor de US$X" inventado (§3).
+- Vira teste de página (T12, depois do T11): A bônus como hoje × B bônus maior com destaque no topo. Métrica: lucro por visitante; guarda-corpo: reembolso.
+
 ## 3. Valor do bônus: o que pode e o que não pode (FTC)
 - **Não** escrever "valor de US$X" ou preço riscado no bônus se ele nunca foi vendido de verdade, por esse preço, em volume real. É preço de referência enganoso (FTC, Guides Against Deceptive Pricing, 16 CFR 233).
 - Pode: "Free", "yours to keep", o número de páginas, e o que tem dentro. O valor percebido vem do conteúdo concreto e da imagem, não de um número inventado.
@@ -47,4 +55,5 @@ PDFs, yours to keep. Download links on the thank-you page and in your receipt em
 | Projetor pet (cachorro) | Rainy Day Play Plan (12 jogos + semana de rodízio) | ângulo "dia de chuva sem culpa" e nº 2 "vai enjoar" | mesmo lugar; mockup em `digital/fonte/mockup-bonus.html` |
 
 ## Histórico
+- v1.1 (25/11/2026): §2b, bônus de maior valor com destaque na página como motivo de comprar aqui (ideia do Kenui), teste T12.
 - v1 (24/11/2026): criado a partir do pedido do Kenui e aplicado ao projetor pet.

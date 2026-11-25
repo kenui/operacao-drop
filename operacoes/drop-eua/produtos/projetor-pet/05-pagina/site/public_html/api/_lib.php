@@ -71,7 +71,7 @@ function garantir_pos(array $p): array {
 function precos_p(array $p): array { return precos((string)$p['variante'], (string)($p['variante_pos'] ?? '')); }
 // preços (e tipo do downsell) da versão do visitante e do pedido
 function precos(?string $var = '', string $varPos = ''): array {
-  $c = cfg(); $p = $c['precos'] + ['downsell_kind' => $c['downsell_kind'] ?? 'plush'];
+  $c = cfg(); $p = $c['precos'] + ['downsell_kind' => $c['downsell_kind'] ?? 'plush', 'extra_kind' => $c['extra_kind'] ?? 'plush'];
   if ($var && str_ends_with($var, ':B')) { $id = substr($var, 0, -2); $p = array_merge($p, $c['testes']['list'][$id]['B'] ?? []); }
   if ($varPos && str_ends_with($varPos, ':B')) { $id = substr($varPos, 0, -2); $p = array_merge($p, $c['testes_pos']['list'][$id]['B'] ?? []); }
   return $p;
@@ -138,8 +138,8 @@ function finalizar(array $p): bool {
 }
 
 // nome de cada oferta pós-compra no recibo, no e-mail e na Stripe
-function nome_extra(string $etapa, string $estado, string $pet): string {
-  if ($etapa === 'extra') return 'Spare plush pack for the second kit, same box';
+function nome_extra(string $etapa, string $estado, string $pet, int $custo = 0): string {
+  if ($etapa === 'extra') return $custo > 1000 ? 'Third kit' . ($pet ? " ($pet)" : '') . ', same box' : 'Spare plush pack for the second kit, same box';
   return match ($estado) { 'aceito-guide' => 'The Indoor Hunt Playbook (PDF)', 'aceito-kit' => "Second kit ($pet), same box", default => 'Spare plush pack' };
 }
 
@@ -176,7 +176,7 @@ function enviar_confirmacao(?array $p): void {
   if ($p['bump']) $l[] = 'Spare plush pack  ' . $m($pr['bump']);
   if ($p['upsell'] === 'aceito') $l[] = "Second kit ({$p['upsell_pet']}), same box  " . $m((int)$p['valor_upsell']);
   if (str_starts_with((string)$p['downsell'], 'aceito')) $l[] = nome_extra('downsell', (string)$p['downsell'], (string)$p['upsell_pet']) . '  ' . $m((int)$p['valor_downsell']);
-  if (($p['extra'] ?? '') === 'aceito') $l[] = nome_extra('extra', 'aceito', '') . '  ' . $m((int)$p['valor_extra']);
+  if (($p['extra'] ?? '') === 'aceito') $l[] = nome_extra('extra', 'aceito', (string)$p['upsell_pet'], (int)$p['custo_extra']) . '  ' . $m((int)$p['valor_extra']);
   $total = (int)$p['valor_front'] + (int)$p['valor_upsell'] + (int)$p['valor_downsell'] + (int)($p['valor_extra'] ?? 0);
   $dl = links_download($p);
   $prazo = $c['prazo'] ? "It should arrive in {$c['prazo']}." : "We'll email your tracking number as soon as it ships.";
