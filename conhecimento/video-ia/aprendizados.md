@@ -36,3 +36,11 @@ Cada linha: o que funciona ou falha, e o link da ficha que provou.
 - Causa: a regra de modelagem chegou com a produção em andamento e eu registrei "sem referência" em vez de voltar; e tratei o estudo como inspiração, não como roteiro.
 - Regra: referência escalada escolhida por ele = primeiro criativo com a estrutura inteira dela; persona entra como variação ao lado. Ver [video-que-vende.md](video-que-vende.md) §6, itens 6 e 7.
 - Achado útil: as ferramentas de dados do TikTok Shop no Topview acham vídeos orgânicos do mesmo produto com plays, vendas e conversão, de graça. Usar no garimpo de referência.
+
+## Modelar é refazer a referência quadro a quadro (V5 reprovado, 25/11/2026)
+- Kenui sobre o V5: "Ficou muito parecido com os anúncios que a gente já tem. Não parece nada com o anúncio que você pegou... do sofá é muito diferente... Tem que ter muito mais interesse na criação do prompt... cada detalhe."
+- Erros: reaproveitar sala e trecho de prova antigos (o criativo novo fica com cara dos antigos); aceitar um quadro de partida que não seguiu o ponto de vista pedido; trocar o lugar da dona (chão em vez de sofá); emendar clipes de câmeras diferentes.
+- Regra: criativo modelado é todo gerado de novo. Para cada cena da referência, anotar câmera, posição de cada pessoa e bicho, móvel e ação, e bater o quadro de partida contra essa lista antes de gastar em vídeo. Quadro que não bate é refeito, não aproveitado.
+- Regra: sala nova para criativo modelado; só personagens e produto vêm das fichas.
+- Regra: mostrar ao Kenui o quadro de partida e o prompt antes da geração cheia.
+- Custo: o quadro 1K pela ferramenta de edição do canvas cobrou 0,8 crédito; a cota grátis de imagem não entrou. Conferir saldo antes e depois de qualquer rascunho.
