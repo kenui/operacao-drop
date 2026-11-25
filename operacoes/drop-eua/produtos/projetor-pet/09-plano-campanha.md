@@ -5,7 +5,7 @@ Feito a partir do [manual de tráfego](../../../../conhecimento/trafego/manual-m
 ## 0. Portão (24/11)
 | Item | Estado |
 |---|---|
-| Stripe em produção | ❌ modo teste |
+| Stripe em produção | ✅ live desde 24/11; o Kenui dispensou a compra de teste, então a 1ª venda real prova o checkout |
 | Produto do anúncio = fornecedor | ❌ vídeo aprovado mostra coelho; a CJ cotou a versão com esquilo. Os vídeos V1–V4 precisam mostrar a projeção que a CJ entrega |
 | Prazo na página | ✅ 7–15 dias (config.js) |
 | Pixel + API de Conversões | ✅ ligados (pixel 545543757913721, event_id deduplicado); conferir eventos de teste com a conta ligada |
@@ -39,7 +39,7 @@ Porquê do alvo: US$18 fica abaixo do empate pessimista (US$21), então mesmo se
 
 Sem remarketing separado nesta fase (§7): o e-mail de checkout abandonado faz esse papel até o público "checkout 14 dias" passar de 1.000 pessoas.
 
-**Na conta (24/11, tudo PAUSADO):** campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
+**NO AR desde 25/11/2026 01h23 UTC (17h23 em Los Angeles)** como `projetor_lanc_vendas_20261124`. A regra automática de corte duro `3287020294806426` pausa o anúncio que gastar mais de R$216 (≈US$40) sem compra, checada a cada 30 min. Antes de ligar: campanha `120250938066740381` (Vendas, R$106,70/dia, spend cap R$746,70 de mídia = R$850 com imposto) e conjunto `120250938076520381` `broad_us`. Renomear com a data no dia de ligar.
 
 Anúncios criados em 24/11 (pausados, em revisão do Meta), Página Little Catch Co., UTM por ID em `url_tags`, domínio de conversão littlecatchco.com:
 
