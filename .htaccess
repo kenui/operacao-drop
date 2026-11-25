@@ -3,6 +3,8 @@ Header set X-Robots-Tag "noindex, nofollow"
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# link de parceiro: /r/<handle> -> r.php
+RewriteRule ^r/([A-Za-z0-9._-]{2,40})/?$ r.php?h=$1 [L,QSA]
 <FilesMatch "\.(sqlite|log|sql)$">
   Require all denied
 </FilesMatch>

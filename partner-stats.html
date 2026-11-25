@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Your partner stats · Little Catch Co.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<link rel="stylesheet" href="assets/site.css"><script src="config.js"></script>
+<style>.ps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}.ps div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}.ps b{display:block;font:700 30px/1.1 var(--display)}.ps span{color:var(--muted);font-size:14px}table{width:100%;border-collapse:collapse;font-size:15px}td,th{text-align:left;padding:8px;border-bottom:1px solid var(--line)}</style>
+</head><body><main class="page"><div class="wrap">
+<h1>Your partner stats</h1><p id="st">Loading…</p>
+<div class="ps" id="nums" hidden>
+  <div><b id="v">0</b><span>visits from your link</span></div>
+  <div><b id="s">0</b><span>kits sold</span></div>
+  <div><b id="g">$0</b><span>earned so far</span></div>
+  <div><b id="l">$0</b><span>ready for Friday's payout</span></div>
+</div>
+<p id="kit" hidden><b>🎁 You've hit 3 sales. Your free kit is on us: reply to our email with your shipping address.</b></p>
+<table id="t" hidden><thead><tr><th>Sale date</th><th>Status</th></tr></thead><tbody></tbody></table>
+<p class="src">Updates live. Sales count when the order is placed in the visit that started from your link. Paid every Friday by PayPal for sales older than 14 days.</p>
+</div></main>
+<script>
+(function(){var k=new URLSearchParams(location.search).get("k")||"",st=document.getElementById("st");
+fetch("api/parceiro.php?k="+encodeURIComponent(k)).then(function(r){return r.json()}).then(function(j){
+  if(j.error){st.textContent=j.error;return}
+  st.innerHTML='Link: <b>'+j.link+'</b> · partner since '+j.desde;
+  document.getElementById("nums").hidden=false;
+  document.getElementById("v").textContent=j.visitas;document.getElementById("s").textContent=j.vendas;
+  document.getElementById("g").textContent="$"+j.ganho;document.getElementById("l").textContent="$"+j.liberado;
+  if(j.kit_gratis)document.getElementById("kit").hidden=false;
+  if(j.lista.length){var tb=document.querySelector("#t tbody");document.getElementById("t").hidden=false;
+    j.lista.forEach(function(x){var tr=document.createElement("tr");tr.innerHTML="<td>"+x.quando+"</td><td>"+(x.liberada?"Ready to pay":"In the 14-day window")+"</td>";tb.appendChild(tr)})}
+}).catch(function(){st.textContent="Could not load. Try again in a minute."})})();
+</script></body></html>
